@@ -1,0 +1,11 @@
+.toast {
+  position: fixed; right: 24px; bottom: 24px; z-index: var(--z-toast); display: flex; align-items: flex-start; gap: 12px;
+  background: var(--ink-900); color: #fff; font-size: var(--fs-small); line-height: var(--lh-small); padding: 12px 12px 12px 16px;
+  border-radius: var(--r-sm); box-shadow: var(--shadow-pop); max-width: 420px; animation: rise var(--dur-base) var(--ease);
+}
+.icon { color: #9EE0BD; margin-top: 1px; flex-shrink: 0; }
+.text { font-weight: 600; }
+.detail { color: rgba(255, 255, 255, 0.72); font-variant-numeric: tabular-nums; }
+.close { background: none; border: none; color: rgba(255, 255, 255, 0.72); cursor: pointer; padding: 2px; border-radius: 4px; }
+.close:hover { color: #fff; }
+@keyframes rise { from { transform: translateY(8px); opacity: 0; } to { transform: none; opacity: 1; } }

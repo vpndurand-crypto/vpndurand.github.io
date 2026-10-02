@@ -1,0 +1,30 @@
+{
+  "name": "covenn-video-hexa",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Covenn — film produit HEXA (30 s). Couche de production vidéo indépendante de la bêta : les sources de la bêta sont vendues telles quelles dans beta/ et ne sont jamais modifiées.",
+  "type": "module",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "render": "remotion render src/index.ts CovennHexa out/covenn-hexa-30s.mp4",
+    "still": "remotion still src/index.ts CovennHexa",
+    "verify:beta": "node scripts/verify-beta.mjs",
+    "verify:values": "node --experimental-strip-types scripts/verify-values.ts",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.532",
+    "big.js": "6.2.2",
+    "lucide-react": "0.460.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-router-dom": "6.30.6",
+    "remotion": "4.0.532"
+  },
+  "devDependencies": {
+    "@types/big.js": "6.2.2",
+    "@types/react": "18.3.31",
+    "@types/react-dom": "18.3.7",
+    "typescript": "5.6.3"
+  }
+}

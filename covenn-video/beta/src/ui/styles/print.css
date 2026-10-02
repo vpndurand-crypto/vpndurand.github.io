@@ -1,0 +1,4 @@
+@media print {
+  [data-print="hide"] { display: none !important; }
+  body { background: #fff; }
+}

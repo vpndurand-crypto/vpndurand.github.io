@@ -1,0 +1,28 @@
+/* Jetons Covenn — seule source de couleurs, tailles et durées (plan technique, section 16.1). */
+:root {
+  --indigo-50:#F3F1FC; --indigo-100:#E6E2F8; --indigo-200:#CFC8F1; --indigo-300:#AFA3E6; --indigo-400:#8B7BD8;
+  --indigo-500:#6A57C8; --indigo-600:#4A33B3; --indigo-700:#3D2A96; --indigo-800:#2F2175; --indigo-900:#221955;
+  --ink-900:#1C1A2B; --ink-700:#3F3D52; --ink-500:#6B6980; --ink-400:#8E8CA3;
+  --line:#E7E5F0; --line-strong:#D6D3E4; --surface:#FFFFFF; --canvas:#F7F6FB;
+  --aurora-pink:#F5B9C2; --aurora-mauve:#C692B6; --aurora-lilac:#CBBBDF; --aurora-sky:#9DBAE6;
+  --aurora: radial-gradient(110% 90% at 100% 0%, var(--aurora-pink) 0%, transparent 60%),
+            radial-gradient(110% 90% at 0% 100%, var(--aurora-sky) 0%, transparent 60%),
+            radial-gradient(90% 80% at 100% 100%, var(--aurora-mauve) 0%, transparent 55%), var(--aurora-lilac);
+  --ok:#1E7F55; --ok-bg:#E6F4EC; --watch:#A6510A; --watch-bg:#FFF3E3; --watch-accent:#F08C1A;
+  --risk:#B42A20; --risk-bg:#FCEBE9; --na:#6B6980; --na-bg:#F1F0F5;
+  --src-contract:#3D2A96; --src-contract-bg:#F3F1FC; --src-import:#2D5A99; --src-import-bg:#EAF1FB;
+  --src-manual:#8E3553; --src-manual-bg:#FCEEF1; --src-calc:#3F3D52; --src-calc-bg:#F1F0F5;
+  --font:'Figtree', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono:ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --fs-hero:48px; --lh-hero:52px; --fs-display:32px; --lh-display:40px; --fs-h2:20px; --lh-h2:28px;
+  --fs-h3:16px; --lh-h3:24px; --fs-body:14px; --lh-body:21px; --fs-small:13px; --lh-small:18px;
+  --fs-label:12px; --lh-label:16px; --tracking-label:0.01em;
+  --s-1:4px; --s-2:8px; --s-3:12px; --s-4:16px; --s-5:20px; --s-6:24px; --s-8:32px; --s-10:40px; --s-12:48px; --s-16:64px;
+  --r-xs:6px; --r-sm:8px; --r-md:12px; --r-lg:16px; --r-pill:999px;
+  --border:1px solid var(--line); --border-strong:1px solid var(--line-strong); --border-brand:1.5px solid var(--indigo-600);
+  --shadow-pop:0 4px 16px rgba(28,26,43,.08); --shadow-panel:0 12px 40px rgba(28,26,43,.14);
+  --focus-ring:0 0 0 3px var(--indigo-300);
+  --dur-fast:150ms; --dur-base:200ms; --dur-slow:250ms; --ease:cubic-bezier(.2,.8,.2,1);
+  --z-sidebar:10; --z-topbar:20; --z-drawer:40; --z-modal:60; --z-toast:80;
+  --sidebar-w:248px; --sidebar-w-collapsed:72px; --topbar-h:64px; --drawer-w:480px; --content-max:1280px;
+}

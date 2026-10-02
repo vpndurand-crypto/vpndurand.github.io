@@ -1,0 +1,1 @@
+.banner { min-height: 28px; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 4px 16px; background: var(--indigo-900); color: #E6E2F8; font-size: 12px; line-height: 16px; }

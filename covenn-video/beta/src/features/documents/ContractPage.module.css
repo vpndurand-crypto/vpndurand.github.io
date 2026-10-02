@@ -1,0 +1,12 @@
+.sheet { background: #fff; border: var(--border); border-radius: 4px; box-shadow: var(--shadow-pop); padding: 40px 56px 28px; font-family: Georgia, 'Times New Roman', serif; color: #22212B; display: flex; flex-direction: column; gap: 20px; min-height: 560px; }
+.compact { padding: 18px 20px 14px; min-height: 0; gap: 12px; box-shadow: none; font-size: 13px; }
+.header { font-family: var(--font); font-size: 11px; color: var(--ink-500); border-bottom: 1px solid var(--line); padding-bottom: 8px; }
+.body { display: flex; flex-direction: column; gap: 14px; flex: 1; }
+.title { font-size: 26px; line-height: 1.25; font-weight: 400; text-align: center; margin: 40px 0 8px; letter-spacing: 0.01em; }
+.compact .title { font-size: 17px; margin: 8px 0 0; }
+.heading { font-size: 16px; font-weight: 700; margin-top: 4px; }
+.compact .heading { font-size: 13px; }
+.paragraph { font-size: 15px; line-height: 1.65; text-align: justify; hyphens: auto; }
+.compact .paragraph { font-size: 12.5px; line-height: 1.55; }
+.highlight { background: #FFF1C9; box-shadow: -8px 0 0 #FFF1C9, 8px 0 0 #FFF1C9, inset 3px 0 0 var(--watch-accent); border-radius: 2px; }
+.footer { font-family: var(--font); font-size: 11px; color: var(--ink-400); text-align: center; border-top: 1px solid var(--line); padding-top: 8px; }

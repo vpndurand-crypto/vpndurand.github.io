@@ -1,0 +1,10 @@
+.page { min-height: 100vh; display: grid; grid-template-columns: 1.1fr 1fr; background: var(--surface); }
+.brand { background: var(--aurora); padding: 64px; display: flex; flex-direction: column; justify-content: flex-end; gap: 16px; color: var(--indigo-900); }
+.wordmark { font-size: 44px; font-weight: 700; letter-spacing: -0.03em; }
+.promise { font-size: 20px; line-height: 28px; max-width: 30ch; font-weight: 500; }
+.panel { padding: 64px; display: flex; flex-direction: column; justify-content: center; gap: 16px; max-width: 460px; }
+.title { font-size: var(--fs-display); line-height: var(--lh-display); font-weight: 700; letter-spacing: -0.02em; }
+.hint { color: var(--ink-500); }
+.field { display: flex; flex-direction: column; gap: 6px; font-size: var(--fs-small); font-weight: 600; color: var(--ink-700); }
+.field input { height: 40px; padding: 0 12px; border: var(--border-strong); border-radius: var(--r-sm); background: var(--canvas); color: var(--ink-700); font-weight: 400; }
+@media (max-width: 1023px) { .page { grid-template-columns: 1fr; } .brand { padding: 40px; min-height: 220px; } .panel { padding: 40px; } }

@@ -1,0 +1,13 @@
+.value {
+  background: none; border: none; padding: 0 2px; margin: 0 -2px; font: inherit; font-variant-numeric: tabular-nums; color: inherit; cursor: pointer;
+  border-radius: 4px; text-decoration: underline dotted var(--indigo-300); text-underline-offset: 4px; text-decoration-thickness: 1.5px; white-space: nowrap;
+  transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+}
+.value:hover { background: var(--indigo-50); color: var(--indigo-700); text-decoration-color: var(--indigo-500); }
+.active { background: var(--indigo-100); color: var(--indigo-800); text-decoration-color: var(--indigo-600); }
+.sm { font-size: var(--fs-small); }
+.md { font-weight: 600; }
+.lg { font-size: var(--fs-h2); font-weight: 700; }
+.hero { font-size: var(--fs-hero); line-height: var(--lh-hero); font-weight: 700; letter-spacing: -0.02em; text-decoration-thickness: 2px; text-underline-offset: 8px; }
+.watch { color: var(--ink-900); }
+.inherit { font-size: inherit; line-height: inherit; font-weight: inherit; letter-spacing: inherit; }

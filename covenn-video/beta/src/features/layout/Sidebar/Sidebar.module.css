@@ -1,0 +1,27 @@
+.sidebar { position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; background: var(--surface); border-right: var(--border); z-index: var(--z-sidebar); }
+.brand { height: var(--topbar-h); flex-shrink: 0; display: flex; align-items: center; gap: 10px; padding: 0 20px; background: var(--aurora); color: var(--indigo-900); }
+.mark { width: 30px; height: 30px; border-radius: 9px; display: grid; place-items: center; background: rgba(255, 255, 255, 0.55); color: var(--indigo-700); border: 1px solid rgba(255, 255, 255, 0.8); }
+.wordmark { font-size: 21px; font-weight: 700; letter-spacing: -0.02em; }
+.scroll { flex: 1; overflow-y: auto; padding: 16px 12px; }
+.list { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+.item {
+  position: relative; display: flex; align-items: center; gap: 12px; height: 40px; padding: 0 12px; border-radius: var(--r-sm);
+  color: var(--ink-700); font-weight: 500; transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+}
+.item:hover { background: var(--indigo-50); color: var(--ink-900); text-decoration: none; }
+.active, .active:hover { background: var(--indigo-100); color: var(--indigo-700); font-weight: 600; }
+.active::before { content: ''; position: absolute; left: -12px; top: 8px; bottom: 8px; width: 3px; border-radius: 0 3px 3px 0; background: var(--indigo-600); }
+.text { flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.badge { font-size: 10px; font-weight: 600; letter-spacing: 0.02em; padding: 1px 6px; border-radius: var(--r-pill); border: 1px solid var(--aurora-mauve); color: var(--indigo-700); }
+.separator { height: 1px; background: var(--line); margin: 12px; }
+.user { display: flex; align-items: center; gap: 10px; padding: 14px 20px; border-top: var(--border); }
+.avatar { width: 32px; height: 32px; flex-shrink: 0; border-radius: 50%; display: grid; place-items: center; background: var(--indigo-600); color: #fff; font-size: 12px; font-weight: 700; }
+.userText { display: flex; flex-direction: column; min-width: 0; line-height: 18px; }
+.userName { font-weight: 600; font-size: var(--fs-small); }
+.userRole { font-size: 12px; color: var(--ink-500); }
+@media (max-width: 1279px) {
+  .brand { padding: 0; justify-content: center; }
+  .wordmark, .text, .badge, .userText { display: none; }
+  .item { justify-content: center; padding: 0; }
+  .user { justify-content: center; padding: 14px 0; }
+}

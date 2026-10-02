@@ -1,0 +1,5 @@
+.chip { display: inline-flex; align-items: center; height: 22px; padding: 0 8px; border-radius: var(--r-xs); font-size: 12px; font-weight: 600; white-space: nowrap; max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
+.contract { background: var(--src-contract-bg); color: var(--src-contract); }
+.import { background: var(--src-import-bg); color: var(--src-import); }
+.manual { background: var(--src-manual-bg); color: var(--src-manual); }
+.calc { background: var(--src-calc-bg); color: var(--src-calc); }

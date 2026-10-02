@@ -1,0 +1,9 @@
+.overlay { position: fixed; inset: 0; background: rgba(28, 26, 43, 0.32); display: grid; place-items: center; z-index: var(--z-modal); padding: 16px; }
+.dialog {
+  width: min(560px, 100%); background: var(--surface); border-radius: var(--r-lg); padding: var(--s-6);
+  box-shadow: var(--shadow-panel); animation: enter var(--dur-base) var(--ease);
+}
+.title { font-size: var(--fs-h2); line-height: var(--lh-h2); font-weight: 650; }
+.body { margin-top: var(--s-3); color: var(--ink-700); }
+.footer { display: flex; justify-content: flex-end; gap: var(--s-2); margin-top: var(--s-6); }
+@keyframes enter { from { transform: scale(0.98); opacity: 0; } to { transform: none; opacity: 1; } }

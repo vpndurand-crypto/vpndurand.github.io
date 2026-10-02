@@ -1,0 +1,9 @@
+.shell { display: grid; grid-template-columns: var(--sidebar-w) minmax(0, 1fr); min-height: 100vh; }
+.withDrawer { grid-template-columns: var(--sidebar-w) minmax(0, 1fr) var(--drawer-w); }
+.column { min-width: 0; display: flex; flex-direction: column; }
+.main { flex: 1; outline: none; container: content / inline-size; }
+.content { max-width: var(--content-max); margin: 0 auto; padding: 32px 32px 64px; display: flex; flex-direction: column; gap: 24px; }
+@media (max-width: 1279px) {
+  .shell { grid-template-columns: var(--sidebar-w-collapsed) minmax(0, 1fr); }
+  .content { padding: 24px 24px 48px; }
+}

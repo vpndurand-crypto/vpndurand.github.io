@@ -1,0 +1,10 @@
+.field { display: inline-flex; flex-direction: column; gap: 4px; }
+.label { font-size: var(--fs-label); font-weight: 600; color: var(--ink-500); }
+.select {
+  height: 36px; padding: 0 32px 0 12px; border: var(--border-strong); border-radius: var(--r-sm); background-color: var(--surface);
+  appearance: none; cursor: pointer; font-variant-numeric: tabular-nums;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236B6980' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 12px center;
+}
+.select:hover { border-color: var(--ink-400); }
+.select:focus-visible { border-color: var(--indigo-600); box-shadow: var(--focus-ring); }

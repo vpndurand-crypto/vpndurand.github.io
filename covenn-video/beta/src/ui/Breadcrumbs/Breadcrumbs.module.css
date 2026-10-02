@@ -1,0 +1,7 @@
+.nav { font-size: var(--fs-small); line-height: var(--lh-small); color: var(--ink-500); }
+.list { list-style: none; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.item { display: inline-flex; align-items: center; gap: 6px; }
+.item a { color: var(--ink-500); }
+.item a:hover { color: var(--indigo-600); }
+.item span[aria-current] { color: var(--ink-700); }
+.sep { color: var(--ink-400); }

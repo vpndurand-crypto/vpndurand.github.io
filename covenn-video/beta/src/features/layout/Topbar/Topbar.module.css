@@ -1,0 +1,10 @@
+.topbar {
+  position: sticky; top: 0; z-index: var(--z-topbar); height: var(--topbar-h); display: flex; align-items: center; gap: 16px;
+  padding: 0 32px; background: rgba(255, 255, 255, 0.94); backdrop-filter: saturate(1.2) blur(6px); border-bottom: var(--border);
+}
+.org { display: flex; align-items: center; gap: 8px; font-weight: 600; color: var(--ink-900); }
+.divider { width: 1px; height: 24px; background: var(--line); }
+.pill { display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 12px; border-radius: var(--r-pill); border: var(--border); background: var(--surface); font-size: var(--fs-small); color: var(--ink-700); font-variant-numeric: tabular-nums; }
+.spacer { flex: 1; }
+.avatar { width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; background: var(--indigo-600); color: #fff; font-size: 12px; font-weight: 700; }
+@media (max-width: 1279px) { .topbar { padding: 0 24px; } }

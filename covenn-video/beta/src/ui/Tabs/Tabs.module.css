@@ -1,0 +1,9 @@
+.list { display: flex; gap: var(--s-6); border-bottom: var(--border); }
+.tab {
+  background: none; border: none; height: 40px; padding: 0 2px; margin-bottom: -1px; cursor: pointer;
+  color: var(--ink-500); font-weight: 500; border-bottom: 2px solid transparent;
+  transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+}
+.tab:hover { color: var(--ink-700); }
+.selected { color: var(--indigo-600); border-bottom-color: var(--indigo-600); font-weight: 600; }
+.panel { padding-top: var(--s-6); }

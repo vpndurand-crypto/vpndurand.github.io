@@ -1,0 +1,6 @@
+.wrap { position: relative; display: inline-flex; }
+.bubble {
+  position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%); z-index: 90; pointer-events: none;
+  background: var(--ink-900); color: #fff; font-size: 12px; line-height: 16px; font-weight: 500; padding: 6px 8px;
+  border-radius: var(--r-xs); width: max-content; max-width: 280px; text-align: left; white-space: normal;
+}

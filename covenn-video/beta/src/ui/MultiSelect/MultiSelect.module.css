@@ -1,0 +1,17 @@
+.root { position: relative; }
+.trigger {
+  display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 12px; border-radius: var(--r-pill);
+  border: var(--border-strong); background: var(--surface); font-size: var(--fs-small); color: var(--ink-700); cursor: pointer;
+}
+.trigger:hover { background: var(--indigo-50); }
+.popover {
+  position: absolute; top: calc(100% + 6px); left: 0; min-width: 260px; background: var(--surface); border: var(--border);
+  border-radius: var(--r-md); box-shadow: var(--shadow-pop); padding: 8px; z-index: 50;
+}
+.option { display: flex; align-items: center; gap: 10px; height: 36px; padding: 0 8px; border-radius: var(--r-xs); cursor: pointer; }
+.option:hover { background: var(--indigo-50); }
+.option input { accent-color: var(--indigo-600); width: 16px; height: 16px; }
+.footer { border-top: var(--border); margin-top: 6px; padding: 8px 8px 2px; }
+.linkButton { background: none; border: none; color: var(--indigo-600); font-weight: 600; font-size: var(--fs-small); cursor: pointer; padding: 0; }
+.linkButton:disabled { color: var(--ink-400); cursor: default; }
+.note { font-size: 12px; color: var(--ink-500); padding: 4px 12px 0; }
