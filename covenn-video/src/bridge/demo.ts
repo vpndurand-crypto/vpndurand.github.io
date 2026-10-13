@@ -155,3 +155,12 @@ export const V = {
 } as const;
 
 export type DisplayValues = typeof V;
+
+/** Valeurs exactes du moteur (chaînes décimales), base des projections du film « vision ». */
+export const RAW = {
+  numerator: required(result.numerator, 'numérateur'),
+  denominator: required(result.denominator, 'dénominateur'),
+  value: required(result.valueExact, 'valeur exacte'),
+  threshold: result.threshold,
+  nextThreshold: required(result.nextThresholdStep, 'marche de seuil suivante'),
+} as const;

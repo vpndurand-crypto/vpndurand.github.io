@@ -2,14 +2,18 @@
   "name": "covenn-video-hexa",
   "private": true,
   "version": "0.1.0",
-  "description": "Covenn — film produit HEXA (30 s). Couche de production vidéo indépendante de la bêta : les sources de la bêta sont vendues telles quelles dans beta/ et ne sont jamais modifiées.",
+  "description": "Covenn — films produit HEXA (30 s). Couche de production vidéo indépendante de la bêta : les sources de la bêta sont vendues telles quelles dans beta/ et ne sont jamais modifiées.",
   "type": "module",
   "scripts": {
     "studio": "remotion studio src/index.ts",
+    "score": "node scripts/score.mjs",
+    "render:vision": "remotion render src/index.ts CovennHexaVision out/covenn-hexa-vision-raw.mp4",
+    "master:vision": "node scripts/master.mjs",
     "render": "remotion render src/index.ts CovennHexa out/covenn-hexa-30s.mp4",
-    "still": "remotion still src/index.ts CovennHexa",
+    "still": "remotion still src/index.ts CovennHexaVision",
+    "verify:vision": "node scripts/verify-vision.mjs",
+    "verify:values": "node scripts/verify-values.mjs",
     "verify:beta": "node scripts/verify-beta.mjs",
-    "verify:values": "node --experimental-strip-types scripts/verify-values.ts",
     "typecheck": "tsc --noEmit -p tsconfig.json"
   },
   "dependencies": {
