@@ -90,17 +90,18 @@ function fragState(fr: Frag, f: number): FragState {
   const drift = f / 30;
   let dx = (1 - e) * 46 * fr.depth - drift * 9 * fr.depth;
   let dy = (1 - e) * 34 * fr.depth - drift * 4 * fr.depth;
-  const exitStart = 86 + (fr.depth - 0.7) * 14;
-  const q = p(f, exitStart, exitStart + 22, E.in);
+  const exitStart = 126 + (fr.depth - 0.7) * 12;
+  const q = p(f, exitStart, exitStart + 20, E.in);
+  const breath = p(f, 110, 128, E.inOut);
   dx += (TARGET.x - (fr.cx + dx)) * 0.62 * q;
   dy += (TARGET.y - (fr.cy + dy)) * 0.62 * q;
-  const g = track(f, [[0, 1], [96, 1.035, E.linear]]);
+  const g = track(f, [[0, 1], [126, 1.045, E.linear]]);
   return {
     dx, dy, g,
     rot: fr.rot + (1 - e) * 2.4,
-    scale: (0.94 + 0.06 * e) * (1 - 0.42 * q),
+    scale: (0.94 + 0.06 * e) * (1 - 0.55 * q),
     opacity: e * (1 - q) * (0.62 + 0.38 * Math.min(fr.depth, 1)),
-    blur: Math.max(0, (0.95 - fr.depth) * 9) + q * 6,
+    blur: Math.max(0, (0.95 - fr.depth) * 9) + breath * 1.6 + q * 6,
   };
 }
 
@@ -122,10 +123,10 @@ interface LocalPoints { debt: Pt; threshold: Pt; ebitda: Pt; cashRows: Pt[] }
 interface Pt { x: number; y: number }
 
 const FLIGHTS: Record<Anchor, { birth: number; start: number; land: number; text: string; lift: number }> = {
-  threshold: { birth: 86, start: 94, land: LANDING.threshold, text: V.covenant.threshold, lift: -170 },
-  debt: { birth: 86, start: 96, land: LANDING.debt, text: V.tree.debt.exact, lift: -210 },
-  cash: { birth: 86, start: 100, land: LANDING.cash, text: V.tree.cash.exact, lift: -150 },
-  ebitda: { birth: 88, start: 100, land: LANDING.ebitda, text: V.tree.adjustment.exact, lift: -190 },
+  threshold: { birth: 126, start: 134, land: LANDING.threshold, text: V.covenant.threshold, lift: -170 },
+  debt: { birth: 126, start: 136, land: LANDING.debt, text: V.tree.debt.exact, lift: -210 },
+  cash: { birth: 126, start: 140, land: LANDING.cash, text: V.tree.cash.exact, lift: -150 },
+  ebitda: { birth: 128, start: 140, land: LANDING.ebitda, text: V.tree.adjustment.exact, lift: -190 },
 };
 
 function Chip({ x, y, text, scale, opacity, tone = 'indigo' }: { x: number; y: number; text: string; scale: number; opacity: number; tone?: 'indigo' | 'quiet' }) {
@@ -174,10 +175,10 @@ export function Sources({ frame, uiRects }: { frame: number; uiRects: UiRects })
     if (points) continueRender(handle);
   }, [points, handle]);
 
-  const visible = frame < 124;
+  const visible = frame < 164;
   return (
     <>
-      <div style={{ position: 'absolute', inset: 0, visibility: visible ? 'visible' : 'hidden' }}>
+      <div style={{ position: 'absolute', inset: 0, zIndex: 1, visibility: visible ? 'visible' : 'hidden' }}>
         {FRAGS.map((fr) => {
           const st = fragState(fr, frame);
           const hl = fr.highlightAt ? p(frame, fr.highlightAt, fr.highlightAt + 12, E.out) : 0;
@@ -226,8 +227,8 @@ function Flights({ frame, points, uiRects }: { frame: number; points: LocalPoint
   const cashCenter = origin('cash');
   points.cashRows.forEach((pt, i) => {
     const start = fragPoint(cashFrag, cashBirth, pt.x, pt.y);
-    const t = p(frame, 88, 98, E.inOut);
-    const o = life(frame, 84, 88, 94, 99);
+    const t = p(frame, 128, 138, E.inOut);
+    const o = life(frame, 124, 128, 134, 139);
     chips.push(<Chip key={`row-${i}`} x={mix(start.x, cashCenter.x, t)} y={mix(start.y, cashCenter.y, t)} text={V.tree.accounts[i]?.amount ?? ''} scale={0.62} opacity={o} tone="quiet" />);
   });
 
@@ -243,9 +244,9 @@ function Flights({ frame, points, uiRects }: { frame: number; points: LocalPoint
     const lift = p(frame, fl.birth, fl.birth + 8, E.out);
     const landingScale = (UI_FONT[anchor] * cam.k) / 24;
     const scale = mix(mix(0.8, 1.06, lift), landingScale, p(frame, fl.start, fl.land, E.in));
-    const bornAt = anchor === 'cash' ? 93 : fl.birth;
+    const bornAt = anchor === 'cash' ? 133 : fl.birth;
     const o = life(frame, bornAt, bornAt + 6, fl.land - 4, fl.land + 3);
     chips.push(<Chip key={anchor} x={x} y={y} text={fl.text} scale={scale} opacity={o} />);
   });
-  return <>{chips}</>;
+  return <div style={{ position: 'absolute', inset: 0, zIndex: 3, pointerEvents: 'none' }}>{chips}</div>;
 }
