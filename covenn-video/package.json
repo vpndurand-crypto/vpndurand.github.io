@@ -7,6 +7,7 @@
   "scripts": {
     "studio": "remotion studio src/index.ts",
     "score": "node scripts/score.mjs",
+    "score:sfx": "node scripts/score.mjs --sfx-only",
     "render:vision": "remotion render src/index.ts CovennHexaVision out/covenn-hexa-vision-raw.mp4",
     "master:vision": "node scripts/master.mjs",
     "render": "remotion render src/index.ts CovennHexa out/covenn-hexa-30s.mp4",

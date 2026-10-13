@@ -1,19 +1,22 @@
 // Musique et design sonore du film « vision » (30 s), synthétisés de façon déterministe : aucun échantillon externe,
 // aucune banque de sons sous licence. Les repères viennent de src/hexa/timing.ts (mêmes images que le film).
 //
-// Usage : node scripts/score.mjs            → public/audio/covenn-vision-score.wav (48 kHz, stéréo, 30,000 s)
-//         node scripts/score.mjs --stems    → écrit aussi les pistes séparées dans out/audio-stems/
+// Usage : node scripts/score.mjs              → public/audio/covenn-vision-score.wav (48 kHz, stéréo, 30,000 s)
+//         node scripts/score.mjs --stems      → écrit aussi les pistes séparées dans out/audio-stems/
+//         node scripts/score.mjs --sfx-only   → public/audio/covenn-vision-sfx.wav : le design sonore seul (version « sans musique »),
+//                                               au même niveau que dans la version complète (à lancer après la version complète)
 //
 // Tempo 120 BPM : une mesure = 2 s = 60 images ; chaque changement de séquence (3, 6, 10, 13, 16, 20, 24, 27 s) tombe sur un temps.
 import { build } from 'esbuild';
 import { execFileSync, spawnSync } from 'node:child_process';
-import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
+import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const withStems = process.argv.includes('--stems');
+const sfxOnly = process.argv.includes('--sfx-only');
 
 // ---------------------------------------------------------------------------
 // Repères du film
@@ -425,7 +428,8 @@ function riser(tEnd, g, dur = 1.2) {
     const x = n / len;
     if (n % 32 === 0) { bp.set('bp', 500 * Math.pow(16, x), 1.4); lp.set('lp', 800 + 5000 * x * x, 0.9); }
     const env = Math.pow(x, 2.2) * (1 - Math.pow(Math.max(0, x - 0.96) / 0.04, 2));
-    const s = (bp.run(noise()) * 0.7 + lp.run(saw.next(root * Math.pow(2, x))) * 0.22) * env * g * 0.45;
+    const tone = lp.run(saw.next(root * Math.pow(2, x))) * (sfxOnly ? 0 : 0.22);
+    const s = (bp.run(noise()) * 0.7 + tone) * env * g * 0.45;
     const w = Math.sin(x * TAU * 2) * 0.3;
     fx.add(i, s * (1 - w), s * (1 + w));
     sendHall.add(i, s * 0.3, s * 0.3);
@@ -433,6 +437,7 @@ function riser(tEnd, g, dur = 1.2) {
 }
 /** Accord rendu puis inversé : il « aspire » vers l'impact. */
 function reverse(tEnd, g, dur = 1.1) {
+  if (sfxOnly) return;
   const len = Math.round(dur * SR);
   const L = new Float32Array(len); const R = new Float32Array(len);
   const notes = CH.F9.map((m) => m + 12);
@@ -474,7 +479,7 @@ function hit(t0, g, final = false) {
     let l = 0; let r = 0;
     for (const [a, b, m] of oscs) { l += a.next(hz(m) * 0.997); r += b.next(hz(m) * 1.003); }
     const stabEnv = Math.exp(-t / (final ? 1.25 : 0.55)) * (t < 0.004 ? t / 0.004 : 1);
-    const k = (final ? 0.11 : 0.08) / Math.sqrt(oscs.length);
+    const k = sfxOnly ? 0 : (final ? 0.11 : 0.08) / Math.sqrt(oscs.length);
     const sl = flt[0].run(l) * stabEnv * k; const sr = flt[1].run(r) * stabEnv * k;
     const vL = (subV + air + sl) * g; const vR = (subV + air + sr) * g;
     fx.add(i, vL, vR);
@@ -603,6 +608,7 @@ renderPad();
 renderArps();
 renderBass();
 renderDrums();
+if (sfxOnly) for (const b of [pad, keys, bass, drums, fx, ui, sendHall, sendRoom, sendDelay]) { b.L.fill(0); b.R.fill(0); }
 renderCues();
 
 // L'écho alimente un peu le hall.
@@ -632,7 +638,8 @@ for (let n = 0; n < N; n += 1) {
 // Normalisation de crête à −3 dBFS avant le traitement de sonie
 let peak = 0;
 for (let n = 0; n < N; n += 1) peak = Math.max(peak, Math.abs(master.L[n]), Math.abs(master.R[n]));
-const norm = db(-3) / (peak || 1);
+const levelsFile = join(root, 'public/audio/score-levels.json');
+const norm = sfxOnly ? JSON.parse(readFileSync(levelsFile, 'utf8')).norm : db(-3) / (peak || 1);
 for (let n = 0; n < N; n += 1) { master.L[n] *= norm; master.R[n] *= norm; }
 
 function writeWav(path, bus, gain = 1) {
@@ -654,10 +661,10 @@ function writeWav(path, bus, gain = 1) {
 
 const outDir = join(root, 'public/audio');
 mkdirSync(outDir, { recursive: true });
-const raw = join(root, 'out/covenn-vision-score-raw.wav');
+const raw = join(root, sfxOnly ? 'out/covenn-vision-sfx-raw.wav' : 'out/covenn-vision-score-raw.wav');
 mkdirSync(join(root, 'out'), { recursive: true });
 writeWav(raw, master);
-if (withStems) {
+if (withStems && !sfxOnly) {
   const stemDir = join(root, 'out/audio-stems');
   mkdirSync(stemDir, { recursive: true });
   for (const b of [pad, keys, bass, drums, fx, ui]) writeWav(join(stemDir, `${b.name}.wav`), b, norm);
@@ -673,12 +680,13 @@ const loudness = (file) => {
   return { I, TP };
 };
 const before = loudness(raw);
-const gainDb = -16 - before.I;
-const final = join(outDir, 'covenn-vision-score.wav');
+const gainDb = sfxOnly ? JSON.parse(readFileSync(levelsFile, 'utf8')).gainDb : -16 - before.I;
+if (!sfxOnly) writeFileSync(levelsFile, `${JSON.stringify({ norm, gainDb }, null, 2)}\n`);
+const final = join(outDir, sfxOnly ? 'covenn-vision-sfx.wav' : 'covenn-vision-score.wav');
 execFileSync('ffmpeg', ['-hide_banner', '-loglevel', 'error', '-y', '-i', raw, '-af',
   `volume=${gainDb.toFixed(2)}dB,alimiter=limit=0.79:attack=4:release=80:level=false,atrim=end_sample=${N},apad=whole_len=${N}`,
   '-ar', String(SR), '-ac', '2', '-c:a', 'pcm_s24le', final]);
 const after = loudness(final);
 const m = { input_i: before.I, input_tp: before.TP, output_i: after.I, output_tp: after.TP };
-console.log(`Musique rendue en ${((Date.now() - t0) / 1000).toFixed(1)} s → ${final}`);
+console.log(`${sfxOnly ? 'Design sonore seul rendu' : 'Musique rendue'} en ${((Date.now() - t0) / 1000).toFixed(1)} s → ${final}`);
 console.log(`Sonie : ${m.input_i} → ${m.output_i} LUFS intégrés ; crête vraie ${m.input_tp} → ${m.output_tp} dBTP ; ${CUES.length} repères sonores.`);

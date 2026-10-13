@@ -5,7 +5,7 @@ import { E, life, mix, p, quad } from '../../film/anim';
 import { EXTRACTION, GROUP, REGISTRY } from '../data';
 import { CountryCode, FilePill, Mark, SHADOW } from '../kit';
 import { CENTER } from './Chaos';
-import { BRAND_MARK, MARK_HOME, REVEAL, TOTAL_VALUE, cockpitCam, toFrame } from './cockpitLayout';
+import { MARK_HOME, REVEAL, TOTAL_VALUE, cockpitCam, toFrame } from './cockpitLayout';
 
 /**
  * S2 — « Covenn connecte les données. » (projection)
@@ -31,29 +31,23 @@ const INCOMING: { name: string; kind: 'PDF' | 'XLSX' }[] = [
 ];
 const LANES = [300, 392, 470, 556, 640, 724, 812];
 
-export const INGEST = { flightsStart: 164, land: 188, markLand: REVEAL.end } as const;
+export const INGEST = { flightsStart: 164, land: 186, markLand: REVEAL.start + 10 } as const;
 
 /** Position et taille de la marque Covenn (S2), jusqu'à son atterrissage dans la barre latérale du cockpit. */
 export function markState(f: number) {
   const born = p(f, 84, 98, E.out);
   const toHome = p(f, 98, 116, E.inOut);
-  let x = mix(CENTER.x, HOME.x, toHome);
-  let y = mix(CENTER.y, HOME.y, toHome);
+  const x = mix(CENTER.x, HOME.x, toHome);
+  const y = mix(CENTER.y, HOME.y, toHome);
   let size = MARK * mix(0.35, 1, born);
-  // La fenêtre du cockpit naît du carré de la marque ; le pictogramme rejoint sa place dans la barre latérale.
-  const fly = p(f, REVEAL.start, REVEAL.end, E.inOut);
-  if (fly > 0) {
-    const cam = cockpitCam(Math.min(f, INGEST.markLand));
-    const target = toFrame(cam, BRAND_MARK.x, BRAND_MARK.y);
-    x = mix(HOME.x, target.x, fly);
-    y = mix(HOME.y, target.y, fly);
-    size = Math.exp(mix(Math.log(MARK), Math.log(BRAND_MARK.size * cam.k), fly));
-  }
-  return { x, y, size, o: born, landed: f >= INGEST.markLand };
+  // La fenêtre du cockpit naît du carré de la marque : le pictogramme s'efface pendant que la fenêtre s'ouvre.
+  const fade = p(f, REVEAL.start, REVEAL.start + 10, E.in);
+  size *= 1 + 0.12 * fade;
+  return { x, y, size, o: born * (1 - fade), landed: f >= INGEST.markLand };
 }
 
 export function Ingest({ f }: { f: number }) {
-  if (f < 82 || f > INGEST.markLand + 1) return null;
+  if (f < 82 || f > INGEST.land + 6) return null;
   const mark = markState(f);
   // Pulsation à chaque fichier absorbé.
   const absorb = Math.max(0, ...INCOMING.map((_, i) => life(f, 112 + i * 5, 114 + i * 5, 116 + i * 5, 122 + i * 5)));
@@ -194,17 +188,20 @@ function AmountFlights({ f }: { f: number }) {
   return (
     <>
       {REGISTRY.map((r, i) => {
-        const start = INGEST.flightsStart + i;
-        const end = INGEST.land - 6 + i;
+        // Chaque financement (prêteur et montant) rejoint l'encours total : plusieurs banques, une seule vue.
+        const start = INGEST.flightsStart + i * 1.5;
+        const end = INGEST.land - 7 + i;
         const t = p(f, start, end, E.inOut);
         if (t <= 0 || f > end + 2) return null;
-        const from = { x: CARD.x + CARD.w - 70, y: CARD.y + REG.top + i * REG.h + REG.h / 2 };
+        const from = { x: CARD.x + CARD.w - 150, y: CARD.y + REG.top + i * REG.h + REG.h / 2 };
         const cam = cockpitCam(end);
         const to = toFrame(cam, TOTAL_VALUE.x, TOTAL_VALUE.y);
-        const c = { x: mix(from.x, to.x, 0.5), y: Math.min(from.y, to.y) - 120 };
-        const scale = mix(1, (34 * cam.k) / 22 * 0.6, t);
+        const c = { x: mix(from.x, to.x, 0.45), y: Math.min(from.y, to.y) - 90 - i * 12 };
+        const scale = mix(1, 0.72, t);
         return (
           <div key={r.id} style={{ ...chip, left: quad(from.x, c.x, to.x, t), top: quad(from.y, c.y, to.y, t), opacity: 1 - p(f, end - 3, end + 1, E.in), scale: String(scale) }}>
+            <span style={{ fontWeight: 600, color: 'var(--ink-700)' }}>{r.lender}</span>
+            <span style={{ color: 'var(--ink-400)', margin: '0 8px' }}>·</span>
             {r.amount}
           </div>
         );

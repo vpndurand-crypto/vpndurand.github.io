@@ -34,7 +34,7 @@ export function tlToFrame(cam: TlCam, x: number, y: number) {
 }
 
 /** Passage horizontal vers la simulation (S6) : l'image glisse vers la droite, « vers demain ». */
-export const PAN = { start: 472, end: 494 } as const;
+export const PAN = { start: 472, end: 488 } as const;
 export function panOffset(f: number): number {
   return -1920 * p(f, PAN.start, PAN.end, E.inOut);
 }

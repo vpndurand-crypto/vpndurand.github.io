@@ -23,7 +23,7 @@ export const LAYOUT = {
 } as const;
 
 /** Centre de la valeur « Encours total » (tuile 1) et de la tuile covenant (tuile 4). */
-export const TOTAL_VALUE = { x: LAYOUT.kpiX[0] + 24 + 72, y: LAYOUT.kpiY + 64 };
+export const TOTAL_VALUE = { x: LAYOUT.kpiX[0] + 106, y: LAYOUT.kpiY + 64 };
 export const COVENANT_TILE = { x: LAYOUT.kpiX[3], y: LAYOUT.kpiY, w: LAYOUT.kpiW, h: LAYOUT.kpiH };
 /** Centre du nombre « 3,13x » dans la tuile (après le mot « Leverage »). */
 export const COVENANT_VALUE = { x: LAYOUT.kpiX[3] + 229, y: LAYOUT.kpiY + 61 };
@@ -32,16 +32,18 @@ export const BRAND_MARK = { x: 35, y: 32, size: 30 };
 
 /** La marque Covenn de S2, et l'ouverture de la fenêtre du cockpit à partir d'elle. */
 export const MARK_HOME = { x: 560, y: 560, size: 116 } as const;
-export const REVEAL = { start: 166, end: 188, contentFrom: 172, contentTo: 190 } as const;
+export const REVEAL = { start: 166, end: 188, contentFrom: 170, contentTo: 186 } as const;
 
 export interface Cam { k: number; cx: number; cy: number; fx: number; fy: number; opacity: number }
 
-// Vue d'ensemble (k = 0,9), zoom sur les pays puis sur la filiale, retour, puis plongée vers la tuile du covenant.
-const K: Key[] = [[168, 0.9], [216, 0.9], [234, 1.62, E.inOut], [250, 2.0, E.inOut], [264, 0.9, E.inOut], [282, 0.92, E.soft], [300, 1.55, E.in]];
-const CX: Key[] = [[168, 800], [216, 800], [234, 520, E.inOut], [250, 650, E.inOut], [264, 800, E.inOut], [282, 820, E.soft], [300, COVENANT_TILE.x + COVENANT_TILE.w / 2, E.in]];
-const CY: Key[] = [[168, 450], [216, 450], [234, 520, E.inOut], [250, 550, E.inOut], [264, 450, E.inOut], [282, 446, E.soft], [300, COVENANT_TILE.y + COVENANT_TILE.h / 2, E.in]];
-const FX: Key[] = [[168, 960], [216, 960], [234, 820, E.inOut], [250, 900, E.inOut], [264, 960, E.inOut], [282, 960], [300, 1180, E.in]];
-const FY: Key[] = [[168, 600], [216, 600], [234, 660, E.inOut], [250, 640, E.inOut], [264, 600, E.inOut], [282, 602], [300, 470, E.in]];
+// Plan serré sur l'encours total (k = 2,4), dézoom vers la vue groupe (k = 0,9), zoom France puis Démo Industrie, retour,
+// puis plongée vers la tuile du covenant.
+const TILE4 = { x: COVENANT_TILE.x + COVENANT_TILE.w / 2, y: COVENANT_TILE.y + COVENANT_TILE.h / 2 };
+const K: Key[] = [[166, 2.4], [196, 2.4], [216, 0.9, E.inOut], [220, 0.9], [232, 1.62, E.inOut], [244, 1.9, E.inOut], [256, 1.9], [268, 0.9, E.inOut], [284, 0.92, E.soft], [300, 1.55, E.in]];
+const CX: Key[] = [[166, 410], [196, 410], [216, 800, E.inOut], [220, 800], [232, 520, E.inOut], [244, 650, E.inOut], [256, 652], [268, 800, E.inOut], [284, 820, E.soft], [300, TILE4.x, E.in]];
+const CY: Key[] = [[166, 252], [196, 252], [216, 450, E.inOut], [220, 450], [232, 520, E.inOut], [244, 550, E.inOut], [256, 552], [268, 450, E.inOut], [284, 446, E.soft], [300, TILE4.y, E.in]];
+const FX: Key[] = [[166, 960], [196, 960], [216, 960, E.inOut], [220, 960], [232, 820, E.inOut], [244, 840, E.inOut], [256, 840], [268, 960, E.inOut], [284, 960], [300, 1180, E.in]];
+const FY: Key[] = [[166, 580], [196, 580], [216, 600, E.inOut], [220, 600], [232, 660, E.inOut], [244, 640, E.inOut], [256, 640], [268, 600, E.inOut], [284, 602], [300, 470, E.in]];
 
 export function cockpitCam(f: number): Cam {
   return {

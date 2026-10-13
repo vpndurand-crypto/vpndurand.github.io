@@ -97,6 +97,10 @@ export const GROUP = {
   entityCount: GROUP_ENTITIES.length,
   countryCount: COUNTRIES.length,
   lenderCount: new Set(GROUP_FINANCINGS.map((f) => f.lenderId)).size,
+  bankCount: [...new Set(GROUP_FINANCINGS.map((f) => f.lenderId))].filter((id) => lenderOf(id).lender_type === 'BANK').length,
+  leaseCount: [...new Set(GROUP_FINANCINGS.map((f) => f.lenderId))].filter((id) => lenderOf(id).lender_type === 'LEASING').length,
+  entitiesFrance: GROUP_ENTITIES.filter((e) => e.country === 'FR').length,
+  entitiesAbroad: GROUP_ENTITIES.filter((e) => e.country !== 'FR').length,
   financingCount: GROUP_FINANCINGS.length,
   byCountry: COUNTRIES.map((c) => ({
     ...slice(c, COUNTRY_NAMES[c], countryAmount(c), `${countryEntities(c).length} ${countryEntities(c).length > 1 ? 'sociétés' : 'société'}`),
@@ -231,12 +235,13 @@ const years = GROUP_FINANCINGS.map((f) => Number(f.maturity.slice(0, 4)));
 export const DOSSIER = {
   title: 'Dossier de financement',
   project: 'Projet d’acquisition',
+  need: formatMoneyCompact(ACQUISITION_DEBT),
   blocks: [
-    { key: 'data', title: 'Données financières consolidées', detail: `${GROUP.entityCount} sociétés · ${GROUP.countryCount} pays`, icon: 'data' as const },
-    { key: 'debt', title: 'Structure de dette', detail: `${GROUP.total} · ${GROUP.lenderCount} prêteurs`, icon: 'financings' as const },
+    { key: 'debt', title: 'Structure de dette consolidée', detail: `${GROUP.total} · ${GROUP.lenderCount} prêteurs · ${GROUP.financingCount} financements`, icon: 'financings' as const },
+    { key: 'data', title: 'Données financières', detail: `${GROUP.entityCount} sociétés · ${GROUP.countryCount} pays`, icon: 'data' as const },
     { key: 'schedule', title: 'Échéanciers', detail: `Maturités ${Math.min(...years)} → ${Math.max(...years)}`, icon: 'schedule' as const },
-    { key: 'covenants', title: 'Ratios et covenants', detail: `Leverage ${V.covenant.value} · seuil ${V.covenant.threshold}`, icon: 'covenants' as const },
-    { key: 'scenario', title: 'Scénario de financement', detail: `Acquisition · ${formatMoneyCompact(ACQUISITION_DEBT)} · ${formatRatio(leverageAfter)} projeté`, icon: 'calculator' as const },
-    { key: 'proofs', title: 'Pièces justificatives', detail: 'Contrats · balances · relevés', icon: 'documents' as const },
+    { key: 'covenants', title: 'Covenants et ratios', detail: `Leverage ${V.covenant.value} · seuil ${V.covenant.threshold}`, icon: 'covenants' as const },
+    { key: 'scenario', title: 'Scénario étudié', detail: `Acquisition · ${formatRatio(leverageAfter)} projeté`, icon: 'calculator' as const },
+    { key: 'need', title: 'Besoin de financement', detail: `${formatMoneyCompact(ACQUISITION_DEBT)} · projet d’acquisition`, icon: 'save' as const },
   ],
 } as const;

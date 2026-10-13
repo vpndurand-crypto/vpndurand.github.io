@@ -5,7 +5,7 @@ import { DOC_CSS } from '../film/parts/Windows';
 import { Captions } from './Captions';
 import { Mention } from './Mention';
 import { Chaos } from './scenes/Chaos';
-import { Cockpit } from './scenes/Cockpit';
+import { Cockpit, NavPill } from './scenes/Cockpit';
 import { Covenant, S4 } from './scenes/Covenant';
 import { Dossier } from './scenes/Dossier';
 import { INGEST, Ingest } from './scenes/Ingest';
@@ -55,7 +55,7 @@ export function Hexa() {
       <style>{FILM_CSS + DOC_CSS}</style>
       <Layer z={0}><Ambient f={f} /></Layer>
       <Layer z={1}><Chaos f={f} /></Layer>
-      <Layer z={3}><Cockpit f={f} hideBrandMark={f < INGEST.markLand} hideTotal={f < INGEST.land} hideCovenantValue={f >= S4.morph[0]} /></Layer>
+      <Layer z={3}><Cockpit f={f} hideTotal={f < INGEST.land} hideCovenantValue={f >= S4.morph[0]} /></Layer>
       <Layer z={4}><Ingest f={f} /></Layer>
       <Layer z={5}><Covenant f={f} timelineTarget={HERO_TARGET} /></Layer>
       <Layer z={6}><Timeline f={f} /></Layer>
@@ -64,6 +64,7 @@ export function Hexa() {
       <Layer z={9}><Network f={f} /></Layer>
       <Layer z={10}><Signature f={f} /></Layer>
       <Layer z={100}><Captions f={f} /></Layer>
+      <Layer z={105}><NavPill f={f} /></Layer>
       <Layer z={110}><Mention f={f} /></Layer>
       {/* Musique et design sonore : scripts/score.mjs (mêmes repères que l'image, src/hexa/timing.ts) */}
       <Audio src={staticFile('audio/covenn-vision-score.wav')} />

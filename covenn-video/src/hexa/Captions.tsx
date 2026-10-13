@@ -63,7 +63,7 @@ export function Captions({ f }: { f: number }) {
 
       <TopVeil o={veil} />
       {/* Quand la caméra plonge dans le cockpit, un voile pleine largeur sépare le texte de l'interface zoomée. */}
-      {f > 210 && f < 270 && (
+      {f > 180 && f < 272 && (
         <div style={{
           position: 'absolute', left: 0, right: 0, top: 0, height: 300, opacity: Math.min(1, Math.max(0, (cockpitCam(f).k - 1.0) / 0.45)),
           background: 'linear-gradient(180deg, rgba(247,246,251,0.98) 0%, rgba(247,246,251,0.94) 48%, rgba(247,246,251,0) 100%)',
@@ -77,25 +77,25 @@ export function Captions({ f }: { f: number }) {
       <Punch f={f} text="Votre prochain financement commence ici." at={c.dossier.in} out={c.dossier.out} {...TOP} accentFrom={3} />
 
       {/* S8 : au centre, au-dessus du réseau */}
-      <Punch f={f} text="Bien plus qu’un outil de dette." at={c.networkA.in} out={c.networkA.out} x={0} y={110} size={78} align="center" />
+      <Punch f={f} text="De la donnée à la décision." at={c.networkA.in} out={c.networkA.out} x={0} y={104} size={86} align="center" accentFrom={5} />
       <NetworkB f={f} />
     </div>
   );
 }
 
-/** « Le futur du haut de bilan. » : arrive vite et avec force (léger zoom arrière, flou qui se dissipe). */
+/** « De la décision au financement. » : enchaîne aussitôt, avec plus de force (léger zoom arrière, flou qui se dissipe). */
 function NetworkB({ f }: { f: number }) {
   const c = CAPTIONS.networkB;
   if (f < c.in - 1 || f > c.out + 1) return null;
-  const t = p(f, c.in, c.in + 10, E.out);
+  const t = p(f, c.in, c.in + 9, E.out);
   const leave = p(f, c.out - 8, c.out, E.in);
   return (
     <div style={{
-      position: 'absolute', left: 0, right: 0, top: 96, textAlign: 'center', fontSize: 104, lineHeight: 1.08, fontWeight: 800, letterSpacing: '-0.04em',
-      color: 'var(--indigo-700)', opacity: t * (1 - leave), transform: `scale(${mix(1.16, 1, t) * mix(1, 0.96, leave)})`, transformOrigin: '50% 60%',
-      filter: t < 0.999 ? `blur(${(1 - t) * 10}px)` : undefined, whiteSpace: 'nowrap',
+      position: 'absolute', left: 0, right: 0, top: 96, textAlign: 'center', fontSize: 96, lineHeight: 1.08, fontWeight: 800, letterSpacing: '-0.04em',
+      color: 'var(--ink-900)', opacity: t * (1 - leave), transform: `translateY(${(1 - t) * 30}px) scale(${mix(1.08, 1, t) * mix(1, 0.96, leave)})`, transformOrigin: '50% 60%',
+      filter: t < 0.999 ? `blur(${(1 - t) * 8}px)` : undefined, whiteSpace: 'nowrap',
     }}>
-      Le futur du haut de bilan.
+      De la décision <span style={{ color: 'var(--indigo-700)' }}>au financement.</span>
     </div>
   );
 }

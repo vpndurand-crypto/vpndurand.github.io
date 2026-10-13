@@ -2,7 +2,7 @@ import type { CSSProperties } from 'react';
 import { StatusBadge } from '../../../beta/src/ui/StatusBadge';
 import { SourceChip } from '../../../beta/src/ui/SourceChip';
 import { HeadroomGauge } from '../../../beta/src/ui/charts';
-import { E, life, mix, p, quad } from '../../film/anim';
+import { E, life, mix, p, quad, track, type Key } from '../../film/anim';
 import { PdfWindow } from '../../film/parts/Windows';
 import { COVENANT } from '../data';
 import { SHADOW } from '../kit';
@@ -32,6 +32,8 @@ export function heroState(f: number, timelineTarget: { x: number; y: number; siz
   let x = mix(from.x, HERO.x, t);
   let y = mix(from.y, HERO.y, t);
   let size = Math.exp(mix(Math.log(fromSize), Math.log(HERO.size), t));
+  // Arrivée marquée : le chiffre dépasse légèrement sa taille puis se pose.
+  size *= 1 + 0.07 * Math.sin(Math.PI * p(f, S4.morph[1] - 4, S4.morph[1] + 10, E.linear));
   const o = p(f, S4.out[0], S4.out[1] + 6, E.inOut);
   if (o > 0) {
     const c = { x: mix(HERO.x, timelineTarget.x, 0.5), y: Math.max(HERO.y, timelineTarget.y) + 60 };
@@ -43,6 +45,10 @@ export function heroState(f: number, timelineTarget: { x: number; y: number; siz
 }
 
 const lbl: CSSProperties = { fontSize: 17, fontWeight: 600, color: 'var(--ink-500)', whiteSpace: 'nowrap' };
+
+const CAM_K: Key[] = [[308, 1], [328, 1.08, E.inOut], [352, 1.06, E.inOut], [370, 1, E.inOut]];
+const CAM_X: Key[] = [[308, 960], [328, 860, E.inOut], [352, 1040, E.inOut], [370, 960, E.inOut]];
+const CAM_Y: Key[] = [[308, 560], [328, 560], [352, 530, E.inOut], [370, 560, E.inOut]];
 
 export function Covenant({ f, timelineTarget }: { f: number; timelineTarget: { x: number; y: number; size: number } }) {
   if (f < S4.morph[0] || f > S4.out[1] + 8) return null;
@@ -68,9 +74,12 @@ export function Covenant({ f, timelineTarget }: { f: number; timelineTarget: { x
   const pulse = life(f, 364, 368, 372, 382);
 
   // Lente poussée de caméra pendant la lecture, rendue avant que le chiffre ne rejoigne la chronologie.
-  const breathe = mix(1, 1.03, p(f, 312, S4.out[0], E.soft)) * (1 - p(f, S4.out[0], S4.out[0] + 12, E.inOut)) + p(f, S4.out[0], S4.out[0] + 12, E.inOut);
+  // Caméra : du chiffre vers le seuil, puis travelling jusqu'à la clause du contrat ; retour au cadre avant le passage à la chronologie.
+  const k = track(f, CAM_K);
+  const cx = track(f, CAM_X);
+  const cy = track(f, CAM_Y);
   return (
-    <div style={{ position: 'absolute', inset: 0, lineHeight: 1.2, transform: `scale(${breathe})`, transformOrigin: '960px 560px' }}>
+    <div style={{ position: 'absolute', inset: 0, lineHeight: 1.2, transformOrigin: '0 0', transform: `translate(${960 - k * cx}px, ${560 - k * cy}px) scale(${k})` }}>
       {/* Panneau du covenant */}
       <div style={{
         position: 'absolute', left: rect.x, top: rect.y, width: rect.w, height: rect.h, background: 'var(--surface)', borderRadius: mix(12 * cam.k, 20, m),

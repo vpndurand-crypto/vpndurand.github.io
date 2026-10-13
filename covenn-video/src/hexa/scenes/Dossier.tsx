@@ -1,17 +1,19 @@
 import type { CSSProperties } from 'react';
+import { Banknote } from 'lucide-react';
 import { Icon } from '../../../beta/src/ui/Icon';
 import { E, mix, p } from '../../film/anim';
 import { DOSSIER, SUBSIDIARY } from '../data';
 import { ProjectionBadge, SHADOW } from '../kit';
 import { S6 } from './Simulation';
-import { NET, ring1ForBlock } from './networkLayout';
+import { NET, nodeForBlock } from './networkLayout';
 
 /**
  * S7 — « Votre prochain financement commence ici. » (projection)
- * Le scénario devient une pièce d'un dossier de financement structuré ; les autres blocs s'emboîtent un à un.
- * Aucun « financement accordé », aucune offre bancaire : le dossier est prêt à être partagé, rien de plus.
+ * Simulation → risque identifié → financement à préparer : le scénario étudié devient une pièce du dossier de financement,
+ * les autres blocs s'emboîtent un à un. Le dossier est « constitué » (complétude documentaire) : aucun financement accordé,
+ * aucune offre bancaire, aucune promesse de résolution du covenant.
  */
-export const S7 = { panel: { x: 240, y: 196, w: 1440, h: 812 }, out: [692, 712] as const };
+export const S7 = { panel: { x: 240, y: 196, w: 1440, h: 812 }, out: [690, 708] as const };
 const D = S7.panel;
 const BW = 432;
 const BH = 250;
@@ -20,18 +22,19 @@ const GY = [D.y + 176, D.y + 176 + BH + 24];
 
 /** Position finale de chaque bloc (ordre du dossier) et ordre d'arrivée. */
 export const BLOCKS = DOSSIER.blocks.map((b, i) => ({ ...b, x: GX[i % 3] ?? 0, y: GY[Math.floor(i / 3)] ?? 0, w: BW, h: BH }));
-/** Le scénario (bloc 5) arrive le premier, en sortant de la simulation ; les autres suivent toutes les dix images. */
-const ORDER = ['scenario', 'data', 'debt', 'schedule', 'covenants', 'proofs'];
-export const landFrame = (key: string) => (key === 'scenario' ? S6.toDossier[1] : 616 + (ORDER.indexOf(key) - 1) * 10);
+/** Le scénario étudié arrive le premier, en sortant de la simulation ; les autres suivent toutes les dix images. */
+const ORDER = ['scenario', 'debt', 'data', 'schedule', 'covenants', 'need'];
+export const landFrame = (key: string) => (key === 'scenario' ? S6.toDossier[1] : S6.toDossier[1] + 10 * ORDER.indexOf(key));
 /** D'où vient chaque bloc (hors champ ou depuis un module précédent). */
 const FROM: Record<string, { dx: number; dy: number; rot: number }> = {
-  data: { dx: -900, dy: -120, rot: -6 }, debt: { dx: -200, dy: -760, rot: 4 }, schedule: { dx: 900, dy: -200, rot: 6 },
-  covenants: { dx: -880, dy: 300, rot: -5 }, scenario: { dx: 0, dy: 0, rot: 0 }, proofs: { dx: 860, dy: 360, rot: 5 },
+  debt: { dx: -900, dy: -160, rot: -6 }, data: { dx: -120, dy: -760, rot: 4 }, schedule: { dx: 900, dy: -200, rot: 6 },
+  covenants: { dx: -880, dy: 300, rot: -5 }, scenario: { dx: 0, dy: 0, rot: 0 }, need: { dx: 860, dy: 360, rot: 5 },
 };
+export const DOSSIER_DONE = landFrame('need') + 4;
 
 export function Dossier({ f }: { f: number }) {
   if (f < S6.toDossier[0] || f > S7.out[1] + 4) return null;
-  const panelIn = p(f, 592, 606, E.out);
+  const panelIn = p(f, S6.toDossier[0] + 2, S6.toDossier[1], E.out);
   // Sortie : le cadre du dossier se replie sur le centre du réseau, où la marque Covenn apparaît.
   const fold = p(f, S7.out[0], S7.out[0] + 16, E.inOut);
   const C = NET.center;
@@ -39,12 +42,15 @@ export function Dossier({ f }: { f: number }) {
     x: mix(D.x, C.x - 52, fold), y: mix(D.y, C.y - 52, fold), w: mix(D.w, 104, fold), h: mix(D.h, 104, fold), r: mix(20, 31, fold),
   };
   const headO = 1 - p(f, S7.out[0], S7.out[0] + 8, E.in);
+  // Lente poussée de caméra une fois le dossier constitué, rendue avant que les blocs ne rejoignent le réseau.
+  const back = p(f, S7.out[0], S7.out[0] + 8, E.inOut);
+  const breathe = mix(1, 1.025, p(f, landFrame('covenants'), S7.out[0], E.soft)) * (1 - back) + back;
   const landed = BLOCKS.filter((b) => f >= landFrame(b.key) + 2).length;
-  const done = p(f, 662, 674, E.out);
-  const sweep = p(f, 664, 690, E.inOut);
+  const done = p(f, DOSSIER_DONE, DOSSIER_DONE + 12, E.out);
+  const sweep = p(f, DOSSIER_DONE + 2, DOSSIER_DONE + 28, E.inOut);
 
   return (
-    <div style={{ position: 'absolute', inset: 0, lineHeight: 1.2 }}>
+    <div style={{ position: 'absolute', inset: 0, lineHeight: 1.2, transformOrigin: '960px 600px', transform: `scale(${breathe})` }}>
       {/* Cadre du dossier */}
       <div style={{
         position: 'absolute', left: frame.x, top: frame.y, width: frame.w, height: frame.h, background: 'var(--surface)', borderRadius: frame.r, border: '1px solid var(--line)',
@@ -60,7 +66,7 @@ export function Dossier({ f }: { f: number }) {
           <span style={{ fontSize: 30, fontWeight: 700, letterSpacing: '-0.02em' }}>{DOSSIER.title}</span>
           <ProjectionBadge scale={1.25} />
         </div>
-        <div style={{ position: 'absolute', left: D.x + 98, top: D.y + 82, fontSize: 18, color: 'var(--ink-500)' }}>{DOSSIER.project} · {SUBSIDIARY.name}</div>
+        <div style={{ position: 'absolute', left: D.x + 98, top: D.y + 82, fontSize: 18, color: 'var(--ink-500)' }}>{DOSSIER.project} · {SUBSIDIARY.name} · besoin de financement {DOSSIER.need}</div>
 
         {/* Progression */}
         <div style={{ position: 'absolute', left: D.x + D.w - 40, top: D.y + 34, transform: 'translateX(-100%)', display: 'flex', alignItems: 'center', gap: 16 }}>
@@ -72,7 +78,7 @@ export function Dossier({ f }: { f: number }) {
         {done > 0.001 && (
           <div style={{ position: 'absolute', left: D.x + D.w - 40, top: D.y + 92, transform: `translateX(-100%) scale(${mix(0.9, 1, done)})`, transformOrigin: '100% 50%', opacity: done, display: 'flex', alignItems: 'center', gap: 12 }}>
             <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, height: 36, padding: '0 14px', borderRadius: 999, background: 'var(--ok-bg)', color: 'var(--ok)', fontSize: 17, fontWeight: 700, whiteSpace: 'nowrap' }}>
-              <Icon name="check" size={17} />Dossier structuré
+              <Icon name="check" size={17} />Dossier constitué
             </span>
             <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, height: 40, padding: '0 18px', borderRadius: 10, background: 'var(--indigo-600)', color: '#fff', fontSize: 17, fontWeight: 650, whiteSpace: 'nowrap', boxShadow: '0 8px 20px rgba(74,51,179,.25)' }}>
               Partager le dossier
@@ -102,7 +108,7 @@ function Block({ f, b }: { f: number; b: (typeof BLOCKS)[number] }) {
   const bump = Math.sin(Math.PI * p(f, land, land + 8, E.linear)) * 0.03;
   const check = p(f, land + 2, land + 10, E.out);
   // Sortie : chaque bloc rejoint son nœud dans le réseau (S8) et prend la forme d'une pastille.
-  const node = ring1ForBlock(b.key, f);
+  const node = nodeForBlock(b.key, f);
   const fly = node ? p(f, S7.out[0] + 2, S7.out[1], E.inOut) : 0;
   const home = isScenario ? { x: b.x, y: b.y } : { x: b.x + from.dx * (1 - t), y: b.y + from.dy * (1 - t) };
   const pill = { w: 210, h: 52 };
@@ -113,14 +119,16 @@ function Block({ f, b }: { f: number; b: (typeof BLOCKS)[number] }) {
   const style: CSSProperties = {
     position: 'absolute', left: rect.x, top: rect.y, width: rect.w, height: rect.h, borderRadius: mix(16, 26, fly), background: 'var(--surface)',
     border: check > 0.5 ? '1.5px solid var(--indigo-300)' : '1px solid var(--line)', boxShadow: '0 16px 40px rgba(28,26,43,.10)',
-    transform: `rotate(${from.rot * (1 - t)}deg) scale(${(isScenario ? mix(0.94, 1, t) : 1) + bump})`,
+    transform: `perspective(1400px) rotateY(${(1 - t) * (from.dx > 0 ? -16 : from.dx < 0 ? 16 : 0)}deg) rotateX(${(1 - t) * (from.dy < -400 ? -12 : 0)}deg) rotate(${from.rot * (1 - t)}deg) scale(${(isScenario ? mix(0.94, 1, t) : 1) + bump})`,
     opacity: Math.min(1, t * (isScenario ? 1 : 3)) * (1 - p(f, S7.out[1] - 6, S7.out[1] + 2, E.in)), padding: '24px 26px', overflow: 'hidden',
   };
   const content = 1 - p(fly, 0, 0.45, E.in);
   return (
     <div style={style}>
       <div style={{ opacity: content }}>
-        <span style={{ display: 'grid', placeItems: 'center', width: 48, height: 48, borderRadius: 13, background: 'var(--indigo-50)', color: 'var(--indigo-600)' }}><Icon name={b.icon} size={24} /></span>
+        <span style={{ display: 'grid', placeItems: 'center', width: 48, height: 48, borderRadius: 13, background: 'var(--indigo-50)', color: 'var(--indigo-600)' }}>
+          {b.key === 'need' ? <Banknote size={24} strokeWidth={1.75} /> : <Icon name={b.icon} size={24} />}
+        </span>
         <div style={{ marginTop: 18, fontSize: 24, fontWeight: 700, letterSpacing: '-0.01em', whiteSpace: 'nowrap' }}>{b.title}</div>
         <div style={{ marginTop: 8, fontSize: 18, color: 'var(--ink-500)', whiteSpace: 'nowrap', fontVariantNumeric: 'tabular-nums' }}>{b.detail}</div>
         <div style={{ position: 'absolute', left: 26, bottom: 22, display: 'flex', alignItems: 'center', gap: 8, fontSize: 16, fontWeight: 650, color: 'var(--ok)', opacity: check }}>

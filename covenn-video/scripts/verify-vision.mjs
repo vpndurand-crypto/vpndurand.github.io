@@ -69,6 +69,8 @@ check('Profil de maturités = encours (avant / après)', Math.abs(prof(SIMULATIO
 
 // Dossier.
 console.log(`Dossier : ${DOSSIER.blocks.map((b) => `${b.title} (${norm(b.detail)})`).join(' | ')}`);
+check('Besoin de financement = dette d’acquisition simulée', norm(DOSSIER.need) === '4,0 M€', norm(DOSSIER.need));
+check('Scénario étudié = leverage projeté', DOSSIER.blocks.some((b) => b.key === 'scenario' && norm(b.detail).includes(norm(SIMULATION.leverageAfter))), norm(SIMULATION.leverageAfter));
 
 console.log(failures ? `\n${failures} contrôle(s) en échec.` : '\nTous les chiffres du film « vision » sont cohérents entre eux et avec la bêta.');
 process.exit(failures ? 1 : 0);
