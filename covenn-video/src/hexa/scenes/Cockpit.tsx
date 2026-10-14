@@ -1,24 +1,23 @@
 import type { CSSProperties, ReactNode } from 'react';
-import { StatusBadge } from '../../../beta/src/ui/StatusBadge';
 import { Icon } from '../../../beta/src/ui/Icon';
 import { E, clamp, life, mix, p } from '../../film/anim';
 import { COVENANT, GROUP, SUBSIDIARY } from '../data';
-import { Bar, CountryCode, Donut, ProjectionBadge, SHADOW, Sidebar, Topbar, type NavEntry } from '../kit';
+import { Bar, CountryCode, Donut, ProjectionBadge, SHADOW, Sidebar, StatusBadge, Topbar, type NavEntry } from '../kit';
 import { LAYOUT as L, MARK_HOME, REVEAL, UI, camTransform, cockpitCam, windowRect } from './cockpitLayout';
 
 /**
- * S3 — « Une vision. Tout votre groupe. » (projection)
+ * S3 — « One view. Across your entire group. » (projection ; images V4, voir timing.warp)
  * Vue groupe consolidée : encours total, pays, prêteurs, types de financement ; zoom groupe → pays → filiale, puis retour.
  */
 export const NAV: NavEntry[] = [
-  { label: 'Vue groupe', icon: 'overview', active: true },
-  { label: 'Financements', icon: 'financings' },
+  { label: 'Group overview', icon: 'overview', active: true },
+  { label: 'Facilities', icon: 'financings' },
   { label: 'Covenants', icon: 'covenants' },
-  { label: 'Échéances', icon: 'schedule' },
-  { label: 'Simulations', icon: 'calculator' },
-  { label: 'Dossiers de financement', icon: 'save' },
+  { label: 'Maturities', icon: 'schedule' },
+  { label: 'Scenarios', icon: 'calculator' },
+  { label: 'Financing packages', icon: 'save' },
   { label: 'Documents', icon: 'documents' },
-  { label: 'Données financières', icon: 'data' },
+  { label: 'Financial data', icon: 'data' },
 ];
 
 /** Teintes des prêteurs : la gamme indigo de la bêta, du plus foncé au plus clair. */
@@ -51,7 +50,7 @@ function Kpi({ i, labelText, value, sub, o, extra, brand = false, glow = 0 }: {
     }}>
       <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--ink-500)' }}>{labelText}</span>
       <span style={{ display: 'flex', alignItems: 'center', gap: 12, minHeight: 46 }}>
-        <span style={{ fontSize: brand ? 34 : 40, lineHeight: '46px', fontWeight: 750, letterSpacing: '-0.02em', fontVariantNumeric: 'tabular-nums', whiteSpace: 'nowrap' }}>{value}</span>
+        <span style={{ fontSize: 40, lineHeight: '46px', fontWeight: 750, letterSpacing: '-0.02em', fontVariantNumeric: 'tabular-nums', whiteSpace: 'nowrap' }}>{value}</span>
         {extra}
       </span>
       <span style={{ fontSize: 13, color: 'var(--ink-500)', whiteSpace: 'nowrap', display: 'flex', alignItems: 'center', gap: 6 }}>{sub}</span>
@@ -109,29 +108,29 @@ export function Cockpit({ f, hideTotal, hideCovenantValue }: { f: number; hideTo
         {/* Plan serré : seul l'encours total est à l'écran ; la coque de l'application se construit pendant le dézoom. */}
         <div style={{ opacity: p(f, 198, 210, E.out) }}>
           <Sidebar items={NAV} height={UI.h} />
-          <Topbar org={GROUP.name} perimeter={`Périmètre : ${GROUP.entityCount} sociétés · ${GROUP.countryCount} pays`} asOf={GROUP.asOf} width={UI.w - UI.sidebar} />
+          <Topbar org={GROUP.name} perimeter={`Scope: ${GROUP.entityCount} entities · ${GROUP.countryCount} countries`} asOf={GROUP.asOf} width={UI.w - UI.sidebar} />
         </div>
 
         {/* En-tête de page */}
         <div style={{ position: 'absolute', left: L.header.x, top: L.header.y, opacity: headO }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-            <h1 style={{ fontSize: 32, lineHeight: '40px', fontWeight: 700, letterSpacing: '-0.02em' }}>Vue groupe</h1>
+            <h1 style={{ fontSize: 32, lineHeight: '40px', fontWeight: 700, letterSpacing: '-0.02em' }}>Group overview</h1>
             <ProjectionBadge />
           </div>
-          <p style={{ marginTop: 2, color: 'var(--ink-500)', fontSize: 14 }}>{GROUP.name} · {GROUP.entityCount} sociétés · {GROUP.countryCount} pays · données au {GROUP.asOf}</p>
+          <p style={{ marginTop: 2, color: 'var(--ink-500)', fontSize: 14 }}>{GROUP.name} · {GROUP.entityCount} entities · {GROUP.countryCount} countries · data as of {GROUP.asOf}</p>
         </div>
 
         {/* Indicateurs */}
-        <Kpi i={0} o={kpiO(0)} glow={totalPulse} labelText="Encours total du groupe" value={<span style={{ visibility: hideTotal ? 'hidden' : 'visible' }}>{GROUP.total}</span>}
-          sub={<span style={{ opacity: p(f, 188, 196) }}>{GROUP.financingCount} financements · {GROUP.lenderCount} prêteurs</span>} />
-        <Kpi i={1} o={kpiO(1)} labelText="Sociétés" value={GROUP.entityCount} sub={`${GROUP.entitiesFrance} en France · ${GROUP.entitiesAbroad} à l’étranger`} />
-        <Kpi i={2} o={kpiO(2)} labelText="Pays" value={GROUP.countryCount} sub={<>{GROUP.byCountry.map((c, i) => <span key={c.key} style={{ opacity: p(f, 210 + i * 2, 216 + i * 2) }}><CountryCode code={c.country} scale={0.85} /></span>)}</>} />
-        <Kpi i={3} o={kpiO(3)} brand glow={tileGlow} labelText="Covenant le plus proche du seuil" value={<>Leverage <span style={{ visibility: hideCovenantValue ? 'hidden' : 'visible' }}>{COVENANT.value}</span></>}
-          extra={<StatusBadge status={COVENANT.status} size="sm" short />} sub={`${SUBSIDIARY.name} · SFA`} />
+        <Kpi i={0} o={kpiO(0)} glow={totalPulse} labelText="Total Group Debt" value={<span style={{ visibility: hideTotal ? 'hidden' : 'visible' }}>{GROUP.total}</span>}
+          sub={<span style={{ opacity: p(f, 188, 196) }}>{GROUP.financingCount} facilities · {GROUP.lenderCount} lenders</span>} />
+        <Kpi i={1} o={kpiO(1)} labelText="Entities" value={GROUP.entityCount} sub={`${GROUP.entitiesFrance} in France · ${GROUP.entitiesAbroad} abroad`} />
+        <Kpi i={2} o={kpiO(2)} labelText="Countries" value={GROUP.countryCount} sub={<>{GROUP.byCountry.map((c, i) => <span key={c.key} style={{ opacity: p(f, 210 + i * 2, 216 + i * 2) }}><CountryCode code={c.country} scale={0.85} /></span>)}</>} />
+        <Kpi i={3} o={kpiO(3)} brand glow={tileGlow} labelText="Net leverage · closest covenant" value={<span style={{ visibility: hideCovenantValue ? 'hidden' : 'visible' }}>{COVENANT.value}</span>}
+          extra={<StatusBadge status={COVENANT.status} size="sm" short />} sub={`${SUBSIDIARY.short} · limit ${COVENANT.threshold}`} />
 
         {/* Par pays : groupe → pays → filiale */}
         <div style={{ ...card, left: L.pays.x, width: L.pays.w, opacity: p(f, 200, 210, E.out) }}>
-          <CardHead l={`${GROUP.countryCount} pays · ${GROUP.entityCount} sociétés`} t="Encours par pays" />
+          <CardHead l={`${GROUP.countryCount} countries · ${GROUP.entityCount} entities`} t="Debt by Country" />
           {rows.map((c, i) => {
             const isFr = c.country === 'FR';
             const top = ROWS_TOP + i * L.rowH + (i > 0 ? subH * 3 : 0);
@@ -177,14 +176,14 @@ export function Cockpit({ f, hideTotal, hideCovenantValue }: { f: number; hideTo
 
         {/* Par prêteur */}
         <div style={{ ...card, left: L.preteur.x, width: L.preteur.w, opacity: p(f, 203, 213, E.out) }}>
-          <CardHead l={`${GROUP.lenderCount} prêteurs`} t="Encours par prêteur" />
+          <CardHead l={`${GROUP.lenderCount} lenders`} t="Debt by Lender" />
           <div style={{ display: 'flex', justifyContent: 'center', marginTop: 2 }}>
             <div style={{ position: 'relative' }}>
               <Donut size={196} thickness={30} draw={donut} slices={GROUP.byLender.map((l, i) => ({ fraction: l.fraction, color: LENDER_TINTS[i] ?? 'var(--indigo-200)' }))} />
               <div style={{ position: 'absolute', inset: 0, display: 'grid', placeItems: 'center', textAlign: 'center' }}>
                 <span>
                   <span style={{ display: 'block', fontSize: 22, fontWeight: 700, fontVariantNumeric: 'tabular-nums' }}>{GROUP.total}</span>
-                  <span style={{ display: 'block', fontSize: 12, color: 'var(--ink-500)' }}>encours</span>
+                  <span style={{ display: 'block', fontSize: 12, color: 'var(--ink-500)' }}>total debt</span>
                 </span>
               </div>
             </div>
@@ -203,7 +202,7 @@ export function Cockpit({ f, hideTotal, hideCovenantValue }: { f: number; hideTo
 
         {/* Par type */}
         <div style={{ ...card, left: L.type.x, width: L.type.w, opacity: p(f, 206, 216, E.out) }}>
-          <CardHead l={`${GROUP.byCategory.length} catégories`} t="Encours par type" />
+          <CardHead l={`${GROUP.byCategory.length} categories`} t="Debt by Type" />
           {GROUP.byCategory.map((c, i) => (
             <div key={c.key} style={{ padding: '12px 4px 16px', borderBottom: '1px solid var(--line)', opacity: rowIn(i + 2), transform: `translateX(${(1 - rowIn(i + 2)) * 18}px)` }}>
               <div style={{ display: 'flex', alignItems: 'baseline', gap: 10 }}>
@@ -216,7 +215,7 @@ export function Cockpit({ f, hideTotal, hideCovenantValue }: { f: number; hideTo
           ))}
           <div style={{ marginTop: 18, display: 'flex', alignItems: 'center', gap: 8, fontSize: 12.5, color: 'var(--ink-500)' }}>
             <Icon name="info" size={14} />
-            Devises : EUR, USD · contre-valeur en euros
+            Currencies: EUR, USD · shown in EUR
           </div>
         </div>
 
@@ -231,13 +230,13 @@ export function Cockpit({ f, hideTotal, hideCovenantValue }: { f: number; hideTo
   );
 }
 
-/** Fil de navigation (hors interface) : groupe → pays → filiale, puis retour à la vue consolidée. */
+/** Fil de navigation (hors interface) : groupe → pays → filiale, puis retour à la vue consolidée. Images V4. */
 export function NavPill({ f }: { f: number }) {
   const o = life(f, 202, 212, 268, 278);
   if (o <= 0.001) return null;
   const fr = GROUP.byCountry.find((c) => c.country === 'FR');
   const steps = [
-    { key: 'groupe', label: 'Groupe', value: GROUP.total, show: 1 },
+    { key: 'groupe', label: 'Group', value: GROUP.total, show: 1 },
     { key: 'pays', label: fr?.label ?? 'France', value: fr?.amount ?? '', show: life(f, 222, 230, 258, 266) },
     { key: 'filiale', label: SUBSIDIARY.name, value: SUBSIDIARY.amount, show: life(f, 236, 244, 256, 264) },
   ];
@@ -283,10 +282,10 @@ function SubsidiaryPopover({ o }: { o: number }) {
         <span style={{ fontSize: 18, fontWeight: 700 }}>{SUBSIDIARY.name}</span>
       </div>
       {line(SUBSIDIARY.financing, SUBSIDIARY.lender)}
-      {line('Encours', SUBSIDIARY.amount)}
-      {line('Échéance finale', SUBSIDIARY.maturity)}
+      {line('Outstanding', SUBSIDIARY.amount)}
+      {line('Final maturity', SUBSIDIARY.maturity)}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, height: 52, fontSize: 14.5 }}>
-        <span style={{ color: 'var(--ink-500)' }}>Leverage</span>
+        <span style={{ color: 'var(--ink-500)' }}>Net leverage</span>
         <span style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <span style={{ fontSize: 20, fontWeight: 700, fontVariantNumeric: 'tabular-nums' }}>{SUBSIDIARY.covenant}</span>
           <StatusBadge status={SUBSIDIARY.status} size="sm" short />

@@ -163,4 +163,6 @@ export const RAW = {
   value: required(result.valueExact, 'valeur exacte'),
   threshold: result.threshold,
   nextThreshold: required(result.nextThresholdStep, 'marche de seuil suivante'),
+  headroom: required(result.headroom, 'headroom'),
+  headroomPct: required(result.headroomPct, 'headroom %'),
 } as const;

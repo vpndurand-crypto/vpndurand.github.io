@@ -1,32 +1,33 @@
 import { E, life, mix, p } from '../../film/anim';
 import { Mark } from '../kit';
-import { NET } from './networkLayout';
+import { HUB } from './Access';
 
 /**
- * S9 — La signature, épurée : l'aurore rose-violet du pitch deck s'ouvre depuis le centre du réseau, la marque se pose
- * sur l'impact final de la musique (27,0 s), puis « Covenn » et « Le copilote IA du haut de bilan. ». covenn.io, très discret.
+ * S10 — La révélation finale (0:27–0:30) : l'aurore rose-violet du pitch deck s'ouvre depuis Covenn, au centre du réseau ;
+ * la marque se pose sur l'impact final de la musique (27,0 s), puis « Covenn », la phrase de positionnement du deck
+ * et, un peu plus discrète, « Starting with debt. ». Rien d'autre : ni bouton, ni adresse, ni appel à l'action.
  */
-const END_MARK = { x: 236, y: 452, size: 156 };
-export const SIGN = { aurora: [794, 814] as const, land: 810 } as const;
+const END_MARK = { x: 236, y: 430, size: 156 };
+export const SIGN = { aurora: [792, 814] as const, land: 810 } as const;
 
 export function Signature({ f }: { f: number }) {
   if (f < SIGN.aurora[0]) return null;
-  const C = NET.center;
+  const C = HUB;
   const a = p(f, SIGN.aurora[0], SIGN.aurora[1], E.inOut);
   const radius = mix(40, 2300, a);
   const m = p(f, SIGN.aurora[0] + 2, SIGN.land, E.inOut);
   const markX = mix(C.x, END_MARK.x, m);
   const markY = mix(C.y, END_MARK.y, m);
-  const markSize = mix(116, END_MARK.size, m);
+  const markSize = mix(128, END_MARK.size, m);
   const landBump = Math.sin(Math.PI * p(f, SIGN.land, SIGN.land + 10, E.linear)) * 0.05;
   const word = p(f, SIGN.land - 4, SIGN.land + 10, E.out);
-  const sig = life(f, SIGN.land + 10, SIGN.land + 24);
-  const site = life(f, 846, 862);
+  const line1 = life(f, SIGN.land + 8, SIGN.land + 22);
+  const line2 = life(f, SIGN.land + 22, SIGN.land + 36);
   const settle = p(f, SIGN.land, 899, E.out);
 
   return (
     <div style={{ position: 'absolute', inset: 0, lineHeight: 1.2 }}>
-      {/* L'aurore, révélée en cercle depuis le centre du réseau */}
+      {/* L'aurore, révélée en cercle depuis Covenn */}
       <div style={{
         position: 'absolute', inset: 0, background: 'var(--aurora)', clipPath: `circle(${radius}px at ${C.x}px ${C.y}px)`,
         transform: `scale(${1.05 - 0.05 * settle})`,
@@ -44,13 +45,16 @@ export function Signature({ f }: { f: number }) {
         Covenn
       </span>
       <div style={{
-        position: 'absolute', left: 166, top: 616, fontSize: 64, fontWeight: 650, letterSpacing: '-0.025em', color: '#fff', opacity: sig,
-        transform: `translateY(${(1 - sig) * 22}px)`, textShadow: '0 6px 30px rgba(74, 51, 179, 0.18)', whiteSpace: 'nowrap',
+        position: 'absolute', left: 166, top: 594, fontSize: 66, fontWeight: 700, letterSpacing: '-0.03em', color: '#fff', opacity: line1,
+        transform: `translateY(${(1 - line1) * 22}px)`, textShadow: '0 6px 30px rgba(74, 51, 179, 0.18)', whiteSpace: 'nowrap',
       }}>
-        Le copilote IA du haut de bilan.
+        The operating system for corporate capital.
       </div>
-      <div style={{ position: 'absolute', left: 0, right: 0, bottom: 52, textAlign: 'center', fontSize: 22, fontWeight: 600, letterSpacing: '0.04em', color: 'rgba(255, 255, 255, 0.78)', opacity: site }}>
-        covenn.io
+      <div style={{
+        position: 'absolute', left: 168, top: 690, fontSize: 46, fontWeight: 600, letterSpacing: '-0.02em', color: 'rgba(255, 255, 255, 0.86)', opacity: line2,
+        transform: `translateY(${(1 - line2) * 18}px)`, textShadow: '0 6px 26px rgba(74, 51, 179, 0.14)', whiteSpace: 'nowrap',
+      }}>
+        Starting with debt.
       </div>
     </div>
   );

@@ -5,15 +5,17 @@
 import type { CSSProperties, ReactNode } from 'react';
 import sidebarCss from '../../beta/src/features/layout/Sidebar/Sidebar.module.css';
 import topbarCss from '../../beta/src/features/layout/Topbar/Topbar.module.css';
+import badgeCss from '../../beta/src/ui/StatusBadge/StatusBadge.module.css';
 import { Icon, type IconName } from '../../beta/src/ui/Icon';
 import { users } from '../../beta/src/data/users';
 import { CURRENT_USER_ID } from '../../beta/src/config/demo';
-import { clamp, mix } from '../film/anim';
+import type { CalcStatus } from '../../beta/src/data/types';
+import { clamp } from '../film/anim';
 
 export const SHADOW = '0 30px 80px rgba(28, 26, 43, 0.12), 0 2px 8px rgba(28, 26, 43, 0.05)';
 
-/** Badge « Projection » : même dessin que le badge « Aperçu » de la bêta. */
-export function ProjectionBadge({ scale = 1, text = 'Projection' }: { scale?: number; text?: string }) {
+/** Badge « Product vision » / « Our vision » : même dessin que le badge « Aperçu » de la bêta. */
+export function ProjectionBadge({ scale = 1, text = 'Product vision' }: { scale?: number; text?: string }) {
   return (
     <span style={{
       display: 'inline-flex', alignItems: 'center', height: 20 * scale, padding: `0 ${8 * scale}px`, borderRadius: 999,
@@ -21,6 +23,25 @@ export function ProjectionBadge({ scale = 1, text = 'Projection' }: { scale?: nu
       background: 'linear-gradient(90deg, rgba(245, 185, 194, 0.28), rgba(203, 187, 223, 0.28))', whiteSpace: 'nowrap',
     }}>
       {text}
+    </span>
+  );
+}
+
+/** Statuts de covenant en anglais (mêmes couleurs que StatusBadge de la bêta). */
+const STATUS_EN: Record<CalcStatus, { label: string; short: string; tone: 'ok' | 'watch' | 'risk' | 'na' }> = {
+  COMPLIANT: { label: 'Covenant compliant', short: 'Compliant', tone: 'ok' },
+  WATCH: { label: 'Compliant — warning', short: 'Warning', tone: 'watch' },
+  CRITICAL: { label: 'Compliant — critical headroom', short: 'Critical', tone: 'risk' },
+  BREACH: { label: 'Covenant breach', short: 'Breach', tone: 'risk' },
+  NOT_MEANINGFUL: { label: 'Ratio not meaningful', short: 'Not meaningful', tone: 'risk' },
+  NOT_COMPUTABLE: { label: 'Not computable — missing data', short: 'Not computable', tone: 'na' },
+};
+export function StatusBadge({ status, size = 'md', short = false }: { status: CalcStatus; size?: 'sm' | 'md'; short?: boolean }) {
+  const meta = STATUS_EN[status];
+  return (
+    <span className={[badgeCss.badge, badgeCss[meta.tone], size === 'sm' ? badgeCss.sm : ''].filter(Boolean).join(' ')}>
+      <span className={badgeCss.dot} aria-hidden="true" />
+      {short ? meta.short : meta.label}
     </span>
   );
 }
@@ -83,17 +104,10 @@ export function Typed({ text, t, caret = true }: { text: string; t: number; care
   );
 }
 
-/** Nombre qui défile d'une valeur à l'autre (affichage français, décimales fixes). */
-export function rollNumber(from: number, to: number, t: number, dp: number): string {
-  const v = mix(from, to, clamp(t));
-  const s = Math.abs(v).toFixed(dp).replace('.', ',');
-  return `${v < 0 && Number(Math.abs(v).toFixed(dp)) !== 0 ? '−' : ''}${s}`;
-}
-
 // ---------------------------------------------------------------------------
 // Coque de l'application (barre latérale et barre supérieure de la bêta)
 // ---------------------------------------------------------------------------
-export interface NavEntry { label: string; icon: IconName | ReactNode; active?: boolean; badge?: string }
+export interface NavEntry { label: string; icon: IconName | ReactNode; active?: boolean; badge?: string; style?: CSSProperties; section?: string }
 
 export function Sidebar({ items, height, markRef }: { items: readonly NavEntry[]; height: number; markRef?: (el: HTMLSpanElement | null) => void }) {
   const user = users.find((u) => u.id === CURRENT_USER_ID);
@@ -108,7 +122,8 @@ export function Sidebar({ items, height, markRef }: { items: readonly NavEntry[]
       <div className={sidebarCss.scroll} style={{ overflow: 'hidden' }}>
         <ul className={sidebarCss.list}>
           {items.map((item) => (
-            <li key={item.label}>
+            <li key={item.label} style={item.style}>
+              {item.section && <div style={{ padding: '14px 12px 6px', fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', color: 'var(--ink-400)' }}>{item.section}</div>}
               <span className={`${sidebarCss.item} ${item.active ? sidebarCss.active : ''}`}>
                 {typeof item.icon === 'string' ? <Icon name={item.icon as IconName} size={18} /> : item.icon}
                 <span className={sidebarCss.text}>{item.label}</span>
@@ -123,7 +138,7 @@ export function Sidebar({ items, height, markRef }: { items: readonly NavEntry[]
           <span className={sidebarCss.avatar}>{user.first_name.charAt(0)}{user.last_name.charAt(0)}</span>
           <span className={sidebarCss.userText}>
             <span className={sidebarCss.userName}>{user.first_name} {user.last_name}</span>
-            <span className={sidebarCss.userRole}>{user.job_title}</span>
+            <span className={sidebarCss.userRole}>Group CFO</span>
           </span>
         </div>
       )}
@@ -141,7 +156,7 @@ export function Topbar({ org, perimeter, asOf, width }: { org: string; perimeter
         <Icon name="building" size={14} />{perimeter}<Icon name="chevronDown" size={14} />
       </span>
       <div className={topbarCss.spacer} />
-      <span className={topbarCss.pill}><Icon name="calendar" size={14} />Données au {asOf}</span>
+      <span className={topbarCss.pill}><Icon name="calendar" size={14} />Data as of {asOf}</span>
       {user && <span className={topbarCss.avatar}>{user.first_name.charAt(0)}{user.last_name.charAt(0)}</span>}
     </header>
   );

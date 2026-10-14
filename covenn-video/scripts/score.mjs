@@ -1,12 +1,15 @@
-// Musique et design sonore du film « vision » (30 s), synthétisés de façon déterministe : aucun échantillon externe,
+// Musique et design sonore du film HEXA V5 (30 s), synthétisés de façon déterministe : aucun échantillon externe,
 // aucune banque de sons sous licence. Les repères viennent de src/hexa/timing.ts (mêmes images que le film).
+// V5 : mêmes sons, même harmonie, même tempo que la V4 ; l'arrangement suit le nouveau montage
+// (0–5 s tension et démarrage, 5–13 s groove, 13–20 s accélération, 20–27 s grande montée, 27 s résolution sur le logo).
 //
 // Usage : node scripts/score.mjs              → public/audio/covenn-vision-score.wav (48 kHz, stéréo, 30,000 s)
 //         node scripts/score.mjs --stems      → écrit aussi les pistes séparées dans out/audio-stems/
 //         node scripts/score.mjs --sfx-only   → public/audio/covenn-vision-sfx.wav : le design sonore seul (version « sans musique »),
 //                                               au même niveau que dans la version complète (à lancer après la version complète)
 //
-// Tempo 120 BPM : une mesure = 2 s = 60 images ; chaque changement de séquence (3, 6, 10, 13, 16, 20, 24, 27 s) tombe sur un temps.
+// Tempo 120 BPM : un temps = 0,5 s = 15 images ; chaque changement de séquence (2,5 · 5 · 8,5 · 11 · 13,5 · 17 · 20,5 · 23,5 · 27 s)
+// tombe sur un temps.
 import { build } from 'esbuild';
 import { execFileSync, spawnSync } from 'node:child_process';
 import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
@@ -136,9 +139,18 @@ const CH = {
 };
 const ROOT = { tension: 38, F9: 41, CE: 40, Bb9: 34, Dm9: 38, FA: 33, C9: 36, Gm9: 31, A7s: 33, C69: 36, Ffinal: 29 };
 const PROG = [
-  [0, 3, 'tension'], [3, 4, 'F9'], [4, 5, 'CE'], [5, 6, 'Bb9'], [6, 8, 'Dm9'], [8, 10, 'Bb9'], [10, 12, 'FA'], [12, 14, 'C9'],
-  [14, 16, 'Dm9'], [16, 18, 'Bb9'], [18, 19, 'Gm9'], [19, 20, 'A7s'], [20, 22, 'Bb9'], [22, 24, 'C69'], [24, 26, 'F9'], [26, 27, 'CE'], [27, 30, 'Ffinal'],
+  [0, 2.5, 'tension'], [2.5, 3.5, 'F9'], [3.5, 4, 'CE'], [4, 5, 'Bb9'], // le problème, puis Covenn
+  [5, 7, 'Dm9'], [7, 9, 'Bb9'], [9, 11, 'FA'], [11, 13.5, 'C9'], // le produit : vue groupe, covenant, chronologie
+  [13.5, 15.5, 'Bb9'], [15.5, 16.5, 'Gm9'], [16.5, 17, 'A7s'], [17, 19, 'Bb9'], [19, 20.5, 'C69'], // simulation, dossier
+  [20.5, 22.5, 'F9'], [22.5, 23.5, 'CE'], [23.5, 25.5, 'Bb9'], [25.5, 27, 'C69'], // la vision
+  [27, 30, 'Ffinal'], // la signature
 ];
+/** Changements de séquence (s) et temps laissés vides avant les grands impacts. */
+const CUTS = [2.5, 5, 8.5, 11, 13.5, 17, 20.5, 23.5, 27];
+const GAPS = [15, 20, 26.5];
+const inGap = (t) => GAPS.some((g) => t >= g - 1e-6 && t < g + BEAT - 1e-6);
+/** Montée de la vision : 0 avant 20,5 s, puis jusqu'à 1 à 26,5 s. */
+const rise = (t) => (t < 20.5 ? 0 : Math.min(1, (t - 20.5) / 6));
 const chordAt = (t) => (PROG.find(([a, b]) => t >= a && t < b) ?? PROG[PROG.length - 1])[2];
 
 /** Courbe par points [temps, valeur] (interpolation douce). */
@@ -152,9 +164,9 @@ const curve = (pts) => (t) => {
 };
 
 // Automations
-const padLevel = curve([[0, -34], [2.9, -15], [3, -14], [6, -15], [6.2, -18], [16, -18], [16.1, -14], [20, -13], [20.2, -16], [24, -15], [24.1, -12], [27, -12], [27.05, -9], [30, -9]]);
-const padCut = curve([[0, 380], [2.9, 2400], [3, 2800], [6, 2600], [6.2, 1700], [15.9, 2200], [16, 700], [18, 3200], [20, 2600], [24, 3000], [24.1, 4200], [27, 4200], [27.05, 5200], [30, 2200]]);
-const arpLevel = curve([[0, -60], [3, -60], [3.02, -20], [6, -20], [6.2, -22], [16, -22], [16.1, -24], [18, -19], [20, -19], [24, -18], [27, -18], [27.02, -80]]);
+const padLevel = curve([[0, -34], [2.4, -15], [2.5, -14], [5, -15], [5.2, -18], [13.4, -18], [13.5, -15], [17, -15], [17.2, -16], [20.4, -16], [20.5, -12], [23.5, -11], [26.9, -9.5], [27.05, -9], [30, -9]]);
+const padCut = curve([[0, 380], [2.4, 2400], [2.5, 2800], [5, 2600], [5.2, 1700], [13.4, 2200], [13.5, 900], [15.5, 3000], [17, 2600], [20.4, 3000], [20.5, 3600], [23.5, 4200], [27, 4600], [27.05, 5200], [30, 2200]]);
+const arpLevel = curve([[0, -60], [2.5, -60], [2.52, -20], [5, -20], [5.2, -22], [13.5, -22], [13.6, -21], [17, -19], [20.5, -18], [26.5, -14.5], [27, -14.5], [27.02, -80]]);
 
 // ---------------------------------------------------------------------------
 // Pad (nappe) : trois scies désaccordées par note et par côté, filtre passe-bas automatisé
@@ -165,7 +177,7 @@ function renderPad() {
     const start = a;
     const gate = b - a + (name === 'Ffinal' ? 0 : 0.05);
     const release = name === 'Ffinal' ? 0.01 : 1.1;
-    const attack = name === 'tension' ? 1.8 : a === 3 || a === 16 || a === 24 || a === 27 ? 0.03 : 0.45;
+    const attack = name === 'tension' ? 1.6 : a === 2.5 || a === 13.5 || a === 20.5 || a === 27 ? 0.03 : 0.45;
     for (const m of notes) {
       const f = hz(m);
       const voices = [-9, -2, 4, 10].map((cents, k) => ({ osc: new Saw(rand()), mul: Math.pow(2, cents / 1200), side: k % 2 === 0 ? -0.75 : 0.75 }));
@@ -223,19 +235,50 @@ function pluck(t0, m, vel, pan, bright = 1) {
 }
 const PATTERN = [0, 2, 1, 3, 2, 1, 3, 0];
 function renderArps() {
-  for (let t = 3; t < 27 - 1e-6; t += S16) {
-    const step = Math.round((t - 3) / S16);
-    // 16–18 s : croches seulement (suspense) ; ailleurs doubles croches
-    if (t >= 16 && t < 18 && step % 2 === 1) continue;
+  for (let t = 2.5; t < 27 - 1e-6; t += S16) {
+    const step = Math.round((t - 2.5) / S16);
+    // 13,5–15,5 s : croches (la décision), puis doubles croches jusqu'au bout : l'accélération
+    if (t >= 13.5 && t < 15.5 && step % 2 === 1) continue;
+    if (inGap(t)) continue;
     const name = chordAt(t);
     const upper = CH[name].slice(-4).map((m) => m + 12);
     let m = upper[PATTERN[step % PATTERN.length] % upper.length];
-    if (t >= 18 && t < 20 && step % 8 >= 6) m += 12; // montée avant le dossier
-    if (t >= 24 && step % 16 >= 12) m += 12; // ouverture de la vision
+    if (t >= 17 && t < 20.5 && step % 8 >= 6) m += 12; // le dossier se remplit
+    if (t >= 20.5 && step % 16 >= 12) m += 12; // ouverture de la vision
     const accent = step % 4 === 0 ? 1 : 0.72;
     const lvl = db(arpLevel(t)) * accent * 0.5;
-    const bright = t >= 24 ? 1.25 : t >= 16 && t < 18 ? 0.55 : 1;
-    pluck(t, m, lvl, (step % 2 ? 0.35 : -0.35) * (t >= 24 ? 1.4 : 1), bright);
+    const bright = t >= 20.5 ? 1.25 : t >= 13.5 && t < 15.5 ? 0.7 : 1;
+    pluck(t, m, lvl, (step % 2 ? 0.35 : -0.35) * (t >= 20.5 ? 1.4 : 1), bright);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Halo (vision) : les notes hautes de la nappe à l'octave, qui montent doucement de 20,5 à 27 s
+// ---------------------------------------------------------------------------
+function renderShimmer() {
+  for (const [a, b, name] of PROG) {
+    if (a < 20.5 || a >= 27) continue;
+    const notes = CH[name].slice(-3).map((m) => m + 12);
+    for (const m of notes) {
+      const f = hz(m);
+      const voices = [-6, 7].map((cents, k) => ({ osc: new Saw(rand()), mul: Math.pow(2, cents / 1200), side: k ? 0.8 : -0.8 }));
+      const lp = new Biquad();
+      const i0 = Math.round(a * SR);
+      const len = Math.round((b - a + 0.9) * SR);
+      for (let n = 0; n < len; n += 1) {
+        const i = i0 + n; if (i >= N) break;
+        const t = n / SR; const tt = a + t;
+        if (n % 32 === 0) lp.set('lp', 2600 + 2400 * clamp((tt - 20.5) / 6.5, 0, 1), 0.7);
+        const env = adsr(t, 0.35, 0.4, 0.9, 0.8, b - a);
+        if (env <= 0) continue;
+        const lvl = db(-31 + 11 * smooth(clamp((tt - 20.5) / 6.5, 0, 1))) * env * 0.16 / Math.sqrt(notes.length);
+        let l = 0; let r = 0;
+        for (const v of voices) { const x = v.osc.next(f * v.mul); const [gl, gr] = pan2(v.side); l += x * gl; r += x * gr; }
+        const y = lp.run((l + r) * 0.5) * lvl;
+        pad.add(i, y + l * lvl * 0.15, y + r * lvl * 0.15);
+        sendHall.add(i, y * 0.7, y * 0.7);
+      }
+    }
   }
 }
 
@@ -243,8 +286,8 @@ function renderArps() {
 // Basse et batterie (compression latérale déterministe à partir des temps de grosse caisse)
 // ---------------------------------------------------------------------------
 const KICKS = [];
-for (let t = 6; t < 27 - 1e-6; t += BEAT) {
-  if (t >= 16 && t < 18 && Math.round((t - 16) / BEAT) % 2 === 1) continue; // demi-temps pendant la simulation
+for (let t = 5; t < 27 - 1e-6; t += BEAT) {
+  if (inGap(t)) continue; // un temps de silence avant le franchissement du seuil, la vision et le logo
   KICKS.push(t);
 }
 function duck(t, depth, rel = 0.14) {
@@ -305,29 +348,31 @@ function shaker(t0, vel, pan) {
   }
 }
 function renderDrums() {
-  for (const t of KICKS) kick(t, t >= 24 ? 1 : 0.9);
-  // Tic-tac des fichiers qui s'accumulent (0,5 → 3 s), de plus en plus présent
-  for (let t = 0.5; t < 2.95; t += S16) hat(t, 0.15 + 0.5 * ((t - 0.5) / 2.5) ** 1.5, false, Math.sin(t * 7) * 0.4);
+  for (const t of KICKS) kick(t, t >= 20.5 ? 1 + 0.1 * rise(t) : 0.9);
+  // Tic-tac des documents qui s'accumulent (0,25 → 2,5 s), de plus en plus présent : un début nerveux
+  for (let t = 0.25; t < 2.45; t += S16) hat(t, 0.15 + 0.5 * ((t - 0.25) / 2.2) ** 1.5, false, Math.sin(t * 7) * 0.4);
   // Shaker pendant l'entrée de Covenn
-  for (let t = 3; t < 6 - 1e-6; t += S16) shaker(t, Math.round((t - 3) / S16) % 2 === 0 ? 0.9 : 0.55, Math.round((t - 3) / S16) % 2 ? 0.3 : -0.3);
-  // Charleston ouvert sur les contretemps, fermé en doubles croches dans les sections les plus denses
-  for (let t = 6; t < 27 - 1e-6; t += BEAT) {
-    if (t >= 16 && t < 18) continue;
-    hat(t + BEAT / 2, 0.75, true, 0.25);
+  for (let t = 2.5; t < 5 - 1e-6; t += S16) shaker(t, Math.round((t - 2.5) / S16) % 2 === 0 ? 0.9 : 0.55, Math.round((t - 2.5) / S16) % 2 ? 0.3 : -0.3);
+  // Charleston ouvert sur les contretemps ; fermé en doubles croches à partir de la simulation (l'accélération)
+  for (let t = 5; t < 27 - 1e-6; t += BEAT) {
+    if (inGap(t)) continue;
+    hat(t + BEAT / 2, 0.75 + 0.15 * rise(t), true, 0.25);
   }
-  for (let t = 20; t < 27 - 1e-6; t += S16) if (Math.round((t - 20) / S16) % 2 === 1) hat(t, 0.38, false, -0.3);
-  for (let t = 13; t < 16 - 1e-6; t += S16) if (Math.round((t - 13) / S16) % 4 === 3) hat(t, 0.3, false, -0.25);
-  // Claquements sur les temps 2 et 4
-  for (let bar = 10; bar < 27; bar += 2) {
-    if (bar >= 16 && bar < 20) continue;
-    clap(bar + 0.5, 0.8); clap(bar + 1.5, 0.85);
+  for (let t = 11; t < 13.5 - 1e-6; t += S16) if (Math.round((t - 11) / S16) % 4 === 3) hat(t, 0.3, false, -0.25);
+  for (let t = 13.5; t < 27 - 1e-6; t += S16) {
+    if (inGap(t) || Math.round((t - 13.5) / S16) % 2 === 0) continue;
+    hat(t, t < 17 ? 0.3 : 0.38 + 0.12 * rise(t), false, -0.3);
+  }
+  // Claquements sur les temps 2 et 4, à partir du covenant (8,5 s)
+  for (let bar = 8; bar < 27; bar += 2) {
+    for (const t of [bar + 0.5, bar + 1.5]) if (!inGap(t - BEAT) && !inGap(t) && t < 27) clap(t, (t === bar + 0.5 ? 0.8 : 0.85) * (1 + 0.15 * rise(t)));
   }
 }
 function renderBass() {
-  for (let t = 6; t < 27 - 1e-6; t += BEAT / 2) {
+  for (let t = 5; t < 27 - 1e-6; t += BEAT / 2) {
     const name = chordAt(t);
-    if (t >= 16 && t < 18) continue; // tenue grave pendant l'impact (voir hit)
-    const step = Math.round((t - 6) / (BEAT / 2));
+    if (inGap(t)) continue;
+    const step = Math.round((t - 5) / (BEAT / 2));
     const m = ROOT[name] + (step % 4 === 3 ? 12 : 0);
     const f = hz(m);
     const s1 = new Sine(0); const s2 = new Saw(rand()); const lp = new Biquad().set('lp', 420, 0.9);
@@ -337,7 +382,7 @@ function renderBass() {
       const tt = n / SR;
       const env = adsr(tt, 0.004, 0.12, 0.7, 0.03, 0.2);
       const x = (s1.next(f) * 0.8 + lp.run(s2.next(f)) * 0.45) * env;
-      const s = Math.tanh(x * 1.4) * 0.3 * duck(t + tt, 0.75, 0.12) * (t >= 24 ? 1.1 : 1);
+      const s = Math.tanh(x * 1.4) * 0.3 * duck(t + tt, 0.75, 0.12) * (t >= 20.5 ? 1.1 : 1);
       bass.add(i, s, s);
     }
   }
@@ -352,7 +397,8 @@ function renderBass() {
       bass.add(i, s, s);
     }
   };
-  tie(16, 18, ROOT.Bb9, 0.22);
+  // Tenue grave sous le franchissement du seuil (15,5 → 16,5 s)
+  tie(15.5, 16.5, ROOT.Gm9, 0.16);
 }
 
 // ---------------------------------------------------------------------------
@@ -522,6 +568,71 @@ function bell(t0, m, g, decay = 1.6, pan = 0) {
 function chime(t0, g) {
   [77, 81, 84, 89].forEach((m, k) => bell(t0 + k * 0.06, m, g * (1 - k * 0.12), 1.1, -0.4 + k * 0.27));
 }
+/** Carte qui se pose : un « pop » rond et court (sinus qui se cale sur sa note), sans clic. */
+function card(t0, g, pitch, pan) {
+  const f = hz(degreeToMidi(pitch ?? 0, 72));
+  const o = new Sine(rand()); const o2 = new Sine(rand());
+  const i0 = Math.round(t0 * SR); const len = Math.round(0.22 * SR);
+  const [gl, gr] = pan2(pan ?? 0);
+  for (let n = 0; n < len; n += 1) {
+    const i = i0 + n; if (i >= N) break;
+    const t = n / SR;
+    const glide = 1 - 0.06 * Math.exp(-t / 0.012);
+    const env = (t < 0.004 ? t / 0.004 : 1) * Math.exp(-t / 0.07);
+    const v = (o.next(f * glide) * 0.75 + o2.next(f * 2 * glide) * 0.12 * Math.exp(-t / 0.03)) * env * g * 0.3;
+    ui.add(i, v * gl, v * gr);
+    sendHall.add(i, v * gl * 0.25, v * gr * 0.25);
+  }
+}
+/** Information validée : deux notes brèves qui montent d'une quinte, douces. */
+function confirm(t0, g) {
+  [[0, 77], [0.07, 84]].forEach(([dt, m]) => {
+    const f = hz(m); const o = new Sine(rand());
+    const i0 = Math.round((t0 + dt) * SR); const len = Math.round(0.3 * SR);
+    for (let n = 0; n < len; n += 1) {
+      const i = i0 + n; if (i >= N) break;
+      const t = n / SR;
+      const env = (t < 0.003 ? t / 0.003 : 1) * Math.exp(-t / 0.12);
+      const v = (o.next(f) + 0.2 * Math.sin(TAU * f * 3 * t) * Math.exp(-t / 0.03)) * env * g * 0.22;
+      ui.add(i, v, v);
+      sendHall.add(i, v * 0.35, v * 0.35);
+      sendDelay.add(i, v * 0.12, v * 0.12);
+    }
+  });
+}
+/** Connexion de données : un glissé ascendant bref, une liaison qui s'établit. */
+function connect(t0, g, pitch, pan) {
+  const f1 = hz(degreeToMidi(pitch ?? 0, 72)); const f0 = f1 / 2;
+  let ph = rand(); const hp = new Biquad().set('hp', 5000, 0.7);
+  const i0 = Math.round(t0 * SR); const len = Math.round(0.28 * SR);
+  const [gl, gr] = pan2(pan ?? 0);
+  for (let n = 0; n < len; n += 1) {
+    const i = i0 + n; if (i >= N) break;
+    const t = n / SR;
+    const f = f0 * Math.pow(f1 / f0, smooth(Math.min(1, t / 0.11)));
+    ph += f / SR; if (ph >= 1) ph -= 1;
+    const env = Math.sin(Math.PI * Math.min(1, t / 0.28)) ** 1.5;
+    const v = (Math.sin(TAU * ph) * 0.8 + hp.run(noise()) * 0.08) * env * g * 0.28;
+    ui.add(i, v * gl, v * gr);
+    sendHall.add(i, v * gl * 0.3, v * gr * 0.3);
+    sendDelay.add(i, v * gl * 0.15, v * gr * 0.15);
+  }
+}
+/** Le ratio varie : une tenue filtrée qui monte jusqu'au franchissement du seuil. */
+function sweep(t0, g, dur = 0.8) {
+  const i0 = Math.round(t0 * SR); const len = Math.round(dur * SR);
+  const bp = new Biquad(); const o = new Sine(rand());
+  const f0 = hz(65); const f1 = hz(72);
+  for (let n = 0; n < len; n += 1) {
+    const i = i0 + n; if (i >= N) break;
+    const x = n / len;
+    if (n % 32 === 0) bp.set('bp', 600 + 2600 * x * x, 2.2);
+    const env = Math.pow(x, 1.4) * (x > 0.94 ? (1 - x) / 0.06 : 1);
+    const v = (o.next(f0 * Math.pow(f1 / f0, x)) * 0.5 + bp.run(noise()) * 0.6) * env * g * 0.25;
+    fx.add(i, v, v * 0.95);
+    sendHall.add(i, v * 0.25, v * 0.25);
+  }
+}
 
 function renderCues() {
   for (const c of CUES) {
@@ -537,6 +648,10 @@ function renderCues() {
       case 'hit': hit(t, g, Math.abs(t - 27) < 0.01); break;
       case 'tension': tension(t, g); break;
       case 'chime': chime(t, g); break;
+      case 'card': card(t, g, c.pitch, c.pan); break;
+      case 'confirm': confirm(t, g); break;
+      case 'connect': connect(t, g, c.pitch, c.pan); break;
+      case 'sweep': sweep(t, g, c.dur ?? 0.8); break;
       case 'bell': bell(t, 77, g, 1.4); bell(t + 0.004, 89, g * 0.35, 0.9); break;
       default: throw new Error(`Repère inconnu : ${c.kind}`);
     }
@@ -545,7 +660,7 @@ function renderCues() {
 /** Une montée se termine sur l'impact (ou le changement de séquence) qui la suit. */
 function nextHit(t) {
   const hits = CUES.filter((c) => c.kind === 'hit').map((c) => c.frame / FPS).filter((x) => x > t + 0.2).sort((a, b) => a - b);
-  const sceneCuts = [3, 6, 10, 13, 16, 20, 24, 27].filter((x) => x > t + 0.2);
+  const sceneCuts = CUTS.filter((x) => x > t + 0.2);
   return Math.min(hits[0] ?? DUR, sceneCuts[0] ?? DUR);
 }
 
@@ -606,6 +721,7 @@ function pingPong(send, time, fb, tone) {
 const t0 = Date.now();
 renderPad();
 renderArps();
+renderShimmer();
 renderBass();
 renderDrums();
 if (sfxOnly) for (const b of [pad, keys, bass, drums, fx, ui, sendHall, sendRoom, sendDelay]) { b.L.fill(0); b.R.fill(0); }

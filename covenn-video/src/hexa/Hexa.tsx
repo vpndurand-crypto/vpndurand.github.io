@@ -4,15 +4,17 @@ import { useFontsReady } from '../film/fonts';
 import { DOC_CSS } from '../film/parts/Windows';
 import { Captions } from './Captions';
 import { Mention } from './Mention';
+import { Access } from './scenes/Access';
+import { CapitalStructure, packageTransform } from './scenes/CapitalStructure';
 import { Chaos } from './scenes/Chaos';
 import { Cockpit, NavPill } from './scenes/Cockpit';
 import { Covenant, S4 } from './scenes/Covenant';
 import { Dossier } from './scenes/Dossier';
 import { INGEST, Ingest } from './scenes/Ingest';
-import { Network } from './scenes/Network';
 import { Signature } from './scenes/Signature';
 import { Simulation } from './scenes/Simulation';
 import { Timeline, heroTarget } from './scenes/Timeline';
+import { warp } from './timing';
 
 const HERO_TARGET = heroTarget();
 
@@ -45,26 +47,36 @@ function Ambient({ f }: { f: number }) {
 
 const BACKGROUND = 'radial-gradient(1500px 1000px at 20% 6%, #FFFFFF 0%, rgba(255,255,255,0) 64%), var(--canvas)';
 
-/** COVENN — version HEXA « The future of corporate finance » : 30 s, 9 séquences. */
+/**
+ * COVENN — HEXA V5 (anglais) : 30 s, 10 séquences. Les séquences 2 à 7 reprennent les animations de la V4 sur leur
+ * propre horloge (`warp` : image V5 → image V4) ; les séquences 1, 8, 9 et 10 sont écrites directement en images V5.
+ */
 export function Hexa() {
   const f = useCurrentFrame();
+  const w = warp(f);
   const fontsReady = useFontsReady();
   if (!fontsReady) return <AbsoluteFill style={{ background: 'var(--canvas)' }} />;
+  const pkg = packageTransform(f);
   return (
     <AbsoluteFill style={{ background: BACKGROUND, overflow: 'hidden', lineHeight: 1.2 }}>
       <style>{FILM_CSS + DOC_CSS}</style>
       <Layer z={0}><Ambient f={f} /></Layer>
       <Layer z={1}><Chaos f={f} /></Layer>
-      <Layer z={3}><Cockpit f={f} hideTotal={f < INGEST.land} hideCovenantValue={f >= S4.morph[0]} /></Layer>
-      <Layer z={4}><Ingest f={f} /></Layer>
-      <Layer z={5}><Covenant f={f} timelineTarget={HERO_TARGET} /></Layer>
-      <Layer z={6}><Timeline f={f} /></Layer>
-      <Layer z={7}><Dossier f={f} /></Layer>
-      <Layer z={8}><Simulation f={f} /></Layer>
-      <Layer z={9}><Network f={f} /></Layer>
+      <Layer z={2}><CapitalStructure f={f} /></Layer>
+      <Layer z={3}><Cockpit f={w} hideTotal={w < INGEST.land} hideCovenantValue={w >= S4.morph[0]} /></Layer>
+      <Layer z={4}><Ingest f={w} /></Layer>
+      <Layer z={5}><Covenant f={w} timelineTarget={HERO_TARGET} /></Layer>
+      <Layer z={6}><Timeline f={w} /></Layer>
+      <Layer z={7}>
+        {pkg.opacity > 0.001 && (
+          <div style={{ position: 'absolute', inset: 0, transformOrigin: '960px 602px', transform: pkg.transform, opacity: pkg.opacity }}><Dossier f={w} /></div>
+        )}
+      </Layer>
+      <Layer z={8}><Simulation f={w} /></Layer>
+      <Layer z={9}><Access f={f} /></Layer>
       <Layer z={10}><Signature f={f} /></Layer>
       <Layer z={100}><Captions f={f} /></Layer>
-      <Layer z={105}><NavPill f={f} /></Layer>
+      <Layer z={105}><NavPill f={w} /></Layer>
       <Layer z={110}><Mention f={f} /></Layer>
       {/* Musique et design sonore : scripts/score.mjs (mêmes repères que l'image, src/hexa/timing.ts) */}
       <Audio src={staticFile('audio/covenn-vision-score.wav')} />

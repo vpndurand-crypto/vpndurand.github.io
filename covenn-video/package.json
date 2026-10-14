@@ -8,13 +8,14 @@
     "studio": "remotion studio src/index.ts",
     "score": "node scripts/score.mjs",
     "score:sfx": "node scripts/score.mjs --sfx-only",
-    "render:vision": "remotion render src/index.ts CovennHexaVision out/covenn-hexa-vision-raw.mp4",
-    "master:vision": "node scripts/master.mjs",
+    "render:v5": "remotion render src/index.ts CovennHexaV5 out/covenn-hexa-v5-raw.mp4 --image-format=png --crf=8",
+    "master:v5": "node scripts/master.mjs",
     "render": "remotion render src/index.ts CovennHexa out/covenn-hexa-30s.mp4",
-    "still": "remotion still src/index.ts CovennHexaVision",
+    "still": "remotion still src/index.ts CovennHexaV5",
     "verify:vision": "node scripts/verify-vision.mjs",
     "verify:values": "node scripts/verify-values.mjs",
     "verify:beta": "node scripts/verify-beta.mjs",
+    "audit:text": "node scripts/audit-text.mjs",
     "typecheck": "tsc --noEmit -p tsconfig.json"
   },
   "dependencies": {

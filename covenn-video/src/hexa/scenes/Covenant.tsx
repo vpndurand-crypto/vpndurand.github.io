@@ -1,16 +1,15 @@
 import type { CSSProperties } from 'react';
-import { StatusBadge } from '../../../beta/src/ui/StatusBadge';
 import { SourceChip } from '../../../beta/src/ui/SourceChip';
 import { HeadroomGauge } from '../../../beta/src/ui/charts';
 import { E, life, mix, p, quad, track, type Key } from '../../film/anim';
-import { PdfWindow } from '../../film/parts/Windows';
 import { COVENANT } from '../data';
-import { SHADOW } from '../kit';
+import { PAGES, PdfWindow } from '../docs';
+import { SHADOW, StatusBadge } from '../kit';
 import { COVENANT_TILE, COVENANT_VALUE, cockpitCam, toFrame } from './cockpitLayout';
 import { HANDOFF } from './Timeline';
 
 /**
- * S4 — « Chaque engagement sous contrôle. » (bêta : calcul réel sur données fictives)
+ * S4 — « Every covenant. Backed by its source. » (bêta : calcul réel sur données fictives ; images V4, voir timing.warp)
  * La tuile du cockpit s'ouvre sur le covenant : 3,13x, seuil ≤ 3,50x, marge, et la clause du contrat qui fonde le seuil.
  */
 export const S4 = { morph: [288, 310] as const, out: [372, 392] as const };
@@ -28,7 +27,7 @@ export function heroState(f: number, timelineTarget: { x: number; y: number; siz
   const t = p(f, S4.morph[0], S4.morph[1], E.inOut);
   const cam = cockpitCam(Math.min(f, S4.morph[1]));
   const from = toFrame(cam, COVENANT_VALUE.x, COVENANT_VALUE.y);
-  const fromSize = 34 * cam.k;
+  const fromSize = 40 * cam.k;
   let x = mix(from.x, HERO.x, t);
   let y = mix(from.y, HERO.y, t);
   let size = Math.exp(mix(Math.log(fromSize), Math.log(HERO.size), t));
@@ -87,7 +86,7 @@ export function Covenant({ f, timelineTarget }: { f: number; timelineTarget: { x
         transform: `scale(${mix(1, 0.94, exit)})`, transformOrigin: '20% 50%',
       }} />
       <div style={{ position: 'absolute', inset: 0, opacity: contentO }}>
-        <div style={{ position: 'absolute', left: PANEL.x + 56, top: PANEL.y + 44, ...lbl }}>Covenant le plus proche du seuil</div>
+        <div style={{ position: 'absolute', left: PANEL.x + 56, top: PANEL.y + 44, ...lbl }}>Covenant closest to its limit</div>
         <div style={{ position: 'absolute', left: PANEL.x + 56, top: PANEL.y + 70, display: 'flex', alignItems: 'center', gap: 22 }}>
           <span style={{ fontSize: 42, fontWeight: 700, letterSpacing: '-0.02em' }}>{COVENANT.label}</span>
           <span style={{ transform: `scale(${1.45 * mix(0.8, 1, badge)})`, transformOrigin: '0 50%', opacity: badge, display: 'inline-block' }}><StatusBadge status={COVENANT.status} /></span>
@@ -95,7 +94,7 @@ export function Covenant({ f, timelineTarget }: { f: number; timelineTarget: { x
         <div style={{ position: 'absolute', left: PANEL.x + 56, top: PANEL.y + 128, fontSize: 19, color: 'var(--ink-500)', whiteSpace: 'nowrap' }}>{COVENANT.context}</div>
 
         {/* Seuil et marge */}
-        <div style={{ position: 'absolute', left: RIGHT, top: PANEL.y + 214, ...lbl }}>Seuil contractuel</div>
+        <div style={{ position: 'absolute', left: RIGHT, top: PANEL.y + 214, ...lbl }}>Covenant Limit</div>
         <div style={{
           position: 'absolute', left: RIGHT - 8, top: PANEL.y + 238, padding: '0 8px', borderRadius: 10, fontSize: 54, fontWeight: 700, letterSpacing: '-0.015em',
           fontVariantNumeric: 'tabular-nums', whiteSpace: 'nowrap', background: `rgba(230, 226, 248, ${0.95 * pulse})`,
@@ -103,7 +102,7 @@ export function Covenant({ f, timelineTarget }: { f: number; timelineTarget: { x
         }}>
           {COVENANT.threshold}
         </div>
-        <div style={{ position: 'absolute', left: RIGHT, top: PANEL.y + 340, ...lbl, opacity: marge }}>Marge disponible</div>
+        <div style={{ position: 'absolute', left: RIGHT, top: PANEL.y + 340, ...lbl, opacity: marge }}>Covenant Headroom</div>
         <div style={{ position: 'absolute', left: RIGHT, top: PANEL.y + 364, fontSize: 40, fontWeight: 700, fontVariantNumeric: 'tabular-nums', whiteSpace: 'nowrap', opacity: marge }}>
           {COVENANT.headroom}<span style={{ fontSize: 26, fontWeight: 600, color: 'var(--ink-500)' }}> · {COVENANT.headroomPct}</span>
         </div>
@@ -125,7 +124,7 @@ export function Covenant({ f, timelineTarget }: { f: number; timelineTarget: { x
           position: 'absolute', left: PDF.x, top: PDF.y, opacity: pdfIn * (1 - pdfOut),
           transform: `translateX(${(1 - pdfIn) * 140 + pdfOut * 220}px) rotate(${(1 - pdfIn) * 2}deg)`,
         }}>
-          <PdfWindow fileName={COVENANT.contractFile} page={COVENANT.contractPage} pageCount={96} width={PDF.w} height={PDF.h} highlightId="art-19-2" highlight={hl} compact={false} />
+          <PdfWindow fileName={COVENANT.contractFile} page={PAGES.sfa47} width={PDF.w} height={PDF.h} highlightId="art-19-2" highlight={hl} compact={false} />
         </div>
       )}
 

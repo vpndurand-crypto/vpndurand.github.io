@@ -1,12 +1,12 @@
 import type { CSSProperties } from 'react';
 import { Icon, type IconName } from '../../../beta/src/ui/Icon';
-import { formatDate } from '../../../beta/src/domain/format';
 import { E, mix, p, track, zoomTrack, type Key } from '../../film/anim';
 import { COVENANT, TIMELINE } from '../data';
+import { date } from '../format';
 import { ProjectionBadge } from '../kit';
 
 /**
- * S5 — « Anticipez, ne subissez plus. » (projection ; événements de l'échéancier d'aperçu de la bêta)
+ * S5 — « Anticipate. Don’t react. » (projection ; événements de l'échéancier d'aperçu de la bêta ; images V4, voir timing.warp)
  * Le ratio devient le point « aujourd'hui » d'une chronologie ; une tête de lecture balaie l'avenir et révèle
  * test de covenant, échéance, refinancement à prévoir, marche de seuil (mise en avant) et maturité.
  */
@@ -49,11 +49,11 @@ const playX = (f: number) => mix(TODAY_X, END_X, p(f, PLAY.start, PLAY.end, E.in
 
 interface Card { id: string; side: 'up' | 'down'; x: number; w: number; y: number; icon: IconName }
 const CARDS: Record<string, Card> = {
-  test: { id: 'test', side: 'up', x: 250, w: 280, y: 324, icon: 'covenants' },
-  installment: { id: 'installment', side: 'down', x: 250, w: 280, y: 690, icon: 'calendar' },
+  test: { id: 'test', side: 'up', x: 244, w: 306, y: 324, icon: 'covenants' },
+  installment: { id: 'installment', side: 'down', x: 244, w: 306, y: 690, icon: 'calendar' },
   'maturity-rcf': { id: 'maturity-rcf', side: 'up', x: 566, w: 360, y: 268, icon: 'financings' },
   step: { id: 'step', side: 'down', x: 566, w: 430, y: 684, icon: 'warning' },
-  'maturity-sfa': { id: 'maturity-sfa', side: 'up', x: 1490, w: 300, y: 324, icon: 'calendar' },
+  'maturity-sfa': { id: 'maturity-sfa', side: 'up', x: 1470, w: 330, y: 324, icon: 'calendar' },
 };
 const CARD_H = 124;
 
@@ -77,7 +77,7 @@ export function Timeline({ f }: { f: number }) {
         {/* En-tête du module, discret */}
         <div style={{ position: 'absolute', left: TODAY_X - 150, top: 248, display: 'flex', alignItems: 'center', gap: 12, opacity: appear }}>
           <span style={{ color: 'var(--indigo-600)', display: 'grid' }}><Icon name="schedule" size={22} /></span>
-          <span style={{ fontSize: 22, fontWeight: 700 }}>Échéances du groupe</span>
+          <span style={{ fontSize: 22, fontWeight: 700 }}>Group Debt Maturities</span>
           <ProjectionBadge scale={1.2} />
         </div>
 
@@ -123,10 +123,10 @@ export function Timeline({ f }: { f: number }) {
 
         {/* « Aujourd'hui » */}
         <div style={{ position: 'absolute', left: TODAY_X, top: AXIS_Y - 64, transform: 'translateX(-50%)', fontSize: 16, fontWeight: 700, color: 'var(--indigo-700)', opacity: appear, whiteSpace: 'nowrap' }}>
-          Aujourd’hui
+          Today
         </div>
         <div style={{ position: 'absolute', left: HERO_SLOT.x, top: AXIS_Y + 34, transform: 'translateX(-50%)', fontSize: 14, fontWeight: 600, color: 'var(--ink-500)', opacity: p(f, 396, 404), whiteSpace: 'nowrap' }}>
-          Leverage
+          Net leverage
         </div>
         {f >= HANDOFF && (
           <div style={{ position: 'absolute', left: HERO_SLOT.x, top: HERO_SLOT.y, transform: 'translate(-50%, -50%)', fontSize: HERO_SLOT.size, lineHeight: 1, fontWeight: 700, letterSpacing: '-0.03em', fontVariantNumeric: 'tabular-nums', whiteSpace: 'nowrap' }}>
@@ -155,14 +155,14 @@ export function Timeline({ f }: { f: number }) {
                 <span style={{ display: 'grid', placeItems: 'center', width: 30, height: 30, borderRadius: 8, background: isWatch ? 'var(--watch-bg)' : 'var(--indigo-50)', color: isWatch ? 'var(--watch-accent)' : 'var(--indigo-600)' }}>
                   <Icon name={card.icon} size={17} />
                 </span>
-                <span style={{ fontSize: 15, fontWeight: 700, color: 'var(--ink-500)', fontVariantNumeric: 'tabular-nums' }}>{formatDate(e.date)}</span>
+                <span style={{ fontSize: 15, fontWeight: 700, color: 'var(--ink-500)', fontVariantNumeric: 'tabular-nums', whiteSpace: 'nowrap' }}>{date(e.date)}</span>
                 <span style={{ fontSize: 13, fontWeight: 700, color: isWatch ? 'var(--watch)' : 'var(--indigo-700)', background: isWatch ? 'var(--watch-bg)' : 'var(--indigo-50)', borderRadius: 999, padding: '3px 10px', marginLeft: 'auto', whiteSpace: 'nowrap' }}>
-                  {isWatch ? 'Vigilance' : e.kind}
+                  {isWatch ? 'Warning' : e.kind}
                 </span>
               </div>
               <div style={{ marginTop: 12, fontSize: 19, fontWeight: 700, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{e.title}</div>
               <div style={{ marginTop: 4, fontSize: 15, color: isWatch ? 'var(--watch)' : 'var(--ink-500)', fontWeight: isWatch ? 600 : 400, whiteSpace: 'nowrap' }}>
-                {isWatch ? `${e.kind} · ${e.sub.toLowerCase()}` : e.sub}
+                {e.sub}
               </div>
             </div>
           );

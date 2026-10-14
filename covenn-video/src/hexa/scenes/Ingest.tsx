@@ -4,29 +4,30 @@ import { Icon } from '../../../beta/src/ui/Icon';
 import { E, life, mix, p, quad } from '../../film/anim';
 import { EXTRACTION, GROUP, REGISTRY } from '../data';
 import { CountryCode, FilePill, Mark, SHADOW } from '../kit';
+import { BALANCE_FILES, DOC_FILES } from '../docs';
 import { CENTER } from './Chaos';
 import { MARK_HOME, REVEAL, TOTAL_VALUE, cockpitCam, toFrame } from './cockpitLayout';
 
 /**
- * S2 — « Covenn connecte les données. » (projection)
+ * S2 — « Covenn turns complexity into clarity. » (projection ; images V4, voir timing.warp)
  * Le point central devient la marque Covenn. Les documents y entrent ; il en sort des informations structurées
- * (contrat, taux, échéance, covenant, encours, page source à l'appui), puis le registre des financements du groupe.
+ * (montant, taux, échéance, covenants, page source à l'appui), puis le registre des financements du groupe.
  * Enfin les encours rejoignent l'encours total du cockpit et la marque prend sa place dans la barre latérale.
  */
 const HOME = { x: MARK_HOME.x, y: MARK_HOME.y };
 const MARK = MARK_HOME.size;
 const CARD = { x: 900, y: 226, w: 860, h: 640 };
-const FIELD = { top: 112, h: 98 };
+const FIELD = { top: 120, h: 118 };
 const REG = { top: 96, h: 70 };
 
 /** Fichiers entrants : contrats, balances et échéanciers des sociétés du groupe (trois fichiers de filiales étrangères en projection). */
 const INCOMING: { name: string; kind: 'PDF' | 'XLSX' }[] = [
-  { name: 'SFA_DemoIndustrie_BanqueExemple_2025-12-15.pdf', kind: 'PDF' },
-  { name: 'Balance_DemoIndustrie_2026-09-30.xlsx', kind: 'XLSX' },
-  { name: 'Prestamo_DemoIberia_2025.pdf', kind: 'PDF' },
-  { name: 'Pret_DemoLogistique_BanqueAurore_2024-12-10.pdf', kind: 'PDF' },
-  { name: 'Darlehensvertrag_DemoDeutschland_2024.pdf', kind: 'PDF' },
-  { name: 'Balance_DemoLogistique_2026-09-30.xlsx', kind: 'XLSX' },
+  { name: DOC_FILES.sfa, kind: 'PDF' },
+  { name: BALANCE_FILES['tb-di-2026-09-30'] ?? '', kind: 'XLSX' },
+  { name: 'LoanAgreement_DemoIberia_2025.pdf', kind: 'PDF' },
+  { name: DOC_FILES.loanB, kind: 'PDF' },
+  { name: 'FacilityAgreement_DemoGermany_2024.pdf', kind: 'PDF' },
+  { name: BALANCE_FILES['tb-dl-2026-09-30'] ?? '', kind: 'XLSX' },
   { name: 'CreditAgreement_DemoUSA_2025.pdf', kind: 'PDF' },
 ];
 const LANES = [300, 392, 470, 556, 640, 724, 812];
@@ -102,12 +103,19 @@ export function Ingest({ f }: { f: number }) {
           <div style={{ position: 'absolute', left: 28, right: 28, top: 22, height: 60, display: 'flex', alignItems: 'center', gap: 12, borderBottom: '1px solid var(--line)' }}>
             <span style={{ color: 'var(--indigo-600)', display: 'grid', placeItems: 'center' }}><Icon name="preview" size={22} /></span>
             <span style={{ position: 'relative', flex: 1, height: 60 }}>
-              <span style={{ position: 'absolute', left: 0, top: 10, fontSize: 21, fontWeight: 700, opacity: fieldsO, whiteSpace: 'nowrap' }}>Lecture du contrat</span>
+              <span style={{ position: 'absolute', left: 0, top: 10, fontSize: 21, fontWeight: 700, opacity: fieldsO, whiteSpace: 'nowrap' }}>Key terms extracted</span>
               <span style={{ position: 'absolute', left: 0, top: 36, fontSize: 14, color: 'var(--ink-500)', opacity: fieldsO, whiteSpace: 'nowrap' }}>{EXTRACTION.file}</span>
-              <span style={{ position: 'absolute', left: 0, top: 10, fontSize: 21, fontWeight: 700, opacity: regO, whiteSpace: 'nowrap' }}>Financements du groupe</span>
+              <span style={{ position: 'absolute', left: 0, top: 10, fontSize: 21, fontWeight: 700, opacity: regO, whiteSpace: 'nowrap' }}>Group facilities</span>
               <span style={{ position: 'absolute', left: 0, top: 36, fontSize: 14, color: 'var(--ink-500)', opacity: regO, whiteSpace: 'nowrap' }}>
-                {GROUP.financingCount} financements · {GROUP.entityCount} sociétés · {GROUP.countryCount} pays
+                {GROUP.financingCount} facilities · {GROUP.entityCount} entities · {GROUP.countryCount} countries
               </span>
+            </span>
+            {/* L'IA lit le contrat ; chaque valeur garde sa page source */}
+            <span style={{
+              display: 'inline-flex', alignItems: 'center', gap: 6, height: 30, padding: '0 12px', borderRadius: 999, background: 'var(--indigo-50)', color: 'var(--indigo-700)',
+              fontSize: 14, fontWeight: 700, whiteSpace: 'nowrap', opacity: fieldsO,
+            }}>
+              <Icon name="preview" size={14} />AI extraction · source-linked
             </span>
           </div>
 
@@ -127,13 +135,13 @@ export function Ingest({ f }: { f: number }) {
                 )}
                 <div style={{
                   position: 'absolute', left: 28, right: 28, top: FIELD.top + i * FIELD.h, height: FIELD.h - 10, borderRadius: 12, padding: '0 18px',
-                  display: 'grid', gridTemplateColumns: '150px minmax(0, 1fr) auto', alignItems: 'center', columnGap: 16, opacity: reveal,
+                  display: 'grid', gridTemplateColumns: '210px minmax(0, 1fr) auto', alignItems: 'center', columnGap: 16, opacity: reveal,
                   background: `linear-gradient(90deg, rgba(230,226,248,${0.9 * scan}) 0%, rgba(243,241,252,${0.6 * scan}) 60%, rgba(255,255,255,0) 100%)`,
                   border: '1px solid var(--line)', transform: `translateX(${(1 - reveal) * -18}px)`,
                 }}>
-                  <span style={{ fontSize: 16, fontWeight: 650, color: 'var(--ink-500)' }}>{field.label}</span>
-                  <span style={{ fontSize: 29, fontWeight: 700, letterSpacing: '-0.015em', whiteSpace: 'nowrap', fontVariantNumeric: 'tabular-nums' }}>{field.value}</span>
-                  <span style={{ transform: 'scale(1.3)', transformOrigin: 'right center' }}><SourceChip kind="contract" label={`Contrat · p. ${field.page}`} /></span>
+                  <span style={{ fontSize: 18, fontWeight: 650, color: 'var(--ink-500)' }}>{field.label}</span>
+                  <span style={{ fontSize: 30, fontWeight: 700, letterSpacing: '-0.015em', whiteSpace: 'nowrap', fontVariantNumeric: 'tabular-nums' }}>{field.value}</span>
+                  <span style={{ transform: 'scale(1.3)', transformOrigin: 'right center' }}><SourceChip kind="contract" label={`Contract · p. ${field.page}`} /></span>
                 </div>
                 </div>
               );

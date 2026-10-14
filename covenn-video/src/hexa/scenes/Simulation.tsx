@@ -1,16 +1,16 @@
 import type { CSSProperties } from 'react';
-import { StatusBadge } from '../../../beta/src/ui/StatusBadge';
 import { Icon } from '../../../beta/src/ui/Icon';
 import { E, life, mix, p, track, type Key } from '../../film/anim';
 import { COVENANT, SIMULATION, SUBSIDIARY } from '../data';
-import { ProjectionBadge, SHADOW, Typed, rollNumber } from '../kit';
+import { rollNumber } from '../format';
+import { ProjectionBadge, SHADOW, StatusBadge, Typed } from '../kit';
 import { PAN, panBlur, panOffset } from './Timeline';
 
 /** Case du bloc « Scénario étudié » dans le dossier (S7) : la simulation s'y replie. */
 export const SCENARIO_SLOT = { x: 736, y: 646, w: 432, h: 250 };
 
 /**
- * S6 — « Et si vous pouviez voir demain ? » (projection) — le moment fort.
+ * S6 — « Simulate tomorrow. Decide today. » (projection ; images V4, voir timing.warp) — le moment fort.
  * 1. Avant : leverage 3,13x, seuil contractuel ≤ 3,50x, covenant respecté.
  * 2. La décision : le scénario « Nouvelle acquisition » est activé, les hypothèses se renseignent, la projection se recalcule.
  * 3. Après : la caméra se rapproche, le leverage projeté franchit le seuil (3,53x), « Risque de dépassement ».
@@ -99,14 +99,14 @@ export function Simulation({ f }: { f: number }) {
           <div style={{ position: 'absolute', inset: 0, ...context }}>
             <div style={{ position: 'absolute', left: L, top: P.y + 30, display: 'flex', alignItems: 'center', gap: 14 }}>
               <span style={{ display: 'grid', placeItems: 'center', width: 44, height: 44, borderRadius: 12, background: 'var(--indigo-50)', color: 'var(--indigo-600)' }}><Icon name="calculator" size={24} /></span>
-              <span style={{ fontSize: 30, fontWeight: 700, letterSpacing: '-0.02em' }}>Simulation</span>
+              <span style={{ fontSize: 30, fontWeight: 700, letterSpacing: '-0.02em' }}>Scenario Analysis</span>
               <ProjectionBadge scale={1.25} />
             </div>
             <Segmented x={P.x + P.w - 44} y={P.y + 30} select={select} />
             <div style={{ position: 'absolute', left: P.x + 1, right: 1920 - P.x - P.w + 1, top: P.y + 100, height: 1, background: 'var(--line)' }} />
 
             {/* Hypothèses du scénario */}
-            <div style={{ position: 'absolute', left: L, top: P.y + 132, ...lbl }}>Hypothèses du scénario</div>
+            <div style={{ position: 'absolute', left: L, top: P.y + 132, ...lbl }}>Assumptions · {SIMULATION.scenarioName}</div>
             {SIMULATION.inputs.map((input, i) => {
               const t = i === 0 ? type1 : type2;
               return (
@@ -123,15 +123,15 @@ export function Simulation({ f }: { f: number }) {
               );
             })}
             <div style={{ position: 'absolute', left: L, top: P.y + 432 }}>
-              <div style={{ fontSize: 17, fontWeight: 600, color: 'var(--ink-700)' }}>Périmètre du covenant</div>
+              <div style={{ fontSize: 17, fontWeight: 600, color: 'var(--ink-700)' }}>Covenant scope</div>
               <div style={{ marginTop: 10, fontSize: 21, fontWeight: 650 }}>{SUBSIDIARY.name} · SFA</div>
-              <div style={{ marginTop: 4, fontSize: 16, color: 'var(--ink-500)' }}>{COVENANT.label} · seuil {COVENANT.threshold}</div>
+              <div style={{ marginTop: 4, fontSize: 16, color: 'var(--ink-500)' }}>{COVENANT.label} · limit {COVENANT.threshold}</div>
             </div>
 
             {/* Le besoin identifié, et l'appel à préparer le financement */}
             {need > 0.001 && (
               <div style={{ position: 'absolute', left: L, top: P.y + 560, opacity: need, transform: `translateY(${(1 - need) * 12}px)` }}>
-                <div style={{ fontSize: 17, fontWeight: 600, color: 'var(--ink-700)' }}>Besoin de financement</div>
+                <div style={{ fontSize: 17, fontWeight: 600, color: 'var(--ink-700)' }}>Financing requirement</div>
                 <div style={{ marginTop: 6, fontSize: 34, fontWeight: 750, fontVariantNumeric: 'tabular-nums' }}>{SIMULATION.inputs[0]?.value}</div>
               </div>
             )}
@@ -141,18 +141,18 @@ export function Simulation({ f }: { f: number }) {
                 background: 'var(--indigo-600)', color: '#fff', fontSize: 21, fontWeight: 700, opacity: cta, transform: `scale(${mix(0.92, 1, cta) * (1 + 0.04 * ctaGlow)})`, transformOrigin: '0 50%',
                 boxShadow: `0 12px 28px rgba(74,51,179,.28), 0 0 0 ${10 * ctaGlow}px rgba(175,163,230,${0.45 * ctaGlow})`, whiteSpace: 'nowrap',
               }}>
-                Préparer le financement <span style={{ fontSize: 24 }}>→</span>
+                Prepare financing <span style={{ fontSize: 24 }}>→</span>
               </div>
             )}
           </div>
 
           {/* Le résultat : avant, puis projeté */}
-          <div style={{ position: 'absolute', left: R, top: P.y + 132, ...lbl }}>{projected ? 'Leverage projeté' : 'Leverage actuel'}</div>
+          <div style={{ position: 'absolute', left: R, top: P.y + 132, ...lbl }}>{projected ? 'Projected leverage' : 'Current leverage'}</div>
           <div style={{ position: 'absolute', left: R - 4, top: P.y + 156, display: 'flex', alignItems: 'baseline', gap: 26 }}>
             <span style={{ fontSize: 124, lineHeight: 1, fontWeight: 750, letterSpacing: '-0.04em', fontVariantNumeric: 'tabular-nums', color: crossed ? 'var(--risk)' : 'var(--ink-900)' }}>
               {f < ROLL ? COVENANT.value : f >= 548 ? SIMULATION.leverageAfter : `${rollNumber(lev, lev, 1, 2)}x`}
             </span>
-            <span style={{ fontSize: 24, fontWeight: 600, color: 'var(--ink-500)', fontVariantNumeric: 'tabular-nums', whiteSpace: 'nowrap', opacity: p(f, ROLL, ROLL + 8) }}>avant {SIMULATION.leverageBefore}</span>
+            <span style={{ fontSize: 24, fontWeight: 600, color: 'var(--ink-500)', fontVariantNumeric: 'tabular-nums', whiteSpace: 'nowrap', opacity: p(f, ROLL, ROLL + 8) }}>from {SIMULATION.leverageBefore}</span>
           </div>
           {/* Statut : respecté avant la décision ; risque de dépassement après (projection) */}
           <div style={{ position: 'absolute', left: R + 640, top: P.y + 182, opacity: 1 - p(f, ROLL - 4, ROLL + 2), transform: 'scale(1.45)', transformOrigin: '0 50%' }}>
@@ -165,9 +165,9 @@ export function Simulation({ f }: { f: number }) {
             }}>
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: 12, height: 56, padding: '0 22px', borderRadius: 999, background: 'var(--risk-bg)', color: 'var(--risk)', fontSize: 26, fontWeight: 750, whiteSpace: 'nowrap', boxShadow: '0 10px 30px rgba(180,42,32,.18)' }}>
                 <Icon name="warning" size={24} />
-                Risque de dépassement
+                Projected Covenant Breach
               </span>
-              <span style={{ fontSize: 16, fontWeight: 600, color: 'var(--risk)', paddingLeft: 8, whiteSpace: 'nowrap' }}>Projection · {SIMULATION.leverageAfter} pour un seuil de {COVENANT.thresholdShort}</span>
+              <span style={{ fontSize: 16, fontWeight: 600, color: 'var(--risk)', paddingLeft: 8, whiteSpace: 'nowrap' }}>Projection · {SIMULATION.leverageAfter} vs. a {COVENANT.thresholdShort} limit</span>
             </div>
           )}
           {/* Balayage de recalcul */}
@@ -196,17 +196,17 @@ export function Simulation({ f }: { f: number }) {
             </div>
             <div style={{ position: 'relative', height: 30, marginTop: 12, fontSize: 17, color: 'var(--ink-500)', fontVariantNumeric: 'tabular-nums' }}>
               <span style={{ position: 'absolute', left: 0 }}>0</span>
-              <span style={{ position: 'absolute', left: `${pct(Number(COVENANT.gauge.value)) * 100}%`, transform: 'translateX(-100%)', paddingRight: 10, opacity: p(f, ROLL, ROLL + 8), whiteSpace: 'nowrap' }}>avant</span>
-              <span style={{ position: 'absolute', left: `calc(${pct(SIMULATION.thresholdValue) * 100}% + 14px)`, fontWeight: 750, color: crossed ? 'var(--risk)' : 'var(--ink-900)', whiteSpace: 'nowrap' }}>Seuil contractuel {COVENANT.threshold}</span>
+              <span style={{ position: 'absolute', left: `${pct(Number(COVENANT.gauge.value)) * 100}%`, transform: 'translateX(-100%)', paddingRight: 10, opacity: p(f, ROLL, ROLL + 8), whiteSpace: 'nowrap' }}>current</span>
+              <span style={{ position: 'absolute', left: `calc(${pct(SIMULATION.thresholdValue) * 100}% + 14px)`, fontWeight: 750, color: crossed ? 'var(--risk)' : 'var(--ink-900)', whiteSpace: 'nowrap' }}>Covenant Limit {COVENANT.threshold}</span>
             </div>
           </div>
 
           {/* Impact : encours, marge, échéancier */}
           <div style={{ position: 'absolute', inset: 0, ...context }}>
-            <Stat x={R} y={P.y + 412} run={p(f, 548, 556)} label="Encours du groupe" before={SIMULATION.groupBefore} after={`${rollNumber(20, 24, roll, 1)} M€`} final={roll >= 1 ? SIMULATION.groupAfter : null} risk={false} />
-            <Stat x={R + 520} y={P.y + 412} run={p(f, 551, 559)} label="Marge sous le seuil" before={SIMULATION.headroomBefore} after={`${rollNumber(0.37, -0.03, roll, 2)}x`} final={roll >= 1 ? SIMULATION.headroomAfter : null} risk={roll > 0.9} />
+            <Stat x={R} y={P.y + 412} run={p(f, 548, 556)} label="Group debt" before={SIMULATION.groupBefore} after={`€${rollNumber(20, 24, roll, 1)}M`} final={roll >= 1 ? SIMULATION.groupAfter : null} risk={false} />
+            <Stat x={R + 520} y={P.y + 412} run={p(f, 551, 559)} label="Covenant Headroom" before={SIMULATION.headroomBefore} after={`${rollNumber(0.37, -0.03, roll, 2)}x`} final={roll >= 1 ? SIMULATION.headroomAfter : null} risk={roll > 0.9} />
 
-            <div style={{ position: 'absolute', left: R, top: P.y + 566, ...lbl }}>Échéancier des maturités</div>
+            <div style={{ position: 'absolute', left: R, top: P.y + 566, ...lbl }}>Maturity schedule</div>
             <div style={{ position: 'absolute', left: R, top: P.y + 600, width: GAUGE_W, height: 180, display: 'flex', alignItems: 'flex-end', gap: 14 }}>
               {[2027, 2028, 2029, 2030, 2031, 2032, 2033].map((year) => {
                 const before = SIMULATION.profileBefore.find((y) => y.year === year);
@@ -234,8 +234,8 @@ export function Simulation({ f }: { f: number }) {
 }
 
 function Segmented({ x, y, select }: { x: number; y: number; select: number }) {
-  const items = ['Situation actuelle', SIMULATION.scenario];
-  const w = [204, 252];
+  const items = [SIMULATION.current, SIMULATION.scenario];
+  const w = [200, 176];
   const left = mix(0, w[0] ?? 0, select);
   const width = mix(w[0] ?? 0, w[1] ?? 0, select);
   const labels = (color: string) => items.map((it, i) => (
