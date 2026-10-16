@@ -3,16 +3,34 @@
 //   out/Covenn_Hexa_V5_English_30s.mp4              — musique et design sonore
 //   out/Covenn_Hexa_V5_English_30s_no-music.mp4     — design sonore seul (même niveau que dans la version complète)
 // Usage : node scripts/master.mjs   (après npm run score, npm run score:sfx et npm run render:v5)
+//         node scripts/master.mjs --film capos   → film Capital OS (après npm run score:capos, score:capos:sfx et render:capos) :
+//   out/Covenn_Hexa_V5_CapitalOS_English_30s.mp4 et out/Covenn_Hexa_V5_CapitalOS_English_30s_no-music.mp4
 import { execFileSync } from 'node:child_process';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
-const raw = join(root, 'out/covenn-hexa-v5-raw.mp4');
-const versions = [
-  { audio: 'public/audio/covenn-vision-score.wav', out: 'out/Covenn_Hexa_V5_English_30s.mp4' },
-  { audio: 'public/audio/covenn-vision-sfx.wav', out: 'out/Covenn_Hexa_V5_English_30s_no-music.mp4' },
-];
+const FILMS = {
+  hexa: {
+    raw: 'out/covenn-hexa-v5-raw.mp4',
+    versions: [
+      { audio: 'public/audio/covenn-vision-score.wav', out: 'out/Covenn_Hexa_V5_English_30s.mp4' },
+      { audio: 'public/audio/covenn-vision-sfx.wav', out: 'out/Covenn_Hexa_V5_English_30s_no-music.mp4' },
+    ],
+  },
+  capos: {
+    raw: 'out/covenn-capos-raw.mp4',
+    versions: [
+      { audio: 'public/audio/capos-score.wav', out: 'out/Covenn_Hexa_V5_CapitalOS_English_30s.mp4' },
+      { audio: 'public/audio/capos-sfx.wav', out: 'out/Covenn_Hexa_V5_CapitalOS_English_30s_no-music.mp4' },
+    ],
+  },
+};
+const filmIndex = process.argv.indexOf('--film');
+const film = FILMS[filmIndex >= 0 ? process.argv[filmIndex + 1] : 'hexa'];
+if (!film) throw new Error(`Film inconnu : ${process.argv[filmIndex + 1]} (attendu : ${Object.keys(FILMS).join(', ')})`);
+const raw = join(root, film.raw);
+const versions = film.versions;
 
 for (const v of versions) {
   const out = join(root, v.out);

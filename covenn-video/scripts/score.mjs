@@ -7,6 +7,8 @@
 //         node scripts/score.mjs --stems      → écrit aussi les pistes séparées dans out/audio-stems/
 //         node scripts/score.mjs --sfx-only   → public/audio/covenn-vision-sfx.wav : le design sonore seul (version « sans musique »),
 //                                               au même niveau que dans la version complète (à lancer après la version complète)
+//         --film capos                        → même musique, repères du film Capital OS (src/capos/timing.ts) :
+//                                               public/audio/capos-score.wav, capos-sfx.wav, capos-score-levels.json
 //
 // Tempo 120 BPM : un temps = 0,5 s = 15 images ; chaque changement de séquence (2,5 · 5 · 8,5 · 11 · 13,5 · 17 · 20,5 · 23,5 · 27 s)
 // tombe sur un temps.
@@ -20,12 +22,20 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const withStems = process.argv.includes('--stems');
 const sfxOnly = process.argv.includes('--sfx-only');
+/** Film dont on lit les repères : la V5 (par défaut) ou le film Capital OS (même montage, autres repères en S7). */
+const FILMS = {
+  hexa: { timing: 'src/hexa/timing.ts', prefix: 'covenn-vision', levels: 'score-levels.json', stems: 'out/audio-stems' },
+  capos: { timing: 'src/capos/timing.ts', prefix: 'capos', levels: 'capos-score-levels.json', stems: 'out/audio-stems-capos' },
+};
+const filmIndex = process.argv.indexOf('--film');
+const FILM = FILMS[filmIndex >= 0 ? process.argv[filmIndex + 1] : 'hexa'];
+if (!FILM) throw new Error(`Film inconnu : ${process.argv[filmIndex + 1]} (attendu : ${Object.keys(FILMS).join(', ')})`);
 
 // ---------------------------------------------------------------------------
 // Repères du film
 // ---------------------------------------------------------------------------
 const tmp = mkdtempSync(join(tmpdir(), 'covenn-score-'));
-await build({ entryPoints: [join(root, 'src/hexa/timing.ts')], bundle: true, platform: 'node', format: 'esm', outfile: join(tmp, 'timing.mjs'), logLevel: 'error' });
+await build({ entryPoints: [join(root, FILM.timing)], bundle: true, platform: 'node', format: 'esm', outfile: join(tmp, 'timing.mjs'), logLevel: 'error' });
 const { CUES, FPS, DURATION } = await import(pathToFileURL(join(tmp, 'timing.mjs')).href);
 rmSync(tmp, { recursive: true, force: true });
 
@@ -754,7 +764,7 @@ for (let n = 0; n < N; n += 1) {
 // Normalisation de crête à −3 dBFS avant le traitement de sonie
 let peak = 0;
 for (let n = 0; n < N; n += 1) peak = Math.max(peak, Math.abs(master.L[n]), Math.abs(master.R[n]));
-const levelsFile = join(root, 'public/audio/score-levels.json');
+const levelsFile = join(root, 'public/audio', FILM.levels);
 const norm = sfxOnly ? JSON.parse(readFileSync(levelsFile, 'utf8')).norm : db(-3) / (peak || 1);
 for (let n = 0; n < N; n += 1) { master.L[n] *= norm; master.R[n] *= norm; }
 
@@ -777,11 +787,11 @@ function writeWav(path, bus, gain = 1) {
 
 const outDir = join(root, 'public/audio');
 mkdirSync(outDir, { recursive: true });
-const raw = join(root, sfxOnly ? 'out/covenn-vision-sfx-raw.wav' : 'out/covenn-vision-score-raw.wav');
+const raw = join(root, 'out', sfxOnly ? `${FILM.prefix}-sfx-raw.wav` : `${FILM.prefix}-score-raw.wav`);
 mkdirSync(join(root, 'out'), { recursive: true });
 writeWav(raw, master);
 if (withStems && !sfxOnly) {
-  const stemDir = join(root, 'out/audio-stems');
+  const stemDir = join(root, FILM.stems);
   mkdirSync(stemDir, { recursive: true });
   for (const b of [pad, keys, bass, drums, fx, ui]) writeWav(join(stemDir, `${b.name}.wav`), b, norm);
   writeWav(join(stemDir, 'reverberation.wav'), { L: hall.L.map((x, n) => x * 0.55 + room.L[n] * 0.4), R: hall.R.map((x, n) => x * 0.55 + room.R[n] * 0.4) }, norm);
@@ -798,7 +808,7 @@ const loudness = (file) => {
 const before = loudness(raw);
 const gainDb = sfxOnly ? JSON.parse(readFileSync(levelsFile, 'utf8')).gainDb : -16 - before.I;
 if (!sfxOnly) writeFileSync(levelsFile, `${JSON.stringify({ norm, gainDb }, null, 2)}\n`);
-const final = join(outDir, sfxOnly ? 'covenn-vision-sfx.wav' : 'covenn-vision-score.wav');
+const final = join(outDir, sfxOnly ? `${FILM.prefix}-sfx.wav` : `${FILM.prefix}-score.wav`);
 execFileSync('ffmpeg', ['-hide_banner', '-loglevel', 'error', '-y', '-i', raw, '-af',
   `volume=${gainDb.toFixed(2)}dB,alimiter=limit=0.79:attack=4:release=80:level=false,atrim=end_sample=${N},apad=whole_len=${N}`,
   '-ar', String(SR), '-ac', '2', '-c:a', 'pcm_s24le', final]);

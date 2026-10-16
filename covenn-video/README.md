@@ -1,7 +1,8 @@
 # Covenn — films produit HEXA (30 s)
 
-Couche de production vidéo **indépendante** de la bêta. Les sources de la bêta sont copiées telles quelles dans `beta/` (206 fichiers, jamais modifiés) et réutilisées : composants et classes CSS (barre latérale, barre supérieure, pastilles de source, jauge, page de contrat, badges), jetons CSS, police Figtree, données de démonstration et moteur de calcul.
+Couche de production vidéo **indépendante** des bêtas. Les sources de la première bêta sont copiées telles quelles dans `beta/` (206 fichiers, jamais modifiés) et réutilisées : composants et classes CSS (barre latérale, barre supérieure, pastilles de source, jauge, page de contrat, badges), jetons CSS, police Figtree, données de démonstration et moteur de calcul. La bêta « Capital operating system » est copiée telle quelle dans `beta-capital-os/` (un fichier HTML autonome, empreinte dans `SHA256SUMS`, jamais modifié).
 
+- **Film Capital OS (anglais)** : `out/Covenn_Hexa_V5_CapitalOS_English_30s.mp4` et `out/Covenn_Hexa_V5_CapitalOS_English_30s_no-music.mp4` — le montage de la V5 (mêmes séquences, mêmes textes, même musique, mêmes formats de sortie), refait sur la bêta « Capital operating system » : ses écrans, ses classes CSS, son vocabulaire et les valeurs calculées par son moteur. Voir la section « Film Capital OS » ci-dessous.
 - **Version finale V5 (anglais)** : `out/Covenn_Hexa_V5_English_30s.mp4` — 1920 × 1080 natif, 30 i/s, 900 images, 30,000 s, H.264 High (yuv420p, BT.709) + AAC 48 kHz stéréo 256 kb/s, −16 LUFS, crête −2 dBFS. Rendu à partir des sources (images PNG, sans perte), un seul encodage final.
 - **Version sans musique** : `out/Covenn_Hexa_V5_English_30s_no-music.mp4` — même image, design sonore seul, au niveau exact qu'il a dans la version complète.
 - Versions précédentes : `out/covenn-hexa-v4-30s.mp4` (et sa version sans musique), `out/covenn-hexa-v3-30s.mp4`, `out/covenn-hexa-30s-v2.mp4`, `out/covenn-hexa-30s-v1.mp4` (en français).
@@ -23,7 +24,18 @@ npm run verify:values                            # 28 valeurs de la bêta (calcu
 npm run verify:beta                              # la copie de la bêta est identique à l'archive livrée
 npm run typecheck                                # TypeScript strict
 node scripts/score.mjs --stems                   # musique + pistes séparées dans out/audio-stems/
+
+# Film Capital OS
+npm run extract:capos                            # bêta → src/capos/beta.css (styles limités à .capos) et src/capos/snapshot.json (valeurs du moteur)
+npm run score:capos && npm run score:capos:sfx   # public/audio/capos-score.wav et capos-sfx.wav (repères de src/capos/timing.ts)
+npm run render:capos                             # rendu image (out/covenn-capos-raw.mp4, images PNG, CRF 8, un seul onglet du navigateur*)
+npm run master:capos                             # fichiers livrés : out/Covenn_Hexa_V5_CapitalOS_English_30s.mp4 et …_no-music.mp4
+COMP=CovennCapitalOS node scripts/stills.mjs out/qa 120 300 580
+npm run verify:capos                             # empreinte de la bêta, puis chaque chiffre du film contre son moteur
+npm run audit:capos                              # tous les textes rendus : aucun mot ni format français (hors noms propres de la bêta)
 ```
+
+\* En rendu parallèle (quatre onglets), Chromium laissait parfois, pendant quelques images, une trace d'un chiffre en mouvement (le « 3.13x » qui quitte sa tuile au début de S4) : le film Capital OS est rendu sur un seul onglet, ce qui supprime l'artefact (contrôlé image par image contre un rendu de référence).
 
 ## V5 : déroulé
 
@@ -63,6 +75,36 @@ Les scènes 2 à 7 réutilisent les animations de la V4, écrites en images V4 :
 - `src/hexa/Hexa.tsx` — assemblage (calques, fond, son) ; `timing.ts` — conducteur (séquences, textes, mentions, correspondance V4, repères sonores) ; `data.ts`, `format.ts`, `docs.tsx` — données, formats et documents anglais ; `kit.tsx` — écrans dessinés avec les classes et jetons de la bêta ; `Captions.tsx`, `Mention.tsx`.
 - `src/hexa/scenes/` — `Chaos`, `Ingest`, `Cockpit` (+ `cockpitLayout`), `Covenant`, `Timeline`, `Simulation`, `Dossier`, `CapitalStructure`, `Access`, `Signature`.
 - `src/film/`, `src/bridge/` — version 2 (démonstration de la bêta) et pont vers la bêta, partagés.
+
+## Film Capital OS : déroulé
+
+Même fil narratif, mêmes temps, mêmes textes que la V5 ; le produit montré est la bêta « Capital operating system » (groupe fictif Lumenvale Group, cinq sociétés en France, en Allemagne et au Royaume-Uni, six financements, données au 30 Sep 2026). Mention en bas à gauche : « Interactive demo · Fictional data » (l'étiquette de la bêta), « Covenn demo — real calculation on fictional data » sur le covenant, « Our vision · Future capability » sur l'accès au capital.
+
+| Temps | Séquence | Ce qu'on voit (écrans et chiffres de la bêta) |
+|---|---|---|
+| 0:00–0:02.5 | Fragmentation | Balances (plan comptable français et liasses de groupe allemande et britannique, dont une en GBP), contrats de six prêteurs, relevés, rapport de gestion, offre Project Falcon ; étiquettes de prêteurs, sociétés, pays, devises |
+| 0:02.5–0:05 | Intelligence | Extraction assistée du contrat SFA, page source à l'appui, avec la mention « Preview » de la bêta et les statuts « Validated » / « Corrected by reviewer » ; registre des six financements ; les encours rejoignent €18.6m |
+| 0:05–0:08.5 | Vue groupe | Capital overview : €18.6m, 5 sociétés, 3 pays (EUR · GBP), covenant le plus tendu 3.13x Watch ; répartition par pays et société, par prêteur, par instrument et par devise ; Group › France › Lumenvale Industrie SAS |
+| 0:08.5–0:11 | Contrôle | Page Covenants : 3.13x, seuil ≤ 3.50x, marge 10.5 %, €1,100,000 de dette nette et €314,286 d'EBITDA absorbables, clause 19.2 page 47 surlignée et reliée au seuil |
+| 0:11–0:13.5 | Anticipation | Repayment schedule : test de covenant, échéance, maturité de la ligne renouvelable, marche de seuil à 3.25x le 1 Jul 2027 (« Projected: critical headroom », marge 10.5 % → 3.6 %), maturité du SFA |
+| 0:13.5–0:17 | Décision | Scénario Project Falcon : prix €7,500,000, EBITDA acquis €1,200,000, emprunt €6,500,000 ; à l'horizon du 30 Sep 2027, dette nette / EBITDA 2.46x → 3.07x, encours €18.6m → €23.5m, liquidité €4.69m → €558k ; covenant SFA projeté « Critical headroom » (marche de seuil) ; « Create financing request from scenario » |
+| 0:17–0:20.5 | Préparation | Demande « Acquisition financing — Project Falcon » : la liste de préparation de la bêta se remplit (7/8, une pièce à relire), le scénario lié, « Ready for review », « Generate financing brief » |
+| 0:20.5–0:23.5 | Pilotage du capital | Capital overview : barre de financement (dette par instrument, puis fonds propres €19.8m, engagements non tirés €1.5m ; total financé €38.4m), quatre scénarios, €12.6m de financements en préparation, indicateurs de la page Capital structure |
+| 0:23.5–0:27 | Accès au capital (vision) | Lumenvale Group et son besoin de €6.5m → Covenn → Banks, Private Debt, Capital Markets, marqués « Future capability » (aucun nom, aucun logo, aucune offre) |
+| 0:27–0:30 | Signature | Identique à la V5 |
+
+### Données et fidélité à la bêta
+
+- `scripts/extract-capos.mjs` vérifie l'empreinte du fichier, ouvre la bêta dans Chromium sans accès réseau, appelle son propre moteur (positions, covenant, échéancier, scénarios, demandes de financement, priorités) et écrit `src/capos/snapshot.json` ; il extrait aussi sa feuille de style, limitée au film (`.capos`), dans `src/capos/beta.css`. Le film ne recalcule rien : `src/capos/data.ts` choisit et met en forme ces valeurs (règles de `Fmt` de la bêta, `src/capos/format.ts`).
+- Les noms fictifs de la bêta sont conservés (Lumenvale, Banque Exemple, Beispielbank AG, Kingsmere Bank plc, Banque Aurore, Finance Bail Exemple, Banque Méridienne) : la bêta précise que tous ses financeurs sont fictifs.
+- Choix de mise en scène, assumés et signalés : l'extraction de contrats est un aperçu simulé dans la bêta (pas d'OCR ni d'IA), le film la montre avec la mention « Preview » ; aucun scénario de la bêta ne mène à un dépassement de covenant, le moment fort de S6 est donc la marge critique à l'horizon, due à la marche de seuil (« Projected — not a covenant test ») ; à la fin de S7, la demande Project Falcon est montrée à l'étape « Ready for review », alors que la démonstration la place à « Indicative terms received » (propositions indicatives fictives) : le film ne montre aucune proposition ni offre ; les tuiles « Entities », « Countries » et « Tightest covenant » de S3 sont composées à partir des données de la bêta.
+- Contrôles : `scripts/verify-capos.mjs` (empreinte, puis chaque chiffre contre le moteur et leur cohérence) et `scripts/audit-text.mjs --film capos` (tous les textes rendus, image par image).
+
+### Structure
+
+- `src/capos/CapitalOS.tsx` — assemblage ; `timing.ts` — conducteur (celui de la V5, repères de la scène 7 adaptés : le scénario, puis huit pièces en croches) ; `data.ts`, `format.ts`, `docs.tsx`, `kit.tsx` — données, formats, documents et composants de la bêta ; `Captions.tsx`, `Mention.tsx`.
+- `src/capos/scenes/` — `Chaos`, `Ingest`, `Cockpit` (+ `cockpitLayout`), `Covenant`, `Timeline`, `Simulation`, `Request`, `CapitalOverview`, `Access`, `Signature`.
+- `scripts/score.mjs --film capos` et `scripts/master.mjs --film capos` : même musique, même chaîne d'export que la V5.
 
 ## Version 2 : déroulé (pour mémoire)
 

@@ -1,0 +1,5498 @@
+{
+ "organization": "Lumenvale Group",
+ "asOf": "2026-09-30",
+ "today": "2026-10-20",
+ "fmtAsOf": "30 Sep 2026",
+ "fx": {
+  "EUR": "1.0000",
+  "GBP": "1.1550"
+ },
+ "user": {
+  "name": "Camille Laurent",
+  "role": "Group Chief Financial Officer"
+ },
+ "entities": [
+  {
+   "id": "ent-di",
+   "name": "Lumenvale Industrie SAS",
+   "short": "Lumenvale Industrie",
+   "country": "FR",
+   "countryName": "France",
+   "city": "Lyon",
+   "currency": "EUR",
+   "activity": "Precision manufacturing"
+  },
+  {
+   "id": "ent-dl",
+   "name": "Lumenvale Logistique SAS",
+   "short": "Lumenvale Logistique",
+   "country": "FR",
+   "countryName": "France",
+   "city": "Lille",
+   "currency": "EUR",
+   "activity": "Logistics and warehousing"
+  },
+  {
+   "id": "ent-ds",
+   "name": "Lumenvale Services SAS",
+   "short": "Lumenvale Services",
+   "country": "FR",
+   "countryName": "France",
+   "city": "Paris",
+   "currency": "EUR",
+   "activity": "Technical services"
+  },
+  {
+   "id": "ent-de",
+   "name": "Lumenvale Deutschland GmbH",
+   "short": "Lumenvale Deutschland",
+   "country": "DE",
+   "countryName": "Germany",
+   "city": "Stuttgart",
+   "currency": "EUR",
+   "activity": "Components manufacturing"
+  },
+  {
+   "id": "ent-uk",
+   "name": "Lumenvale UK Ltd",
+   "short": "Lumenvale UK",
+   "country": "GB",
+   "countryName": "United Kingdom",
+   "city": "Birmingham",
+   "currency": "GBP",
+   "activity": "Distribution"
+  }
+ ],
+ "countries": {
+  "FR": "France",
+  "DE": "Germany",
+  "GB": "United Kingdom"
+ },
+ "facilities": [
+  {
+   "id": "fin-01",
+   "label": "Senior Facility Agreement",
+   "ref": "SFA-2025-001",
+   "entityId": "ent-di",
+   "entity": "Lumenvale Industrie SAS",
+   "entityShort": "Lumenvale Industrie",
+   "country": "FR",
+   "countryName": "France",
+   "lender": "Banque Exemple",
+   "instrument": "Senior term loan",
+   "instrumentClass": "Senior debt",
+   "currency": "EUR",
+   "local": 1000000000,
+   "eur": 1000000000,
+   "committedEur": 1000000000,
+   "undrawnEur": 0,
+   "rateBp": 450,
+   "rateText": "3-month Euribor + 2.50%",
+   "maturity": "2029-12-31",
+   "months": 39,
+   "amortization": "Bullet repayment at final maturity",
+   "documentIds": [
+    "doc-01",
+    "doc-02",
+    "doc-03"
+   ],
+   "fmt": {
+    "eur": "€10,000,000",
+    "compact": "€10m",
+    "local": "€10,000,000",
+    "localCompact": "€10m",
+    "rate": "4.50%",
+    "maturity": "31 Dec 2029",
+    "committed": "€10,000,000"
+   }
+  },
+  {
+   "id": "fin-02",
+   "label": "Equipment term loan",
+   "ref": "PMT-2024-117",
+   "entityId": "ent-dl",
+   "entity": "Lumenvale Logistique SAS",
+   "entityShort": "Lumenvale Logistique",
+   "country": "FR",
+   "countryName": "France",
+   "lender": "Banque Aurore",
+   "instrument": "Senior term loan",
+   "instrumentClass": "Senior debt",
+   "currency": "EUR",
+   "local": 212500000,
+   "eur": 212500000,
+   "committedEur": 212500000,
+   "undrawnEur": 0,
+   "rateBp": 320,
+   "rateText": "Fixed 3.20%",
+   "maturity": "2030-12-31",
+   "months": 51,
+   "amortization": "Quarterly instalments of €125,000",
+   "documentIds": [
+    "doc-04"
+   ],
+   "fmt": {
+    "eur": "€2,125,000",
+    "compact": "€2.13m",
+    "local": "€2,125,000",
+    "localCompact": "€2.13m",
+    "rate": "3.20%",
+    "maturity": "31 Dec 2030",
+    "committed": "€2,125,000"
+   }
+  },
+  {
+   "id": "fin-03",
+   "label": "Logistics platform lease",
+   "ref": "CB-2021-044",
+   "entityId": "ent-dl",
+   "entity": "Lumenvale Logistique SAS",
+   "entityShort": "Lumenvale Logistique",
+   "country": "FR",
+   "countryName": "France",
+   "lender": "Finance Bail Exemple",
+   "instrument": "Finance lease",
+   "instrumentClass": "Leasing",
+   "currency": "EUR",
+   "local": 137500000,
+   "eur": 137500000,
+   "committedEur": 137500000,
+   "undrawnEur": 0,
+   "rateBp": 240,
+   "rateText": "Fixed 2.40%",
+   "maturity": "2031-03-31",
+   "months": 54,
+   "amortization": "Rentals per lessor schedule (not loaded in the demo)",
+   "documentIds": [
+    "doc-05"
+   ],
+   "fmt": {
+    "eur": "€1,375,000",
+    "compact": "€1.38m",
+    "local": "€1,375,000",
+    "localCompact": "€1.38m",
+    "rate": "2.40%",
+    "maturity": "31 Mar 2031",
+    "committed": "€1,375,000"
+   }
+  },
+  {
+   "id": "fin-04",
+   "label": "Revolving credit facility",
+   "ref": "RCF-2024-009",
+   "entityId": "ent-ds",
+   "entity": "Lumenvale Services SAS",
+   "entityShort": "Lumenvale Services",
+   "country": "FR",
+   "countryName": "France",
+   "lender": "Banque Méridienne",
+   "instrument": "Revolving credit facility",
+   "instrumentClass": "Revolving facilities",
+   "currency": "EUR",
+   "local": 50000000,
+   "eur": 50000000,
+   "committedEur": 200000000,
+   "undrawnEur": 150000000,
+   "rateBp": 340,
+   "rateText": "1-month Euribor + 1.50%",
+   "maturity": "2027-06-30",
+   "months": 9,
+   "amortization": "Drawings repayable at the borrower's discretion; all amounts due at maturity",
+   "documentIds": [
+    "doc-06",
+    "doc-07"
+   ],
+   "fmt": {
+    "eur": "€500,000",
+    "compact": "€500k",
+    "local": "€500,000",
+    "localCompact": "€500k",
+    "rate": "3.40%",
+    "maturity": "30 Jun 2027",
+    "committed": "€2,000,000"
+   }
+  },
+  {
+   "id": "fin-05",
+   "label": "Plant term loan",
+   "ref": "BB-2023-3381",
+   "entityId": "ent-de",
+   "entity": "Lumenvale Deutschland GmbH",
+   "entityShort": "Lumenvale Deutschland",
+   "country": "DE",
+   "countryName": "Germany",
+   "lender": "Beispielbank AG",
+   "instrument": "Senior term loan",
+   "instrumentClass": "Senior debt",
+   "currency": "EUR",
+   "local": 320000000,
+   "eur": 320000000,
+   "committedEur": 320000000,
+   "undrawnEur": 0,
+   "rateBp": 415,
+   "rateText": "6-month Euribor + 2.10%",
+   "maturity": "2030-06-30",
+   "months": 45,
+   "amortization": "Semi-annual instalments of €200,000; balance at maturity",
+   "documentIds": [
+    "doc-10",
+    "doc-12"
+   ],
+   "fmt": {
+    "eur": "€3,200,000",
+    "compact": "€3.2m",
+    "local": "€3,200,000",
+    "localCompact": "€3.2m",
+    "rate": "4.15%",
+    "maturity": "30 Jun 2030",
+    "committed": "€3,200,000"
+   }
+  },
+  {
+   "id": "fin-06",
+   "label": "Distribution centre term loan",
+   "ref": "KMB-UK-2024-077",
+   "entityId": "ent-uk",
+   "entity": "Lumenvale UK Ltd",
+   "entityShort": "Lumenvale UK",
+   "country": "GB",
+   "countryName": "United Kingdom",
+   "lender": "Kingsmere Bank plc",
+   "instrument": "Senior term loan",
+   "instrumentClass": "Senior debt",
+   "currency": "GBP",
+   "local": 120000000,
+   "eur": 138600000,
+   "committedEur": 138600000,
+   "undrawnEur": 0,
+   "rateBp": 650,
+   "rateText": "SONIA (compounded) + 2.75%",
+   "maturity": "2029-03-31",
+   "months": 30,
+   "amortization": "Quarterly instalments of £50,000; balance at maturity",
+   "documentIds": [
+    "doc-11",
+    "doc-13"
+   ],
+   "fmt": {
+    "eur": "€1,386,000",
+    "compact": "€1.39m",
+    "local": "£1,200,000",
+    "localCompact": "£1.2m",
+    "rate": "6.50%",
+    "maturity": "31 Mar 2029",
+    "committed": "€1,386,000"
+   }
+  }
+ ],
+ "groups": {
+  "country": [
+   {
+    "key": "France",
+    "outstanding": 1400000000,
+    "committed": 1550000000,
+    "undrawn": 150000000,
+    "count": 4,
+    "share": 0.7532551382761218,
+    "fmt": {
+     "outstanding": "€14m",
+     "share0": "75%",
+     "share1": "75.3%"
+    }
+   },
+   {
+    "key": "Germany",
+    "outstanding": 320000000,
+    "committed": 320000000,
+    "undrawn": 0,
+    "count": 1,
+    "share": 0.17217260303454213,
+    "fmt": {
+     "outstanding": "€3.2m",
+     "share0": "17%",
+     "share1": "17.2%"
+    }
+   },
+   {
+    "key": "United Kingdom",
+    "outstanding": 138600000,
+    "committed": 138600000,
+    "undrawn": 0,
+    "count": 1,
+    "share": 0.07457225868933606,
+    "fmt": {
+     "outstanding": "€1.39m",
+     "share0": "7%",
+     "share1": "7.5%"
+    }
+   }
+  ],
+  "entity": [
+   {
+    "key": "Lumenvale Industrie SAS",
+    "outstanding": 1000000000,
+    "committed": 1000000000,
+    "undrawn": 0,
+    "count": 1,
+    "share": 0.5380393844829442,
+    "fmt": {
+     "outstanding": "€10m",
+     "share0": "54%",
+     "share1": "53.8%"
+    }
+   },
+   {
+    "key": "Lumenvale Logistique SAS",
+    "outstanding": 350000000,
+    "committed": 350000000,
+    "undrawn": 0,
+    "count": 2,
+    "share": 0.18831378456903045,
+    "fmt": {
+     "outstanding": "€3.5m",
+     "share0": "19%",
+     "share1": "18.8%"
+    }
+   },
+   {
+    "key": "Lumenvale Deutschland GmbH",
+    "outstanding": 320000000,
+    "committed": 320000000,
+    "undrawn": 0,
+    "count": 1,
+    "share": 0.17217260303454213,
+    "fmt": {
+     "outstanding": "€3.2m",
+     "share0": "17%",
+     "share1": "17.2%"
+    }
+   },
+   {
+    "key": "Lumenvale UK Ltd",
+    "outstanding": 138600000,
+    "committed": 138600000,
+    "undrawn": 0,
+    "count": 1,
+    "share": 0.07457225868933606,
+    "fmt": {
+     "outstanding": "€1.39m",
+     "share0": "7%",
+     "share1": "7.5%"
+    }
+   },
+   {
+    "key": "Lumenvale Services SAS",
+    "outstanding": 50000000,
+    "committed": 200000000,
+    "undrawn": 150000000,
+    "count": 1,
+    "share": 0.02690196922414721,
+    "fmt": {
+     "outstanding": "€500k",
+     "share0": "3%",
+     "share1": "2.7%"
+    }
+   }
+  ],
+  "provider": [
+   {
+    "key": "Banque Exemple",
+    "outstanding": 1000000000,
+    "committed": 1000000000,
+    "undrawn": 0,
+    "count": 1,
+    "share": 0.5380393844829442,
+    "fmt": {
+     "outstanding": "€10m",
+     "share0": "54%",
+     "share1": "53.8%"
+    }
+   },
+   {
+    "key": "Beispielbank AG",
+    "outstanding": 320000000,
+    "committed": 320000000,
+    "undrawn": 0,
+    "count": 1,
+    "share": 0.17217260303454213,
+    "fmt": {
+     "outstanding": "€3.2m",
+     "share0": "17%",
+     "share1": "17.2%"
+    }
+   },
+   {
+    "key": "Banque Aurore",
+    "outstanding": 212500000,
+    "committed": 212500000,
+    "undrawn": 0,
+    "count": 1,
+    "share": 0.11433336920262563,
+    "fmt": {
+     "outstanding": "€2.13m",
+     "share0": "11%",
+     "share1": "11.4%"
+    }
+   },
+   {
+    "key": "Kingsmere Bank plc",
+    "outstanding": 138600000,
+    "committed": 138600000,
+    "undrawn": 0,
+    "count": 1,
+    "share": 0.07457225868933606,
+    "fmt": {
+     "outstanding": "€1.39m",
+     "share0": "7%",
+     "share1": "7.5%"
+    }
+   },
+   {
+    "key": "Finance Bail Exemple",
+    "outstanding": 137500000,
+    "committed": 137500000,
+    "undrawn": 0,
+    "count": 1,
+    "share": 0.07398041536640482,
+    "fmt": {
+     "outstanding": "€1.38m",
+     "share0": "7%",
+     "share1": "7.4%"
+    }
+   },
+   {
+    "key": "Banque Méridienne",
+    "outstanding": 50000000,
+    "committed": 200000000,
+    "undrawn": 150000000,
+    "count": 1,
+    "share": 0.02690196922414721,
+    "fmt": {
+     "outstanding": "€500k",
+     "share0": "3%",
+     "share1": "2.7%"
+    }
+   }
+  ],
+  "instrument": [
+   {
+    "key": "Senior debt",
+    "outstanding": 1671100000,
+    "committed": 1671100000,
+    "undrawn": 0,
+    "count": 4,
+    "share": 0.899117615409448,
+    "fmt": {
+     "outstanding": "€16.7m",
+     "share0": "90%",
+     "share1": "89.9%"
+    }
+   },
+   {
+    "key": "Leasing",
+    "outstanding": 137500000,
+    "committed": 137500000,
+    "undrawn": 0,
+    "count": 1,
+    "share": 0.07398041536640482,
+    "fmt": {
+     "outstanding": "€1.38m",
+     "share0": "7%",
+     "share1": "7.4%"
+    }
+   },
+   {
+    "key": "Revolving facilities",
+    "outstanding": 50000000,
+    "committed": 200000000,
+    "undrawn": 150000000,
+    "count": 1,
+    "share": 0.02690196922414721,
+    "fmt": {
+     "outstanding": "€500k",
+     "share0": "3%",
+     "share1": "2.7%"
+    }
+   }
+  ],
+  "currency": [
+   {
+    "key": "EUR",
+    "outstanding": 1720000000,
+    "committed": 1870000000,
+    "undrawn": 150000000,
+    "count": 5,
+    "share": 0.925427741310664,
+    "fmt": {
+     "outstanding": "€17.2m",
+     "share0": "93%",
+     "share1": "92.5%"
+    }
+   },
+   {
+    "key": "GBP",
+    "outstanding": 138600000,
+    "committed": 138600000,
+    "undrawn": 0,
+    "count": 1,
+    "share": 0.07457225868933606,
+    "fmt": {
+     "outstanding": "€1.39m",
+     "share0": "7%",
+     "share1": "7.5%"
+    }
+   }
+  ],
+  "maturity": [
+   {
+    "key": "Within 1 year",
+    "outstanding": 50000000,
+    "committed": 200000000,
+    "undrawn": 150000000,
+    "count": 1,
+    "share": 0.02690196922414721,
+    "fmt": {
+     "outstanding": "€500k",
+     "share0": "3%",
+     "share1": "2.7%"
+    }
+   },
+   {
+    "key": "1–3 years",
+    "outstanding": 138600000,
+    "committed": 138600000,
+    "undrawn": 0,
+    "count": 1,
+    "share": 0.07457225868933606,
+    "fmt": {
+     "outstanding": "€1.39m",
+     "share0": "7%",
+     "share1": "7.5%"
+    }
+   },
+   {
+    "key": "3–5 years",
+    "outstanding": 1670000000,
+    "committed": 1670000000,
+    "undrawn": 0,
+    "count": 4,
+    "share": 0.8985257720865167,
+    "fmt": {
+     "outstanding": "€16.7m",
+     "share0": "90%",
+     "share1": "89.9%"
+    }
+   }
+  ]
+ },
+ "profile": [
+  {
+   "year": "2027",
+   "eur": 50000000,
+   "fmt": "€500k"
+  },
+  {
+   "year": "2029",
+   "eur": 1138600000,
+   "fmt": "€11.4m"
+  },
+  {
+   "year": "2030",
+   "eur": 532500000,
+   "fmt": "€5.33m"
+  },
+  {
+   "year": "2031",
+   "eur": 137500000,
+   "fmt": "€1.38m"
+  }
+ ],
+ "kpis": {
+  "outstanding": {
+   "value": 1858600000,
+   "fmt": "€18.6m"
+  },
+  "cash": {
+   "value": 318920000,
+   "fmt": "€3.19m"
+  },
+  "undrawn": {
+   "value": 150000000,
+   "fmt": "€1.5m"
+  },
+  "liquidity": {
+   "value": 468920000,
+   "fmt": "€4.69m"
+  },
+  "netDebt": {
+   "value": 1539680000,
+   "fmt": "€15.4m"
+  },
+  "ebitda": {
+   "value": 626060000,
+   "fmt": "€6.26m"
+  },
+  "equity": {
+   "value": 1979740000,
+   "fmt": "€19.8m"
+  },
+  "interest": {
+   "value": 79089000,
+   "fmt": "€791k"
+  },
+  "due12": {
+   "value": 163100000,
+   "fmt": "€1.63m"
+  },
+  "committed": {
+   "value": 2008600000,
+   "fmt": "€20.1m"
+  },
+  "war": {
+   "value": 425.5299687937157,
+   "fmt": "4.26%"
+  },
+  "netLeverage": {
+   "value": 2.4593169983707632,
+   "fmt": "2.46x"
+  },
+  "netDebtToEquity": {
+   "value": 0.7777182862396073,
+   "fmt": "0.78x"
+  },
+  "exact": {
+   "outstanding": "€18,586,000",
+   "cash": "€3,189,200",
+   "undrawn": "€1,500,000",
+   "equity": "€19,797,400",
+   "committed": "€20,086,000"
+  }
+ },
+ "equityByEntity": [
+  {
+   "id": "ent-di",
+   "name": "Lumenvale Industrie SAS",
+   "eur": 1200000000,
+   "fmt": "€12,000,000"
+  },
+  {
+   "id": "ent-dl",
+   "name": "Lumenvale Logistique SAS",
+   "eur": 190000000,
+   "fmt": "€1,900,000"
+  },
+  {
+   "id": "ent-ds",
+   "name": "Lumenvale Services SAS",
+   "eur": 105000000,
+   "fmt": "€1,050,000"
+  },
+  {
+   "id": "ent-de",
+   "name": "Lumenvale Deutschland GmbH",
+   "eur": 360000000,
+   "fmt": "€3,600,000"
+  },
+  {
+   "id": "ent-uk",
+   "name": "Lumenvale UK Ltd",
+   "eur": 124740000,
+   "fmt": "€1,247,400"
+  }
+ ],
+ "ebitdaByEntity": [
+  {
+   "id": "ent-di",
+   "name": "Lumenvale Industrie SAS",
+   "eur": 285000000,
+   "fmt": "€2.85m"
+  },
+  {
+   "id": "ent-dl",
+   "name": "Lumenvale Logistique SAS",
+   "eur": 88000000,
+   "fmt": "€880k"
+  },
+  {
+   "id": "ent-ds",
+   "name": "Lumenvale Services SAS",
+   "eur": 48000000,
+   "fmt": "€480k"
+  },
+  {
+   "id": "ent-de",
+   "name": "Lumenvale Deutschland GmbH",
+   "eur": 145000000,
+   "fmt": "€1.45m"
+  },
+  {
+   "id": "ent-uk",
+   "name": "Lumenvale UK Ltd",
+   "eur": 60060000,
+   "fmt": "€601k"
+  }
+ ],
+ "covenant": {
+  "id": "cov-lev",
+  "label": "Leverage — Net financial indebtedness / EBITDA",
+  "short": "Leverage",
+  "sourceNote": "Clause 19.2, page 47",
+  "value": "3.1333333333",
+  "threshold": "3.50",
+  "headroom": 0.3666666666666667,
+  "headroomPct": 0.10476190476190476,
+  "status": "WATCH",
+  "numerator": 940000000,
+  "denominator": 300000000,
+  "deltaNumerator": 110000000,
+  "deltaDenominator": 31428571,
+  "comparison": "LTE",
+  "nextStep": {
+   "threshold": "3.25",
+   "from": "2027-07-01",
+   "fmtFrom": "1 Jul 2027"
+  },
+  "thresholds": [
+   {
+    "from": "2026-01-01",
+    "fmtFrom": "1 Jan 2026",
+    "threshold": "3.50",
+    "fmt": "≤ 3.50x",
+    "current": true
+   },
+   {
+    "from": "2027-07-01",
+    "fmtFrom": "1 Jul 2027",
+    "threshold": "3.25",
+    "fmt": "≤ 3.25x",
+    "current": false
+   }
+  ],
+  "numeratorLabel": "Net financial indebtedness",
+  "denominatorLabel": "Contractual EBITDA",
+  "deltaLabels": {
+   "numerator": "Additional net debt absorbable",
+   "denominator": "EBITDA decline absorbable"
+  },
+  "components": [
+   {
+    "id": "c-lev-n1",
+    "label": "Gross financial debt (Facility principal)",
+    "side": "NUMERATOR",
+    "sign": 1,
+    "clause": {
+     "article": "1.1",
+     "page": 12
+    }
+   },
+   {
+    "id": "c-lev-n2",
+    "label": "Cash of the Borrower",
+    "side": "NUMERATOR",
+    "sign": -1,
+    "clause": {
+     "article": "1.1",
+     "page": 12
+    }
+   },
+   {
+    "id": "c-lev-d1",
+    "label": "Accounting EBITDA, last twelve months",
+    "side": "DENOMINATOR",
+    "sign": 1,
+    "clause": {
+     "article": "1.1",
+     "page": 13
+    }
+   }
+  ],
+  "fmt": {
+   "value": "3.13x",
+   "value4": "3.1333x",
+   "threshold": "≤ 3.50x",
+   "headroomPct": "10.5%",
+   "numerator": "€9,400,000",
+   "denominator": "€3,000,000",
+   "deltaNumerator": "€1,100,000",
+   "deltaDenominator": "€314,286"
+  },
+  "history": [
+   {
+    "date": "2026-03-31",
+    "fmtDate": "31 Mar 2026",
+    "future": false,
+    "value": "2.7868852459",
+    "status": "COMPLIANT",
+    "headroomPct": 0.20374707259953162,
+    "saved": true,
+    "fmt": {
+     "value": "2.7869x",
+     "headroom": "20.4%"
+    }
+   },
+   {
+    "date": "2026-06-30",
+    "fmtDate": "30 Jun 2026",
+    "future": false,
+    "value": "2.9491525424",
+    "status": "COMPLIANT",
+    "headroomPct": 0.15738498789346247,
+    "saved": true,
+    "fmt": {
+     "value": "2.9492x",
+     "headroom": "15.7%"
+    }
+   },
+   {
+    "date": "2026-09-30",
+    "fmtDate": "30 Sep 2026",
+    "future": false,
+    "value": "3.1333333333",
+    "status": "WATCH",
+    "headroomPct": 0.10476190476190476,
+    "saved": false,
+    "fmt": {
+     "value": "3.1333x",
+     "headroom": "10.5%"
+    }
+   },
+   {
+    "date": "2026-12-31",
+    "fmtDate": "31 Dec 2026",
+    "future": true,
+    "value": null,
+    "status": "NOT_COMPUTABLE",
+    "headroomPct": null,
+    "saved": false,
+    "fmt": {
+     "value": "—",
+     "headroom": "—"
+    }
+   }
+  ],
+  "tightest": {
+   "label": "Leverage",
+   "entity": "Lumenvale Industrie SAS",
+   "status": "WATCH",
+   "headroomPct": 0.10476190476190476,
+   "fmt": "10.5%"
+  }
+ },
+ "scenarios": [
+  {
+   "id": "sc-base",
+   "name": "Base case",
+   "type": "BASE",
+   "typeLabel": "Base case",
+   "description": "Current capital structure rolled forward: scheduled repayments and maturities only, no new financing.",
+   "entity": null,
+   "horizon": "2027-09-30",
+   "fmtHorizon": "30 Sep 2027",
+   "inputs": {
+    "deal": "0.00",
+    "incremental_ebitda": "0.00",
+    "new_borrowing": "0.00",
+    "cash_contribution": "0.00",
+    "new_rate_bp": 0,
+    "new_tenor_years": 5,
+    "new_rate_type": "FLOATING"
+   },
+   "start": {
+    "debt": 1858600000,
+    "cash": 318920000,
+    "undrawn": 150000000,
+    "liquidity": 468920000,
+    "interest": 79089000,
+    "ebitda": 626060000,
+    "netDebt": 1539680000,
+    "leverage": 2.4593169983707632,
+    "fmt": {
+     "debt": "€18,586,000",
+     "debtCompact": "€18.6m",
+     "cash": "€3,189,200",
+     "liquidity": "€4,689,200",
+     "liquidityCompact": "€4.69m",
+     "interest": "€790,890",
+     "ebitda": "€6,260,600",
+     "netDebt": "€15,396,800",
+     "leverage": "2.46x"
+    }
+   },
+   "end": {
+    "debt": 1695500000,
+    "cash": 155820000,
+    "undrawn": 0,
+    "liquidity": 155820000,
+    "interest": 72627500,
+    "ebitda": 626060000,
+    "netDebt": 1539680000,
+    "leverage": 2.4593169983707632,
+    "fmt": {
+     "debt": "€16,955,000",
+     "debtCompact": "€17m",
+     "cash": "€1,558,200",
+     "liquidity": "€1,558,200",
+     "liquidityCompact": "€1.56m",
+     "interest": "€726,275",
+     "ebitda": "€6,260,600",
+     "netDebt": "€15,396,800",
+     "leverage": "2.46x"
+    }
+   },
+   "sources": 0,
+   "uses": 0,
+   "covenants": [
+    {
+     "id": "cov-lev",
+     "label": "Leverage",
+     "value": 3.1333333333333333,
+     "currentValue": 3.1333333333,
+     "currentThreshold": "3.50",
+     "threshold": "3.25",
+     "comparison": "LTE",
+     "status": "CRITICAL",
+     "statusText": "critical headroom",
+     "headroomPct": 0.035897435897435895,
+     "fmt": {
+      "value": "3.13x",
+      "current": "3.13x",
+      "currentThreshold": "≤ 3.50x",
+      "threshold": "≤ 3.25x",
+      "headroom": "3.6%"
+     }
+    },
+    {
+     "id": "cov-gea",
+     "label": "Gearing",
+     "value": 0.7833333333333333,
+     "currentValue": 0.7833333333,
+     "currentThreshold": "1.00",
+     "threshold": "1.00",
+     "comparison": "LTE",
+     "status": "COMPLIANT",
+     "statusText": "compliant",
+     "headroomPct": 0.21666666666666667,
+     "fmt": {
+      "value": "0.78x",
+      "current": "0.78x",
+      "currentThreshold": "≤ 1.00x",
+      "threshold": "≤ 1.00x",
+      "headroom": "21.7%"
+     }
+    },
+    {
+     "id": "cov-icr",
+     "label": "Interest cover",
+     "value": 6.666666666666667,
+     "currentValue": 6.6666666667,
+     "currentThreshold": "4.00",
+     "threshold": "4.00",
+     "comparison": "GTE",
+     "status": "COMPLIANT",
+     "statusText": "compliant",
+     "headroomPct": 0.6666666666666666,
+     "fmt": {
+      "value": "6.67x",
+      "current": "6.67x",
+      "currentThreshold": "≥ 4.00x",
+      "threshold": "≥ 4.00x",
+      "headroom": "66.7%"
+     }
+    }
+   ],
+   "flags": [
+    {
+     "level": "WATCH",
+     "text": "Repayments and transaction flows within the horizon exceed cash on hand at Lumenvale Logistique (−€80k), Lumenvale Services (−€220k), before operating cash flow, which is not modelled."
+    },
+    {
+     "level": "WATCH",
+     "text": "Revolving credit facility (Lumenvale Services) matures on 30 Jun 2027 within the horizon: liquidity falls by €2m unless refinanced."
+    },
+    {
+     "level": "CRITICAL",
+     "text": "Projected leverage of 3.13x against ≤ 3.25x at 30 Sep 2027 (critical headroom)."
+    }
+   ],
+   "events": [
+    {
+     "date": "2027-06-30",
+     "fmtDate": "30 Jun 2027",
+     "label": "Revolving credit facility matures — €500,000 repaid from cash, €2m commitment lapses"
+    }
+   ],
+   "profileStart": [
+    {
+     "year": "2027",
+     "eur": 50000000,
+     "fmt": "€500k"
+    },
+    {
+     "year": "2029",
+     "eur": 1138600000,
+     "fmt": "€11.4m"
+    },
+    {
+     "year": "2030",
+     "eur": 532500000,
+     "fmt": "€5.33m"
+    },
+    {
+     "year": "2031",
+     "eur": 137500000,
+     "fmt": "€1.38m"
+    }
+   ],
+   "profileEnd": [
+    {
+     "year": "2029",
+     "eur": 1115500000,
+     "fmt": "€11.2m"
+    },
+    {
+     "year": "2030",
+     "eur": 442500000,
+     "fmt": "€4.42m"
+    },
+    {
+     "year": "2031",
+     "eur": 137500000,
+     "fmt": "€1.38m"
+    }
+   ]
+  },
+  {
+   "id": "sc-acq",
+   "name": "Project Falcon acquisition",
+   "type": "ACQUISITION",
+   "typeLabel": "Acquisition",
+   "description": "Lumenvale Deutschland acquires the Falcon target, funded by new acquisition debt and its own cash.",
+   "entity": "Lumenvale Deutschland GmbH",
+   "horizon": "2027-09-30",
+   "fmtHorizon": "30 Sep 2027",
+   "inputs": {
+    "deal": "7500000.00",
+    "incremental_ebitda": "1200000.00",
+    "new_borrowing": "6500000.00",
+    "cash_contribution": "1000000.00",
+    "new_rate_bp": 750,
+    "new_tenor_years": 6,
+    "new_rate_type": "FLOATING"
+   },
+   "start": {
+    "debt": 1858600000,
+    "cash": 318920000,
+    "undrawn": 150000000,
+    "liquidity": 468920000,
+    "interest": 79089000,
+    "ebitda": 626060000,
+    "netDebt": 1539680000,
+    "leverage": 2.4593169983707632,
+    "fmt": {
+     "debt": "€18,586,000",
+     "debtCompact": "€18.6m",
+     "cash": "€3,189,200",
+     "liquidity": "€4,689,200",
+     "liquidityCompact": "€4.69m",
+     "interest": "€790,890",
+     "ebitda": "€6,260,600",
+     "netDebt": "€15,396,800",
+     "leverage": "2.46x"
+    }
+   },
+   "end": {
+    "debt": 2345500000,
+    "cash": 55820000,
+    "undrawn": 0,
+    "liquidity": 55820000,
+    "interest": 121377500,
+    "ebitda": 746060000,
+    "netDebt": 2289680000,
+    "leverage": 3.0690293005924456,
+    "fmt": {
+     "debt": "€23,455,000",
+     "debtCompact": "€23.5m",
+     "cash": "€558,200",
+     "liquidity": "€558,200",
+     "liquidityCompact": "€558k",
+     "interest": "€1,213,775",
+     "ebitda": "€7,460,600",
+     "netDebt": "€22,896,800",
+     "leverage": "3.07x"
+    }
+   },
+   "sources": 750000000,
+   "uses": 750000000,
+   "covenants": [
+    {
+     "id": "cov-lev",
+     "label": "Leverage",
+     "value": 3.1333333333333333,
+     "currentValue": 3.1333333333,
+     "currentThreshold": "3.50",
+     "threshold": "3.25",
+     "comparison": "LTE",
+     "status": "CRITICAL",
+     "statusText": "critical headroom",
+     "headroomPct": 0.035897435897435895,
+     "fmt": {
+      "value": "3.13x",
+      "current": "3.13x",
+      "currentThreshold": "≤ 3.50x",
+      "threshold": "≤ 3.25x",
+      "headroom": "3.6%"
+     }
+    },
+    {
+     "id": "cov-gea",
+     "label": "Gearing",
+     "value": 0.7833333333333333,
+     "currentValue": 0.7833333333,
+     "currentThreshold": "1.00",
+     "threshold": "1.00",
+     "comparison": "LTE",
+     "status": "COMPLIANT",
+     "statusText": "compliant",
+     "headroomPct": 0.21666666666666667,
+     "fmt": {
+      "value": "0.78x",
+      "current": "0.78x",
+      "currentThreshold": "≤ 1.00x",
+      "threshold": "≤ 1.00x",
+      "headroom": "21.7%"
+     }
+    },
+    {
+     "id": "cov-icr",
+     "label": "Interest cover",
+     "value": 6.666666666666667,
+     "currentValue": 6.6666666667,
+     "currentThreshold": "4.00",
+     "threshold": "4.00",
+     "comparison": "GTE",
+     "status": "COMPLIANT",
+     "statusText": "compliant",
+     "headroomPct": 0.6666666666666666,
+     "fmt": {
+      "value": "6.67x",
+      "current": "6.67x",
+      "currentThreshold": "≥ 4.00x",
+      "threshold": "≥ 4.00x",
+      "headroom": "66.7%"
+     }
+    }
+   ],
+   "flags": [
+    {
+     "level": "WATCH",
+     "text": "Repayments and transaction flows within the horizon exceed cash on hand at Lumenvale Logistique (−€80k), Lumenvale Services (−€220k), Lumenvale Deutschland (−€250k), before operating cash flow, which is not modelled."
+    },
+    {
+     "level": "WATCH",
+     "text": "Revolving credit facility (Lumenvale Services) matures on 30 Jun 2027 within the horizon: liquidity falls by €2m unless refinanced."
+    },
+    {
+     "level": "CRITICAL",
+     "text": "Projected leverage of 3.13x against ≤ 3.25x at 30 Sep 2027 (critical headroom)."
+    }
+   ],
+   "events": [
+    {
+     "date": "2027-06-30",
+     "fmtDate": "30 Jun 2027",
+     "label": "Revolving credit facility matures — €500,000 repaid from cash, €2m commitment lapses"
+    }
+   ],
+   "profileStart": [
+    {
+     "year": "2027",
+     "eur": 50000000,
+     "fmt": "€500k"
+    },
+    {
+     "year": "2029",
+     "eur": 1138600000,
+     "fmt": "€11.4m"
+    },
+    {
+     "year": "2030",
+     "eur": 532500000,
+     "fmt": "€5.33m"
+    },
+    {
+     "year": "2031",
+     "eur": 137500000,
+     "fmt": "€1.38m"
+    }
+   ],
+   "profileEnd": [
+    {
+     "year": "2029",
+     "eur": 1115500000,
+     "fmt": "€11.2m"
+    },
+    {
+     "year": "2030",
+     "eur": 442500000,
+     "fmt": "€4.42m"
+    },
+    {
+     "year": "2031",
+     "eur": 137500000,
+     "fmt": "€1.38m"
+    },
+    {
+     "year": "2032",
+     "eur": 650000000,
+     "fmt": "€6.5m"
+    }
+   ]
+  },
+  {
+   "id": "sc-ref",
+   "name": "Revolving facility renewal",
+   "type": "REFINANCING",
+   "typeLabel": "Refinancing",
+   "description": "Replace the €2.0m revolving facility maturing in June 2027 with a €3.0m three-year facility.",
+   "entity": "Lumenvale Services SAS",
+   "horizon": "2027-09-30",
+   "fmtHorizon": "30 Sep 2027",
+   "inputs": {
+    "deal": "0.00",
+    "incremental_ebitda": "0.00",
+    "new_borrowing": "500000.00",
+    "cash_contribution": "0.00",
+    "new_rate_bp": 350,
+    "new_tenor_years": 3,
+    "new_rate_type": "FLOATING"
+   },
+   "start": {
+    "debt": 1858600000,
+    "cash": 318920000,
+    "undrawn": 150000000,
+    "liquidity": 468920000,
+    "interest": 79089000,
+    "ebitda": 626060000,
+    "netDebt": 1539680000,
+    "leverage": 2.4593169983707632,
+    "fmt": {
+     "debt": "€18,586,000",
+     "debtCompact": "€18.6m",
+     "cash": "€3,189,200",
+     "liquidity": "€4,689,200",
+     "liquidityCompact": "€4.69m",
+     "interest": "€790,890",
+     "ebitda": "€6,260,600",
+     "netDebt": "€15,396,800",
+     "leverage": "2.46x"
+    }
+   },
+   "end": {
+    "debt": 1745500000,
+    "cash": 205820000,
+    "undrawn": 250000000,
+    "liquidity": 455820000,
+    "interest": 74377500,
+    "ebitda": 626060000,
+    "netDebt": 1539680000,
+    "leverage": 2.4593169983707632,
+    "fmt": {
+     "debt": "€17,455,000",
+     "debtCompact": "€17.5m",
+     "cash": "€2,058,200",
+     "liquidity": "€4,558,200",
+     "liquidityCompact": "€4.56m",
+     "interest": "€743,775",
+     "ebitda": "€6,260,600",
+     "netDebt": "€15,396,800",
+     "leverage": "2.46x"
+    }
+   },
+   "sources": 50000000,
+   "uses": 50000000,
+   "covenants": [
+    {
+     "id": "cov-lev",
+     "label": "Leverage",
+     "value": 3.1333333333333333,
+     "currentValue": 3.1333333333,
+     "currentThreshold": "3.50",
+     "threshold": "3.25",
+     "comparison": "LTE",
+     "status": "CRITICAL",
+     "statusText": "critical headroom",
+     "headroomPct": 0.035897435897435895,
+     "fmt": {
+      "value": "3.13x",
+      "current": "3.13x",
+      "currentThreshold": "≤ 3.50x",
+      "threshold": "≤ 3.25x",
+      "headroom": "3.6%"
+     }
+    },
+    {
+     "id": "cov-gea",
+     "label": "Gearing",
+     "value": 0.7833333333333333,
+     "currentValue": 0.7833333333,
+     "currentThreshold": "1.00",
+     "threshold": "1.00",
+     "comparison": "LTE",
+     "status": "COMPLIANT",
+     "statusText": "compliant",
+     "headroomPct": 0.21666666666666667,
+     "fmt": {
+      "value": "0.78x",
+      "current": "0.78x",
+      "currentThreshold": "≤ 1.00x",
+      "threshold": "≤ 1.00x",
+      "headroom": "21.7%"
+     }
+    },
+    {
+     "id": "cov-icr",
+     "label": "Interest cover",
+     "value": 6.666666666666667,
+     "currentValue": 6.6666666667,
+     "currentThreshold": "4.00",
+     "threshold": "4.00",
+     "comparison": "GTE",
+     "status": "COMPLIANT",
+     "statusText": "compliant",
+     "headroomPct": 0.6666666666666666,
+     "fmt": {
+      "value": "6.67x",
+      "current": "6.67x",
+      "currentThreshold": "≥ 4.00x",
+      "threshold": "≥ 4.00x",
+      "headroom": "66.7%"
+     }
+    }
+   ],
+   "flags": [
+    {
+     "level": "WATCH",
+     "text": "Repayments and transaction flows within the horizon exceed cash on hand at Lumenvale Logistique (−€80k), before operating cash flow, which is not modelled."
+    },
+    {
+     "level": "CRITICAL",
+     "text": "Projected leverage of 3.13x against ≤ 3.25x at 30 Sep 2027 (critical headroom)."
+    }
+   ],
+   "events": [
+    {
+     "date": "2026-09-30",
+     "fmtDate": "30 Sep 2026",
+     "label": "Revolving credit facility refinanced (€500,000)"
+    }
+   ],
+   "profileStart": [
+    {
+     "year": "2027",
+     "eur": 50000000,
+     "fmt": "€500k"
+    },
+    {
+     "year": "2029",
+     "eur": 1138600000,
+     "fmt": "€11.4m"
+    },
+    {
+     "year": "2030",
+     "eur": 532500000,
+     "fmt": "€5.33m"
+    },
+    {
+     "year": "2031",
+     "eur": 137500000,
+     "fmt": "€1.38m"
+    }
+   ],
+   "profileEnd": [
+    {
+     "year": "2029",
+     "eur": 1165500000,
+     "fmt": "€11.7m"
+    },
+    {
+     "year": "2030",
+     "eur": 442500000,
+     "fmt": "€4.42m"
+    },
+    {
+     "year": "2031",
+     "eur": 137500000,
+     "fmt": "€1.38m"
+    }
+   ]
+  },
+  {
+   "id": "sc-inv",
+   "name": "Warehouse automation",
+   "type": "INVESTMENT",
+   "typeLabel": "Investment",
+   "description": "Automated storage system at the Lille platform financed by equipment debt and own cash.",
+   "entity": "Lumenvale Logistique SAS",
+   "horizon": "2027-09-30",
+   "fmtHorizon": "30 Sep 2027",
+   "inputs": {
+    "deal": "2200000.00",
+    "incremental_ebitda": "250000.00",
+    "new_borrowing": "1900000.00",
+    "cash_contribution": "300000.00",
+    "new_rate_bp": 410,
+    "new_tenor_years": 7,
+    "new_rate_type": "FIXED"
+   },
+   "start": {
+    "debt": 1858600000,
+    "cash": 318920000,
+    "undrawn": 150000000,
+    "liquidity": 468920000,
+    "interest": 79089000,
+    "ebitda": 626060000,
+    "netDebt": 1539680000,
+    "leverage": 2.4593169983707632,
+    "fmt": {
+     "debt": "€18,586,000",
+     "debtCompact": "€18.6m",
+     "cash": "€3,189,200",
+     "liquidity": "€4,689,200",
+     "liquidityCompact": "€4.69m",
+     "interest": "€790,890",
+     "ebitda": "€6,260,600",
+     "netDebt": "€15,396,800",
+     "leverage": "2.46x"
+    }
+   },
+   "end": {
+    "debt": 1885500000,
+    "cash": 125820000,
+    "undrawn": 0,
+    "liquidity": 125820000,
+    "interest": 80417500,
+    "ebitda": 651060000,
+    "netDebt": 1759680000,
+    "leverage": 2.7027923693668785,
+    "fmt": {
+     "debt": "€18,855,000",
+     "debtCompact": "€18.9m",
+     "cash": "€1,258,200",
+     "liquidity": "€1,258,200",
+     "liquidityCompact": "€1.26m",
+     "interest": "€804,175",
+     "ebitda": "€6,510,600",
+     "netDebt": "€17,596,800",
+     "leverage": "2.70x"
+    }
+   },
+   "sources": 220000000,
+   "uses": 220000000,
+   "covenants": [
+    {
+     "id": "cov-lev",
+     "label": "Leverage",
+     "value": 3.1333333333333333,
+     "currentValue": 3.1333333333,
+     "currentThreshold": "3.50",
+     "threshold": "3.25",
+     "comparison": "LTE",
+     "status": "CRITICAL",
+     "statusText": "critical headroom",
+     "headroomPct": 0.035897435897435895,
+     "fmt": {
+      "value": "3.13x",
+      "current": "3.13x",
+      "currentThreshold": "≤ 3.50x",
+      "threshold": "≤ 3.25x",
+      "headroom": "3.6%"
+     }
+    },
+    {
+     "id": "cov-gea",
+     "label": "Gearing",
+     "value": 0.7833333333333333,
+     "currentValue": 0.7833333333,
+     "currentThreshold": "1.00",
+     "threshold": "1.00",
+     "comparison": "LTE",
+     "status": "COMPLIANT",
+     "statusText": "compliant",
+     "headroomPct": 0.21666666666666667,
+     "fmt": {
+      "value": "0.78x",
+      "current": "0.78x",
+      "currentThreshold": "≤ 1.00x",
+      "threshold": "≤ 1.00x",
+      "headroom": "21.7%"
+     }
+    },
+    {
+     "id": "cov-icr",
+     "label": "Interest cover",
+     "value": 6.666666666666667,
+     "currentValue": 6.6666666667,
+     "currentThreshold": "4.00",
+     "threshold": "4.00",
+     "comparison": "GTE",
+     "status": "COMPLIANT",
+     "statusText": "compliant",
+     "headroomPct": 0.6666666666666666,
+     "fmt": {
+      "value": "6.67x",
+      "current": "6.67x",
+      "currentThreshold": "≥ 4.00x",
+      "threshold": "≥ 4.00x",
+      "headroom": "66.7%"
+     }
+    }
+   ],
+   "flags": [
+    {
+     "level": "WATCH",
+     "text": "Repayments and transaction flows within the horizon exceed cash on hand at Lumenvale Logistique (−€380k), Lumenvale Services (−€220k), before operating cash flow, which is not modelled."
+    },
+    {
+     "level": "WATCH",
+     "text": "Revolving credit facility (Lumenvale Services) matures on 30 Jun 2027 within the horizon: liquidity falls by €2m unless refinanced."
+    },
+    {
+     "level": "CRITICAL",
+     "text": "Projected leverage of 3.13x against ≤ 3.25x at 30 Sep 2027 (critical headroom)."
+    }
+   ],
+   "events": [
+    {
+     "date": "2027-06-30",
+     "fmtDate": "30 Jun 2027",
+     "label": "Revolving credit facility matures — €500,000 repaid from cash, €2m commitment lapses"
+    }
+   ],
+   "profileStart": [
+    {
+     "year": "2027",
+     "eur": 50000000,
+     "fmt": "€500k"
+    },
+    {
+     "year": "2029",
+     "eur": 1138600000,
+     "fmt": "€11.4m"
+    },
+    {
+     "year": "2030",
+     "eur": 532500000,
+     "fmt": "€5.33m"
+    },
+    {
+     "year": "2031",
+     "eur": 137500000,
+     "fmt": "€1.38m"
+    }
+   ],
+   "profileEnd": [
+    {
+     "year": "2029",
+     "eur": 1115500000,
+     "fmt": "€11.2m"
+    },
+    {
+     "year": "2030",
+     "eur": 442500000,
+     "fmt": "€4.42m"
+    },
+    {
+     "year": "2031",
+     "eur": 137500000,
+     "fmt": "€1.38m"
+    },
+    {
+     "year": "2033",
+     "eur": 190000000,
+     "fmt": "€1.9m"
+    }
+   ]
+  }
+ ],
+ "requests": [
+  {
+   "id": "req-acq",
+   "title": "Acquisition financing — Project Falcon",
+   "entity": "Lumenvale Deutschland GmbH",
+   "purpose": "Acquisition",
+   "amount": "6500000.00",
+   "currency": "EUR",
+   "amountEur": 650000000,
+   "fmt": {
+    "amount": "€6,500,000",
+    "compact": "€6.5m",
+    "targetDate": "31 Mar 2027"
+   },
+   "instrument": "Acquisition finance",
+   "tenor": 6,
+   "stage": "OFFERS",
+   "stageLabel": "Indicative terms received",
+   "stageIndex": 4,
+   "nextAction": "Compare the three indicative proposals and select one lender for negotiation",
+   "rationale": "Acquire a German precision-components company (Project Falcon) to add machining capacity and customers in southern Germany. Enterprise value of €7.5m including costs, funded by €6.5m of new debt and €1.0m of Lumenvale Deutschland's cash.",
+   "scenarioId": "sc-acq",
+   "prep": {
+    "done": 7,
+    "total": 8,
+    "review": 1,
+    "missing": 0,
+    "pct": 88
+   },
+   "checklist": [
+    {
+     "key": "fs",
+     "label": "Latest financial statements",
+     "hint": "Audited statutory accounts of the borrower and group entities",
+     "status": "AVAILABLE",
+     "statusLabel": "Available"
+    },
+    {
+     "key": "mgmt",
+     "label": "Recent management accounts",
+     "hint": "Latest quarterly management reporting pack",
+     "status": "AVAILABLE",
+     "statusLabel": "Available"
+    },
+    {
+     "key": "debt",
+     "label": "Debt schedule",
+     "hint": "Facilities, outstanding amounts, maturities and terms",
+     "status": "LINKED",
+     "statusLabel": "Linked to existing data"
+    },
+    {
+     "key": "agreements",
+     "label": "Existing facility agreements",
+     "hint": "Agreements that may restrict new debt or need consent",
+     "status": "LINKED",
+     "statusLabel": "Linked to existing data"
+    },
+    {
+     "key": "covenants",
+     "label": "Covenant history",
+     "hint": "Saved covenant calculations and current headroom",
+     "status": "LINKED",
+     "statusLabel": "Linked to existing data"
+    },
+    {
+     "key": "forecast",
+     "label": "Forecast",
+     "hint": "Scenario showing the impact of the financing",
+     "status": "LINKED",
+     "statusLabel": "Linked to existing data"
+    },
+    {
+     "key": "uop",
+     "label": "Use-of-proceeds summary",
+     "hint": "What the funds will be used for, with amounts",
+     "status": "REVIEW",
+     "statusLabel": "Needs review"
+    },
+    {
+     "key": "transaction",
+     "label": "Relevant transaction documents",
+     "hint": "Offer letter, quotations or other deal documents",
+     "status": "AVAILABLE",
+     "statusLabel": "Available"
+    }
+   ],
+   "shortlist": [
+    "prv-bsp",
+    "prv-cvn",
+    "prv-exe"
+   ]
+  },
+  {
+   "id": "req-rcf",
+   "title": "Refinancing — revolving credit facility (Lumenvale Services)",
+   "entity": "Lumenvale Services SAS",
+   "purpose": "Refinancing",
+   "amount": "3000000.00",
+   "currency": "EUR",
+   "amountEur": 300000000,
+   "fmt": {
+    "amount": "€3,000,000",
+    "compact": "€3m",
+    "targetDate": "31 Mar 2027"
+   },
+   "instrument": "Revolving credit facility",
+   "tenor": 3,
+   "stage": "SHORTLISTED",
+   "stageLabel": "Providers shortlisted",
+   "stageIndex": 3,
+   "nextAction": "Prepare the information package for the two shortlisted providers",
+   "rationale": "Replace the €2.0m revolving facility maturing on 30 Jun 2027 with a €3.0m three-year facility to secure liquidity for the services business and remove the maturity concentration.",
+   "scenarioId": "sc-ref",
+   "prep": {
+    "done": 6,
+    "total": 8,
+    "review": 0,
+    "missing": 2,
+    "pct": 75
+   },
+   "checklist": [
+    {
+     "key": "fs",
+     "label": "Latest financial statements",
+     "hint": "Audited statutory accounts of the borrower and group entities",
+     "status": "AVAILABLE",
+     "statusLabel": "Available"
+    },
+    {
+     "key": "mgmt",
+     "label": "Recent management accounts",
+     "hint": "Latest quarterly management reporting pack",
+     "status": "AVAILABLE",
+     "statusLabel": "Available"
+    },
+    {
+     "key": "debt",
+     "label": "Debt schedule",
+     "hint": "Facilities, outstanding amounts, maturities and terms",
+     "status": "LINKED",
+     "statusLabel": "Linked to existing data"
+    },
+    {
+     "key": "agreements",
+     "label": "Existing facility agreements",
+     "hint": "Agreements that may restrict new debt or need consent",
+     "status": "LINKED",
+     "statusLabel": "Linked to existing data"
+    },
+    {
+     "key": "covenants",
+     "label": "Covenant history",
+     "hint": "Saved covenant calculations and current headroom",
+     "status": "MISSING",
+     "statusLabel": "Missing"
+    },
+    {
+     "key": "forecast",
+     "label": "Forecast",
+     "hint": "Scenario showing the impact of the financing",
+     "status": "LINKED",
+     "statusLabel": "Linked to existing data"
+    },
+    {
+     "key": "uop",
+     "label": "Use-of-proceeds summary",
+     "hint": "What the funds will be used for, with amounts",
+     "status": "AVAILABLE",
+     "statusLabel": "Available"
+    },
+    {
+     "key": "transaction",
+     "label": "Relevant transaction documents",
+     "hint": "Offer letter, quotations or other deal documents",
+     "status": "MISSING",
+     "statusLabel": "Missing"
+    }
+   ],
+   "shortlist": [
+    "prv-mer",
+    "prv-ard"
+   ]
+  },
+  {
+   "id": "req-capex",
+   "title": "Equipment financing — warehouse automation",
+   "entity": "Lumenvale Logistique SAS",
+   "purpose": "Investment / equipment",
+   "amount": "1900000.00",
+   "currency": "EUR",
+   "amountEur": 190000000,
+   "fmt": {
+    "amount": "€1,900,000",
+    "compact": "€1.9m",
+    "targetDate": "31 Jan 2027"
+   },
+   "instrument": "Asset and equipment finance",
+   "tenor": 7,
+   "stage": "PREPARATION",
+   "stageLabel": "In preparation",
+   "stageIndex": 1,
+   "nextAction": "Obtain the final supplier quotation",
+   "rationale": "Finance an automated storage and picking system at the Lille platform (draft quotation €2.2m), with €0.3m from Lumenvale Logistique's own cash.",
+   "scenarioId": "sc-inv",
+   "prep": {
+    "done": 4,
+    "total": 8,
+    "review": 2,
+    "missing": 2,
+    "pct": 50
+   },
+   "checklist": [
+    {
+     "key": "fs",
+     "label": "Latest financial statements",
+     "hint": "Audited statutory accounts of the borrower and group entities",
+     "status": "AVAILABLE",
+     "statusLabel": "Available"
+    },
+    {
+     "key": "mgmt",
+     "label": "Recent management accounts",
+     "hint": "Latest quarterly management reporting pack",
+     "status": "AVAILABLE",
+     "statusLabel": "Available"
+    },
+    {
+     "key": "debt",
+     "label": "Debt schedule",
+     "hint": "Facilities, outstanding amounts, maturities and terms",
+     "status": "LINKED",
+     "statusLabel": "Linked to existing data"
+    },
+    {
+     "key": "agreements",
+     "label": "Existing facility agreements",
+     "hint": "Agreements that may restrict new debt or need consent",
+     "status": "REVIEW",
+     "statusLabel": "Needs review"
+    },
+    {
+     "key": "covenants",
+     "label": "Covenant history",
+     "hint": "Saved covenant calculations and current headroom",
+     "status": "MISSING",
+     "statusLabel": "Missing"
+    },
+    {
+     "key": "forecast",
+     "label": "Forecast",
+     "hint": "Scenario showing the impact of the financing",
+     "status": "LINKED",
+     "statusLabel": "Linked to existing data"
+    },
+    {
+     "key": "uop",
+     "label": "Use-of-proceeds summary",
+     "hint": "What the funds will be used for, with amounts",
+     "status": "MISSING",
+     "statusLabel": "Missing"
+    },
+    {
+     "key": "transaction",
+     "label": "Relevant transaction documents",
+     "hint": "Offer letter, quotations or other deal documents",
+     "status": "REVIEW",
+     "statusLabel": "Needs review"
+    }
+   ],
+   "shortlist": []
+  },
+  {
+   "id": "req-wc",
+   "title": "Working capital facility — UK",
+   "entity": "Lumenvale UK Ltd",
+   "purpose": "Working capital",
+   "amount": "1000000.00",
+   "currency": "GBP",
+   "amountEur": 115500000,
+   "fmt": {
+    "amount": "£1,000,000",
+    "compact": "£1m",
+    "targetDate": "30 Jun 2027"
+   },
+   "instrument": "Working capital facility",
+   "tenor": 2,
+   "stage": "DRAFT",
+   "stageLabel": "Draft",
+   "stageIndex": 0,
+   "nextAction": "Quantify the seasonal working-capital peak with the UK team",
+   "rationale": "Fund seasonal inventory build-up at the Birmingham distribution centre ahead of the 2027 peak season.",
+   "scenarioId": null,
+   "prep": {
+    "done": 3,
+    "total": 8,
+    "review": 0,
+    "missing": 5,
+    "pct": 38
+   },
+   "checklist": [
+    {
+     "key": "fs",
+     "label": "Latest financial statements",
+     "hint": "Audited statutory accounts of the borrower and group entities",
+     "status": "AVAILABLE",
+     "statusLabel": "Available"
+    },
+    {
+     "key": "mgmt",
+     "label": "Recent management accounts",
+     "hint": "Latest quarterly management reporting pack",
+     "status": "AVAILABLE",
+     "statusLabel": "Available"
+    },
+    {
+     "key": "debt",
+     "label": "Debt schedule",
+     "hint": "Facilities, outstanding amounts, maturities and terms",
+     "status": "LINKED",
+     "statusLabel": "Linked to existing data"
+    },
+    {
+     "key": "agreements",
+     "label": "Existing facility agreements",
+     "hint": "Agreements that may restrict new debt or need consent",
+     "status": "MISSING",
+     "statusLabel": "Missing"
+    },
+    {
+     "key": "covenants",
+     "label": "Covenant history",
+     "hint": "Saved covenant calculations and current headroom",
+     "status": "MISSING",
+     "statusLabel": "Missing"
+    },
+    {
+     "key": "forecast",
+     "label": "Forecast",
+     "hint": "Scenario showing the impact of the financing",
+     "status": "MISSING",
+     "statusLabel": "Missing"
+    },
+    {
+     "key": "uop",
+     "label": "Use-of-proceeds summary",
+     "hint": "What the funds will be used for, with amounts",
+     "status": "MISSING",
+     "statusLabel": "Missing"
+    },
+    {
+     "key": "transaction",
+     "label": "Relevant transaction documents",
+     "hint": "Offer letter, quotations or other deal documents",
+     "status": "MISSING",
+     "statusLabel": "Missing"
+    }
+   ],
+   "shortlist": []
+  }
+ ],
+ "pipelineTotal": {
+  "value": 1255500000,
+  "fmt": "€12.6m"
+ },
+ "schedule": [
+  {
+   "date": "2026-12-31",
+   "fmtDate": "31 Dec 2026",
+   "kind": "Covenant test",
+   "text": "Leverage — Lumenvale Industrie, Gearing, Interest cover",
+   "facility": null,
+   "ref": null,
+   "entity": null,
+   "lender": null,
+   "principal": null,
+   "fmtPrincipal": null,
+   "currency": null
+  },
+  {
+   "date": "2026-12-31",
+   "fmtDate": "31 Dec 2026",
+   "kind": "Instalment",
+   "text": null,
+   "facility": "Equipment term loan",
+   "ref": "PMT-2024-117",
+   "entity": "Lumenvale Logistique",
+   "lender": "Banque Aurore",
+   "principal": 12500000,
+   "fmtPrincipal": "€125,000",
+   "currency": "EUR"
+  },
+  {
+   "date": "2026-12-31",
+   "fmtDate": "31 Dec 2026",
+   "kind": "Instalment",
+   "text": null,
+   "facility": "Plant term loan",
+   "ref": "BB-2023-3381",
+   "entity": "Lumenvale Deutschland",
+   "lender": "Beispielbank AG",
+   "principal": 20000000,
+   "fmtPrincipal": "€200,000",
+   "currency": "EUR"
+  },
+  {
+   "date": "2026-12-31",
+   "fmtDate": "31 Dec 2026",
+   "kind": "Instalment",
+   "text": null,
+   "facility": "Distribution centre term loan",
+   "ref": "KMB-UK-2024-077",
+   "entity": "Lumenvale UK",
+   "lender": "Kingsmere Bank plc",
+   "principal": 5000000,
+   "fmtPrincipal": "£50,000",
+   "currency": "GBP"
+  },
+  {
+   "date": "2027-03-31",
+   "fmtDate": "31 Mar 2027",
+   "kind": "Covenant test",
+   "text": "Leverage — Lumenvale Industrie, Gearing, Interest cover",
+   "facility": null,
+   "ref": null,
+   "entity": null,
+   "lender": null,
+   "principal": null,
+   "fmtPrincipal": null,
+   "currency": null
+  },
+  {
+   "date": "2027-03-31",
+   "fmtDate": "31 Mar 2027",
+   "kind": "Instalment",
+   "text": null,
+   "facility": "Equipment term loan",
+   "ref": "PMT-2024-117",
+   "entity": "Lumenvale Logistique",
+   "lender": "Banque Aurore",
+   "principal": 12500000,
+   "fmtPrincipal": "€125,000",
+   "currency": "EUR"
+  },
+  {
+   "date": "2027-03-31",
+   "fmtDate": "31 Mar 2027",
+   "kind": "Instalment",
+   "text": null,
+   "facility": "Distribution centre term loan",
+   "ref": "KMB-UK-2024-077",
+   "entity": "Lumenvale UK",
+   "lender": "Kingsmere Bank plc",
+   "principal": 5000000,
+   "fmtPrincipal": "£50,000",
+   "currency": "GBP"
+  },
+  {
+   "date": "2027-06-30",
+   "fmtDate": "30 Jun 2027",
+   "kind": "Covenant test",
+   "text": "Leverage — Lumenvale Industrie, Gearing, Interest cover",
+   "facility": null,
+   "ref": null,
+   "entity": null,
+   "lender": null,
+   "principal": null,
+   "fmtPrincipal": null,
+   "currency": null
+  },
+  {
+   "date": "2027-06-30",
+   "fmtDate": "30 Jun 2027",
+   "kind": "Instalment",
+   "text": null,
+   "facility": "Equipment term loan",
+   "ref": "PMT-2024-117",
+   "entity": "Lumenvale Logistique",
+   "lender": "Banque Aurore",
+   "principal": 12500000,
+   "fmtPrincipal": "€125,000",
+   "currency": "EUR"
+  },
+  {
+   "date": "2027-06-30",
+   "fmtDate": "30 Jun 2027",
+   "kind": "Instalment",
+   "text": null,
+   "facility": "Plant term loan",
+   "ref": "BB-2023-3381",
+   "entity": "Lumenvale Deutschland",
+   "lender": "Beispielbank AG",
+   "principal": 20000000,
+   "fmtPrincipal": "€200,000",
+   "currency": "EUR"
+  },
+  {
+   "date": "2027-06-30",
+   "fmtDate": "30 Jun 2027",
+   "kind": "Instalment",
+   "text": null,
+   "facility": "Distribution centre term loan",
+   "ref": "KMB-UK-2024-077",
+   "entity": "Lumenvale UK",
+   "lender": "Kingsmere Bank plc",
+   "principal": 5000000,
+   "fmtPrincipal": "£50,000",
+   "currency": "GBP"
+  },
+  {
+   "date": "2027-06-30",
+   "fmtDate": "30 Jun 2027",
+   "kind": "Maturity",
+   "text": null,
+   "facility": "Revolving credit facility",
+   "ref": "RCF-2024-009",
+   "entity": "Lumenvale Services",
+   "lender": "Banque Méridienne",
+   "principal": 50000000,
+   "fmtPrincipal": "€500,000",
+   "currency": "EUR"
+  },
+  {
+   "date": "2027-07-01",
+   "fmtDate": "1 Jul 2027",
+   "kind": "Threshold step",
+   "text": "Leverage threshold to 3.25x",
+   "facility": null,
+   "ref": null,
+   "entity": null,
+   "lender": null,
+   "principal": null,
+   "fmtPrincipal": null,
+   "currency": null
+  },
+  {
+   "date": "2027-09-30",
+   "fmtDate": "30 Sep 2027",
+   "kind": "Covenant test",
+   "text": "Leverage — Lumenvale Industrie, Gearing, Interest cover",
+   "facility": null,
+   "ref": null,
+   "entity": null,
+   "lender": null,
+   "principal": null,
+   "fmtPrincipal": null,
+   "currency": null
+  },
+  {
+   "date": "2027-09-30",
+   "fmtDate": "30 Sep 2027",
+   "kind": "Instalment",
+   "text": null,
+   "facility": "Equipment term loan",
+   "ref": "PMT-2024-117",
+   "entity": "Lumenvale Logistique",
+   "lender": "Banque Aurore",
+   "principal": 12500000,
+   "fmtPrincipal": "€125,000",
+   "currency": "EUR"
+  },
+  {
+   "date": "2027-09-30",
+   "fmtDate": "30 Sep 2027",
+   "kind": "Instalment",
+   "text": null,
+   "facility": "Distribution centre term loan",
+   "ref": "KMB-UK-2024-077",
+   "entity": "Lumenvale UK",
+   "lender": "Kingsmere Bank plc",
+   "principal": 5000000,
+   "fmtPrincipal": "£50,000",
+   "currency": "GBP"
+  },
+  {
+   "date": "2027-12-31",
+   "fmtDate": "31 Dec 2027",
+   "kind": "Covenant test",
+   "text": "Leverage — Lumenvale Industrie, Gearing, Interest cover",
+   "facility": null,
+   "ref": null,
+   "entity": null,
+   "lender": null,
+   "principal": null,
+   "fmtPrincipal": null,
+   "currency": null
+  },
+  {
+   "date": "2027-12-31",
+   "fmtDate": "31 Dec 2027",
+   "kind": "Instalment",
+   "text": null,
+   "facility": "Equipment term loan",
+   "ref": "PMT-2024-117",
+   "entity": "Lumenvale Logistique",
+   "lender": "Banque Aurore",
+   "principal": 12500000,
+   "fmtPrincipal": "€125,000",
+   "currency": "EUR"
+  },
+  {
+   "date": "2027-12-31",
+   "fmtDate": "31 Dec 2027",
+   "kind": "Instalment",
+   "text": null,
+   "facility": "Plant term loan",
+   "ref": "BB-2023-3381",
+   "entity": "Lumenvale Deutschland",
+   "lender": "Beispielbank AG",
+   "principal": 20000000,
+   "fmtPrincipal": "€200,000",
+   "currency": "EUR"
+  },
+  {
+   "date": "2027-12-31",
+   "fmtDate": "31 Dec 2027",
+   "kind": "Instalment",
+   "text": null,
+   "facility": "Distribution centre term loan",
+   "ref": "KMB-UK-2024-077",
+   "entity": "Lumenvale UK",
+   "lender": "Kingsmere Bank plc",
+   "principal": 5000000,
+   "fmtPrincipal": "£50,000",
+   "currency": "GBP"
+  },
+  {
+   "date": "2028-03-31",
+   "fmtDate": "31 Mar 2028",
+   "kind": "Covenant test",
+   "text": "Leverage — Lumenvale Industrie, Gearing, Interest cover",
+   "facility": null,
+   "ref": null,
+   "entity": null,
+   "lender": null,
+   "principal": null,
+   "fmtPrincipal": null,
+   "currency": null
+  },
+  {
+   "date": "2028-03-31",
+   "fmtDate": "31 Mar 2028",
+   "kind": "Instalment",
+   "text": null,
+   "facility": "Equipment term loan",
+   "ref": "PMT-2024-117",
+   "entity": "Lumenvale Logistique",
+   "lender": "Banque Aurore",
+   "principal": 12500000,
+   "fmtPrincipal": "€125,000",
+   "currency": "EUR"
+  },
+  {
+   "date": "2028-03-31",
+   "fmtDate": "31 Mar 2028",
+   "kind": "Instalment",
+   "text": null,
+   "facility": "Distribution centre term loan",
+   "ref": "KMB-UK-2024-077",
+   "entity": "Lumenvale UK",
+   "lender": "Kingsmere Bank plc",
+   "principal": 5000000,
+   "fmtPrincipal": "£50,000",
+   "currency": "GBP"
+  }
+ ],
+ "stages": [
+  "Draft",
+  "In preparation",
+  "Ready for review",
+  "Providers shortlisted",
+  "Indicative terms received",
+  "Selected for negotiation"
+ ],
+ "providers": [
+  {
+   "id": "prv-exe",
+   "name": "Banque Exemple",
+   "category": "BANK",
+   "categoryLabel": "Commercial bank",
+   "instruments": [
+    "Senior term loan",
+    "Revolving credit facility",
+    "Acquisition finance"
+   ],
+   "countries": [
+    "FR",
+    "DE",
+    "BE",
+    "LU"
+   ],
+   "tenor": "2–7 years",
+   "existing": true,
+   "matchAcq": 4
+  },
+  {
+   "id": "prv-aur",
+   "name": "Banque Aurore",
+   "category": "BANK",
+   "categoryLabel": "Commercial bank",
+   "instruments": [
+    "Senior term loan",
+    "Asset and equipment finance",
+    "Revolving credit facility"
+   ],
+   "countries": [
+    "FR"
+   ],
+   "tenor": "2–7 years",
+   "existing": true,
+   "matchAcq": 2
+  },
+  {
+   "id": "prv-mer",
+   "name": "Banque Méridienne",
+   "category": "BANK",
+   "categoryLabel": "Commercial bank",
+   "instruments": [
+    "Revolving credit facility",
+    "Working capital facility",
+    "Senior term loan"
+   ],
+   "countries": [
+    "FR"
+   ],
+   "tenor": "1–5 years",
+   "existing": true,
+   "matchAcq": 2
+  },
+  {
+   "id": "prv-fbe",
+   "name": "Finance Bail Exemple",
+   "category": "ASSET_FINANCE",
+   "categoryLabel": "Asset finance provider",
+   "instruments": [
+    "Finance lease",
+    "Asset and equipment finance"
+   ],
+   "countries": [
+    "FR",
+    "BE"
+   ],
+   "tenor": "3–15 years",
+   "existing": true,
+   "matchAcq": 2
+  },
+  {
+   "id": "prv-bsp",
+   "name": "Beispielbank AG",
+   "category": "BANK",
+   "categoryLabel": "Commercial bank",
+   "instruments": [
+    "Senior term loan",
+    "Acquisition finance",
+    "Revolving credit facility"
+   ],
+   "countries": [
+    "DE",
+    "AT"
+   ],
+   "tenor": "3–7 years",
+   "existing": true,
+   "matchAcq": 4
+  },
+  {
+   "id": "prv-kgm",
+   "name": "Kingsmere Bank plc",
+   "category": "BANK",
+   "categoryLabel": "Commercial bank",
+   "instruments": [
+    "Senior term loan",
+    "Revolving credit facility",
+    "Working capital facility"
+   ],
+   "countries": [
+    "GB"
+   ],
+   "tenor": "1–5 years",
+   "existing": true,
+   "matchAcq": 2
+  },
+  {
+   "id": "prv-cvn",
+   "name": "Corvane Credit Partners",
+   "category": "PRIVATE_DEBT",
+   "categoryLabel": "Private debt fund",
+   "instruments": [
+    "Unitranche (private debt)",
+    "Acquisition finance",
+    "Private debt"
+   ],
+   "countries": [
+    "FR",
+    "DE",
+    "BE",
+    "NL",
+    "GB"
+   ],
+   "tenor": "5–7 years",
+   "existing": false,
+   "matchAcq": 4
+  },
+  {
+   "id": "prv-tdw",
+   "name": "Tidewell Direct Lending",
+   "category": "PRIVATE_DEBT",
+   "categoryLabel": "Private debt fund",
+   "instruments": [
+    "Unitranche (private debt)",
+    "Senior term loan",
+    "Private debt"
+   ],
+   "countries": [
+    "GB",
+    "DE",
+    "NL",
+    "IE"
+   ],
+   "tenor": "5–7 years",
+   "existing": false,
+   "matchAcq": 3
+  },
+  {
+   "id": "prv-ard",
+   "name": "Ardent Digital Bank",
+   "category": "DIGITAL_BANK",
+   "categoryLabel": "Digital bank",
+   "instruments": [
+    "Working capital facility",
+    "Senior term loan",
+    "Revolving credit facility"
+   ],
+   "countries": [
+    "FR",
+    "DE",
+    "ES",
+    "IT",
+    "NL"
+   ],
+   "tenor": "1–4 years",
+   "existing": false,
+   "matchAcq": 2
+  },
+  {
+   "id": "prv-ost",
+   "name": "Ostrel Equipment Finance",
+   "category": "ASSET_FINANCE",
+   "categoryLabel": "Asset finance provider",
+   "instruments": [
+    "Asset and equipment finance",
+    "Finance lease"
+   ],
+   "countries": [
+    "FR",
+    "DE",
+    "BE",
+    "NL",
+    "GB"
+   ],
+   "tenor": "3–8 years",
+   "existing": false,
+   "matchAcq": 3
+  }
+ ],
+ "providerCategories": {
+  "BANK": "Commercial bank",
+  "DIGITAL_BANK": "Digital bank",
+  "PRIVATE_DEBT": "Private debt fund",
+  "ASSET_FINANCE": "Asset finance provider"
+ },
+ "roadmap": [
+  {
+   "id": "rm-1",
+   "title": "Debt intelligence",
+   "state": "AVAILABLE",
+   "summary": "Consolidation, contracts, covenants and reliable financial information.",
+   "items": [
+    [
+     "Facility register across entities, lenders and currencies",
+     "AVAILABLE"
+    ],
+    [
+     "Deterministic covenant engine with frozen saved calculations",
+     "AVAILABLE"
+    ],
+    [
+     "Source tracing to trial-balance rows and contract clauses",
+     "AVAILABLE"
+    ],
+    [
+     "Assisted contract extraction with human validation",
+     "PREVIEW"
+    ]
+   ]
+  },
+  {
+   "id": "rm-2",
+   "title": "Capital decision-making",
+   "state": "AVAILABLE",
+   "summary": "Capital structure, forecasts, scenarios and financing preparation.",
+   "items": [
+    [
+     "Capital structure by instrument, provider, country and currency",
+     "AVAILABLE"
+    ],
+    [
+     "Illustrative scenarios with covenant projection",
+     "AVAILABLE"
+    ],
+    [
+     "Integrated three-statement forecasting",
+     "FUTURE"
+    ],
+    [
+     "Multi-currency average-rate translation",
+     "FUTURE"
+    ]
+   ]
+  },
+  {
+   "id": "rm-3",
+   "title": "Capital access",
+   "state": "PREVIEW",
+   "summary": "Provider discovery, request workflows and financing comparison.",
+   "items": [
+    [
+     "Financing requests with preparation checklist and brief export",
+     "AVAILABLE"
+    ],
+    [
+     "Provider directory with transparent matching criteria",
+     "PREVIEW"
+    ],
+    [
+     "Indicative terms comparison under common assumptions",
+     "AVAILABLE"
+    ],
+    [
+     "Secure sharing of information packages with providers",
+     "FUTURE"
+    ]
+   ]
+  },
+  {
+   "id": "rm-4",
+   "title": "Open capital infrastructure",
+   "state": "FUTURE",
+   "summary": "Broader connections between corporate financing needs and capital providers.",
+   "items": [
+    [
+     "Connections with banks, digital lenders and private debt funds",
+     "FUTURE"
+    ],
+    [
+     "Standardised data exchange for credit processes",
+     "FUTURE"
+    ],
+    [
+     "Selected regulated decentralised capital markets, where appropriate",
+     "FUTURE"
+    ]
+   ]
+  }
+ ],
+ "priorities": [
+  {
+   "id": "pri-mat-fin-04",
+   "level": "CRITICAL",
+   "kind": "Maturity",
+   "tag": "Urgent",
+   "title": "Revolving credit facility matures in 9 months",
+   "text": "Lumenvale Services SAS · Banque Méridienne. €500k drawn of €2m committed, due 30 Jun 2027. Without refinancing, available liquidity falls by €2m."
+  },
+  {
+   "id": "pri-step-cov-lev",
+   "level": "CRITICAL",
+   "kind": "Covenant",
+   "tag": "Projected: critical headroom",
+   "title": "Leverage threshold steps down to 3.25x on 1 Jul 2027",
+   "text": "Lumenvale Industrie SAS · SFA-2025-001. Current leverage 3.13x against 3.50x (10.5% headroom). At unchanged contractual EBITDA, headroom against the new threshold would be 3.6%."
+  },
+  {
+   "id": "pri-req-req-acq",
+   "level": "INFO",
+   "kind": "Acquisition",
+   "tag": null,
+   "title": "Project Falcon increases financing needs by €6.5m",
+   "text": "Lumenvale Deutschland GmbH. Stage: Indicative terms received. 3 indicative proposals received."
+  },
+  {
+   "id": "pri-req-req-capex",
+   "level": "INFO",
+   "kind": "Investment",
+   "tag": null,
+   "title": "Investment / equipment programme needs a funding plan",
+   "text": "Lumenvale Logistique SAS. Stage: In preparation. Preparation 50% complete."
+  }
+ ],
+ "lenders": [
+  "Banque Exemple",
+  "Banque Aurore",
+  "Finance Bail Exemple",
+  "Banque Méridienne",
+  "Beispielbank AG",
+  "Kingsmere Bank plc"
+ ],
+ "extraction": [
+  {
+   "id": "aip-01",
+   "document_id": "doc-01",
+   "field_label": "Facility amount",
+   "proposed_value": "EUR 10,000,000",
+   "final_value": "EUR 10,000,000",
+   "page": 9,
+   "clause_id": "art-2-1",
+   "confidence": "HIGH",
+   "status": "VALIDATED"
+  },
+  {
+   "id": "aip-02",
+   "document_id": "doc-01",
+   "field_label": "Signing date",
+   "proposed_value": "15 Dec 2025",
+   "final_value": "15 Dec 2025",
+   "page": 1,
+   "clause_id": "cover-date",
+   "confidence": "HIGH",
+   "status": "VALIDATED"
+  },
+  {
+   "id": "aip-03",
+   "document_id": "doc-01",
+   "field_label": "Final maturity date",
+   "proposed_value": "31 Dec 2029",
+   "final_value": "31 Dec 2029",
+   "page": 18,
+   "clause_id": "art-7-1",
+   "confidence": "HIGH",
+   "status": "VALIDATED"
+  },
+  {
+   "id": "aip-04",
+   "document_id": "doc-01",
+   "field_label": "Repayment profile",
+   "proposed_value": "Bullet",
+   "final_value": "Bullet",
+   "page": 18,
+   "clause_id": "art-7-1",
+   "confidence": "HIGH",
+   "status": "VALIDATED"
+  },
+  {
+   "id": "aip-05",
+   "document_id": "doc-01",
+   "field_label": "Interest rate",
+   "proposed_value": "3M Euribor + 2.25%",
+   "final_value": "3M Euribor + 2.50%",
+   "page": 21,
+   "clause_id": "art-9-1",
+   "confidence": "MEDIUM",
+   "status": "CORRECTED"
+  },
+  {
+   "id": "aip-06",
+   "document_id": "doc-01",
+   "field_label": "Test dates",
+   "proposed_value": "Quarterly from 31 Mar 2026",
+   "final_value": "Quarterly from 31 Mar 2026",
+   "page": 47,
+   "clause_id": "art-19-1",
+   "confidence": "HIGH",
+   "status": "VALIDATED"
+  },
+  {
+   "id": "aip-07",
+   "document_id": "doc-01",
+   "field_label": "Leverage threshold",
+   "proposed_value": "≤ 3.50x",
+   "final_value": "≤ 3.50x until 30 Jun 2027",
+   "page": 47,
+   "clause_id": "art-19-2",
+   "confidence": "MEDIUM",
+   "status": "CORRECTED"
+  },
+  {
+   "id": "aip-08",
+   "document_id": "doc-01",
+   "field_label": "Leverage threshold step-down",
+   "proposed_value": "≤ 3.25x from 1 Jul 2027",
+   "final_value": "≤ 3.25x from 1 Jul 2027",
+   "page": 47,
+   "clause_id": "art-19-2",
+   "confidence": "HIGH",
+   "status": "VALIDATED"
+  },
+  {
+   "id": "aip-09",
+   "document_id": "doc-01",
+   "field_label": "Net financial indebtedness definition",
+   "proposed_value": "Facility principal − Cash",
+   "final_value": "Facility principal − Cash",
+   "page": 12,
+   "clause_id": "def-endettement-financier-net",
+   "confidence": "HIGH",
+   "status": "VALIDATED"
+  },
+  {
+   "id": "aip-10",
+   "document_id": "doc-01",
+   "field_label": "Cash definition",
+   "proposed_value": "Cash at bank + marketable securities",
+   "final_value": "Cash at bank + marketable securities",
+   "page": 12,
+   "clause_id": "def-tresorerie",
+   "confidence": "HIGH",
+   "status": "VALIDATED"
+  },
+  {
+   "id": "aip-11",
+   "document_id": "doc-01",
+   "field_label": "EBITDA definition",
+   "proposed_value": "LTM EBITDA + evidenced non-recurring costs",
+   "final_value": "LTM EBITDA + evidenced non-recurring costs",
+   "page": 13,
+   "clause_id": "def-ebitda",
+   "confidence": "HIGH",
+   "status": "VALIDATED"
+  },
+  {
+   "id": "aip-12",
+   "document_id": "doc-01",
+   "field_label": "Cap on add-backs",
+   "proposed_value": "No cap",
+   "final_value": "No cap",
+   "page": 13,
+   "clause_id": "def-ebitda",
+   "confidence": "MEDIUM",
+   "status": "REVIEWED"
+  },
+  {
+   "id": "aip-13",
+   "document_id": "doc-01",
+   "field_label": "Reference period",
+   "proposed_value": "Rolling twelve months",
+   "final_value": "Rolling twelve months",
+   "page": 13,
+   "clause_id": "def-periode-reference",
+   "confidence": "HIGH",
+   "status": "REVIEWED"
+  },
+  {
+   "id": "aip-14",
+   "document_id": "doc-01",
+   "field_label": "Gearing threshold",
+   "proposed_value": "≤ 1.00x",
+   "final_value": "≤ 1.00x",
+   "page": 47,
+   "clause_id": "art-19-3",
+   "confidence": "HIGH",
+   "status": "VALIDATED"
+  },
+  {
+   "id": "aip-15",
+   "document_id": "doc-01",
+   "field_label": "Interest cover threshold",
+   "proposed_value": "≥ 4.00x",
+   "final_value": null,
+   "page": 48,
+   "clause_id": "art-19-4",
+   "confidence": "HIGH",
+   "status": "SUGGESTED"
+  }
+ ],
+ "documents": [
+  {
+   "id": "doc-01",
+   "title": "Senior Facility Agreement — Lumenvale Industrie SAS / Banque Exemple",
+   "document_type": "FACILITY_AGREEMENT",
+   "file_name": "SFA_LumenvaleIndustrie_BanqueExemple_2025-12-15.pdf",
+   "entity_id": "ent-di",
+   "financing_ids": [
+    "fin-01"
+   ],
+   "document_date": "2025-12-15",
+   "reference": "SFA-2025-001",
+   "page_count": 96,
+   "uploaded_by": "usr-cl",
+   "uploaded_at": "2026-01-05T09:40:00"
+  },
+  {
+   "id": "doc-02",
+   "title": "Amortisation table at 30 Sep 2026 — Banque Exemple",
+   "document_type": "LENDER_STATEMENT",
+   "file_name": "Amortisation_SFA-2025-001_2026-09-30.pdf",
+   "entity_id": "ent-di",
+   "financing_ids": [
+    "fin-01"
+   ],
+   "document_date": "2026-10-05",
+   "reference": "SFA-2025-001",
+   "page_count": 2,
+   "uploaded_by": "usr-cl",
+   "uploaded_at": "2026-10-14T10:00:00"
+  },
+  {
+   "id": "doc-03",
+   "title": "Supporting note — Q3 2026 non-recurring costs",
+   "document_type": "SUPPORTING",
+   "file_name": "Note_NonRecurringCosts_Q3-2026.pdf",
+   "entity_id": "ent-di",
+   "financing_ids": [
+    "fin-01"
+   ],
+   "document_date": "2026-10-15",
+   "reference": "LVI-NRC-2026-Q3",
+   "page_count": 3,
+   "uploaded_by": "usr-cl",
+   "uploaded_at": "2026-10-19T14:02:00"
+  },
+  {
+   "id": "doc-04",
+   "title": "Term loan agreement — Banque Aurore",
+   "document_type": "FACILITY_AGREEMENT",
+   "file_name": "Loan_LumenvaleLogistique_BanqueAurore_2024-12-10.pdf",
+   "entity_id": "ent-dl",
+   "financing_ids": [
+    "fin-02"
+   ],
+   "document_date": "2024-12-10",
+   "reference": "PMT-2024-117",
+   "page_count": 38,
+   "uploaded_by": "usr-cl",
+   "uploaded_at": "2026-01-05T09:41:00"
+  },
+  {
+   "id": "doc-05",
+   "title": "Real-estate lease agreement — Finance Bail Exemple",
+   "document_type": "FACILITY_AGREEMENT",
+   "file_name": "Lease_LumenvaleLogistique_2021-03-15.pdf",
+   "entity_id": "ent-dl",
+   "financing_ids": [
+    "fin-03"
+   ],
+   "document_date": "2021-03-15",
+   "reference": "CB-2021-044",
+   "page_count": 44,
+   "uploaded_by": "usr-cl",
+   "uploaded_at": "2026-01-05T09:42:00"
+  },
+  {
+   "id": "doc-06",
+   "title": "Revolving credit agreement — Banque Méridienne",
+   "document_type": "FACILITY_AGREEMENT",
+   "file_name": "RCF_LumenvaleServices_BanqueMeridienne_2024-06-20.pdf",
+   "entity_id": "ent-ds",
+   "financing_ids": [
+    "fin-04"
+   ],
+   "document_date": "2024-06-20",
+   "reference": "RCF-2024-009",
+   "page_count": 27,
+   "uploaded_by": "usr-cl",
+   "uploaded_at": "2026-01-05T09:43:00"
+  },
+  {
+   "id": "doc-07",
+   "title": "Bank statement at 30 Sep 2026 — Banque Méridienne",
+   "document_type": "LENDER_STATEMENT",
+   "file_name": "Statement_RCF-2024-009_2026-09-30.pdf",
+   "entity_id": "ent-ds",
+   "financing_ids": [
+    "fin-04"
+   ],
+   "document_date": "2026-10-01",
+   "reference": "RCF-2024-009",
+   "page_count": 1,
+   "uploaded_by": "usr-cl",
+   "uploaded_at": "2026-10-14T10:01:00"
+  },
+  {
+   "id": "doc-08",
+   "title": "Q3 2026 management reporting pack",
+   "document_type": "MANAGEMENT_ACCOUNTS",
+   "file_name": "Lumenvale_ManagementPack_Q3-2026.pdf",
+   "entity_id": null,
+   "financing_ids": [],
+   "document_date": "2026-10-15",
+   "reference": "MGMT-Q3-2026",
+   "page_count": 18,
+   "uploaded_by": "usr-cl",
+   "uploaded_at": "2026-10-16T17:30:00"
+  },
+  {
+   "id": "doc-09",
+   "title": "FY2025 audited financial statements — Lumenvale Group entities",
+   "document_type": "FINANCIAL_STATEMENTS",
+   "file_name": "Lumenvale_FY2025_AuditedAccounts.pdf",
+   "entity_id": null,
+   "financing_ids": [],
+   "document_date": "2026-04-28",
+   "reference": "FS-2025",
+   "page_count": 64,
+   "uploaded_by": "usr-cl",
+   "uploaded_at": "2026-05-04T11:00:00"
+  },
+  {
+   "id": "doc-10",
+   "title": "Term loan agreement — Beispielbank AG",
+   "document_type": "FACILITY_AGREEMENT",
+   "file_name": "Darlehen_LumenvaleDeutschland_Beispielbank_2023-06-15.pdf",
+   "entity_id": "ent-de",
+   "financing_ids": [
+    "fin-05"
+   ],
+   "document_date": "2023-06-15",
+   "reference": "BB-2023-3381",
+   "page_count": 41,
+   "uploaded_by": "usr-cl",
+   "uploaded_at": "2026-03-02T10:20:00"
+  },
+  {
+   "id": "doc-11",
+   "title": "Facility agreement — Kingsmere Bank plc",
+   "document_type": "FACILITY_AGREEMENT",
+   "file_name": "Facility_LumenvaleUK_Kingsmere_2024-03-20.pdf",
+   "entity_id": "ent-uk",
+   "financing_ids": [
+    "fin-06"
+   ],
+   "document_date": "2024-03-20",
+   "reference": "KMB-UK-2024-077",
+   "page_count": 52,
+   "uploaded_by": "usr-cl",
+   "uploaded_at": "2026-03-02T10:25:00"
+  },
+  {
+   "id": "doc-12",
+   "title": "Lender statement at 30 Sep 2026 — Beispielbank AG",
+   "document_type": "LENDER_STATEMENT",
+   "file_name": "Statement_BB-2023-3381_2026-09-30.pdf",
+   "entity_id": "ent-de",
+   "financing_ids": [
+    "fin-05"
+   ],
+   "document_date": "2026-10-02",
+   "reference": "BB-2023-3381",
+   "page_count": 1,
+   "uploaded_by": "usr-cl",
+   "uploaded_at": "2026-10-14T10:12:00"
+  },
+  {
+   "id": "doc-13",
+   "title": "Lender statement at 30 Sep 2026 — Kingsmere Bank plc",
+   "document_type": "LENDER_STATEMENT",
+   "file_name": "Statement_KMB-UK-2024-077_2026-09-30.pdf",
+   "entity_id": "ent-uk",
+   "financing_ids": [
+    "fin-06"
+   ],
+   "document_date": "2026-10-02",
+   "reference": "KMB-UK-2024-077",
+   "page_count": 1,
+   "uploaded_by": "usr-cl",
+   "uploaded_at": "2026-10-14T10:14:00"
+  },
+  {
+   "id": "doc-14",
+   "title": "Project Falcon — non-binding offer letter",
+   "document_type": "TRANSACTION",
+   "file_name": "ProjectFalcon_NBO_2026-09-18.pdf",
+   "entity_id": "ent-de",
+   "financing_ids": [],
+   "document_date": "2026-09-18",
+   "reference": "FALCON-NBO",
+   "page_count": 6,
+   "uploaded_by": "usr-cl",
+   "uploaded_at": "2026-09-21T08:40:00"
+  },
+  {
+   "id": "doc-15",
+   "title": "Project Falcon — target summary financials",
+   "document_type": "TRANSACTION",
+   "file_name": "ProjectFalcon_TargetFinancials.pdf",
+   "entity_id": "ent-de",
+   "financing_ids": [],
+   "document_date": "2026-09-25",
+   "reference": "FALCON-FIN",
+   "page_count": 9,
+   "uploaded_by": "usr-cl",
+   "uploaded_at": "2026-09-26T16:05:00"
+  },
+  {
+   "id": "doc-16",
+   "title": "Warehouse automation — supplier quotation (draft)",
+   "document_type": "TRANSACTION",
+   "file_name": "Quotation_WarehouseAutomation_Draft.pdf",
+   "entity_id": "ent-dl",
+   "financing_ids": [],
+   "document_date": "2026-10-08",
+   "reference": "CAPEX-LIL-2026",
+   "page_count": 4,
+   "uploaded_by": "usr-cl",
+   "uploaded_at": "2026-10-09T09:10:00"
+  }
+ ],
+ "pages": [
+  {
+   "document_id": "doc-01",
+   "page": 1,
+   "running_header": "Senior Facility Agreement — Lumenvale Industrie SAS",
+   "blocks": [
+    {
+     "id": "cover-title",
+     "kind": "title",
+     "text": "Senior Facility Agreement"
+    },
+    {
+     "id": "cover-parties",
+     "kind": "p",
+     "text": "between Lumenvale Industrie SAS, as Borrower, and Banque Exemple, as Lender."
+    },
+    {
+     "id": "cover-amount",
+     "kind": "p",
+     "text": "Term facility in a principal amount of EUR 10,000,000."
+    },
+    {
+     "id": "cover-date",
+     "kind": "p",
+     "text": "Signed in Paris on 15 December 2025."
+    }
+   ]
+  },
+  {
+   "document_id": "doc-01",
+   "page": 9,
+   "running_header": "Senior Facility Agreement — Lumenvale Industrie SAS",
+   "blocks": [
+    {
+     "id": "art-2-title",
+     "kind": "h",
+     "text": "Clause 2 — The Facility"
+    },
+    {
+     "id": "art-2-1",
+     "kind": "p",
+     "text": "2.1 Subject to the terms of this Agreement, the Lender makes available to the Borrower a term loan facility in an aggregate principal amount of EUR 10,000,000 (the \"Facility\")."
+    },
+    {
+     "id": "art-2-2",
+     "kind": "p",
+     "text": "2.2 The Borrower shall apply the Facility towards the refinancing of its existing financial indebtedness and its general corporate purposes."
+    }
+   ]
+  },
+  {
+   "document_id": "doc-01",
+   "page": 12,
+   "running_header": "Senior Facility Agreement — Lumenvale Industrie SAS",
+   "blocks": [
+    {
+     "id": "art-1-1-title",
+     "kind": "h",
+     "text": "Clause 1.1 — Definitions (continued)"
+    },
+    {
+     "id": "def-endettement-financier-net",
+     "kind": "p",
+     "text": "\"Net Financial Indebtedness\" means, on any Test Date, the outstanding principal amount of the Facility less the Cash of the Borrower."
+    },
+    {
+     "id": "def-tresorerie",
+     "kind": "p",
+     "text": "\"Cash\" means cash at bank and in hand and marketable securities shown in the accounts of the Borrower."
+    }
+   ]
+  },
+  {
+   "document_id": "doc-01",
+   "page": 13,
+   "running_header": "Senior Facility Agreement — Lumenvale Industrie SAS",
+   "blocks": [
+    {
+     "id": "def-ebitda",
+     "kind": "p",
+     "text": "\"EBITDA\" means, for any Reference Period, the gross operating surplus (EBITDA) of the Borrower, plus duly evidenced Non-Recurring Costs, without cap."
+    },
+    {
+     "id": "def-periode-reference",
+     "kind": "p",
+     "text": "\"Reference Period\" means each period of twelve months ending on a Test Date."
+    }
+   ]
+  },
+  {
+   "document_id": "doc-01",
+   "page": 18,
+   "running_header": "Senior Facility Agreement — Lumenvale Industrie SAS",
+   "blocks": [
+    {
+     "id": "art-7-title",
+     "kind": "h",
+     "text": "Clause 7 — Repayment"
+    },
+    {
+     "id": "art-7-1",
+     "kind": "p",
+     "text": "7.1 The Borrower shall repay the Facility in full in a single instalment on the Final Maturity Date, being 31 December 2029."
+    }
+   ]
+  },
+  {
+   "document_id": "doc-01",
+   "page": 21,
+   "running_header": "Senior Facility Agreement — Lumenvale Industrie SAS",
+   "blocks": [
+    {
+     "id": "art-9-title",
+     "kind": "h",
+     "text": "Clause 9 — Interest"
+    },
+    {
+     "id": "art-9-1",
+     "kind": "p",
+     "text": "9.1 The Facility bears interest at 3-month Euribor plus a margin of 2.50 per cent. per annum, payable quarterly in arrears."
+    }
+   ]
+  },
+  {
+   "document_id": "doc-01",
+   "page": 47,
+   "running_header": "Senior Facility Agreement — Lumenvale Industrie SAS",
+   "blocks": [
+    {
+     "id": "art-19-title",
+     "kind": "h",
+     "text": "Clause 19 — Financial covenants"
+    },
+    {
+     "id": "art-19-1",
+     "kind": "p",
+     "text": "19.1 Test Dates. The covenants in this Clause are tested on 31 March, 30 June, 30 September and 31 December of each year, the first Test Date being 31 March 2026."
+    },
+    {
+     "id": "art-19-2",
+     "kind": "p",
+     "text": "19.2 Leverage. The ratio of Net Financial Indebtedness to EBITDA shall not exceed 3.50x on any Test Date up to and including 30 June 2027, and 3.25x from 1 July 2027."
+    },
+    {
+     "id": "art-19-3",
+     "kind": "p",
+     "text": "19.3 Gearing. The ratio of Net Financial Indebtedness to Equity shall not exceed 1.00x on any Test Date."
+    }
+   ]
+  },
+  {
+   "document_id": "doc-01",
+   "page": 48,
+   "running_header": "Senior Facility Agreement — Lumenvale Industrie SAS",
+   "blocks": [
+    {
+     "id": "art-19-4",
+     "kind": "p",
+     "text": "19.4 Interest cover. The ratio of EBITDA to Interest Charges shall not be less than 4.00x on any Test Date."
+    },
+    {
+     "id": "art-19-5",
+     "kind": "p",
+     "text": "19.5 The Borrower shall deliver to the Lender, within forty-five days after each Test Date, a signed compliance certificate."
+    }
+   ]
+  },
+  {
+   "document_id": "doc-02",
+   "page": 1,
+   "running_header": "Banque Exemple — Amortisation table",
+   "blocks": [
+    {
+     "id": "title",
+     "kind": "title",
+     "text": "Amortisation table — Facility SFA-2025-001"
+    },
+    {
+     "id": "crd-2026-09-30",
+     "kind": "p",
+     "text": "Principal outstanding at 30 September 2026: EUR 10,000,000.00. Bullet repayment on 31 December 2029."
+    }
+   ]
+  },
+  {
+   "document_id": "doc-03",
+   "page": 1,
+   "running_header": "Lumenvale Industrie SAS — Finance department",
+   "blocks": [
+    {
+     "id": "title",
+     "kind": "title",
+     "text": "Note — Non-recurring costs, third quarter 2026"
+    },
+    {
+     "id": "ncr-detail",
+     "kind": "p",
+     "text": "Reorganisation of the production workshop: consulting fees and severance payments totalling EUR 150,000, recorded in external charges and personnel expenses."
+    }
+   ]
+  },
+  {
+   "document_id": "doc-04",
+   "page": 1,
+   "running_header": "Banque Aurore — Term loan agreement",
+   "blocks": [
+    {
+     "id": "title",
+     "kind": "title",
+     "text": "Medium-term loan agreement — Lumenvale Logistique SAS"
+    },
+    {
+     "id": "terms",
+     "kind": "p",
+     "text": "Loan of EUR 3,000,000 at a fixed rate of 3.20%, repayable in quarterly principal instalments of EUR 125,000 until 31 December 2030."
+    }
+   ]
+  },
+  {
+   "document_id": "doc-05",
+   "page": 1,
+   "running_header": "Finance Bail Exemple — Real-estate lease",
+   "blocks": [
+    {
+     "id": "title",
+     "kind": "title",
+     "text": "Real-estate finance lease (crédit-bail) — logistics platform"
+    },
+    {
+     "id": "terms",
+     "kind": "p",
+     "text": "Financing of EUR 1,800,000 over ten years from 31 March 2021; rentals per the lessor's schedule. Under French GAAP the lease is not recognised on the balance sheet."
+    }
+   ]
+  },
+  {
+   "document_id": "doc-06",
+   "page": 1,
+   "running_header": "Banque Méridienne — Revolving credit agreement",
+   "blocks": [
+    {
+     "id": "title",
+     "kind": "title",
+     "text": "Revolving credit agreement — Lumenvale Services SAS"
+    },
+    {
+     "id": "terms",
+     "kind": "p",
+     "text": "Committed revolving facility with a limit of EUR 2,000,000; drawings bear interest at 1-month Euribor plus 1.50%; final maturity 30 June 2027."
+    }
+   ]
+  },
+  {
+   "document_id": "doc-07",
+   "page": 1,
+   "running_header": "Banque Méridienne — Statement",
+   "blocks": [
+    {
+     "id": "title",
+     "kind": "title",
+     "text": "Account statement at 30 September 2026"
+    },
+    {
+     "id": "drawn",
+     "kind": "p",
+     "text": "Amount drawn under revolving facility RCF-2024-009: EUR 500,000.00."
+    }
+   ]
+  },
+  {
+   "document_id": "doc-08",
+   "page": 1,
+   "running_header": "Lumenvale Group — Q3 2026 management reporting pack",
+   "blocks": [
+    {
+     "id": "title",
+     "kind": "title",
+     "text": "Q3 2026 management reporting pack"
+    },
+    {
+     "id": "scope",
+     "kind": "p",
+     "text": "Covers the five Lumenvale entities. Figures are entity-level management accounts in local currency; intercompany trading between entities is eliminated in the group totals. There is no intercompany financing between entities."
+    }
+   ]
+  },
+  {
+   "document_id": "doc-08",
+   "page": 2,
+   "running_header": "Lumenvale Group — Q3 2026 management reporting pack",
+   "blocks": [
+    {
+     "id": "pack-ebitda-title",
+     "kind": "h",
+     "text": "Last-twelve-months EBITDA by entity (as reported, before non-recurring add-backs)"
+    },
+    {
+     "id": "pack-ebitda",
+     "kind": "p",
+     "text": "Lumenvale Logistique SAS EUR 880k · Lumenvale Services SAS EUR 480k · Lumenvale Deutschland GmbH EUR 1,450k · Lumenvale UK Ltd GBP 520k. Lumenvale Industrie SAS: see trial-balance based LTM computation."
+    }
+   ]
+  },
+  {
+   "document_id": "doc-09",
+   "page": 1,
+   "running_header": "FY2025 audited financial statements",
+   "blocks": [
+    {
+     "id": "title",
+     "kind": "title",
+     "text": "FY2025 audited financial statements"
+    },
+    {
+     "id": "opinion",
+     "kind": "p",
+     "text": "Statutory accounts of each Lumenvale entity for the year ended 31 December 2025, with unqualified audit opinions (fictional sample document)."
+    }
+   ]
+  },
+  {
+   "document_id": "doc-10",
+   "page": 1,
+   "running_header": "Beispielbank AG — Term loan agreement",
+   "blocks": [
+    {
+     "id": "title",
+     "kind": "title",
+     "text": "Term loan agreement — Lumenvale Deutschland GmbH"
+    },
+    {
+     "id": "terms",
+     "kind": "p",
+     "text": "Loan of EUR 4,000,000 at 6-month Euribor plus 2.10%, repayable in semi-annual instalments of EUR 200,000 from 31 December 2024, with the balance due on 30 June 2030."
+    }
+   ]
+  },
+  {
+   "document_id": "doc-11",
+   "page": 1,
+   "running_header": "Kingsmere Bank plc — Facility agreement",
+   "blocks": [
+    {
+     "id": "title",
+     "kind": "title",
+     "text": "Term facility agreement — Lumenvale UK Ltd"
+    },
+    {
+     "id": "terms",
+     "kind": "p",
+     "text": "Facility of GBP 1,500,000 at compounded SONIA plus 2.75%, repayable in quarterly instalments of GBP 50,000 from 30 June 2025, with the balance due on 31 March 2029."
+    }
+   ]
+  },
+  {
+   "document_id": "doc-12",
+   "page": 1,
+   "running_header": "Beispielbank AG — Statement",
+   "blocks": [
+    {
+     "id": "title",
+     "kind": "title",
+     "text": "Loan statement at 30 September 2026"
+    },
+    {
+     "id": "balance",
+     "kind": "p",
+     "text": "Principal outstanding under loan BB-2023-3381: EUR 3,200,000.00."
+    }
+   ]
+  },
+  {
+   "document_id": "doc-13",
+   "page": 1,
+   "running_header": "Kingsmere Bank plc — Statement",
+   "blocks": [
+    {
+     "id": "title",
+     "kind": "title",
+     "text": "Loan statement at 30 September 2026"
+    },
+    {
+     "id": "balance",
+     "kind": "p",
+     "text": "Principal outstanding under facility KMB-UK-2024-077: GBP 1,200,000.00."
+    }
+   ]
+  },
+  {
+   "document_id": "doc-14",
+   "page": 1,
+   "running_header": "Project Falcon — Non-binding offer",
+   "blocks": [
+    {
+     "id": "title",
+     "kind": "title",
+     "text": "Project Falcon — non-binding offer"
+    },
+    {
+     "id": "terms",
+     "kind": "p",
+     "text": "Lumenvale Deutschland GmbH submitted a non-binding offer for 100% of a German precision-components company (codename Falcon) at an enterprise value of EUR 7.5m including transaction costs, subject to due diligence and financing."
+    }
+   ]
+  },
+  {
+   "document_id": "doc-15",
+   "page": 1,
+   "running_header": "Project Falcon — Target financials",
+   "blocks": [
+    {
+     "id": "title",
+     "kind": "title",
+     "text": "Project Falcon — summary financials (seller information)"
+    },
+    {
+     "id": "ebitda",
+     "kind": "p",
+     "text": "Target LTM revenue EUR 9.8m and LTM EBITDA EUR 1.2m at 30 June 2026, as presented by the seller; not yet verified by financial due diligence."
+    }
+   ]
+  },
+  {
+   "document_id": "doc-16",
+   "page": 1,
+   "running_header": "Warehouse automation — supplier quotation",
+   "blocks": [
+    {
+     "id": "title",
+     "kind": "title",
+     "text": "Warehouse automation — draft quotation"
+    },
+    {
+     "id": "terms",
+     "kind": "p",
+     "text": "Automated storage and picking system for the Lille platform, draft price EUR 2.2m installed. Final quotation expected in November 2026."
+    }
+   ]
+  }
+ ],
+ "importJobs": [
+  {
+   "id": "imp-di-2025-03-31",
+   "entity": "ent-di",
+   "balance": "tb-di-2025-03-31",
+   "file": "TB_LumenvaleIndustrie_2025-03-31.xlsx"
+  },
+  {
+   "id": "imp-di-2025-06-30",
+   "entity": "ent-di",
+   "balance": "tb-di-2025-06-30",
+   "file": "TB_LumenvaleIndustrie_2025-06-30.xlsx"
+  },
+  {
+   "id": "imp-di-2025-09-30",
+   "entity": "ent-di",
+   "balance": "tb-di-2025-09-30",
+   "file": "TB_LumenvaleIndustrie_2025-09-30.xlsx"
+  },
+  {
+   "id": "imp-di-2025-12-31",
+   "entity": "ent-di",
+   "balance": "tb-di-2025-12-31",
+   "file": "TB_LumenvaleIndustrie_2025-12-31.xlsx"
+  },
+  {
+   "id": "imp-di-2026-03-31",
+   "entity": "ent-di",
+   "balance": "tb-di-2026-03-31",
+   "file": "TB_LumenvaleIndustrie_2026-03-31.xlsx"
+  },
+  {
+   "id": "imp-di-2026-06-30",
+   "entity": "ent-di",
+   "balance": "tb-di-2026-06-30",
+   "file": "TB_LumenvaleIndustrie_2026-06-30.xlsx"
+  },
+  {
+   "id": "imp-di-2026-09-30",
+   "entity": "ent-di",
+   "balance": "tb-di-2026-09-30",
+   "file": "TB_LumenvaleIndustrie_2026-09-30.xlsx"
+  },
+  {
+   "id": "imp-dl-2026-09-30",
+   "entity": "ent-dl",
+   "balance": "tb-dl-2026-09-30",
+   "file": "TB_LumenvaleLogistique_2026-09-30.xlsx"
+  },
+  {
+   "id": "imp-ds-2026-09-30",
+   "entity": "ent-ds",
+   "balance": "tb-ds-2026-09-30",
+   "file": "TB_LumenvaleServices_2026-09-30.xlsx"
+  },
+  {
+   "id": "imp-de-2026-09-30",
+   "entity": "ent-de",
+   "balance": "tb-de-2026-09-30",
+   "file": "GroupPack_LumenvaleDeutschland_2026-09-30.xlsx"
+  },
+  {
+   "id": "imp-uk-2026-09-30",
+   "entity": "ent-uk",
+   "balance": "tb-uk-2026-09-30",
+   "file": "GroupPack_LumenvaleUK_2026-09-30.xlsx"
+  }
+ ],
+ "pcgLabels": {
+  "101300": "Share capital — subscribed, called and paid",
+  "106100": "Legal reserve",
+  "106800": "Other reserves",
+  "110000": "Retained earnings brought forward",
+  "164000": "Previous loan (refinanced)",
+  "164100": "Loan — Banque Exemple",
+  "164200": "Loan — Banque Aurore",
+  "211000": "Land",
+  "213100": "Buildings",
+  "215400": "Industrial equipment",
+  "218300": "Office and IT equipment",
+  "281300": "Accumulated depreciation — buildings",
+  "281540": "Accumulated depreciation — industrial equipment",
+  "281830": "Accumulated depreciation — office equipment",
+  "310000": "Raw materials",
+  "355000": "Finished goods",
+  "401000": "Trade payables",
+  "411000": "Trade receivables",
+  "421000": "Staff — salaries payable",
+  "431000": "Social security bodies",
+  "445660": "Deductible VAT on goods and services",
+  "445710": "VAT collected",
+  "508000": "Marketable securities",
+  "512100": "Bank — Banque Exemple",
+  "512200": "Bank — Banque Méridienne",
+  "512300": "Bank — Banque Aurore",
+  "512400": "Bank — Banque Méridienne",
+  "519100": "Revolving credit drawing",
+  "530000": "Cash on hand",
+  "601000": "Raw material purchases",
+  "606100": "Non-stocked supplies",
+  "613200": "Property rentals",
+  "622600": "Professional fees",
+  "624100": "Freight on purchases",
+  "635100": "Direct taxes",
+  "641100": "Wages and salaries",
+  "645100": "Social security contributions (URSSAF)",
+  "651000": "Licence and patent royalties",
+  "661100": "Interest on loans and borrowings",
+  "681120": "Depreciation of tangible fixed assets",
+  "701000": "Sales of finished goods",
+  "706000": "Services rendered",
+  "758000": "Other operating income"
+ },
+ "grcLabels": {
+  "1100": "Share capital",
+  "1200": "Reserves and retained earnings",
+  "2100": "Bank borrowings",
+  "3100": "Property, plant and equipment",
+  "3200": "Accumulated depreciation",
+  "3300": "Inventories",
+  "4100": "Trade receivables",
+  "4200": "Trade payables",
+  "4300": "Tax and social liabilities",
+  "5100": "Cash at bank",
+  "6100": "Revenue",
+  "6200": "Materials and external charges",
+  "6300": "Personnel expenses",
+  "6400": "Depreciation and amortisation",
+  "6500": "Interest expense"
+ },
+ "tbPcg": {
+  "tb-di-2025-03-31": {
+   "entity_id": "ent-di",
+   "period_end": "2025-03-31",
+   "fiscal_year_start": "2025-01-01",
+   "version": 1,
+   "import_job_id": "imp-di-2025-03-31",
+   "lines": [
+    [
+     "101300",
+     0,
+     500000000
+    ],
+    [
+     "106100",
+     0,
+     50000000
+    ],
+    [
+     "106800",
+     0,
+     530000000
+    ],
+    [
+     "110000",
+     0,
+     60000000
+    ],
+    [
+     "164000",
+     0,
+     800000000
+    ],
+    [
+     "211000",
+     120000000,
+     0
+    ],
+    [
+     "213100",
+     830000000,
+     0
+    ],
+    [
+     "215400",
+     1630000000,
+     0
+    ],
+    [
+     "281300",
+     0,
+     240000000
+    ],
+    [
+     "281540",
+     0,
+     690000000
+    ],
+    [
+     "310000",
+     210000000,
+     0
+    ],
+    [
+     "355000",
+     165000000,
+     0
+    ],
+    [
+     "401000",
+     0,
+     345000000
+    ],
+    [
+     "411000",
+     278000000,
+     0
+    ],
+    [
+     "421000",
+     0,
+     39000000
+    ],
+    [
+     "431000",
+     0,
+     46000000
+    ],
+    [
+     "445660",
+     31000000,
+     0
+    ],
+    [
+     "445710",
+     0,
+     52000000
+    ],
+    [
+     "508000",
+     1200000,
+     0
+    ],
+    [
+     "512100",
+     51200000,
+     0
+    ],
+    [
+     "512200",
+     17350000,
+     0
+    ],
+    [
+     "530000",
+     250000,
+     0
+    ],
+    [
+     "601000",
+     178993200,
+     0
+    ],
+    [
+     "606100",
+     22029900,
+     0
+    ],
+    [
+     "613200",
+     14112900,
+     0
+    ],
+    [
+     "622600",
+     13080300,
+     0
+    ],
+    [
+     "624100",
+     24783700,
+     0
+    ],
+    [
+     "635100",
+     9000000,
+     0
+    ],
+    [
+     "641100",
+     102716800,
+     0
+    ],
+    [
+     "645100",
+     43283200,
+     0
+    ],
+    [
+     "651000",
+     6000000,
+     0
+    ],
+    [
+     "661100",
+     11000000,
+     0
+    ],
+    [
+     "681120",
+     37000000,
+     0
+    ],
+    [
+     "701000",
+     0,
+     430704200
+    ],
+    [
+     "706000",
+     0,
+     9295800
+    ],
+    [
+     "758000",
+     0,
+     4000000
+    ]
+   ]
+  },
+  "tb-di-2025-06-30": {
+   "entity_id": "ent-di",
+   "period_end": "2025-06-30",
+   "fiscal_year_start": "2025-01-01",
+   "version": 1,
+   "import_job_id": "imp-di-2025-06-30",
+   "lines": [
+    [
+     "101300",
+     0,
+     500000000
+    ],
+    [
+     "106100",
+     0,
+     50000000
+    ],
+    [
+     "106800",
+     0,
+     530000000
+    ],
+    [
+     "110000",
+     0,
+     60000000
+    ],
+    [
+     "164000",
+     0,
+     800000000
+    ],
+    [
+     "211000",
+     120000000,
+     0
+    ],
+    [
+     "213100",
+     830000000,
+     0
+    ],
+    [
+     "215400",
+     1630000000,
+     0
+    ],
+    [
+     "281300",
+     0,
+     240000000
+    ],
+    [
+     "281540",
+     0,
+     690000000
+    ],
+    [
+     "310000",
+     210000000,
+     0
+    ],
+    [
+     "355000",
+     165000000,
+     0
+    ],
+    [
+     "401000",
+     0,
+     345000000
+    ],
+    [
+     "411000",
+     309000000,
+     0
+    ],
+    [
+     "421000",
+     0,
+     39000000
+    ],
+    [
+     "431000",
+     0,
+     46000000
+    ],
+    [
+     "445660",
+     31000000,
+     0
+    ],
+    [
+     "445710",
+     0,
+     52000000
+    ],
+    [
+     "508000",
+     1200000,
+     0
+    ],
+    [
+     "512100",
+     46200000,
+     0
+    ],
+    [
+     "512200",
+     17350000,
+     0
+    ],
+    [
+     "530000",
+     250000,
+     0
+    ],
+    [
+     "601000",
+     347020400,
+     0
+    ],
+    [
+     "606100",
+     42710200,
+     0
+    ],
+    [
+     "613200",
+     27361200,
+     0
+    ],
+    [
+     "622600",
+     25359200,
+     0
+    ],
+    [
+     "624100",
+     48049000,
+     0
+    ],
+    [
+     "635100",
+     18000000,
+     0
+    ],
+    [
+     "641100",
+     205433600,
+     0
+    ],
+    [
+     "645100",
+     86566400,
+     0
+    ],
+    [
+     "651000",
+     12500000,
+     0
+    ],
+    [
+     "661100",
+     22000000,
+     0
+    ],
+    [
+     "681120",
+     75000000,
+     0
+    ],
+    [
+     "701000",
+     0,
+     890774600
+    ],
+    [
+     "706000",
+     0,
+     19225400
+    ],
+    [
+     "758000",
+     0,
+     8000000
+    ]
+   ]
+  },
+  "tb-di-2025-09-30": {
+   "entity_id": "ent-di",
+   "period_end": "2025-09-30",
+   "fiscal_year_start": "2025-01-01",
+   "version": 1,
+   "import_job_id": "imp-di-2025-09-30",
+   "lines": [
+    [
+     "101300",
+     0,
+     500000000
+    ],
+    [
+     "106100",
+     0,
+     50000000
+    ],
+    [
+     "106800",
+     0,
+     530000000
+    ],
+    [
+     "110000",
+     0,
+     60000000
+    ],
+    [
+     "164000",
+     0,
+     800000000
+    ],
+    [
+     "211000",
+     120000000,
+     0
+    ],
+    [
+     "213100",
+     830000000,
+     0
+    ],
+    [
+     "215400",
+     1630000000,
+     0
+    ],
+    [
+     "281300",
+     0,
+     240000000
+    ],
+    [
+     "281540",
+     0,
+     690000000
+    ],
+    [
+     "310000",
+     210000000,
+     0
+    ],
+    [
+     "355000",
+     165000000,
+     0
+    ],
+    [
+     "401000",
+     0,
+     345000000
+    ],
+    [
+     "411000",
+     309500000,
+     0
+    ],
+    [
+     "421000",
+     0,
+     39000000
+    ],
+    [
+     "431000",
+     0,
+     46000000
+    ],
+    [
+     "445660",
+     31000000,
+     0
+    ],
+    [
+     "445710",
+     0,
+     52000000
+    ],
+    [
+     "508000",
+     1200000,
+     0
+    ],
+    [
+     "512100",
+     71200000,
+     0
+    ],
+    [
+     "512200",
+     17350000,
+     0
+    ],
+    [
+     "530000",
+     250000,
+     0
+    ],
+    [
+     "601000",
+     500897900,
+     0
+    ],
+    [
+     "606100",
+     61649000,
+     0
+    ],
+    [
+     "613200",
+     39493900,
+     0
+    ],
+    [
+     "622600",
+     36604100,
+     0
+    ],
+    [
+     "624100",
+     69355100,
+     0
+    ],
+    [
+     "635100",
+     27000000,
+     0
+    ],
+    [
+     "641100",
+     308150400,
+     0
+    ],
+    [
+     "645100",
+     129849600,
+     0
+    ],
+    [
+     "651000",
+     19000000,
+     0
+    ],
+    [
+     "661100",
+     33500000,
+     0
+    ],
+    [
+     "681120",
+     113000000,
+     0
+    ],
+    [
+     "701000",
+     0,
+     1331267600
+    ],
+    [
+     "706000",
+     0,
+     28732400
+    ],
+    [
+     "758000",
+     0,
+     12000000
+    ]
+   ]
+  },
+  "tb-di-2025-12-31": {
+   "entity_id": "ent-di",
+   "period_end": "2025-12-31",
+   "fiscal_year_start": "2025-01-01",
+   "version": 1,
+   "import_job_id": "imp-di-2025-12-31",
+   "lines": [
+    [
+     "101300",
+     0,
+     500000000
+    ],
+    [
+     "106100",
+     0,
+     50000000
+    ],
+    [
+     "106800",
+     0,
+     530000000
+    ],
+    [
+     "110000",
+     0,
+     60000000
+    ],
+    [
+     "164100",
+     0,
+     1000000000
+    ],
+    [
+     "211000",
+     120000000,
+     0
+    ],
+    [
+     "213100",
+     830000000,
+     0
+    ],
+    [
+     "215400",
+     1630000000,
+     0
+    ],
+    [
+     "281300",
+     0,
+     240000000
+    ],
+    [
+     "281540",
+     0,
+     690000000
+    ],
+    [
+     "310000",
+     210000000,
+     0
+    ],
+    [
+     "355000",
+     165000000,
+     0
+    ],
+    [
+     "401000",
+     0,
+     345000000
+    ],
+    [
+     "411000",
+     449500000,
+     0
+    ],
+    [
+     "421000",
+     0,
+     39000000
+    ],
+    [
+     "431000",
+     0,
+     46000000
+    ],
+    [
+     "445660",
+     31000000,
+     0
+    ],
+    [
+     "445710",
+     0,
+     52000000
+    ],
+    [
+     "508000",
+     1200000,
+     0
+    ],
+    [
+     "512100",
+     166200000,
+     0
+    ],
+    [
+     "512200",
+     17350000,
+     0
+    ],
+    [
+     "530000",
+     250000,
+     0
+    ],
+    [
+     "601000",
+     711020400,
+     0
+    ],
+    [
+     "606100",
+     87510200,
+     0
+    ],
+    [
+     "613200",
+     56061200,
+     0
+    ],
+    [
+     "622600",
+     51959200,
+     0
+    ],
+    [
+     "624100",
+     98449000,
+     0
+    ],
+    [
+     "635100",
+     37000000,
+     0
+    ],
+    [
+     "641100",
+     439008800,
+     0
+    ],
+    [
+     "645100",
+     184991200,
+     0
+    ],
+    [
+     "651000",
+     27000000,
+     0
+    ],
+    [
+     "661100",
+     44500000,
+     0
+    ],
+    [
+     "681120",
+     152000000,
+     0
+    ],
+    [
+     "701000",
+     0,
+     1899014100
+    ],
+    [
+     "706000",
+     0,
+     40985900
+    ],
+    [
+     "758000",
+     0,
+     18000000
+    ]
+   ]
+  },
+  "tb-di-2026-03-31": {
+   "entity_id": "ent-di",
+   "period_end": "2026-03-31",
+   "fiscal_year_start": "2026-01-01",
+   "version": 1,
+   "import_job_id": "imp-di-2026-03-31",
+   "lines": [
+    [
+     "101300",
+     0,
+     500000000
+    ],
+    [
+     "106100",
+     0,
+     50000000
+    ],
+    [
+     "106800",
+     0,
+     530000000
+    ],
+    [
+     "110000",
+     0,
+     120000000
+    ],
+    [
+     "164100",
+     0,
+     1000000000
+    ],
+    [
+     "211000",
+     120000000,
+     0
+    ],
+    [
+     "213100",
+     830000000,
+     0
+    ],
+    [
+     "215400",
+     1630000000,
+     0
+    ],
+    [
+     "281300",
+     0,
+     240000000
+    ],
+    [
+     "281540",
+     0,
+     690000000
+    ],
+    [
+     "310000",
+     210000000,
+     0
+    ],
+    [
+     "355000",
+     165000000,
+     0
+    ],
+    [
+     "401000",
+     0,
+     345000000
+    ],
+    [
+     "411000",
+     497000000,
+     0
+    ],
+    [
+     "421000",
+     0,
+     39000000
+    ],
+    [
+     "431000",
+     0,
+     46000000
+    ],
+    [
+     "445660",
+     31000000,
+     0
+    ],
+    [
+     "445710",
+     0,
+     52000000
+    ],
+    [
+     "508000",
+     1200000,
+     0
+    ],
+    [
+     "512100",
+     131200000,
+     0
+    ],
+    [
+     "512200",
+     17350000,
+     0
+    ],
+    [
+     "530000",
+     250000,
+     0
+    ],
+    [
+     "601000",
+     175102100,
+     0
+    ],
+    [
+     "606100",
+     21551000,
+     0
+    ],
+    [
+     "613200",
+     13806100,
+     0
+    ],
+    [
+     "622600",
+     12795900,
+     0
+    ],
+    [
+     "624100",
+     24244900,
+     0
+    ],
+    [
+     "635100",
+     9500000,
+     0
+    ],
+    [
+     "641100",
+     106234500,
+     0
+    ],
+    [
+     "645100",
+     44765500,
+     0
+    ],
+    [
+     "651000",
+     7000000,
+     0
+    ],
+    [
+     "661100",
+     10500000,
+     0
+    ],
+    [
+     "681120",
+     38500000,
+     0
+    ],
+    [
+     "701000",
+     0,
+     469859200
+    ],
+    [
+     "706000",
+     0,
+     10140800
+    ],
+    [
+     "758000",
+     0,
+     5000000
+    ]
+   ]
+  },
+  "tb-di-2026-06-30": {
+   "entity_id": "ent-di",
+   "period_end": "2026-06-30",
+   "fiscal_year_start": "2026-01-01",
+   "version": 1,
+   "import_job_id": "imp-di-2026-06-30",
+   "lines": [
+    [
+     "101300",
+     0,
+     500000000
+    ],
+    [
+     "106100",
+     0,
+     50000000
+    ],
+    [
+     "106800",
+     0,
+     530000000
+    ],
+    [
+     "110000",
+     0,
+     120000000
+    ],
+    [
+     "164100",
+     0,
+     1000000000
+    ],
+    [
+     "211000",
+     120000000,
+     0
+    ],
+    [
+     "213100",
+     830000000,
+     0
+    ],
+    [
+     "215400",
+     1630000000,
+     0
+    ],
+    [
+     "281300",
+     0,
+     240000000
+    ],
+    [
+     "281540",
+     0,
+     690000000
+    ],
+    [
+     "310000",
+     210000000,
+     0
+    ],
+    [
+     "355000",
+     165000000,
+     0
+    ],
+    [
+     "401000",
+     0,
+     345000000
+    ],
+    [
+     "411000",
+     532000000,
+     0
+    ],
+    [
+     "421000",
+     0,
+     39000000
+    ],
+    [
+     "431000",
+     0,
+     46000000
+    ],
+    [
+     "445660",
+     31000000,
+     0
+    ],
+    [
+     "445710",
+     0,
+     52000000
+    ],
+    [
+     "508000",
+     1200000,
+     0
+    ],
+    [
+     "512100",
+     111200000,
+     0
+    ],
+    [
+     "512200",
+     17350000,
+     0
+    ],
+    [
+     "530000",
+     250000,
+     0
+    ],
+    [
+     "601000",
+     347020400,
+     0
+    ],
+    [
+     "606100",
+     42710200,
+     0
+    ],
+    [
+     "613200",
+     27361200,
+     0
+    ],
+    [
+     "622600",
+     25359200,
+     0
+    ],
+    [
+     "624100",
+     48049000,
+     0
+    ],
+    [
+     "635100",
+     19000000,
+     0
+    ],
+    [
+     "641100",
+     212469000,
+     0
+    ],
+    [
+     "645100",
+     89531000,
+     0
+    ],
+    [
+     "651000",
+     13500000,
+     0
+    ],
+    [
+     "661100",
+     22000000,
+     0
+    ],
+    [
+     "681120",
+     77000000,
+     0
+    ],
+    [
+     "701000",
+     0,
+     929929600
+    ],
+    [
+     "706000",
+     0,
+     20070400
+    ],
+    [
+     "758000",
+     0,
+     10000000
+    ]
+   ]
+  },
+  "tb-di-2026-09-30": {
+   "entity_id": "ent-di",
+   "period_end": "2026-09-30",
+   "fiscal_year_start": "2026-01-01",
+   "version": 1,
+   "import_job_id": "imp-di-2026-09-30",
+   "lines": [
+    [
+     "101300",
+     0,
+     500000000
+    ],
+    [
+     "106100",
+     0,
+     50000000
+    ],
+    [
+     "106800",
+     0,
+     530000000
+    ],
+    [
+     "110000",
+     0,
+     120000000
+    ],
+    [
+     "164100",
+     0,
+     1000000000
+    ],
+    [
+     "211000",
+     120000000,
+     0
+    ],
+    [
+     "213100",
+     830000000,
+     0
+    ],
+    [
+     "215400",
+     1630000000,
+     0
+    ],
+    [
+     "281300",
+     0,
+     240000000
+    ],
+    [
+     "281540",
+     0,
+     690000000
+    ],
+    [
+     "310000",
+     210000000,
+     0
+    ],
+    [
+     "355000",
+     165000000,
+     0
+    ],
+    [
+     "401000",
+     0,
+     345000000
+    ],
+    [
+     "411000",
+     617000000,
+     0
+    ],
+    [
+     "421000",
+     0,
+     39000000
+    ],
+    [
+     "431000",
+     0,
+     46000000
+    ],
+    [
+     "445660",
+     31000000,
+     0
+    ],
+    [
+     "445710",
+     0,
+     52000000
+    ],
+    [
+     "508000",
+     1200000,
+     0
+    ],
+    [
+     "512100",
+     41200000,
+     0
+    ],
+    [
+     "512200",
+     17350000,
+     0
+    ],
+    [
+     "530000",
+     250000,
+     0
+    ],
+    [
+     "601000",
+     520000000,
+     0
+    ],
+    [
+     "606100",
+     64000000,
+     0
+    ],
+    [
+     "613200",
+     41000000,
+     0
+    ],
+    [
+     "622600",
+     38000000,
+     0
+    ],
+    [
+     "624100",
+     72000000,
+     0
+    ],
+    [
+     "635100",
+     28000000,
+     0
+    ],
+    [
+     "641100",
+     318000000,
+     0
+    ],
+    [
+     "645100",
+     134000000,
+     0
+    ],
+    [
+     "651000",
+     20000000,
+     0
+    ],
+    [
+     "661100",
+     34000000,
+     0
+    ],
+    [
+     "681120",
+     115000000,
+     0
+    ],
+    [
+     "701000",
+     0,
+     1390000000
+    ],
+    [
+     "706000",
+     0,
+     30000000
+    ],
+    [
+     "758000",
+     0,
+     15000000
+    ]
+   ]
+  },
+  "tb-dl-2026-09-30": {
+   "entity_id": "ent-dl",
+   "period_end": "2026-09-30",
+   "fiscal_year_start": "2026-01-01",
+   "version": 1,
+   "import_job_id": "imp-dl-2026-09-30",
+   "lines": [
+    [
+     "101300",
+     0,
+     150000000
+    ],
+    [
+     "106800",
+     0,
+     40000000
+    ],
+    [
+     "164200",
+     0,
+     212500000
+    ],
+    [
+     "213100",
+     250000000,
+     0
+    ],
+    [
+     "215400",
+     260000000,
+     0
+    ],
+    [
+     "281540",
+     0,
+     70000000
+    ],
+    [
+     "401000",
+     0,
+     61000000
+    ],
+    [
+     "411000",
+     13300000,
+     0
+    ],
+    [
+     "512300",
+     39500000,
+     0
+    ],
+    [
+     "530000",
+     2500000,
+     0
+    ],
+    [
+     "613200",
+     18000000,
+     0
+    ],
+    [
+     "624100",
+     120000000,
+     0
+    ],
+    [
+     "641100",
+     145000000,
+     0
+    ],
+    [
+     "645100",
+     61000000,
+     0
+    ],
+    [
+     "661100",
+     5200000,
+     0
+    ],
+    [
+     "681120",
+     29000000,
+     0
+    ],
+    [
+     "706000",
+     0,
+     410000000
+    ]
+   ]
+  },
+  "tb-ds-2026-09-30": {
+   "entity_id": "ent-ds",
+   "period_end": "2026-09-30",
+   "fiscal_year_start": "2026-01-01",
+   "version": 1,
+   "import_job_id": "imp-ds-2026-09-30",
+   "lines": [
+    [
+     "101300",
+     0,
+     80000000
+    ],
+    [
+     "106800",
+     0,
+     25000000
+    ],
+    [
+     "218300",
+     24000000,
+     0
+    ],
+    [
+     "281830",
+     0,
+     9000000
+    ],
+    [
+     "401000",
+     0,
+     18000000
+    ],
+    [
+     "411000",
+     160600000,
+     0
+    ],
+    [
+     "512400",
+     28000000,
+     0
+    ],
+    [
+     "519100",
+     0,
+     50000000
+    ],
+    [
+     "622600",
+     42000000,
+     0
+    ],
+    [
+     "641100",
+     128000000,
+     0
+    ],
+    [
+     "645100",
+     54000000,
+     0
+    ],
+    [
+     "661100",
+     900000,
+     0
+    ],
+    [
+     "681120",
+     4500000,
+     0
+    ],
+    [
+     "706000",
+     0,
+     260000000
+    ]
+   ]
+  },
+  "tb-di-2026-09-30-v2": {
+   "entity_id": "ent-di",
+   "period_end": "2026-09-30",
+   "fiscal_year_start": "2026-01-01",
+   "version": 2,
+   "import_job_id": "imp-di-2026-09-30-v2",
+   "lines": [
+    [
+     "101300",
+     0,
+     500000000
+    ],
+    [
+     "106100",
+     0,
+     50000000
+    ],
+    [
+     "106800",
+     0,
+     530000000
+    ],
+    [
+     "110000",
+     0,
+     120000000
+    ],
+    [
+     "164100",
+     0,
+     1000000000
+    ],
+    [
+     "211000",
+     120000000,
+     0
+    ],
+    [
+     "213100",
+     830000000,
+     0
+    ],
+    [
+     "215400",
+     1630000000,
+     0
+    ],
+    [
+     "281300",
+     0,
+     240000000
+    ],
+    [
+     "281540",
+     0,
+     690000000
+    ],
+    [
+     "310000",
+     210000000,
+     0
+    ],
+    [
+     "355000",
+     165000000,
+     0
+    ],
+    [
+     "401000",
+     0,
+     345000000
+    ],
+    [
+     "411000",
+     627000000,
+     0
+    ],
+    [
+     "421000",
+     0,
+     39000000
+    ],
+    [
+     "431000",
+     0,
+     46000000
+    ],
+    [
+     "445660",
+     31000000,
+     0
+    ],
+    [
+     "445710",
+     0,
+     52000000
+    ],
+    [
+     "508000",
+     1200000,
+     0
+    ],
+    [
+     "512100",
+     31200000,
+     0
+    ],
+    [
+     "512200",
+     17350000,
+     0
+    ],
+    [
+     "530000",
+     250000,
+     0
+    ],
+    [
+     "601000",
+     520000000,
+     0
+    ],
+    [
+     "606100",
+     64000000,
+     0
+    ],
+    [
+     "613200",
+     41000000,
+     0
+    ],
+    [
+     "622600",
+     38000000,
+     0
+    ],
+    [
+     "624100",
+     72000000,
+     0
+    ],
+    [
+     "635100",
+     28000000,
+     0
+    ],
+    [
+     "641100",
+     318000000,
+     0
+    ],
+    [
+     "645100",
+     134000000,
+     0
+    ],
+    [
+     "651000",
+     20000000,
+     0
+    ],
+    [
+     "661100",
+     34000000,
+     0
+    ],
+    [
+     "681120",
+     115000000,
+     0
+    ],
+    [
+     "701000",
+     0,
+     1390000000
+    ],
+    [
+     "706000",
+     0,
+     30000000
+    ],
+    [
+     "758000",
+     0,
+     15000000
+    ]
+   ]
+  }
+ },
+ "tbGrc": {
+  "tb-de-2026-09-30": {
+   "entity_id": "ent-de",
+   "period_end": "2026-09-30",
+   "fiscal_year_start": "2026-01-01",
+   "version": 1,
+   "import_job_id": "imp-de-2026-09-30",
+   "lines": [
+    [
+     "1100",
+     0,
+     200000000
+    ],
+    [
+     "1200",
+     0,
+     160000000
+    ],
+    [
+     "2100",
+     0,
+     320000000
+    ],
+    [
+     "3100",
+     680000000,
+     0
+    ],
+    [
+     "3200",
+     0,
+     210000000
+    ],
+    [
+     "3300",
+     135000000,
+     0
+    ],
+    [
+     "4100",
+     142000000,
+     0
+    ],
+    [
+     "4200",
+     0,
+     100000000
+    ],
+    [
+     "4300",
+     0,
+     34000000
+    ],
+    [
+     "5100",
+     115000000,
+     0
+    ],
+    [
+     "6100",
+     0,
+     860000000
+    ],
+    [
+     "6200",
+     470000000,
+     0
+    ],
+    [
+     "6300",
+     280000000,
+     0
+    ],
+    [
+     "6400",
+     52000000,
+     0
+    ],
+    [
+     "6500",
+     10000000,
+     0
+    ]
+   ]
+  },
+  "tb-uk-2026-09-30": {
+   "entity_id": "ent-uk",
+   "period_end": "2026-09-30",
+   "fiscal_year_start": "2026-01-01",
+   "version": 1,
+   "import_job_id": "imp-uk-2026-09-30",
+   "lines": [
+    [
+     "1100",
+     0,
+     50000000
+    ],
+    [
+     "1200",
+     0,
+     58000000
+    ],
+    [
+     "2100",
+     0,
+     120000000
+    ],
+    [
+     "3100",
+     90000000,
+     0
+    ],
+    [
+     "3200",
+     0,
+     26000000
+    ],
+    [
+     "3300",
+     105000000,
+     0
+    ],
+    [
+     "4100",
+     138000000,
+     0
+    ],
+    [
+     "4200",
+     0,
+     99000000
+    ],
+    [
+     "4300",
+     0,
+     24000000
+    ],
+    [
+     "5100",
+     64000000,
+     0
+    ],
+    [
+     "6100",
+     0,
+     690000000
+    ],
+    [
+     "6200",
+     495000000,
+     0
+    ],
+    [
+     "6300",
+     156000000,
+     0
+    ],
+    [
+     "6400",
+     13000000,
+     0
+    ],
+    [
+     "6500",
+     6000000,
+     0
+    ]
+   ]
+  }
+ },
+ "icons": {
+  "overview": "<path d=\"M3 13h8V3H3zM13 21h8V11h-8zM3 21h8v-6H3zM13 3v6h8V3z\"/>",
+  "capital": "<path d=\"m12 2 9 5-9 5-9-5 9-5Z\"/><path d=\"m3 12 9 5 9-5\"/><path d=\"m3 17 9 5 9-5\"/>",
+  "debt": "<path d=\"M3 21h18M5 21V10m4 11V10m6 11V10m4 11V10M2 10l10-7 10 7\"/>",
+  "covenants": "<path d=\"M12 21a9 9 0 1 1 9-9\"/><path d=\"m12 12 5-5\"/><path d=\"M12 7v1M7 12h1M16.5 16.5l.7.7\"/>",
+  "scenarios": "<path d=\"M3 17l6-6 4 4 8-8\"/><path d=\"M14 7h7v7\"/>",
+  "financing": "<rect x=\"3\" y=\"7\" width=\"18\" height=\"13\" rx=\"2\"/><path d=\"M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18\"/>",
+  "providers": "<path d=\"M3 21h18M6 21V7l6-4 6 4v14M10 21v-5h4v5M9 10h.01M15 10h.01\"/>",
+  "data": "<path d=\"M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z\"/><path d=\"M14 3v6h6M8 13h8M8 17h5\"/>",
+  "activity": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M12 7v5l3 2\"/>",
+  "settings": "<circle cx=\"12\" cy=\"12\" r=\"3\"/><path d=\"M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-1.8-.3 1.6 1.6 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.6 1.6 0 0 0-1-1.5 1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0 .3-1.8 1.6 1.6 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.6 1.6 0 0 0 1.5-1 1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3H9a1.6 1.6 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 1 1.5 1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8V9a1.6 1.6 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1Z\"/>",
+  "vision": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"m15.5 8.5-2 5-5 2 2-5z\"/>",
+  "x": "<path d=\"M18 6 6 18M6 6l12 12\"/>",
+  "menu": "<path d=\"M4 6h16M4 12h16M4 18h16\"/>",
+  "chev": "<path d=\"m9 18 6-6-6-6\"/>",
+  "down": "<path d=\"m6 9 6 6 6-6\"/>",
+  "back": "<path d=\"m15 18-6-6 6-6\"/>",
+  "check": "<path d=\"M20 6 9 17l-5-5\"/>",
+  "alert": "<path d=\"M12 9v4M12 17h.01\"/><path d=\"M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z\"/>",
+  "info": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M12 16v-4M12 8h.01\"/>",
+  "plus": "<path d=\"M12 5v14M5 12h14\"/>",
+  "download": "<path d=\"M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3\"/>",
+  "print": "<path d=\"M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2\"/><path d=\"M6 14h12v8H6z\"/>",
+  "lock": "<rect x=\"4\" y=\"11\" width=\"16\" height=\"10\" rx=\"2\"/><path d=\"M8 11V7a4 4 0 0 1 8 0v4\"/>",
+  "file": "<path d=\"M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z\"/><path d=\"M14 3v6h6\"/>",
+  "source": "<path d=\"M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7\"/><path d=\"M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7\"/>",
+  "reset": "<path d=\"M3 12a9 9 0 1 0 3-6.7L3 8\"/><path d=\"M3 3v5h5\"/>",
+  "send": "<path d=\"m22 2-7 20-4-9-9-4z\"/><path d=\"M22 2 11 13\"/>",
+  "star": "<path d=\"m12 2 3 7 7 .6-5.3 4.6L18.4 22 12 18l-6.4 4 1.7-7.8L2 9.6 9 9z\"/>",
+  "minus": "<path d=\"M5 12h14\"/>"
+ },
+ "source": {
+  "file": "beta-capital-os/covenn-capital-os-demo-en.html",
+  "sha256": "2abfcc8635e17fce971e9645645cac91e2728a3cf422e91ea4224e2daeda6d8c"
+ },
+ "shell": {
+  "side": {
+   "overview": "<aside class=\"side\" aria-label=\"Main navigation\"><div class=\"brand\"><span class=\"brand-mark\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 32 32\" aria-hidden=\"true\"><path d=\"M21.5 11.2a7 7 0 1 0 0 9.6\" fill=\"none\" stroke=\"#fff\" stroke-width=\"3.2\" stroke-linecap=\"round\"></path></svg></span><div><div class=\"brand-name\">Covenn</div><div class=\"brand-sub\">Capital operating system</div></div></div>\n  <nav class=\"nav\"><div class=\"nav-group\"><div class=\"nav-label\">Workspace</div><a href=\"#/\" class=\"on\" aria-current=\"page\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 13h8V3H3zM13 21h8V11h-8zM3 21h8v-6H3zM13 3v6h8V3z\"></path></svg>Overview</a><a href=\"#/capital\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m12 2 9 5-9 5-9-5 9-5Z\"></path><path d=\"m3 12 9 5 9-5\"></path><path d=\"m3 17 9 5 9-5\"></path></svg>Capital structure</a><a href=\"#/debt\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 21h18M5 21V10m4 11V10m6 11V10m4 11V10M2 10l10-7 10 7\"></path></svg>Debt &amp; facilities</a><a href=\"#/covenants\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 21a9 9 0 1 1 9-9\"></path><path d=\"m12 12 5-5\"></path><path d=\"M12 7v1M7 12h1M16.5 16.5l.7.7\"></path></svg>Covenants</a><a href=\"#/scenarios\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 17l6-6 4 4 8-8\"></path><path d=\"M14 7h7v7\"></path></svg>Forecast &amp; scenarios</a></div><div class=\"nav-group\"><div class=\"nav-label\">Financing</div><a href=\"#/financing\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"3\" y=\"7\" width=\"18\" height=\"13\" rx=\"2\"></rect><path d=\"M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18\"></path></svg>Financing workspace</a><a href=\"#/providers\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 21h18M6 21V7l6-4 6 4v14M10 21v-5h4v5M9 10h.01M15 10h.01\"></path></svg>Capital providers</a></div><div class=\"nav-group\"><div class=\"nav-label\">Foundations</div><a href=\"#/data\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z\"></path><path d=\"M14 3v6h6M8 13h8M8 17h5\"></path></svg>Documents &amp; data</a><a href=\"#/activity\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"9\"></circle><path d=\"M12 7v5l3 2\"></path></svg>Activity</a><a href=\"#/settings\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"3\"></circle><path d=\"M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-1.8-.3 1.6 1.6 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.6 1.6 0 0 0-1-1.5 1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0 .3-1.8 1.6 1.6 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.6 1.6 0 0 0 1.5-1 1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3H9a1.6 1.6 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 1 1.5 1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8V9a1.6 1.6 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1Z\"></path></svg>Settings</a></div></nav>\n  <div class=\"side-foot\"><a href=\"#/vision\" class=\"small muted\" style=\"display:flex;gap:8px;align-items:center\"><svg width=\"15\" height=\"15\" class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"9\"></circle><path d=\"m15.5 8.5-2 5-5 2 2-5z\"></path></svg>Product vision</a><span class=\"demo-tag\"><i></i>Interactive demo · Fictional data</span></div></aside>",
+   "capital": "<aside class=\"side\" aria-label=\"Main navigation\"><div class=\"brand\"><span class=\"brand-mark\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 32 32\" aria-hidden=\"true\"><path d=\"M21.5 11.2a7 7 0 1 0 0 9.6\" fill=\"none\" stroke=\"#fff\" stroke-width=\"3.2\" stroke-linecap=\"round\"></path></svg></span><div><div class=\"brand-name\">Covenn</div><div class=\"brand-sub\">Capital operating system</div></div></div>\n  <nav class=\"nav\"><div class=\"nav-group\"><div class=\"nav-label\">Workspace</div><a href=\"#/\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 13h8V3H3zM13 21h8V11h-8zM3 21h8v-6H3zM13 3v6h8V3z\"></path></svg>Overview</a><a href=\"#/capital\" class=\"on\" aria-current=\"page\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m12 2 9 5-9 5-9-5 9-5Z\"></path><path d=\"m3 12 9 5 9-5\"></path><path d=\"m3 17 9 5 9-5\"></path></svg>Capital structure</a><a href=\"#/debt\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 21h18M5 21V10m4 11V10m6 11V10m4 11V10M2 10l10-7 10 7\"></path></svg>Debt &amp; facilities</a><a href=\"#/covenants\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 21a9 9 0 1 1 9-9\"></path><path d=\"m12 12 5-5\"></path><path d=\"M12 7v1M7 12h1M16.5 16.5l.7.7\"></path></svg>Covenants</a><a href=\"#/scenarios\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 17l6-6 4 4 8-8\"></path><path d=\"M14 7h7v7\"></path></svg>Forecast &amp; scenarios</a></div><div class=\"nav-group\"><div class=\"nav-label\">Financing</div><a href=\"#/financing\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"3\" y=\"7\" width=\"18\" height=\"13\" rx=\"2\"></rect><path d=\"M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18\"></path></svg>Financing workspace</a><a href=\"#/providers\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 21h18M6 21V7l6-4 6 4v14M10 21v-5h4v5M9 10h.01M15 10h.01\"></path></svg>Capital providers</a></div><div class=\"nav-group\"><div class=\"nav-label\">Foundations</div><a href=\"#/data\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z\"></path><path d=\"M14 3v6h6M8 13h8M8 17h5\"></path></svg>Documents &amp; data</a><a href=\"#/activity\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"9\"></circle><path d=\"M12 7v5l3 2\"></path></svg>Activity</a><a href=\"#/settings\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"3\"></circle><path d=\"M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-1.8-.3 1.6 1.6 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.6 1.6 0 0 0-1-1.5 1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0 .3-1.8 1.6 1.6 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.6 1.6 0 0 0 1.5-1 1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3H9a1.6 1.6 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 1 1.5 1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8V9a1.6 1.6 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1Z\"></path></svg>Settings</a></div></nav>\n  <div class=\"side-foot\"><a href=\"#/vision\" class=\"small muted\" style=\"display:flex;gap:8px;align-items:center\"><svg width=\"15\" height=\"15\" class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"9\"></circle><path d=\"m15.5 8.5-2 5-5 2 2-5z\"></path></svg>Product vision</a><span class=\"demo-tag\"><i></i>Interactive demo · Fictional data</span></div></aside>",
+   "debt": "<aside class=\"side\" aria-label=\"Main navigation\"><div class=\"brand\"><span class=\"brand-mark\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 32 32\" aria-hidden=\"true\"><path d=\"M21.5 11.2a7 7 0 1 0 0 9.6\" fill=\"none\" stroke=\"#fff\" stroke-width=\"3.2\" stroke-linecap=\"round\"></path></svg></span><div><div class=\"brand-name\">Covenn</div><div class=\"brand-sub\">Capital operating system</div></div></div>\n  <nav class=\"nav\"><div class=\"nav-group\"><div class=\"nav-label\">Workspace</div><a href=\"#/\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 13h8V3H3zM13 21h8V11h-8zM3 21h8v-6H3zM13 3v6h8V3z\"></path></svg>Overview</a><a href=\"#/capital\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m12 2 9 5-9 5-9-5 9-5Z\"></path><path d=\"m3 12 9 5 9-5\"></path><path d=\"m3 17 9 5 9-5\"></path></svg>Capital structure</a><a href=\"#/debt\" class=\"on\" aria-current=\"page\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 21h18M5 21V10m4 11V10m6 11V10m4 11V10M2 10l10-7 10 7\"></path></svg>Debt &amp; facilities</a><a href=\"#/covenants\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 21a9 9 0 1 1 9-9\"></path><path d=\"m12 12 5-5\"></path><path d=\"M12 7v1M7 12h1M16.5 16.5l.7.7\"></path></svg>Covenants</a><a href=\"#/scenarios\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 17l6-6 4 4 8-8\"></path><path d=\"M14 7h7v7\"></path></svg>Forecast &amp; scenarios</a></div><div class=\"nav-group\"><div class=\"nav-label\">Financing</div><a href=\"#/financing\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"3\" y=\"7\" width=\"18\" height=\"13\" rx=\"2\"></rect><path d=\"M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18\"></path></svg>Financing workspace</a><a href=\"#/providers\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 21h18M6 21V7l6-4 6 4v14M10 21v-5h4v5M9 10h.01M15 10h.01\"></path></svg>Capital providers</a></div><div class=\"nav-group\"><div class=\"nav-label\">Foundations</div><a href=\"#/data\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z\"></path><path d=\"M14 3v6h6M8 13h8M8 17h5\"></path></svg>Documents &amp; data</a><a href=\"#/activity\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"9\"></circle><path d=\"M12 7v5l3 2\"></path></svg>Activity</a><a href=\"#/settings\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"3\"></circle><path d=\"M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-1.8-.3 1.6 1.6 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.6 1.6 0 0 0-1-1.5 1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0 .3-1.8 1.6 1.6 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.6 1.6 0 0 0 1.5-1 1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3H9a1.6 1.6 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 1 1.5 1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8V9a1.6 1.6 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1Z\"></path></svg>Settings</a></div></nav>\n  <div class=\"side-foot\"><a href=\"#/vision\" class=\"small muted\" style=\"display:flex;gap:8px;align-items:center\"><svg width=\"15\" height=\"15\" class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"9\"></circle><path d=\"m15.5 8.5-2 5-5 2 2-5z\"></path></svg>Product vision</a><span class=\"demo-tag\"><i></i>Interactive demo · Fictional data</span></div></aside>",
+   "covenants": "<aside class=\"side\" aria-label=\"Main navigation\"><div class=\"brand\"><span class=\"brand-mark\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 32 32\" aria-hidden=\"true\"><path d=\"M21.5 11.2a7 7 0 1 0 0 9.6\" fill=\"none\" stroke=\"#fff\" stroke-width=\"3.2\" stroke-linecap=\"round\"></path></svg></span><div><div class=\"brand-name\">Covenn</div><div class=\"brand-sub\">Capital operating system</div></div></div>\n  <nav class=\"nav\"><div class=\"nav-group\"><div class=\"nav-label\">Workspace</div><a href=\"#/\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 13h8V3H3zM13 21h8V11h-8zM3 21h8v-6H3zM13 3v6h8V3z\"></path></svg>Overview</a><a href=\"#/capital\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m12 2 9 5-9 5-9-5 9-5Z\"></path><path d=\"m3 12 9 5 9-5\"></path><path d=\"m3 17 9 5 9-5\"></path></svg>Capital structure</a><a href=\"#/debt\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 21h18M5 21V10m4 11V10m6 11V10m4 11V10M2 10l10-7 10 7\"></path></svg>Debt &amp; facilities</a><a href=\"#/covenants\" class=\"on\" aria-current=\"page\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 21a9 9 0 1 1 9-9\"></path><path d=\"m12 12 5-5\"></path><path d=\"M12 7v1M7 12h1M16.5 16.5l.7.7\"></path></svg>Covenants</a><a href=\"#/scenarios\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 17l6-6 4 4 8-8\"></path><path d=\"M14 7h7v7\"></path></svg>Forecast &amp; scenarios</a></div><div class=\"nav-group\"><div class=\"nav-label\">Financing</div><a href=\"#/financing\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"3\" y=\"7\" width=\"18\" height=\"13\" rx=\"2\"></rect><path d=\"M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18\"></path></svg>Financing workspace</a><a href=\"#/providers\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 21h18M6 21V7l6-4 6 4v14M10 21v-5h4v5M9 10h.01M15 10h.01\"></path></svg>Capital providers</a></div><div class=\"nav-group\"><div class=\"nav-label\">Foundations</div><a href=\"#/data\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z\"></path><path d=\"M14 3v6h6M8 13h8M8 17h5\"></path></svg>Documents &amp; data</a><a href=\"#/activity\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"9\"></circle><path d=\"M12 7v5l3 2\"></path></svg>Activity</a><a href=\"#/settings\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"3\"></circle><path d=\"M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-1.8-.3 1.6 1.6 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.6 1.6 0 0 0-1-1.5 1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0 .3-1.8 1.6 1.6 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.6 1.6 0 0 0 1.5-1 1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3H9a1.6 1.6 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 1 1.5 1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8V9a1.6 1.6 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1Z\"></path></svg>Settings</a></div></nav>\n  <div class=\"side-foot\"><a href=\"#/vision\" class=\"small muted\" style=\"display:flex;gap:8px;align-items:center\"><svg width=\"15\" height=\"15\" class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"9\"></circle><path d=\"m15.5 8.5-2 5-5 2 2-5z\"></path></svg>Product vision</a><span class=\"demo-tag\"><i></i>Interactive demo · Fictional data</span></div></aside>",
+   "scenarios": "<aside class=\"side\" aria-label=\"Main navigation\"><div class=\"brand\"><span class=\"brand-mark\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 32 32\" aria-hidden=\"true\"><path d=\"M21.5 11.2a7 7 0 1 0 0 9.6\" fill=\"none\" stroke=\"#fff\" stroke-width=\"3.2\" stroke-linecap=\"round\"></path></svg></span><div><div class=\"brand-name\">Covenn</div><div class=\"brand-sub\">Capital operating system</div></div></div>\n  <nav class=\"nav\"><div class=\"nav-group\"><div class=\"nav-label\">Workspace</div><a href=\"#/\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 13h8V3H3zM13 21h8V11h-8zM3 21h8v-6H3zM13 3v6h8V3z\"></path></svg>Overview</a><a href=\"#/capital\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m12 2 9 5-9 5-9-5 9-5Z\"></path><path d=\"m3 12 9 5 9-5\"></path><path d=\"m3 17 9 5 9-5\"></path></svg>Capital structure</a><a href=\"#/debt\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 21h18M5 21V10m4 11V10m6 11V10m4 11V10M2 10l10-7 10 7\"></path></svg>Debt &amp; facilities</a><a href=\"#/covenants\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 21a9 9 0 1 1 9-9\"></path><path d=\"m12 12 5-5\"></path><path d=\"M12 7v1M7 12h1M16.5 16.5l.7.7\"></path></svg>Covenants</a><a href=\"#/scenarios\" class=\"on\" aria-current=\"page\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 17l6-6 4 4 8-8\"></path><path d=\"M14 7h7v7\"></path></svg>Forecast &amp; scenarios</a></div><div class=\"nav-group\"><div class=\"nav-label\">Financing</div><a href=\"#/financing\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"3\" y=\"7\" width=\"18\" height=\"13\" rx=\"2\"></rect><path d=\"M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18\"></path></svg>Financing workspace</a><a href=\"#/providers\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 21h18M6 21V7l6-4 6 4v14M10 21v-5h4v5M9 10h.01M15 10h.01\"></path></svg>Capital providers</a></div><div class=\"nav-group\"><div class=\"nav-label\">Foundations</div><a href=\"#/data\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z\"></path><path d=\"M14 3v6h6M8 13h8M8 17h5\"></path></svg>Documents &amp; data</a><a href=\"#/activity\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"9\"></circle><path d=\"M12 7v5l3 2\"></path></svg>Activity</a><a href=\"#/settings\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"3\"></circle><path d=\"M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-1.8-.3 1.6 1.6 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.6 1.6 0 0 0-1-1.5 1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0 .3-1.8 1.6 1.6 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.6 1.6 0 0 0 1.5-1 1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3H9a1.6 1.6 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 1 1.5 1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8V9a1.6 1.6 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1Z\"></path></svg>Settings</a></div></nav>\n  <div class=\"side-foot\"><a href=\"#/vision\" class=\"small muted\" style=\"display:flex;gap:8px;align-items:center\"><svg width=\"15\" height=\"15\" class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"9\"></circle><path d=\"m15.5 8.5-2 5-5 2 2-5z\"></path></svg>Product vision</a><span class=\"demo-tag\"><i></i>Interactive demo · Fictional data</span></div></aside>",
+   "financing": "<aside class=\"side\" aria-label=\"Main navigation\"><div class=\"brand\"><span class=\"brand-mark\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 32 32\" aria-hidden=\"true\"><path d=\"M21.5 11.2a7 7 0 1 0 0 9.6\" fill=\"none\" stroke=\"#fff\" stroke-width=\"3.2\" stroke-linecap=\"round\"></path></svg></span><div><div class=\"brand-name\">Covenn</div><div class=\"brand-sub\">Capital operating system</div></div></div>\n  <nav class=\"nav\"><div class=\"nav-group\"><div class=\"nav-label\">Workspace</div><a href=\"#/\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 13h8V3H3zM13 21h8V11h-8zM3 21h8v-6H3zM13 3v6h8V3z\"></path></svg>Overview</a><a href=\"#/capital\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m12 2 9 5-9 5-9-5 9-5Z\"></path><path d=\"m3 12 9 5 9-5\"></path><path d=\"m3 17 9 5 9-5\"></path></svg>Capital structure</a><a href=\"#/debt\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 21h18M5 21V10m4 11V10m6 11V10m4 11V10M2 10l10-7 10 7\"></path></svg>Debt &amp; facilities</a><a href=\"#/covenants\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 21a9 9 0 1 1 9-9\"></path><path d=\"m12 12 5-5\"></path><path d=\"M12 7v1M7 12h1M16.5 16.5l.7.7\"></path></svg>Covenants</a><a href=\"#/scenarios\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 17l6-6 4 4 8-8\"></path><path d=\"M14 7h7v7\"></path></svg>Forecast &amp; scenarios</a></div><div class=\"nav-group\"><div class=\"nav-label\">Financing</div><a href=\"#/financing\" class=\"on\" aria-current=\"page\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"3\" y=\"7\" width=\"18\" height=\"13\" rx=\"2\"></rect><path d=\"M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18\"></path></svg>Financing workspace</a><a href=\"#/providers\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 21h18M6 21V7l6-4 6 4v14M10 21v-5h4v5M9 10h.01M15 10h.01\"></path></svg>Capital providers</a></div><div class=\"nav-group\"><div class=\"nav-label\">Foundations</div><a href=\"#/data\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z\"></path><path d=\"M14 3v6h6M8 13h8M8 17h5\"></path></svg>Documents &amp; data</a><a href=\"#/activity\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"9\"></circle><path d=\"M12 7v5l3 2\"></path></svg>Activity</a><a href=\"#/settings\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"3\"></circle><path d=\"M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-1.8-.3 1.6 1.6 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.6 1.6 0 0 0-1-1.5 1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0 .3-1.8 1.6 1.6 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.6 1.6 0 0 0 1.5-1 1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3H9a1.6 1.6 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 1 1.5 1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8V9a1.6 1.6 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1Z\"></path></svg>Settings</a></div></nav>\n  <div class=\"side-foot\"><a href=\"#/vision\" class=\"small muted\" style=\"display:flex;gap:8px;align-items:center\"><svg width=\"15\" height=\"15\" class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"9\"></circle><path d=\"m15.5 8.5-2 5-5 2 2-5z\"></path></svg>Product vision</a><span class=\"demo-tag\"><i></i>Interactive demo · Fictional data</span></div></aside>",
+   "providers": "<aside class=\"side\" aria-label=\"Main navigation\"><div class=\"brand\"><span class=\"brand-mark\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 32 32\" aria-hidden=\"true\"><path d=\"M21.5 11.2a7 7 0 1 0 0 9.6\" fill=\"none\" stroke=\"#fff\" stroke-width=\"3.2\" stroke-linecap=\"round\"></path></svg></span><div><div class=\"brand-name\">Covenn</div><div class=\"brand-sub\">Capital operating system</div></div></div>\n  <nav class=\"nav\"><div class=\"nav-group\"><div class=\"nav-label\">Workspace</div><a href=\"#/\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 13h8V3H3zM13 21h8V11h-8zM3 21h8v-6H3zM13 3v6h8V3z\"></path></svg>Overview</a><a href=\"#/capital\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m12 2 9 5-9 5-9-5 9-5Z\"></path><path d=\"m3 12 9 5 9-5\"></path><path d=\"m3 17 9 5 9-5\"></path></svg>Capital structure</a><a href=\"#/debt\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 21h18M5 21V10m4 11V10m6 11V10m4 11V10M2 10l10-7 10 7\"></path></svg>Debt &amp; facilities</a><a href=\"#/covenants\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 21a9 9 0 1 1 9-9\"></path><path d=\"m12 12 5-5\"></path><path d=\"M12 7v1M7 12h1M16.5 16.5l.7.7\"></path></svg>Covenants</a><a href=\"#/scenarios\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 17l6-6 4 4 8-8\"></path><path d=\"M14 7h7v7\"></path></svg>Forecast &amp; scenarios</a></div><div class=\"nav-group\"><div class=\"nav-label\">Financing</div><a href=\"#/financing\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"3\" y=\"7\" width=\"18\" height=\"13\" rx=\"2\"></rect><path d=\"M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18\"></path></svg>Financing workspace</a><a href=\"#/providers\" class=\"on\" aria-current=\"page\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 21h18M6 21V7l6-4 6 4v14M10 21v-5h4v5M9 10h.01M15 10h.01\"></path></svg>Capital providers</a></div><div class=\"nav-group\"><div class=\"nav-label\">Foundations</div><a href=\"#/data\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z\"></path><path d=\"M14 3v6h6M8 13h8M8 17h5\"></path></svg>Documents &amp; data</a><a href=\"#/activity\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"9\"></circle><path d=\"M12 7v5l3 2\"></path></svg>Activity</a><a href=\"#/settings\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"3\"></circle><path d=\"M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-1.8-.3 1.6 1.6 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.6 1.6 0 0 0-1-1.5 1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0 .3-1.8 1.6 1.6 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.6 1.6 0 0 0 1.5-1 1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3H9a1.6 1.6 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 1 1.5 1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8V9a1.6 1.6 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1Z\"></path></svg>Settings</a></div></nav>\n  <div class=\"side-foot\"><a href=\"#/vision\" class=\"small muted\" style=\"display:flex;gap:8px;align-items:center\"><svg width=\"15\" height=\"15\" class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"9\"></circle><path d=\"m15.5 8.5-2 5-5 2 2-5z\"></path></svg>Product vision</a><span class=\"demo-tag\"><i></i>Interactive demo · Fictional data</span></div></aside>",
+   "data": "<aside class=\"side\" aria-label=\"Main navigation\"><div class=\"brand\"><span class=\"brand-mark\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 32 32\" aria-hidden=\"true\"><path d=\"M21.5 11.2a7 7 0 1 0 0 9.6\" fill=\"none\" stroke=\"#fff\" stroke-width=\"3.2\" stroke-linecap=\"round\"></path></svg></span><div><div class=\"brand-name\">Covenn</div><div class=\"brand-sub\">Capital operating system</div></div></div>\n  <nav class=\"nav\"><div class=\"nav-group\"><div class=\"nav-label\">Workspace</div><a href=\"#/\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 13h8V3H3zM13 21h8V11h-8zM3 21h8v-6H3zM13 3v6h8V3z\"></path></svg>Overview</a><a href=\"#/capital\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m12 2 9 5-9 5-9-5 9-5Z\"></path><path d=\"m3 12 9 5 9-5\"></path><path d=\"m3 17 9 5 9-5\"></path></svg>Capital structure</a><a href=\"#/debt\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 21h18M5 21V10m4 11V10m6 11V10m4 11V10M2 10l10-7 10 7\"></path></svg>Debt &amp; facilities</a><a href=\"#/covenants\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 21a9 9 0 1 1 9-9\"></path><path d=\"m12 12 5-5\"></path><path d=\"M12 7v1M7 12h1M16.5 16.5l.7.7\"></path></svg>Covenants</a><a href=\"#/scenarios\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 17l6-6 4 4 8-8\"></path><path d=\"M14 7h7v7\"></path></svg>Forecast &amp; scenarios</a></div><div class=\"nav-group\"><div class=\"nav-label\">Financing</div><a href=\"#/financing\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"3\" y=\"7\" width=\"18\" height=\"13\" rx=\"2\"></rect><path d=\"M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18\"></path></svg>Financing workspace</a><a href=\"#/providers\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 21h18M6 21V7l6-4 6 4v14M10 21v-5h4v5M9 10h.01M15 10h.01\"></path></svg>Capital providers</a></div><div class=\"nav-group\"><div class=\"nav-label\">Foundations</div><a href=\"#/data\" class=\"on\" aria-current=\"page\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z\"></path><path d=\"M14 3v6h6M8 13h8M8 17h5\"></path></svg>Documents &amp; data</a><a href=\"#/activity\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"9\"></circle><path d=\"M12 7v5l3 2\"></path></svg>Activity</a><a href=\"#/settings\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"3\"></circle><path d=\"M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-1.8-.3 1.6 1.6 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.6 1.6 0 0 0-1-1.5 1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0 .3-1.8 1.6 1.6 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.6 1.6 0 0 0 1.5-1 1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3H9a1.6 1.6 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 1 1.5 1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8V9a1.6 1.6 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1Z\"></path></svg>Settings</a></div></nav>\n  <div class=\"side-foot\"><a href=\"#/vision\" class=\"small muted\" style=\"display:flex;gap:8px;align-items:center\"><svg width=\"15\" height=\"15\" class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"9\"></circle><path d=\"m15.5 8.5-2 5-5 2 2-5z\"></path></svg>Product vision</a><span class=\"demo-tag\"><i></i>Interactive demo · Fictional data</span></div></aside>",
+   "vision": "<aside class=\"side\" aria-label=\"Main navigation\"><div class=\"brand\"><span class=\"brand-mark\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 32 32\" aria-hidden=\"true\"><path d=\"M21.5 11.2a7 7 0 1 0 0 9.6\" fill=\"none\" stroke=\"#fff\" stroke-width=\"3.2\" stroke-linecap=\"round\"></path></svg></span><div><div class=\"brand-name\">Covenn</div><div class=\"brand-sub\">Capital operating system</div></div></div>\n  <nav class=\"nav\"><div class=\"nav-group\"><div class=\"nav-label\">Workspace</div><a href=\"#/\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 13h8V3H3zM13 21h8V11h-8zM3 21h8v-6H3zM13 3v6h8V3z\"></path></svg>Overview</a><a href=\"#/capital\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m12 2 9 5-9 5-9-5 9-5Z\"></path><path d=\"m3 12 9 5 9-5\"></path><path d=\"m3 17 9 5 9-5\"></path></svg>Capital structure</a><a href=\"#/debt\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 21h18M5 21V10m4 11V10m6 11V10m4 11V10M2 10l10-7 10 7\"></path></svg>Debt &amp; facilities</a><a href=\"#/covenants\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 21a9 9 0 1 1 9-9\"></path><path d=\"m12 12 5-5\"></path><path d=\"M12 7v1M7 12h1M16.5 16.5l.7.7\"></path></svg>Covenants</a><a href=\"#/scenarios\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 17l6-6 4 4 8-8\"></path><path d=\"M14 7h7v7\"></path></svg>Forecast &amp; scenarios</a></div><div class=\"nav-group\"><div class=\"nav-label\">Financing</div><a href=\"#/financing\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"3\" y=\"7\" width=\"18\" height=\"13\" rx=\"2\"></rect><path d=\"M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18\"></path></svg>Financing workspace</a><a href=\"#/providers\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 21h18M6 21V7l6-4 6 4v14M10 21v-5h4v5M9 10h.01M15 10h.01\"></path></svg>Capital providers</a></div><div class=\"nav-group\"><div class=\"nav-label\">Foundations</div><a href=\"#/data\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z\"></path><path d=\"M14 3v6h6M8 13h8M8 17h5\"></path></svg>Documents &amp; data</a><a href=\"#/activity\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"9\"></circle><path d=\"M12 7v5l3 2\"></path></svg>Activity</a><a href=\"#/settings\" class=\"\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"3\"></circle><path d=\"M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-1.8-.3 1.6 1.6 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.6 1.6 0 0 0-1-1.5 1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0 .3-1.8 1.6 1.6 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.6 1.6 0 0 0 1.5-1 1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3H9a1.6 1.6 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 1 1.5 1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8V9a1.6 1.6 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1Z\"></path></svg>Settings</a></div></nav>\n  <div class=\"side-foot\"><a href=\"#/vision\" class=\"small \" style=\"display:flex;gap:8px;align-items:center\"><svg width=\"15\" height=\"15\" class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"9\"></circle><path d=\"m15.5 8.5-2 5-5 2 2-5z\"></path></svg>Product vision</a><span class=\"demo-tag\"><i></i>Interactive demo · Fictional data</span></div></aside>"
+  },
+  "top": "<header class=\"top\"><button class=\"icon-btn menu-btn\" data-action=\"toggle-nav\" aria-label=\"Open navigation\"><svg class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M4 6h16M4 12h16M4 18h16\"></path></svg></button>\n  <div class=\"scope\"><button class=\"scope-btn\" data-action=\"scope-toggle\" aria-expanded=\"false\" aria-haspopup=\"true\"><svg width=\"15\" height=\"15\" class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m12 2 9 5-9 5-9-5 9-5Z\"></path><path d=\"m3 12 9 5 9-5\"></path><path d=\"m3 17 9 5 9-5\"></path></svg><span><span class=\"faint\">Scope</span> <b>Lumenvale Group · all entities</b></span><svg width=\"14\" height=\"14\" class=\"\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.9\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m6 9 6 6 6-6\"></path></svg></button>\n  </div>\n  <span class=\"pill hide-sm\">Reporting currency <b>EUR</b></span><span class=\"pill\">As of <b>30 Sep 2026</b></span>\n  <span class=\"pill hide-sm\" title=\"Trial balances available at the reporting date\"><span class=\"dot\" style=\"background:var(--ok)\"></span>Trial balances 5/5 · lender balances 6/6</span>\n  <span class=\"top-spacer\"></span><span class=\"demo-tag hide-sm\"><i></i>Interactive demo · Fictional data</span></header>"
+ }
+}
