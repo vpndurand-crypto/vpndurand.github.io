@@ -78,7 +78,8 @@ const data = await page.evaluate(() => {
   /* global initialState, dataset, ENTITIES, positions, Fmt, COUNTRIES, INSTRUMENTS, rateText, capitalRows, groupRows, maturityProfile,
      runCovenant, covenantHistory, definitionAt, thresholdAt, DEMO, tightestCovenant, runScenario, priorities, completeness, STAGES,
      stageIndex, CHECKLIST_TEMPLATE, CHECK_STATUSES, PURPOSES, PROVIDERS, PROVIDER_CATEGORIES, matchProvider, requestAmountEur, ROADMAP,
-     DOCUMENTS, DOC_PAGES, EXTRACTION, PCG_LABELS, TB_PCG, TB_GRC, GRC_LABELS, ORGANIZATION, USERS, CURRENT_USER, FX, LENDERS, ICONS, SCENARIO_TYPES, IMPORT_JOBS, scheduleRows */
+     DOCUMENTS, DOC_PAGES, EXTRACTION, PCG_LABELS, TB_PCG, TB_GRC, GRC_LABELS, ORGANIZATION, USERS, CURRENT_USER, FX, LENDERS, ICONS, SCENARIO_TYPES, IMPORT_JOBS, scheduleRows,
+     proposalEconomics, REFERENCE_RATES, Money */
   const st = initialState(false);
   const ds = dataset(st);
   const all = ENTITIES.map((e) => e.id);
@@ -172,16 +173,91 @@ const data = await page.evaluate(() => {
     return { id: p.id, name: p.name, category: p.category, categoryLabel: PROVIDER_CATEGORIES[p.category], instruments: p.instruments.map((i) => INSTRUMENTS[i]), countries: p.countries, tenor: p.tenor, existing: mt.existing, matchAcq: mt.met };
   });
 
+  // Comparaison des conditions indicatives de Project Falcon (onglet « Terms comparison », hypothèses de base),
+  // calculée comme dans termsComparison() de la bêta : économie de chaque proposition, contrôle pro forma, observations.
+  const acqScenario = st.scenarios.find((s) => s.id === acq.scenario_id);
+  const proLev = runScenario(ds, acqScenario).end.leverage;
+  const target = Money.parse(acq.amount);
+  const offers = st.proposals.filter((p) => p.request_id === acq.id).map((p) => ({ p, e: proposalEconomics(p, 0), prov: PROVIDERS.find((x) => x.id === p.provider_id) }));
+  const minOf = (f) => Math.min(...offers.map(f));
+  const heads = offers.map((x) => (x.p.covenant_threshold ? (parseFloat(x.p.covenant_threshold) - proLev) / parseFloat(x.p.covenant_threshold) : null));
+  const maxHead = Math.max(...heads.filter((h) => h !== null));
+  const comparison = {
+    referenceRate: { label: REFERENCE_RATES.labels.EURIBOR_3M, fmt: F.bp(REFERENCE_RATES.rates.EURIBOR_3M), date: F.date(REFERENCE_RATES.date) },
+    proLeverage: F.ratio(proLev),
+    stage: STAGES[stageIndex(acq.stage)].label,
+    proposals: offers.map((x, i) => {
+      const obs = [];
+      if (x.e.total === minOf((r) => r.e.total)) obs.push('Lowest estimated total cost');
+      if (x.e.year1Cash === minOf((r) => r.e.year1Cash)) obs.push('Lowest first-year cash cost');
+      if (x.e.A >= target) obs.push('Covers the full amount'); else obs.push(`Shortfall of ${F.compact(target - x.e.A, acq.currency)}`);
+      if (x.p.amortization.kind === 'BULLET') obs.push('No scheduled amortisation');
+      if (heads[i] !== null && heads[i] === maxHead) obs.push('Widest pro forma covenant headroom');
+      if (LENDERS.some((l) => l.provider_id === x.prov.id)) obs.push('Existing lender');
+      const h = heads[i];
+      return {
+        id: x.p.id, provider: x.prov.name, providerId: x.prov.id, category: PROVIDER_CATEGORIES[x.prov.category], categoryCode: x.prov.category,
+        received: F.date(x.p.received_at), validUntil: F.date(x.p.valid_until), instrument: x.p.instrument,
+        amount: F.money(x.e.A, acq.currency), covers: x.e.A >= target, shortfall: x.e.A < target ? F.compact(target - x.e.A, acq.currency) : null,
+        tenor: x.p.tenor_years, requestedTenor: acq.tenor_years,
+        rate: x.p.rate_type === 'FIXED' ? `Fixed ${F.bp(x.p.fixed_rate_bp)}` : `${REFERENCE_RATES.labels[x.p.reference_rate]} + ${F.bp(x.p.margin_bp)}`,
+        allIn: F.bp(x.e.rate), allInBp: x.e.rate, upfront: `${F.bp(x.p.upfront_fee_bp)} · ${F.money(x.e.upfront, acq.currency)}`, recurring: x.e.recurring ? `${F.money(x.e.recurring, acq.currency)} per year` : 'None',
+        amortization: x.p.amortization_text, amortizationKind: x.p.amortization.kind, balloon: F.compact(x.e.balloon, acq.currency), averageLife: x.e.avgLife.toFixed(1),
+        security: x.p.security, covenants: x.p.covenants, covenantThreshold: x.p.covenant_threshold ? `${F.cmp('LTE')} ${F.ratio(x.p.covenant_threshold)}` : null,
+        headroom: h, headroomFmt: h === null ? null : F.pct(h), status: h === null ? null : h < 0 ? 'BREACH' : h < 0.05 ? 'CRITICAL' : h < 0.15 ? 'WATCH' : 'COMPLIANT',
+        prepayment: x.p.prepayment, notes: x.p.notes,
+        year1Cash: F.money(x.e.year1Cash, acq.currency), total: F.money(x.e.total, acq.currency), totalValue: x.e.total, costPerYear: F.pct(x.e.allInPerYear, 2),
+        observations: obs,
+      };
+    }),
+  };
+
   return {
     organization: ORGANIZATION.name, asOf: DEMO.asOf, today: DEMO.today, fmtAsOf: F.date(DEMO.asOf), fx: FX.rates, user: (() => { const u = USERS.find((x) => x.id === CURRENT_USER); return { name: `${u.first_name} ${u.last_name}`, role: u.job_title }; })(),
     entities: ENTITIES.map((e) => ({ id: e.id, name: e.name, short: e.short_name, country: e.country, countryName: COUNTRIES[e.country], city: e.city, currency: e.currency, activity: e.activity })),
-    countries: COUNTRIES, facilities, groups, profile, kpis, equityByEntity, ebitdaByEntity, covenant, scenarios, requests, pipelineTotal: { value: pipelineTotal, fmt: F.compact(pipelineTotal) }, schedule,
+    countries: COUNTRIES, facilities, groups, profile, kpis, equityByEntity, ebitdaByEntity, covenant, scenarios, requests, pipelineTotal: { value: pipelineTotal, fmt: F.compact(pipelineTotal) }, schedule, comparison,
     stages: STAGES.map((s) => s.label), providers, providerCategories: PROVIDER_CATEGORIES, roadmap: ROADMAP,
     priorities: priorities(ds, st).map((p) => ({ id: p.id, level: p.level, kind: p.kind, tag: p.tag || null, title: p.title, text: p.text })),
     lenders: LENDERS.map((l) => l.name), extraction: EXTRACTION, documents: DOCUMENTS, pages: DOC_PAGES, importJobs: IMPORT_JOBS.map((j) => ({ id: j.id, entity: j.entity_id, balance: j.balance_id, file: j.file_name })),
     pcgLabels: PCG_LABELS, grcLabels: GRC_LABELS, tbPcg: TB_PCG, tbGrc: TB_GRC, icons: ICONS,
   };
 });
+// 4. Écrans montrés par le film V6 : les textes tels que la bêta les affiche (DOM rendu), pour que le film reprenne ses
+//    libellés exacts (indicateurs, tableaux, onglets, boutons, notes) et que scripts/verify-v6.mjs puisse les comparer.
+async function readScreen(route) {
+  await page.evaluate((h) => { location.hash = h; }, route);
+  await page.waitForTimeout(200);
+  return page.evaluate(() => {
+    const txt = (el) => (el ? el.textContent.replace(/\s+/g, ' ').trim() : null);
+    const main = document.querySelector('.content') ?? document.body;
+    const ph = main.querySelector('.ph');
+    return {
+      crumbs: [...(ph?.querySelectorAll('.crumbs > *') ?? [])].map(txt).filter((t) => t !== '/'),
+      title: txt(ph?.querySelector('h1')),
+      sub: txt(ph?.querySelector('h1 + p')),
+      actions: [...(ph?.querySelectorAll('.actions .btn') ?? [])].map(txt),
+      kpis: [...main.querySelectorAll('.kpis .kpi')].map((k) => ({ label: txt(k.querySelector('.k')), value: txt(k.querySelector('.v')), desc: txt(k.querySelector('.d')) })),
+      tabs: [...main.querySelectorAll('.tabs a')].map((a) => ({ label: txt(a.childNodes[0]), count: txt(a.querySelector('.count')), on: a.classList.contains('on') })),
+      cards: [...main.querySelectorAll('section.card')].map((c) => ({
+        title: txt(c.querySelector('.card-h h2')),
+        sub: txt(c.querySelector('.card-h p')),
+        bars: [...c.querySelectorAll('.bar-row')].map((r) => ({ label: txt(r.querySelector('.lab')), value: txt(r.querySelector('.val')), width: r.querySelector('.bar-fill')?.style.width ?? null })),
+        // Une cellule = ses parties (valeur, puis sous-ligne .sub), comme la bêta les affiche.
+        rows: [...c.querySelectorAll('table.t tr')].map((tr) => [...tr.children].map((td) => [...td.childNodes].map(txt).filter(Boolean))),
+        layers: [...c.querySelectorAll('.vision-layer')].map((l) => ({ title: txt(l.querySelector('h2')), state: txt(l.querySelector('h2 + .badge')), summary: txt(l.querySelector('p')), items: [...l.querySelectorAll('.between')].map((it) => [txt(it.children[0]), txt(it.children[1])]) })),
+        items: [...c.querySelectorAll('li')].map(txt),
+        buttons: [...c.querySelectorAll('.btn, .badge')].map(txt),
+      })),
+      notes: [...main.querySelectorAll('.note')].map(txt),
+      tags: [...main.querySelectorAll('.tag')].map(txt),
+      text: txt(main),
+    };
+  });
+}
+data.screens = {};
+for (const [key, route] of [['overview', '#/'], ['scenario', '#/scenarios/sc-acq'], ['request', '#/financing/req-acq'], ['preparation', '#/financing/req-acq?tab=preparation'], ['providers', '#/financing/req-acq?tab=providers'], ['terms', '#/financing/req-acq?tab=terms'], ['vision', '#/vision']]) {
+  data.screens[key] = await readScreen(route);
+}
 await browser.close();
 data.source = { file: `beta-capital-os/${file}`, sha256: actual };
 data.shell = shell;

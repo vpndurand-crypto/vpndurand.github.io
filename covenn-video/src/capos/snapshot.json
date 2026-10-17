@@ -2280,6 +2280,140 @@
    "currency": "GBP"
   }
  ],
+ "comparison": {
+  "referenceRate": {
+   "label": "3-month Euribor",
+   "fmt": "2.00%",
+   "date": "30 Sep 2026"
+  },
+  "proLeverage": "3.07x",
+  "stage": "Indicative terms received",
+  "proposals": [
+   {
+    "id": "prp-bsp",
+    "provider": "Beispielbank AG",
+    "providerId": "prv-bsp",
+    "category": "Commercial bank",
+    "categoryCode": "BANK",
+    "received": "12 Oct 2026",
+    "validUntil": "30 Nov 2026",
+    "instrument": "Senior amortising term loan",
+    "amount": "€5,500,000",
+    "covers": false,
+    "shortfall": "€1m",
+    "tenor": 5,
+    "requestedTenor": 6,
+    "rate": "3-month Euribor + 2.60%",
+    "allIn": "4.60%",
+    "allInBp": 460,
+    "upfront": "1.00% · €55,000",
+    "recurring": "None",
+    "amortization": "15% of the initial amount per year, balance at maturity",
+    "amortizationKind": "LINEAR_PCT",
+    "balloon": "€2.2m",
+    "averageLife": "3.5",
+    "security": "Share pledge over the target; guarantee from Lumenvale Deutschland GmbH",
+    "covenants": "Group net leverage ≤ 3.25x; interest cover ≥ 4.00x",
+    "covenantThreshold": "≤ 3.25x",
+    "headroom": 0.05568329212540135,
+    "headroomFmt": "5.6%",
+    "status": "WATCH",
+    "prepayment": "Voluntary prepayment on interest dates without fee",
+    "notes": "Requires financial due diligence report before credit approval.",
+    "year1Cash": "€308,000",
+    "total": "€940,500",
+    "totalValue": 94050000,
+    "costPerYear": "4.89%",
+    "observations": [
+     "Lowest estimated total cost",
+     "Lowest first-year cash cost",
+     "Shortfall of €1m",
+     "Existing lender"
+    ]
+   },
+   {
+    "id": "prp-cvn",
+    "provider": "Corvane Credit Partners",
+    "providerId": "prv-cvn",
+    "category": "Private debt fund",
+    "categoryCode": "PRIVATE_DEBT",
+    "received": "14 Oct 2026",
+    "validUntil": "15 Dec 2026",
+    "instrument": "Unitranche",
+    "amount": "€6,500,000",
+    "covers": true,
+    "shortfall": null,
+    "tenor": 6,
+    "requestedTenor": 6,
+    "rate": "3-month Euribor + 5.75%",
+    "allIn": "7.75%",
+    "allInBp": 775,
+    "upfront": "2.50% · €162,500",
+    "recurring": "€25,000 per year",
+    "amortization": "Bullet repayment at maturity",
+    "amortizationKind": "BULLET",
+    "balloon": "€6.5m",
+    "averageLife": "6.0",
+    "security": "Share pledge, bank account pledges and upstream guarantees",
+    "covenants": "Group net leverage ≤ 4.50x (tested quarterly)",
+    "covenantThreshold": "≤ 4.50x",
+    "headroom": 0.3179934887572343,
+    "headroomFmt": "31.8%",
+    "status": "COMPLIANT",
+    "prepayment": "Non-call 12 months; 2% in year 2, 1% in year 3",
+    "notes": "Annual monitoring fee of €25,000. Quality-of-earnings review required.",
+    "year1Cash": "€691,250",
+    "total": "€3,335,000",
+    "totalValue": 333500000,
+    "costPerYear": "8.55%",
+    "observations": [
+     "Covers the full amount",
+     "No scheduled amortisation",
+     "Widest pro forma covenant headroom"
+    ]
+   },
+   {
+    "id": "prp-exe",
+    "provider": "Banque Exemple",
+    "providerId": "prv-exe",
+    "category": "Commercial bank",
+    "categoryCode": "BANK",
+    "received": "16 Oct 2026",
+    "validUntil": "1 Dec 2026",
+    "instrument": "Senior term loan",
+    "amount": "€6,000,000",
+    "covers": false,
+    "shortfall": "€500k",
+    "tenor": 6,
+    "requestedTenor": 6,
+    "rate": "3-month Euribor + 3.00%",
+    "allIn": "5.00%",
+    "allInBp": 500,
+    "upfront": "1.25% · €75,000",
+    "recurring": "None",
+    "amortization": "10% of the initial amount per year, balance at maturity",
+    "amortizationKind": "LINEAR_PCT",
+    "balloon": "€3m",
+    "averageLife": "4.5",
+    "security": "Share pledge over the target",
+    "covenants": "Group net leverage ≤ 3.50x; consent needed under SFA-2025-001",
+    "covenantThreshold": "≤ 3.50x",
+    "headroom": 0.12313448554501553,
+    "headroomFmt": "12.3%",
+    "status": "WATCH",
+    "prepayment": "Free on interest dates; break costs only",
+    "notes": "Existing lender to Lumenvale Industrie; would also review the SFA leverage step-down.",
+    "year1Cash": "€375,000",
+    "total": "€1,425,000",
+    "totalValue": 142500000,
+    "costPerYear": "5.28%",
+    "observations": [
+     "Shortfall of €500k",
+     "Existing lender"
+    ]
+   }
+  ]
+ },
  "stages": [
   "Draft",
   "In preparation",
@@ -5476,6 +5610,1447 @@
   "send": "<path d=\"m22 2-7 20-4-9-9-4z\"/><path d=\"M22 2 11 13\"/>",
   "star": "<path d=\"m12 2 3 7 7 .6-5.3 4.6L18.4 22 12 18l-6.4 4 1.7-7.8L2 9.6 9 9z\"/>",
   "minus": "<path d=\"M5 12h14\"/>"
+ },
+ "screens": {
+  "overview": {
+   "crumbs": [],
+   "title": "Capital overview",
+   "sub": "How Lumenvale Group is funded at 30 Sep 2026, what needs a decision, and the financing in preparation.",
+   "actions": [
+    "Explore a funding scenario",
+    "New financing request"
+   ],
+   "kpis": [
+    {
+     "label": "Outstanding debt",
+     "value": "€18.6m",
+     "desc": "Principal drawn per lender balances, all facilities in scope"
+    },
+    {
+     "label": "Available liquidity",
+     "value": "€4.69m",
+     "desc": "Cash €3.19m + undrawn committed €1.5m"
+    },
+    {
+     "label": "Weighted average borrowing rate",
+     "value": "4.26%",
+     "desc": "All-in run-rate, weighted by outstanding"
+    },
+    {
+     "label": "Debt maturing within 12 months",
+     "value": "€1.63m",
+     "desc": "Principal due to 30 Sep 2027; excludes lease (schedule not loaded)"
+    },
+    {
+     "label": "Covenant headroom",
+     "value": "10.5%",
+     "desc": "Tightest: Leverage, Lumenvale Industrie — watch"
+    }
+   ],
+   "tabs": [],
+   "cards": [
+    {
+     "title": "Capital structure",
+     "sub": "5 entities · 3 countries · 6 facilities with 6 capital providers",
+     "bars": [],
+     "rows": [],
+     "layers": [],
+     "items": [],
+     "buttons": [
+      "Explore structure"
+     ]
+    },
+    {
+     "title": "Priority decisions",
+     "sub": "Computed from the facility register, covenant calculations and financing requests.",
+     "bars": [],
+     "rows": [],
+     "layers": [],
+     "items": [],
+     "buttons": [
+      "Urgent",
+      "Review facility",
+      "Run refinancing scenario",
+      "Open refinancing request",
+      "Mark as reviewed",
+      "Projected: critical headroom",
+      "Review covenant",
+      "Run base-case scenario",
+      "Mark as reviewed",
+      "Compare indicative terms",
+      "Run scenario",
+      "Mark as reviewed",
+      "Open financing request",
+      "Run scenario",
+      "Mark as reviewed"
+     ]
+    },
+    {
+     "title": "Financing pipeline",
+     "sub": "€12.6m under preparation · not secured and excluded from debt",
+     "bars": [],
+     "rows": [],
+     "layers": [],
+     "items": [],
+     "buttons": [
+      "Workspace",
+      "Indicative terms received",
+      "Providers shortlisted",
+      "In preparation",
+      "Draft"
+     ]
+    },
+    {
+     "title": "Funding by instrument",
+     "sub": "Outstanding debt, EUR",
+     "bars": [
+      {
+       "label": "Senior debt",
+       "value": "€16.7m 90%",
+       "width": "100%"
+      },
+      {
+       "label": "Leasing",
+       "value": "€1.38m 7%",
+       "width": "8.22811%"
+      },
+      {
+       "label": "Revolving facilities",
+       "value": "€500k 3%",
+       "width": "2.99204%"
+      }
+     ],
+     "rows": [],
+     "layers": [],
+     "items": [],
+     "buttons": []
+    },
+    {
+     "title": "Exposure by capital provider",
+     "sub": "Largest provider: Banque Exemple (54% of outstanding)",
+     "bars": [
+      {
+       "label": "Banque Exemple",
+       "value": "€10m 54%",
+       "width": "100%"
+      },
+      {
+       "label": "Beispielbank AG",
+       "value": "€3.2m 17%",
+       "width": "32%"
+      },
+      {
+       "label": "Banque Aurore",
+       "value": "€2.13m 11%",
+       "width": "21.25%"
+      },
+      {
+       "label": "Kingsmere Bank plc",
+       "value": "€1.39m 7%",
+       "width": "13.86%"
+      },
+      {
+       "label": "Finance Bail Exemple",
+       "value": "€1.38m 7%",
+       "width": "13.75%"
+      },
+      {
+       "label": "Banque Méridienne",
+       "value": "€500k 3%",
+       "width": "5%"
+      }
+     ],
+     "rows": [],
+     "layers": [],
+     "items": [],
+     "buttons": []
+    },
+    {
+     "title": "Maturity profile",
+     "sub": "Outstanding by final maturity year (amortisation not spread)",
+     "bars": [],
+     "rows": [],
+     "layers": [],
+     "items": [],
+     "buttons": [
+      "Repayment schedule"
+     ]
+    },
+    {
+     "title": "Distribution by country and entity",
+     "sub": "Outstanding debt; GBP translated at 1.1550 (demonstration rate)",
+     "bars": [
+      {
+       "label": "France",
+       "value": "€14m 75%",
+       "width": "100%"
+      },
+      {
+       "label": "Germany",
+       "value": "€3.2m 17%",
+       "width": "22.8571%"
+      },
+      {
+       "label": "United Kingdom",
+       "value": "€1.39m 7%",
+       "width": "9.9%"
+      },
+      {
+       "label": "Lumenvale Industrie SAS",
+       "value": "€10m",
+       "width": "100%"
+      },
+      {
+       "label": "Lumenvale Logistique SAS",
+       "value": "€3.5m",
+       "width": "35%"
+      },
+      {
+       "label": "Lumenvale Deutschland GmbH",
+       "value": "€3.2m",
+       "width": "32%"
+      },
+      {
+       "label": "Lumenvale UK Ltd",
+       "value": "€1.39m",
+       "width": "13.86%"
+      },
+      {
+       "label": "Lumenvale Services SAS",
+       "value": "€500k",
+       "width": "5%"
+      }
+     ],
+     "rows": [],
+     "layers": [],
+     "items": [],
+     "buttons": []
+    }
+   ],
+   "notes": [],
+   "tags": [
+    "Maturity",
+    "Covenant",
+    "Acquisition",
+    "Investment"
+   ],
+   "text": "Capital overviewHow Lumenvale Group is funded at 30 Sep 2026, what needs a decision, and the financing in preparation.Explore a funding scenarioNew financing request Capital structure5 entities · 3 countries · 6 facilities with 6 capital providersExplore structureBook equity €19.8mSenior debt €16.7m Book equity €19.8mSenior debt €16.7mLeasing €1.38mRevolving facilities €500kUndrawn committed €1.5m — available, not debt Funded total €38.4m = book equity + outstanding debt. Undrawn commitments are shown separately and are not counted as debt. Outstanding debt€18.6mPrincipal drawn per lender balances, all facilities in scope Trace to source Available liquidity€4.69mCash €3.19m + undrawn committed €1.5m Trace to source Weighted average borrowing rate4.26%All-in run-rate, weighted by outstanding Trace to source Debt maturing within 12 months€1.63mPrincipal due to 30 Sep 2027; excludes lease (schedule not loaded) Trace to source Covenant headroom10.5%Tightest: Leverage, Lumenvale Industrie — watch Trace to source Priority decisionsComputed from the facility register, covenant calculations and financing requests.MaturityUrgent Revolving credit facility matures in 9 monthsLumenvale Services SAS · Banque Méridienne. €500k drawn of €2m committed, due 30 Jun 2027. Without refinancing, available liquidity falls by €2m.Review facilityRun refinancing scenarioOpen refinancing requestMark as reviewedCovenantProjected: critical headroom Leverage threshold steps down to 3.25x on 1 Jul 2027Lumenvale Industrie SAS · SFA-2025-001. Current leverage 3.13x against 3.50x (10.5% headroom). At unchanged contractual EBITDA, headroom against the new threshold would be 3.6%.Review covenantRun base-case scenarioMark as reviewedAcquisition Project Falcon increases financing needs by €6.5mLumenvale Deutschland GmbH. Stage: Indicative terms received. 3 indicative proposals received.Compare indicative termsRun scenarioMark as reviewedInvestment Investment / equipment programme needs a funding planLumenvale Logistique SAS. Stage: In preparation. Preparation 50% complete.Open financing requestRun scenarioMark as reviewed Financing pipeline€12.6m under preparation · not secured and excluded from debtWorkspaceAcquisition financing — Project FalconLumenvale Deutschland · Acquisition · €6.5mIndicative terms receivedPrep 88%Next: Compare the three indicative proposals and select one lender for negotiationRefinancing — revolving credit facility (Lumenvale Services)Lumenvale Services · Refinancing · €3mProviders shortlistedPrep 75%Next: Prepare the information package for the two shortlisted providersEquipment financing — warehouse automationLumenvale Logistique · Investment / equipment · €1.9mIn preparationPrep 50%Next: Obtain the final supplier quotationWorking capital facility — UKLumenvale UK · Working capital · £1mDraftPrep 38%Next: Quantify the seasonal working-capital peak with the UK team Funding by instrumentOutstanding debt, EURSenior debt€16.7m 90%Leasing€1.38m 7%Revolving facilities€500k 3% Exposure by capital providerLargest provider: Banque Exemple (54% of outstanding)Banque Exemple€10m 54%Beispielbank AG€3.2m 17%Banque Aurore€2.13m 11%Kingsmere Bank plc€1.39m 7%Finance Bail Exemple€1.38m 7%Banque Méridienne€500k 3% Maturity profileOutstanding by final maturity year (amortisation not spread)Repayment scheduleOutstanding 2027: €500,000€500k2027Outstanding 2029: €11,386,000€11.4m2029Outstanding 2030: €5,325,000€5.33m2030Outstanding 2031: €1,375,000€1.38m2031 Distribution by country and entityOutstanding debt; GBP translated at 1.1550 (demonstration rate)France€14m 75%Germany€3.2m 17%United Kingdom€1.39m 7%Lumenvale Industrie SAS€10mLumenvale Logistique SAS€3.5mLumenvale Deutschland GmbH€3.2mLumenvale UK Ltd€1.39mLumenvale Services SAS€500k"
+  },
+  "scenario": {
+   "crumbs": [
+    "Forecast & scenarios",
+    "Project Falcon acquisition"
+   ],
+   "title": "Project Falcon acquisition",
+   "sub": "Lumenvale Deutschland acquires the Falcon target, funded by new acquisition debt and its own cash.",
+   "actions": [],
+   "kpis": [],
+   "tabs": [],
+   "cards": [
+    {
+     "title": null,
+     "sub": null,
+     "bars": [],
+     "rows": [],
+     "layers": [],
+     "items": [],
+     "buttons": [
+      "Reset to template",
+      "Duplicate"
+     ]
+    },
+    {
+     "title": "Points to review",
+     "sub": null,
+     "bars": [],
+     "rows": [],
+     "layers": [],
+     "items": [],
+     "buttons": []
+    },
+    {
+     "title": "Today versus scenario",
+     "sub": null,
+     "bars": [],
+     "rows": [
+      [
+       [
+        "Metric"
+       ],
+       [
+        "Today"
+       ],
+       [
+        "At 30 Sep 2027"
+       ],
+       [
+        "Change"
+       ]
+      ],
+      [
+       [
+        "Outstanding debt"
+       ],
+       [
+        "€18,586,000"
+       ],
+       [
+        "€23,455,000"
+       ],
+       [
+        "+€4.87m"
+       ]
+      ],
+      [
+       [
+        "Unrestricted cash"
+       ],
+       [
+        "€3,189,200"
+       ],
+       [
+        "€558,200"
+       ],
+       [
+        "−€2.63m"
+       ]
+      ],
+      [
+       [
+        "Undrawn committed facilities"
+       ],
+       [
+        "€1,500,000"
+       ],
+       [
+        "€0"
+       ],
+       [
+        "−€1.5m"
+       ]
+      ],
+      [
+       [
+        "Available liquidity"
+       ],
+       [
+        "€4,689,200"
+       ],
+       [
+        "€558,200"
+       ],
+       [
+        "−€4.13m"
+       ]
+      ],
+      [
+       [
+        "Annual interest (run-rate)"
+       ],
+       [
+        "€790,890"
+       ],
+       [
+        "€1,213,775"
+       ],
+       [
+        "+€423k"
+       ]
+      ],
+      [
+       [
+        "Net debt (management)"
+       ],
+       [
+        "€15,396,800"
+       ],
+       [
+        "€22,896,800"
+       ],
+       [
+        "+€7.5m"
+       ]
+      ],
+      [
+       [
+        "LTM EBITDA (management)"
+       ],
+       [
+        "€6,260,600"
+       ],
+       [
+        "€7,460,600"
+       ],
+       [
+        "+€1.2m"
+       ]
+      ],
+      [
+       [
+        "Net debt / EBITDA"
+       ],
+       [
+        "2.46x"
+       ],
+       [
+        "3.07x"
+       ],
+       [
+        "+0.61x"
+       ]
+      ]
+     ],
+     "layers": [],
+     "items": [],
+     "buttons": []
+    },
+    {
+     "title": "Sources and uses",
+     "sub": null,
+     "bars": [],
+     "rows": [
+      [
+       [
+        "Sources"
+       ],
+       []
+      ],
+      [
+       [
+        "New borrowing"
+       ],
+       [
+        "€6,500,000"
+       ]
+      ],
+      [
+       [
+        "Cash contribution"
+       ],
+       [
+        "€1,000,000"
+       ]
+      ],
+      [
+       [
+        "Total"
+       ],
+       [
+        "€7,500,000"
+       ]
+      ],
+      [
+       [
+        "Uses"
+       ],
+       []
+      ],
+      [
+       [
+        "Acquisition price"
+       ],
+       [
+        "€7,500,000"
+       ]
+      ],
+      [
+       [
+        "Repayment of refinanced facility"
+       ],
+       [
+        "€0"
+       ]
+      ],
+      [
+       [
+        "Total"
+       ],
+       [
+        "€7,500,000"
+       ]
+      ]
+     ],
+     "layers": [],
+     "items": [],
+     "buttons": []
+    },
+    {
+     "title": "Projected SFA covenants — Lumenvale Industrie SAS",
+     "sub": null,
+     "bars": [],
+     "rows": [
+      [
+       [
+        "Covenant"
+       ],
+       [
+        "Current (30 Sep 2026)"
+       ],
+       [
+        "Projected"
+       ],
+       [
+        "Threshold at horizon"
+       ],
+       [
+        "Status"
+       ],
+       [
+        "Headroom"
+       ]
+      ],
+      [
+       [
+        "Leverage",
+        "Facility principal €10,000,000 less Borrower cash €600,000"
+       ],
+       [
+        "3.13x",
+        "vs 3.50x"
+       ],
+       [
+        "3.13x"
+       ],
+       [
+        "≤ 3.25x",
+        "step-down applies"
+       ],
+       [
+        "Critical headroom"
+       ],
+       [
+        "3.6%"
+       ]
+      ],
+      [
+       [
+        "Gearing",
+        "Same net financial indebtedness as leverage"
+       ],
+       [
+        "0.78x",
+        "vs 1.00x"
+       ],
+       [
+        "0.78x"
+       ],
+       [
+        "≤ 1.00x"
+       ],
+       [
+        "Compliant"
+       ],
+       [
+        "21.7%"
+       ]
+      ],
+      [
+       [
+        "Interest cover",
+        "Contractual EBITDA, projected as for leverage"
+       ],
+       [
+        "6.67x",
+        "vs 4.00x"
+       ],
+       [
+        "6.67x"
+       ],
+       [
+        "≥ 4.00x"
+       ],
+       [
+        "Compliant"
+       ],
+       [
+        "66.7%"
+       ]
+      ]
+     ],
+     "layers": [],
+     "items": [],
+     "buttons": [
+      "Critical headroom",
+      "Compliant",
+      "Compliant"
+     ]
+    },
+    {
+     "title": "Maturity profile",
+     "sub": "Outstanding by final maturity year",
+     "bars": [],
+     "rows": [],
+     "layers": [],
+     "items": [],
+     "buttons": []
+    },
+    {
+     "title": "Events within the horizon",
+     "sub": null,
+     "bars": [],
+     "rows": [],
+     "layers": [],
+     "items": [],
+     "buttons": []
+    },
+    {
+     "title": "Linked financing requests",
+     "sub": null,
+     "bars": [],
+     "rows": [],
+     "layers": [],
+     "items": [],
+     "buttons": [
+      "Indicative terms received"
+     ]
+    }
+   ],
+   "notes": [
+    "What it takes. The 3.25x threshold is met with projected contractual EBITDA of at least €2,892,308. Contractual EBITDA at 30 Sep 2026 (€3,000,000)."
+   ],
+   "tags": [
+    "Acquisition",
+    "Illustrative forecast",
+    "Projected — not a covenant test"
+   ],
+   "text": "Forecast & scenarios/Project Falcon acquisition Project Falcon acquisitionLumenvale Deutschland acquires the Falcon target, funded by new acquisition debt and its own cash.AssumptionsAcquisition Scenario name Acting entity (borrower and buyer/investor)Select an entityLumenvale Industrie SASLumenvale Logistique SASLumenvale Services SASLumenvale Deutschland GmbHLumenvale UK Ltd Forecast horizon6 months12 months18 months24 monthsResults at 30 Sep 2027 Organic EBITDA change0%Applied to every entity's LTM EBITDA Reference-rate shift0 bpApplies to floating-rate debt only Acquisition price (incl. costs)€Acquired LTM EBITDA€Added to group EBITDA (and to SFA EBITDA only if the acting entity is the Borrower)Cash contribution€Taken from the acting entity's existing cash New borrowing€All-in rate%Rate typeFloatingFixedTenoryears Reset to templateDuplicate Illustrative forecastGroup perimeter · 30 Sep 2026 → 30 Sep 2027 Create financing request from scenario Points to reviewRepayments and transaction flows within the horizon exceed cash on hand at Lumenvale Logistique (−€80k), Lumenvale Services (−€220k), Lumenvale Deutschland (−€250k), before operating cash flow, which is not modelled.Revolving credit facility (Lumenvale Services) matures on 30 Jun 2027 within the horizon: liquidity falls by €2m unless refinanced. Review facilityProjected leverage of 3.13x against ≤ 3.25x at 30 Sep 2027 (critical headroom). Review covenant Today versus scenarioMetricTodayAt 30 Sep 2027ChangeOutstanding debt€18,586,000€23,455,000+€4.87mUnrestricted cash€3,189,200€558,200−€2.63mUndrawn committed facilities€1,500,000€0−€1.5mAvailable liquidity€4,689,200€558,200−€4.13mAnnual interest (run-rate)€790,890€1,213,775+€423kNet debt (management)€15,396,800€22,896,800+€7.5mLTM EBITDA (management)€6,260,600€7,460,600+€1.2mNet debt / EBITDA2.46x3.07x+0.61x Stocks at the horizon date: debt after scheduled repayments, maturities and refinancing; cash after transaction flows and repayments. Interest is the annual run-rate on debt outstanding at the horizon. Sources and usesSourcesNew borrowing€6,500,000Cash contribution€1,000,000Total€7,500,000 UsesAcquisition price€7,500,000Repayment of refinanced facility€0Total€7,500,000 Sources equal uses. Borrowing increases cash until it is spent; the cash contribution is deducted once. Projected SFA covenants — Lumenvale Industrie SASCovenantCurrent (30 Sep 2026)ProjectedThreshold at horizonStatusHeadroomLeverageFacility principal €10,000,000 less Borrower cash €600,0003.13xvs 3.50x3.13x≤ 3.25xstep-down appliesCritical headroom3.6%GearingSame net financial indebtedness as leverage0.78xvs 1.00x0.78x≤ 1.00xCompliant21.7%Interest coverContractual EBITDA, projected as for leverage6.67xvs 4.00x6.67x≥ 4.00xCompliant66.7% What it takes. The 3.25x threshold is met with projected contractual EBITDA of at least €2,892,308. Contractual EBITDA at 30 Sep 2026 (€3,000,000). Projected — not a covenant test Uses the validated definition (v1) on the Borrower's perimeter. Debt raised by other entities does not enter the SFA ratio; cash they contribute does not leave the Borrower. Maturity profileOutstanding by final maturity yearToday 2027: €500,000Scenario 2027: €02027Today 2029: €11,386,000Scenario 2029: €11,155,0002029Today 2030: €5,325,000Scenario 2030: €4,425,0002030Today 2031: €1,375,000Scenario 2031: €1,375,0002031Today 2032: €0Scenario 2032: €6,500,0002032TodayAt horizon Events within the horizon30 Jun 2027 — Revolving credit facility matures — €500,000 repaid from cash, €2m commitment lapses Linked financing requestsAcquisition financing — Project Falcon Indicative terms received Assumptions and simplifications — what this illustrative model includes and leaves outTransactions are assumed to close at the start of the horizon; results are shown at the horizon end date.Operating cash flow, tax and interest payments are not modelled: cash moves only with transaction flows, scheduled repayments and maturities.Facilities maturing within the horizon are repaid from cash and their commitments lapse unless the scenario refinances them.New facilities are drawn at closing and do not amortise within the horizon.The lease balance is held constant because the lessor's schedule is not loaded.Group EBITDA is the management LTM EBITDA (as reported); the EBITDA change applies to every entity, and incremental EBITDA is added in full.Covenant projections use the validated SFA definition on the Borrower's perimeter (Lumenvale Industrie SAS) and the threshold in force at the horizon date. Contractual EBITDA starts from the current 30 Sep 2026 calculation, including its evidenced add-backs. They are not covenant tests.GBP amounts use a single demonstration closing rate of 1.1550 EUR.Reference-rate assumptions: 1-month Euribor 1.90%, 3-month Euribor 2.00%, 6-month Euribor 2.05%, SONIA (compounded) 3.75%."
+  },
+  "request": {
+   "crumbs": [
+    "Financing workspace",
+    "Acquisition financing"
+   ],
+   "title": "Acquisition financing — Project Falcon",
+   "sub": "Lumenvale Deutschland GmbH · Acquisition · €6,500,000 · Acquisition finance, 6 years · target close 31 Mar 2027",
+   "actions": [
+    "Share with providers (preview)",
+    "Generate financing brief"
+   ],
+   "kpis": [],
+   "tabs": [
+    {
+     "label": "Overview",
+     "count": null,
+     "on": true
+    },
+    {
+     "label": "Preparation",
+     "count": "7/8",
+     "on": false
+    },
+    {
+     "label": "Providers",
+     "count": "3",
+     "on": false
+    },
+    {
+     "label": "Terms comparison",
+     "count": "3",
+     "on": false
+    },
+    {
+     "label": "Activity",
+     "count": "8",
+     "on": false
+    }
+   ],
+   "cards": [
+    {
+     "title": "Request",
+     "sub": null,
+     "bars": [],
+     "rows": [],
+     "layers": [],
+     "items": [],
+     "buttons": []
+    },
+    {
+     "title": "Progress",
+     "sub": null,
+     "bars": [],
+     "rows": [],
+     "layers": [],
+     "items": [],
+     "buttons": [
+      "Back to providers shortlisted",
+      "Move to: Selected for negotiation"
+     ]
+    },
+    {
+     "title": "Linked scenario",
+     "sub": null,
+     "bars": [],
+     "rows": [],
+     "layers": [],
+     "items": [],
+     "buttons": []
+    },
+    {
+     "title": "Existing debt of Lumenvale Deutschland",
+     "sub": "From the facility register",
+     "bars": [],
+     "rows": [],
+     "layers": [],
+     "items": [],
+     "buttons": []
+    },
+    {
+     "title": "Linked documents",
+     "sub": null,
+     "bars": [],
+     "rows": [],
+     "layers": [],
+     "items": [],
+     "buttons": []
+    }
+   ],
+   "notes": [],
+   "tags": [
+    "Illustrative"
+   ],
+   "text": "Financing workspace/Acquisition financing Acquisition financing — Project FalconLumenvale Deutschland GmbH · Acquisition · €6,500,000 · Acquisition finance, 6 years · target close 31 Mar 2027Share with providers (preview)Generate financing briefOverviewPreparation7/8Providers3Terms comparison3Activity8RequestBorrowing entityLumenvale Deutschland GmbH · Germany · EURPurposeAcquisitionTarget amount€6,500,000Preferred instrumentAcquisition financeDesired tenor6 yearsTarget closing date31 Mar 2027OwnerCamille LaurentJulien MoreauCreated22 Sep 2026, 10:00 Business rationaleAcquire a German precision-components company (Project Falcon) to add machining capacity and customers in southern Germany. Enterprise value of €7.5m including costs, funded by €6.5m of new debt and €1.0m of Lumenvale Deutschland's cash. Next action ProgressDraftIn preparationReady for reviewProviders shortlistedIndicative terms receivedSelected for negotiation Next action: Compare the three indicative proposals and select one lender for negotiationBack to providers shortlisted Move to: Selected for negotiationSelect a proposal in Terms comparison to move to this stage. Linked scenarioProject Falcon acquisitionIllustrative New borrowing€6.5mNet debt / EBITDA at Sep 20273.07xLiquidity at horizon€558kSFA leverage (projected)3.13x Existing debt of Lumenvale DeutschlandFrom the facility registerPlant term loan — €3,200,000 · Beispielbank AG · 30 Jun 2030 Linked documentsProject Falcon — non-binding offer letterTransaction documentProject Falcon — target summary financialsTransaction documentQ3 2026 management reporting packManagement accountsFY2025 audited financial statements — Lumenvale Group entitiesFinancial statementsSenior Facility Agreement — Lumenvale Industrie SAS / Banque ExempleFacility agreementTerm loan agreement — Beispielbank AGFacility agreement"
+  },
+  "preparation": {
+   "crumbs": [
+    "Financing workspace",
+    "Acquisition financing"
+   ],
+   "title": "Acquisition financing — Project Falcon",
+   "sub": "Lumenvale Deutschland GmbH · Acquisition · €6,500,000 · Acquisition finance, 6 years · target close 31 Mar 2027",
+   "actions": [
+    "Share with providers (preview)",
+    "Generate financing brief"
+   ],
+   "kpis": [],
+   "tabs": [
+    {
+     "label": "Overview",
+     "count": null,
+     "on": false
+    },
+    {
+     "label": "Preparation",
+     "count": "7/8",
+     "on": true
+    },
+    {
+     "label": "Providers",
+     "count": "3",
+     "on": false
+    },
+    {
+     "label": "Terms comparison",
+     "count": "3",
+     "on": false
+    },
+    {
+     "label": "Activity",
+     "count": "8",
+     "on": false
+    }
+   ],
+   "cards": [
+    {
+     "title": "Preparation checklist",
+     "sub": "Completeness = items available or linked to existing data ÷ all items. It measures preparation only — not the likelihood of approval.",
+     "bars": [],
+     "rows": [],
+     "layers": [],
+     "items": [],
+     "buttons": [
+      "Available",
+      "Available",
+      "Linked to existing data",
+      "Linked to existing data",
+      "Linked to existing data",
+      "Linked to existing data",
+      "Needs review",
+      "Available"
+     ]
+    },
+    {
+     "title": "Financing brief",
+     "sub": null,
+     "bars": [],
+     "rows": [],
+     "layers": [],
+     "items": [],
+     "buttons": [
+      "Generate brief"
+     ]
+    },
+    {
+     "title": "Still to do",
+     "sub": null,
+     "bars": [],
+     "rows": [],
+     "layers": [],
+     "items": [],
+     "buttons": [
+      "Needs review"
+     ]
+    }
+   ],
+   "notes": [],
+   "tags": [],
+   "text": "Financing workspace/Acquisition financing Acquisition financing — Project FalconLumenvale Deutschland GmbH · Acquisition · €6,500,000 · Acquisition finance, 6 years · target close 31 Mar 2027Share with providers (preview)Generate financing briefOverviewPreparation7/8Providers3Terms comparison3Activity8Preparation checklistCompleteness = items available or linked to existing data ÷ all items. It measures preparation only — not the likelihood of approval.7 of 8 available or linked1 needs review · 0 missing Latest financial statementsAvailableAudited statutory accounts of the borrower and group entities · Open source AvailableLinked to existing dataNeeds reviewMissingRecent management accountsAvailableLatest quarterly management reporting pack · Open source AvailableLinked to existing dataNeeds reviewMissingDebt scheduleLinked to existing dataFacilities, outstanding amounts, maturities and terms · Open source AvailableLinked to existing dataNeeds reviewMissingExisting facility agreementsLinked to existing dataAgreements that may restrict new debt or need consent · Open source AvailableLinked to existing dataNeeds reviewMissingCovenant historyLinked to existing dataSaved covenant calculations and current headroom · Open source AvailableLinked to existing dataNeeds reviewMissingForecastLinked to existing dataScenario showing the impact of the financing · Open source AvailableLinked to existing dataNeeds reviewMissingUse-of-proceeds summaryNeeds reviewWhat the funds will be used for, with amounts · Open source AvailableLinked to existing dataNeeds reviewMissingRelevant transaction documentsAvailableOffer letter, quotations or other deal documents · Open source AvailableLinked to existing dataNeeds reviewMissing Financing briefA structured English brief built from the shared data: group overview, purpose, amount and tenor, current debt, covenant situation, forecast assumptions, use of proceeds, supporting documents and missing items.Generate briefGenerated locally; download as HTML or print to PDF. Still to doNeeds review Use-of-proceeds summary"
+  },
+  "providers": {
+   "crumbs": [
+    "Financing workspace",
+    "Acquisition financing"
+   ],
+   "title": "Acquisition financing — Project Falcon",
+   "sub": "Lumenvale Deutschland GmbH · Acquisition · €6,500,000 · Acquisition finance, 6 years · target close 31 Mar 2027",
+   "actions": [
+    "Share with providers (preview)",
+    "Generate financing brief"
+   ],
+   "kpis": [],
+   "tabs": [
+    {
+     "label": "Overview",
+     "count": null,
+     "on": false
+    },
+    {
+     "label": "Preparation",
+     "count": "7/8",
+     "on": false
+    },
+    {
+     "label": "Providers",
+     "count": "3",
+     "on": true
+    },
+    {
+     "label": "Terms comparison",
+     "count": "3",
+     "on": false
+    },
+    {
+     "label": "Activity",
+     "count": "8",
+     "on": false
+    }
+   ],
+   "cards": [
+    {
+     "title": "Shortlist (3)",
+     "sub": null,
+     "bars": [],
+     "rows": [],
+     "layers": [],
+     "items": [],
+     "buttons": [
+      "Share package (preview)",
+      "Existing lender",
+      "Remove",
+      "Existing lender",
+      "Remove",
+      "Remove"
+     ]
+    },
+    {
+     "title": "Suggested providers",
+     "sub": "Fictional directory, sorted by criteria met",
+     "bars": [],
+     "rows": [],
+     "layers": [],
+     "items": [],
+     "buttons": [
+      "Open directory",
+      "Shortlist",
+      "Shortlist",
+      "Shortlist",
+      "Existing lender",
+      "Shortlist",
+      "Existing lender",
+      "Shortlist",
+      "Existing lender",
+      "Shortlist",
+      "Existing lender",
+      "Shortlist"
+     ]
+    }
+   ],
+   "notes": [
+    "Matching uses four transparent criteria: instrument, amount, geography and borrower profile. Meeting them means a provider is relevant to approach — not that it will lend. Shortlisting does not contact anyone."
+   ],
+   "tags": [
+    "Commercial bank",
+    "Commercial bank",
+    "Private debt fund",
+    "Asset finance provider",
+    "Private debt fund",
+    "Digital bank",
+    "Commercial bank",
+    "Commercial bank",
+    "Asset finance provider",
+    "Commercial bank"
+   ],
+   "text": "Financing workspace/Acquisition financing Acquisition financing — Project FalconLumenvale Deutschland GmbH · Acquisition · €6,500,000 · Acquisition finance, 6 years · target close 31 Mar 2027Share with providers (preview)Generate financing briefOverviewPreparation7/8Providers3Terms comparison3Activity8Matching uses four transparent criteria: instrument, amount, geography and borrower profile. Meeting them means a provider is relevant to approach — not that it will lend. Shortlisting does not contact anyone. Shortlist (3)Share package (preview)Banque ExempleCommercial bankExisting lender4 of 4 criteria InstrumentOffers acquisition financeAmount€6.5m requested; ticket range €1m–€25mGeographyLends in GermanyBorrower profileGroup LTM EBITDA €6.26m; typical minimum €2m RemoveBeispielbank AGCommercial bankExisting lender4 of 4 criteria InstrumentOffers acquisition financeAmount€6.5m requested; ticket range €1m–€30mGeographyLends in GermanyBorrower profileGroup LTM EBITDA €6.26m; typical minimum €1m RemoveCorvane Credit PartnersPrivate debt fund4 of 4 criteria InstrumentOffers acquisition financeAmount€6.5m requested; ticket range €5m–€40mGeographyLends in GermanyBorrower profileGroup LTM EBITDA €6.26m; typical minimum €3m Remove Suggested providersFictional directory, sorted by criteria metOpen directoryOstrel Equipment FinanceAsset finance provider3 of 4 criteria InstrumentDoes not offer acquisition financeAmount€6.5m requested; ticket range €100k–€10mGeographyLends in GermanyBorrower profileGroup LTM EBITDA €6.26m; typical minimum €250k ShortlistTidewell Direct LendingPrivate debt fund3 of 4 criteria InstrumentOffers acquisition finance (via unitranche)Amount€6.5m requested; ticket range €10m–€60mGeographyLends in GermanyBorrower profileGroup LTM EBITDA €6.26m; typical minimum €5m ShortlistArdent Digital BankDigital bank2 of 4 criteria InstrumentDoes not offer acquisition financeAmount€6.5m requested; ticket range €100k–€3mGeographyLends in GermanyBorrower profileGroup LTM EBITDA €6.26m; typical minimum €300k ShortlistBanque AuroreCommercial bankExisting lender2 of 4 criteria InstrumentDoes not offer acquisition financeAmount€6.5m requested; ticket range €500k–€10mGeographyDoes not lend in GermanyBorrower profileGroup LTM EBITDA €6.26m; typical minimum €500k ShortlistBanque MéridienneCommercial bankExisting lender2 of 4 criteria InstrumentDoes not offer acquisition financeAmount€6.5m requested; ticket range €250k–€8mGeographyDoes not lend in GermanyBorrower profileGroup LTM EBITDA €6.26m; typical minimum €300k ShortlistFinance Bail ExempleAsset finance providerExisting lender2 of 4 criteria InstrumentDoes not offer acquisition financeAmount€6.5m requested; ticket range €200k–€15mGeographyDoes not lend in GermanyBorrower profileGroup LTM EBITDA €6.26m; typical minimum €300k ShortlistKingsmere Bank plcCommercial bankExisting lender2 of 4 criteria InstrumentDoes not offer acquisition financeAmount€6.5m requested; ticket range €500k–€12mGeographyDoes not lend in GermanyBorrower profileGroup LTM EBITDA €6.26m; typical minimum €400k Shortlist"
+  },
+  "terms": {
+   "crumbs": [
+    "Financing workspace",
+    "Acquisition financing"
+   ],
+   "title": "Acquisition financing — Project Falcon",
+   "sub": "Lumenvale Deutschland GmbH · Acquisition · €6,500,000 · Acquisition finance, 6 years · target close 31 Mar 2027",
+   "actions": [
+    "Share with providers (preview)",
+    "Generate financing brief"
+   ],
+   "kpis": [],
+   "tabs": [
+    {
+     "label": "Overview",
+     "count": null,
+     "on": false
+    },
+    {
+     "label": "Preparation",
+     "count": "7/8",
+     "on": false
+    },
+    {
+     "label": "Providers",
+     "count": "3",
+     "on": false
+    },
+    {
+     "label": "Terms comparison",
+     "count": "3",
+     "on": true
+    },
+    {
+     "label": "Activity",
+     "count": "8",
+     "on": false
+    }
+   ],
+   "cards": [
+    {
+     "title": null,
+     "sub": null,
+     "bars": [],
+     "rows": [
+      [
+       [],
+       [
+        "Beispielbank AG",
+        "Commercial bank · received 12 Oct 2026"
+       ],
+       [
+        "Corvane Credit Partners",
+        "Private debt fund · received 14 Oct 2026"
+       ],
+       [
+        "Banque Exemple",
+        "Commercial bank · received 16 Oct 2026"
+       ]
+      ],
+      [
+       [
+        "Offer"
+       ]
+      ],
+      [
+       [
+        "Instrument"
+       ],
+       [
+        "Senior amortising term loan"
+       ],
+       [
+        "Unitranche"
+       ],
+       [
+        "Senior term loan"
+       ]
+      ],
+      [
+       [
+        "Amount"
+       ],
+       [
+        "€5,500,000",
+        "€1m short of the request"
+       ],
+       [
+        "€6,500,000",
+        "covers the request"
+       ],
+       [
+        "€6,000,000",
+        "€500k short of the request"
+       ]
+      ],
+      [
+       [
+        "Tenor"
+       ],
+       [
+        "5 years",
+        "requested 6"
+       ],
+       [
+        "6 years"
+       ],
+       [
+        "6 years"
+       ]
+      ],
+      [
+       [
+        "Valid until"
+       ],
+       [
+        "30 Nov 2026"
+       ],
+       [
+        "15 Dec 2026"
+       ],
+       [
+        "1 Dec 2026"
+       ]
+      ],
+      [
+       [
+        "Pricing"
+       ]
+      ],
+      [
+       [
+        "Rate"
+       ],
+       [
+        "3-month Euribor + 2.60%"
+       ],
+       [
+        "3-month Euribor + 5.75%"
+       ],
+       [
+        "3-month Euribor + 3.00%"
+       ]
+      ],
+      [
+       [
+        "All-in rate under assumptions"
+       ],
+       [
+        "4.60%"
+       ],
+       [
+        "7.75%"
+       ],
+       [
+        "5.00%"
+       ]
+      ],
+      [
+       [
+        "Upfront fee"
+       ],
+       [
+        "1.00% · €55,000"
+       ],
+       [
+        "2.50% · €162,500"
+       ],
+       [
+        "1.25% · €75,000"
+       ]
+      ],
+      [
+       [
+        "Recurring fees"
+       ],
+       [
+        "None"
+       ],
+       [
+        "€25,000 per year"
+       ],
+       [
+        "None"
+       ]
+      ],
+      [
+       [
+        "Structure"
+       ]
+      ],
+      [
+       [
+        "Amortisation"
+       ],
+       [
+        "15% of the initial amount per year, balance at maturity",
+        "balloon €2.2m · average life 3.5 years"
+       ],
+       [
+        "Bullet repayment at maturity",
+        "balloon €6.5m · average life 6.0 years"
+       ],
+       [
+        "10% of the initial amount per year, balance at maturity",
+        "balloon €3m · average life 4.5 years"
+       ]
+      ],
+      [
+       [
+        "Security"
+       ],
+       [
+        "Share pledge over the target; guarantee from Lumenvale Deutschland GmbH"
+       ],
+       [
+        "Share pledge, bank account pledges and upstream guarantees"
+       ],
+       [
+        "Share pledge over the target"
+       ]
+      ],
+      [
+       [
+        "Financial covenants"
+       ],
+       [
+        "Group net leverage ≤ 3.25x; interest cover ≥ 4.00x"
+       ],
+       [
+        "Group net leverage ≤ 4.50x (tested quarterly)"
+       ],
+       [
+        "Group net leverage ≤ 3.50x; consent needed under SFA-2025-001"
+       ]
+      ],
+      [
+       [
+        "Pro forma covenant check"
+       ],
+       [
+        "3.07x vs 3.25x —",
+        "headroom 5.6%"
+       ],
+       [
+        "3.07x vs 4.50x —",
+        "headroom 31.8%"
+       ],
+       [
+        "3.07x vs 3.50x —",
+        "headroom 12.3%"
+       ]
+      ],
+      [
+       [
+        "Prepayment"
+       ],
+       [
+        "Voluntary prepayment on interest dates without fee"
+       ],
+       [
+        "Non-call 12 months; 2% in year 2, 1% in year 3"
+       ],
+       [
+        "Free on interest dates; break costs only"
+       ]
+      ],
+      [
+       [
+        "Notes"
+       ],
+       [
+        "Requires financial due diligence report before credit approval."
+       ],
+       [
+        "Annual monitoring fee of €25,000. Quality-of-earnings review required."
+       ],
+       [
+        "Existing lender to Lumenvale Industrie; would also review the SFA leverage step-down."
+       ]
+      ],
+      [
+       [
+        "Illustrative costs"
+       ]
+      ],
+      [
+       [
+        "Year-1 interest"
+       ],
+       [
+        "€253,000"
+       ],
+       [
+        "€503,750"
+       ],
+       [
+        "€300,000"
+       ]
+      ],
+      [
+       [
+        "Year-1 cash financing cost"
+       ],
+       [
+        "€308,000",
+        "interest + upfront + recurring fees"
+       ],
+       [
+        "€691,250",
+        "interest + upfront + recurring fees"
+       ],
+       [
+        "€375,000",
+        "interest + upfront + recurring fees"
+       ]
+      ],
+      [
+       [
+        "Estimated cash cost over the tenor"
+       ],
+       [
+        "€940,500"
+       ],
+       [
+        "€3,335,000"
+       ],
+       [
+        "€1,425,000"
+       ]
+      ],
+      [
+       [
+        "Cost per year of average outstanding"
+       ],
+       [
+        "4.89%",
+        "comparable across amounts and profiles"
+       ],
+       [
+        "8.55%",
+        "comparable across amounts and profiles"
+       ],
+       [
+        "5.28%",
+        "comparable across amounts and profiles"
+       ]
+      ],
+      [
+       [
+        "Observations"
+       ]
+      ],
+      [
+       [
+        "Facts to weigh"
+       ],
+       [
+        "· Lowest estimated total cost",
+        "· Lowest first-year cash cost",
+        "· Shortfall of €1m",
+        "· Existing lender"
+       ],
+       [
+        "· Covers the full amount",
+        "· No scheduled amortisation",
+        "· Widest pro forma covenant headroom"
+       ],
+       [
+        "· Shortfall of €500k",
+        "· Existing lender"
+       ]
+      ],
+      [
+       [],
+       [
+        "Select for negotiation"
+       ],
+       [
+        "Select for negotiation"
+       ],
+       [
+        "Select for negotiation"
+       ]
+      ]
+     ],
+     "layers": [],
+     "items": [],
+     "buttons": [
+      "headroom 5.6%",
+      "headroom 31.8%",
+      "headroom 12.3%",
+      "Select for negotiation",
+      "Select for negotiation",
+      "Select for negotiation"
+     ]
+    }
+   ],
+   "notes": [
+    "Included in costs: interest on the scheduled opening balance of each year at the stated assumptions, upfront fees and recurring fees. Excluded: reference-rate changes beyond the sensitivity, floors, hedging, prepayment fees, break costs, legal and advisory fees, taxes and any cost of funding a shortfall.",
+    "No proposal is ranked \"best\". Price is one factor among amount, tenor, amortisation, security, covenant headroom and flexibility. The pro forma check uses group net debt / EBITDA from the linked scenario (3.07x); net debt is the same whether a shortfall is funded by cash or by other debt. Indicative terms are not offers or commitments."
+   ],
+   "tags": [],
+   "text": "Financing workspace/Acquisition financing Acquisition financing — Project FalconLumenvale Deutschland GmbH · Acquisition · €6,500,000 · Acquisition finance, 6 years · target close 31 Mar 2027Share with providers (preview)Generate financing briefOverviewPreparation7/8Providers3Terms comparison3Activity8Common assumptions: 3-month Euribor at 2.00% flat over the tenor; annual amortisation at year end. Rate sensitivityBase+50 bp+100 bp+200 bpRecord terms Beispielbank AGCommercial bank · received 12 Oct 2026Corvane Credit PartnersPrivate debt fund · received 14 Oct 2026Banque ExempleCommercial bank · received 16 Oct 2026 OfferInstrumentSenior amortising term loanUnitrancheSenior term loanAmount€5,500,000€1m short of the request€6,500,000covers the request€6,000,000€500k short of the request Tenor5 yearsrequested 66 years6 yearsValid until30 Nov 202615 Dec 20261 Dec 2026 PricingRate3-month Euribor + 2.60%3-month Euribor + 5.75%3-month Euribor + 3.00%All-in rate under assumptions4.60%7.75%5.00%Upfront fee1.00% · €55,0002.50% · €162,5001.25% · €75,000Recurring feesNone€25,000 per yearNone StructureAmortisation15% of the initial amount per year, balance at maturityballoon €2.2m · average life 3.5 yearsBullet repayment at maturityballoon €6.5m · average life 6.0 years10% of the initial amount per year, balance at maturityballoon €3m · average life 4.5 yearsSecurityShare pledge over the target; guarantee from Lumenvale Deutschland GmbHShare pledge, bank account pledges and upstream guaranteesShare pledge over the targetFinancial covenantsGroup net leverage ≤ 3.25x; interest cover ≥ 4.00xGroup net leverage ≤ 4.50x (tested quarterly)Group net leverage ≤ 3.50x; consent needed under SFA-2025-001 Pro forma covenant check3.07x vs 3.25x — headroom 5.6%3.07x vs 4.50x — headroom 31.8%3.07x vs 3.50x — headroom 12.3% PrepaymentVoluntary prepayment on interest dates without feeNon-call 12 months; 2% in year 2, 1% in year 3Free on interest dates; break costs onlyNotesRequires financial due diligence report before credit approval.Annual monitoring fee of €25,000. Quality-of-earnings review required.Existing lender to Lumenvale Industrie; would also review the SFA leverage step-down. Illustrative costsYear-1 interest€253,000€503,750€300,000Year-1 cash financing cost€308,000interest + upfront + recurring fees€691,250interest + upfront + recurring fees€375,000interest + upfront + recurring fees Estimated cash cost over the tenor€940,500€3,335,000€1,425,000Cost per year of average outstanding4.89%comparable across amounts and profiles8.55%comparable across amounts and profiles5.28%comparable across amounts and profiles ObservationsFacts to weigh· Lowest estimated total cost· Lowest first-year cash cost· Shortfall of €1m· Existing lender· Covers the full amount· No scheduled amortisation· Widest pro forma covenant headroom· Shortfall of €500k· Existing lender Select for negotiationSelect for negotiationSelect for negotiation Included in costs: interest on the scheduled opening balance of each year at the stated assumptions, upfront fees and recurring fees. Excluded: reference-rate changes beyond the sensitivity, floors, hedging, prepayment fees, break costs, legal and advisory fees, taxes and any cost of funding a shortfall. No proposal is ranked \"best\". Price is one factor among amount, tenor, amortisation, security, covenant headroom and flexibility. The pro forma check uses group net debt / EBITDA from the linked scenario (3.07x); net debt is the same whether a shortfall is funded by cash or by other debt. Indicative terms are not offers or commitments."
+  },
+  "vision": {
+   "crumbs": [],
+   "title": "The operating system for global corporate capital",
+   "sub": "Understand your debt. Control your capital. Unlock your next financing.",
+   "actions": [],
+   "kpis": [],
+   "tabs": [],
+   "cards": [
+    {
+     "title": "From debt visibility to capital access",
+     "sub": null,
+     "bars": [],
+     "rows": [],
+     "layers": [
+      {
+       "title": "Debt intelligence",
+       "state": "In this demo",
+       "summary": "Consolidation, contracts, covenants and reliable financial information.",
+       "items": [
+        [
+         "Facility register across entities, lenders and currencies",
+         "In this demo"
+        ],
+        [
+         "Deterministic covenant engine with frozen saved calculations",
+         "In this demo"
+        ],
+        [
+         "Source tracing to trial-balance rows and contract clauses",
+         "In this demo"
+        ],
+        [
+         "Assisted contract extraction with human validation",
+         "Preview"
+        ]
+       ]
+      },
+      {
+       "title": "Capital decision-making",
+       "state": "In this demo",
+       "summary": "Capital structure, forecasts, scenarios and financing preparation.",
+       "items": [
+        [
+         "Capital structure by instrument, provider, country and currency",
+         "In this demo"
+        ],
+        [
+         "Illustrative scenarios with covenant projection",
+         "In this demo"
+        ],
+        [
+         "Integrated three-statement forecasting",
+         "Future capability"
+        ],
+        [
+         "Multi-currency average-rate translation",
+         "Future capability"
+        ]
+       ]
+      },
+      {
+       "title": "Capital access",
+       "state": "Preview",
+       "summary": "Provider discovery, request workflows and financing comparison.",
+       "items": [
+        [
+         "Financing requests with preparation checklist and brief export",
+         "In this demo"
+        ],
+        [
+         "Provider directory with transparent matching criteria",
+         "Preview"
+        ],
+        [
+         "Indicative terms comparison under common assumptions",
+         "In this demo"
+        ],
+        [
+         "Secure sharing of information packages with providers",
+         "Future capability"
+        ]
+       ]
+      },
+      {
+       "title": "Open capital infrastructure",
+       "state": "Future capability",
+       "summary": "Broader connections between corporate financing needs and capital providers.",
+       "items": [
+        [
+         "Connections with banks, digital lenders and private debt funds",
+         "Future capability"
+        ],
+        [
+         "Standardised data exchange for credit processes",
+         "Future capability"
+        ],
+        [
+         "Selected regulated decentralised capital markets, where appropriate",
+         "Future capability"
+        ]
+       ]
+      }
+     ],
+     "items": [],
+     "buttons": [
+      "In this demo",
+      "In this demo",
+      "In this demo",
+      "In this demo",
+      "Preview",
+      "In this demo",
+      "In this demo",
+      "In this demo",
+      "Future capability",
+      "Future capability",
+      "Preview",
+      "In this demo",
+      "Preview",
+      "In this demo",
+      "Future capability",
+      "Future capability",
+      "Future capability",
+      "Future capability",
+      "Future capability"
+     ]
+    },
+    {
+     "title": "What this demo shows",
+     "sub": null,
+     "bars": [],
+     "rows": [],
+     "layers": [],
+     "items": [],
+     "buttons": []
+    },
+    {
+     "title": "What it does not claim",
+     "sub": null,
+     "bars": [],
+     "rows": [],
+     "layers": [],
+     "items": [
+      "No integration with banks, lenders, accounting systems or market-data providers.",
+      "No partnership with any capital provider; all providers are fictional.",
+      "No OCR or AI model: contract extraction is a simulated preview.",
+      "No regulatory approval, no lending and no investment advice.",
+      "No crypto assets, wallets or tokens. Decentralised markets are a possible long-term connection, nothing more."
+     ],
+     "buttons": []
+    }
+   ],
+   "notes": [],
+   "tags": [],
+   "text": "The operating system for global corporate capitalUnderstand your debt. Control your capital. Unlock your next financing. From debt visibility to capital access1Debt intelligenceIn this demoConsolidation, contracts, covenants and reliable financial information. Facility register across entities, lenders and currenciesIn this demoDeterministic covenant engine with frozen saved calculationsIn this demoSource tracing to trial-balance rows and contract clausesIn this demoAssisted contract extraction with human validationPreview2Capital decision-makingIn this demoCapital structure, forecasts, scenarios and financing preparation. Capital structure by instrument, provider, country and currencyIn this demoIllustrative scenarios with covenant projectionIn this demoIntegrated three-statement forecastingFuture capabilityMulti-currency average-rate translationFuture capability3Capital accessPreviewProvider discovery, request workflows and financing comparison. Financing requests with preparation checklist and brief exportIn this demoProvider directory with transparent matching criteriaPreviewIndicative terms comparison under common assumptionsIn this demoSecure sharing of information packages with providersFuture capability4Open capital infrastructureFuture capabilityBroader connections between corporate financing needs and capital providers. Connections with banks, digital lenders and private debt fundsFuture capabilityStandardised data exchange for credit processesFuture capabilitySelected regulated decentralised capital markets, where appropriateFuture capability What this demo showsCovenn starts by making corporate debt understandable and trustworthy: every figure traces back to a lender balance, a trial-balance row or a contract clause. On that foundation it becomes a workspace for capital decisions and financing access. What it does not claimNo integration with banks, lenders, accounting systems or market-data providers.No partnership with any capital provider; all providers are fictional.No OCR or AI model: contract extraction is a simulated preview.No regulatory approval, no lending and no investment advice.No crypto assets, wallets or tokens. Decentralised markets are a possible long-term connection, nothing more."
+  }
  },
  "source": {
   "file": "beta-capital-os/covenn-capital-os-demo-en.html",
