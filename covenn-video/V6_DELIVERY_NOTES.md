@@ -28,7 +28,7 @@ One thread runs through the whole film: the acquisition financing of **Project F
 | 6 | 0:23–0:26.5 | Compare terms. Choose with confidence. | The demo's **Terms comparison** tab: Beispielbank AG (commercial bank), Corvane Credit Partners (private debt fund), Banque Exemple (commercial bank) — instrument, amount (with the €1m / €500k shortfalls), tenor, rate, all-in rate, amortisation, pro forma covenant check (5.6% / 31.8% / 12.3% headroom), estimated cash cost. A highlight moves across dimensions (amount → all-in rate → covenant headroom) without ranking. Corvane, the only proposal covering the full €6.5m, is **selected for negotiation**, with the demo's own confirmation: *This records a choice only. Current debt and capital structure are unchanged.* The demo's note stays visible: *No proposal is ranked "best" … Indicative terms are not offers or commitments.* | In this demo (fictional providers, indicative terms) |
 | 7 | 0:26.5–0:30 | COVENN · The operating system for global corporate capital. · Starting with debt. | Violet / lilac / warm aurora opening from the negotiation badge; the Covenn mark lands on the final musical impact (26.5 s), then the wordmark and the two lines (the first is the title of the demo's *Product vision* page). Held to 30.0 s, no fade to black. | Brand |
 
-Readability checkpoints (still frames in section 6): 5 s (frame 150), 9 s (270), 13 s (390), 19 s (570), 24 s (720), 28 s (840).
+Readability checkpoints (still frames in section 6 and `V6_checkpoints.png`): 5 s (frame 150), 9 s (270), 13 s (390), 19 s (570), 24 s (720), 28 s (840).
 
 ## 3. Changelog versus V5 (Capital OS edition)
 
@@ -73,7 +73,7 @@ Readability checkpoints (still frames in section 6): 5 s (frame 150), 9 s (270),
 - Text sizes are enlarged for screen legibility; layouts are condensed to one 1600 × 900 window (scene 2 brings two lower cards of the Capital overview page up under the KPI row; scene 3 shows three of the eight *Today versus scenario* rows and the leverage row of *Projected SFA covenants*; scene 6 shows nine of the comparison rows).
 - Scene 1 presents the repayment schedule and the covenant calculation in a spreadsheet look to depict the pre-Covenn situation; every value is the demo's.
 - Scene 3 types the saved scenario's inputs into the form, and adds a headroom gauge that draws the same numbers (3.13x against 3.50x → 3.25x).
-- Scene 4's request card combines the request header with the preparation checklist (the demo shows them on the request page and its Preparation tab).
+- Scene 4's request card combines the request header with the preparation checklist (the demo shows them on the request page and its Preparation tab). Scene 4 depicts the preparation step: the tab counters for providers, terms and activity are hidden there; in the demo the same request is already at *Indicative terms received*, which is where scene 6 picks up (with the demo's counters: Providers 3, Terms comparison 3, Activity 8).
 - The transition from scene 5 to scene 6 is narrative: in the demo, indicative terms are recorded in the request after the shortlisted providers are approached; nothing in the demo is received through a live network.
 
 ## 5. Rebuild
@@ -92,4 +92,21 @@ COMP=CovennHexaV6 node scripts/stills.mjs out/qa-v6 150 270 390 570 720 840
 
 ## 6. Verification
 
-(Filled in after export — see below.)
+**Files** (ffprobe / ebur128 on the delivered MP4s)
+
+| | `…_English_30s.mp4` | `…_English_30s_no-music.mp4` |
+|---|---|---|
+| Video | H.264 High 4.1, 1920 × 1080, 30 fps, 900 frames, yuv420p, BT.709, video range | same picture |
+| Duration | 30.000 s (video and audio) | 30.000 s |
+| Audio | AAC-LC 48 kHz stereo, 256 kb/s | same |
+| Loudness | −16.1 LUFS integrated, LRA 3.3 LU, true peak −2.1 dBFS | sound design only: −23.4 LUFS, true peak −7.2 dBFS (same gain as in the full mix) |
+| Size | 19.9 MB | 19.9 MB |
+
+**Content checks**
+- `npm run verify:v6` — all checks pass: demo file SHA-256 matches `SHA256SUMS`; every figure and label of scenes 1–7 matches the demo's engine values and rendered screens (KPIs, sums by country / entity / provider, scenario before/after, projected covenant, preparation status, the three proposals' amount, rates, tenor, pro forma headroom and cost, the negotiation message); vision and demo labelling present; no on-screen text mentions crypto, tokens, wallets, blockchain, approval, guarantees, binding offers or live integrations (303 distinct texts).
+- `npm run audit:v6` — every rendered text, every other frame: English only (281 distinct texts, 0 flagged).
+- Rendering integrity — the film is rendered in a single browser tab; every even frame (450) of the render was compared with a still rendered independently on a fresh page: mean PSNR 49.9 dB, minimum 47.8 dB, no frame below 40 dB (no stale-paint artefacts).
+
+**Readability checkpoints** (`V6_checkpoints.png`, frames taken from the delivered MP4): 5 s Capital overview and headline · 9 s 2.46x → 3.07x and *Critical headroom* · 13 s request card at 7 of 8 · 19 s the three pathways with the sub-line · 24 s terms comparison with the amount row highlighted · 28 s brand. The last frame (29.97 s) still shows the full brand card.
+
+**Sound** — procedural score (no samples, no stock loops), 120 BPM, every scene change on a beat: tension 0–3 s, rhythmic build 3–11 s, momentum 11–15 s (one silent beat before 15 s), expansion 15–23 s with an accent at the pathway reveal (17 s), resolution 23–26.5 s (one silent beat before the brand), brand impact at 26.5 s and a final F major chord sustained to 30.0 s (only the last 0.4 s closes). 80 sound cues are generated from the same frame numbers as the picture (`src/v6/timing.ts`).
