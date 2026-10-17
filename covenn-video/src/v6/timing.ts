@@ -22,20 +22,22 @@ export const NETWORK = { a: 450, b: 510, c: 615, end: 690 } as const;
 
 /** Textes à l'écran : un message par scène, avec de l'air. */
 export const CAPTIONS = {
-  problemA: { in: 6, out: 74 },
-  problemB: { in: 20, out: 74 },
+  problemA: { in: 6, out: 64 },
+  problemB: { in: 20, out: 64 },
   overview: { in: 96, out: 202 },
-  scenario: { in: 216, out: 322 },
-  request: { in: 336, out: 440 },
-  network: { in: 458, out: 684 },
-  networkSub: { in: 530, out: 684 },
+  scenario: { in: 216, out: 314 },
+  request: { in: 328, out: 440 },
+  network: { in: 458, out: 668 },
+  networkSub: { in: 530, out: 668 },
   compare: { in: 696, out: 786 },
 } as const;
 
-/** Mentions (haut droite) : démonstration (données fictives), vision (illustration), conditions indicatives fictives. */
+/** Mentions (haut droite) : état de la feuille de route de la bêta (« In this demo ») et nature des données montrées.
+ *  La vision (S5) porte ses propres mentions (« FUTURE VISION », note de bas de page). */
 export const MENTIONS = {
-  demo: [96, 446] as const,
-  vision: [452, 688] as const,
+  overview: [96, 206] as const,
+  scenario: [214, 316] as const,
+  request: [326, 446] as const,
   terms: [692, 790] as const,
 } as const;
 
@@ -45,8 +47,8 @@ export const MENTIONS = {
 /** S1 : arrivée des quatre fragments, signal violet sur chacun, alignement, compression dans l'encours. */
 export const FRAGMENT_IN = [0, 4, 8, 12] as const;
 export const SIGNAL = [48.75, 52.5, 56.25, 60] as const;
-export const ALIGN = [60, 75] as const;
-export const COMPRESS = [75, 90] as const;
+export const ALIGN = [62, 77] as const;
+export const COMPRESS = [77, 90] as const;
 /** S2 : recul de la caméra, puis les pays (et leurs sociétés) qui s'additionnent dans l'encours, puis les prêteurs. */
 export const PULLBACK = [104, 138] as const;
 export const COUNTRY_HI = [150, 157.5, 165] as const;
@@ -118,6 +120,7 @@ export const CUES: Cue[] = [
   // S5 — la vision : la demande entre dans Covenn, trois voies vers le capital s'ouvrent
   { frame: NETWORK.a, kind: 'hit', gain: 1 },
   ...series(PACKETS, 'connect', 0.26, 2, 1),
+  { frame: NETWORK.b - 18, kind: 'reverse', gain: 0.55 },
   { frame: NETWORK.b, kind: 'hit', gain: 0.8 },
   ...series(PATHWAYS.map((f) => f - 3.75), 'connect', 0.3, 5, 2),
   ...series(PATHWAYS, 'card', 0.36, 7, 2),

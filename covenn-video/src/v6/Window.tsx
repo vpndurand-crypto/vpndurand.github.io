@@ -20,7 +20,7 @@ export const COL = { x: 280, w: 1288, r: 1568 } as const;
 export const KPI = { y: 178, h: 156, w: 248, gap: 12, xs: [280, 540, 800, 1060, 1320] as const } as const;
 export const KPI1_CENTER = { x: KPI.xs[0] + KPI.w / 2, y: KPI.y + KPI.h / 2 };
 /** Zoom du plan serré sur l'encours (S1 → S2). */
-export const TIGHT_K = 2.1;
+export const TIGHT_K = 2.4;
 
 /** Éléments du menu de la bêta (centre vertical, coordonnées de l'interface) : d'où partent les données de S4. */
 export const NAV_Y: Record<Section, number> = {
@@ -31,11 +31,11 @@ export const NAV_Y: Record<Section, number> = {
 // recul vers le réseau (S5) ; retour pour la comparaison (S6) ; recul final vers la marque (S7).
 const K: Key[] = [
   [90, TIGHT_K], [PULLBACK[0], TIGHT_K], [PULLBACK[1], 1, E.inOut], [NAV.swap[0], 1.012, E.soft], [NAV.swap[1], 1, E.inOut],
-  [S3.press, 1.03, E.soft], [S3.lift[1], 1, E.inOut], [440, 1.02, E.soft], [476, 0.84, E.inOut], [682, 0.95], [700, 1, E.out], [782, 1.012, E.soft], [800, 0.96, E.in],
+  [S3.press, 1.03, E.soft], [S3.lift[1], 1, E.inOut], [440, 1.02, E.soft], [476, 0.84, E.inOut], [674, 0.95], [696, 1, E.out], [782, 1.012, E.soft], [800, 0.96, E.in],
 ];
 const CX: Key[] = [[90, KPI1_CENTER.x], [PULLBACK[0], KPI1_CENTER.x], [PULLBACK[1], REST.cx, E.inOut]];
 const CY: Key[] = [[90, KPI1_CENTER.y], [PULLBACK[0], KPI1_CENTER.y], [PULLBACK[1], REST.cy, E.inOut]];
-const FY: Key[] = [[90, 560], [PULLBACK[0], 560], [PULLBACK[1], REST.fy, E.inOut], [440, REST.fy], [476, 596, E.inOut], [682, 606], [700, REST.fy, E.out]];
+const FY: Key[] = [[90, 560], [PULLBACK[0], 560], [PULLBACK[1], REST.fy, E.inOut], [440, REST.fy], [476, 596, E.inOut], [674, 606], [696, REST.fy, E.out]];
 
 export function windowCam(f: number): Cam {
   return { k: zoomTrack(f, K), cx: track(f, CX), cy: track(f, CY), fx: REST.fx, fy: track(f, FY) };
@@ -53,11 +53,11 @@ export function rectToFrame(cam: Cam, r: Rect): Rect {
 export function windowOpacity(f: number): number {
   if (f < 300) return p(f, 84, 92);
   if (f < 600) return 1 - p(f, 448, 474, E.in);
-  return Math.min(p(f, 682, 698), 1 - p(f, 784, 800, E.in));
+  return Math.min(p(f, 674, 690), 1 - p(f, 784, 800, E.in));
 }
 
 export function sectionAt(f: number): Section {
-  return f < 210 ? 'overview' : f < 316 ? 'scenarios' : 'financing';
+  return f < 208 ? 'overview' : f < 316 ? 'scenarios' : 'financing';
 }
 
 /** La fenêtre : fond, coque de la bêta, puis le contenu de la page (coordonnées de l'interface). */

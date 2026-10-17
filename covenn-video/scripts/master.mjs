@@ -5,6 +5,8 @@
 // Usage : node scripts/master.mjs   (après npm run score, npm run score:sfx et npm run render:v5)
 //         node scripts/master.mjs --film capos   → film Capital OS (après npm run score:capos, score:capos:sfx et render:capos) :
 //   out/Covenn_Hexa_V5_CapitalOS_English_30s.mp4 et out/Covenn_Hexa_V5_CapitalOS_English_30s_no-music.mp4
+//         node scripts/master.mjs --film v6      → film HEXA V6 « The Capital OS » (après npm run score:v6, score:v6:sfx et render:v6) :
+//   out/Covenn_Hexa_V6_CapitalOS_English_30s.mp4 et out/Covenn_Hexa_V6_CapitalOS_English_30s_no-music.mp4
 import { execFileSync } from 'node:child_process';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -16,6 +18,13 @@ const FILMS = {
     versions: [
       { audio: 'public/audio/covenn-vision-score.wav', out: 'out/Covenn_Hexa_V5_English_30s.mp4' },
       { audio: 'public/audio/covenn-vision-sfx.wav', out: 'out/Covenn_Hexa_V5_English_30s_no-music.mp4' },
+    ],
+  },
+  v6: {
+    raw: 'out/covenn-v6-raw.mp4',
+    versions: [
+      { audio: 'public/audio/v6-score.wav', out: 'out/Covenn_Hexa_V6_CapitalOS_English_30s.mp4' },
+      { audio: 'public/audio/v6-sfx.wav', out: 'out/Covenn_Hexa_V6_CapitalOS_English_30s_no-music.mp4' },
     ],
   },
   capos: {

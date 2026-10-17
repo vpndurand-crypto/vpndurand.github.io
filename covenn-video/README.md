@@ -2,6 +2,7 @@
 
 Couche de production vidéo **indépendante** des bêtas. Les sources de la première bêta sont copiées telles quelles dans `beta/` (206 fichiers, jamais modifiés) et réutilisées : composants et classes CSS (barre latérale, barre supérieure, pastilles de source, jauge, page de contrat, badges), jetons CSS, police Figtree, données de démonstration et moteur de calcul. La bêta « Capital operating system » est copiée telle quelle dans `beta-capital-os/` (un fichier HTML autonome, empreinte dans `SHA256SUMS`, jamais modifié).
 
+- **Film HEXA V6 « The Capital OS » (anglais)** : `out/Covenn_Hexa_V6_CapitalOS_English_30s.mp4` et `out/Covenn_Hexa_V6_CapitalOS_English_30s_no-music.mp4` — nouveau film de 30 s en sept scènes sur la bêta « Capital operating system », construit autour d'un seul cas de la démonstration (le financement de l'acquisition Project Falcon) : produit crédible, extension au-delà de la gestion de la dette, vision d'une infrastructure de capital connectée. Résumé scène par scène, changelog et note d'exactitude produit (en anglais) : `V6_DELIVERY_NOTES.md`. Voir la section « Film V6 » ci-dessous.
 - **Film Capital OS (anglais)** : `out/Covenn_Hexa_V5_CapitalOS_English_30s.mp4` et `out/Covenn_Hexa_V5_CapitalOS_English_30s_no-music.mp4` — le montage de la V5 (mêmes séquences, mêmes textes, même musique, mêmes formats de sortie), refait sur la bêta « Capital operating system » : ses écrans, ses classes CSS, son vocabulaire et les valeurs calculées par son moteur. Voir la section « Film Capital OS » ci-dessous.
 - **Version finale V5 (anglais)** : `out/Covenn_Hexa_V5_English_30s.mp4` — 1920 × 1080 natif, 30 i/s, 900 images, 30,000 s, H.264 High (yuv420p, BT.709) + AAC 48 kHz stéréo 256 kb/s, −16 LUFS, crête −2 dBFS. Rendu à partir des sources (images PNG, sans perte), un seul encodage final.
 - **Version sans musique** : `out/Covenn_Hexa_V5_English_30s_no-music.mp4` — même image, design sonore seul, au niveau exact qu'il a dans la version complète.
@@ -33,6 +34,15 @@ npm run master:capos                             # fichiers livrés : out/Covenn
 COMP=CovennCapitalOS node scripts/stills.mjs out/qa 120 300 580
 npm run verify:capos                             # empreinte de la bêta, puis chaque chiffre du film contre son moteur
 npm run audit:capos                              # tous les textes rendus : aucun mot ni format français (hors noms propres de la bêta)
+
+# Film HEXA V6 « The Capital OS »
+npm run extract:capos                            # valeurs du moteur et textes des écrans rendus de la bêta (snapshot.screens)
+npm run verify:v6                                # empreinte de la bêta, chaque chiffre et libellé du film, mots interdits
+npm run audit:v6                                 # tous les textes rendus, image par image : anglais uniquement
+npm run score:v6 && npm run score:v6:sfx         # public/audio/v6-score.wav et v6-sfx.wav (repères de src/v6/timing.ts)
+npm run render:v6                                # rendu image (out/covenn-v6-raw.mp4, images PNG, CRF 8, un seul onglet*)
+npm run master:v6                                # fichiers livrés : out/Covenn_Hexa_V6_CapitalOS_English_30s.mp4 et …_no-music.mp4
+COMP=CovennHexaV6 node scripts/stills.mjs out/qa-v6 150 270 390 570 720 840
 ```
 
 \* En rendu parallèle (quatre onglets), Chromium laissait parfois, pendant quelques images, une trace d'un chiffre en mouvement (le « 3.13x » qui quitte sa tuile au début de S4) : le film Capital OS est rendu sur un seul onglet, ce qui supprime l'artefact (contrôlé image par image contre un rendu de référence).
@@ -75,6 +85,25 @@ Les scènes 2 à 7 réutilisent les animations de la V4, écrites en images V4 :
 - `src/hexa/Hexa.tsx` — assemblage (calques, fond, son) ; `timing.ts` — conducteur (séquences, textes, mentions, correspondance V4, repères sonores) ; `data.ts`, `format.ts`, `docs.tsx` — données, formats et documents anglais ; `kit.tsx` — écrans dessinés avec les classes et jetons de la bêta ; `Captions.tsx`, `Mention.tsx`.
 - `src/hexa/scenes/` — `Chaos`, `Ingest`, `Cockpit` (+ `cockpitLayout`), `Covenant`, `Timeline`, `Simulation`, `Dossier`, `CapitalStructure`, `Access`, `Signature`.
 - `src/film/`, `src/bridge/` — version 2 (démonstration de la bêta) et pont vers la bêta, partagés.
+
+## Film V6 « The Capital OS » : déroulé
+
+Un seul fil, du premier fragment à la marque : le financement de l'acquisition Project Falcon par Lumenvale Deutschland GmbH, qui existe de bout en bout dans la démonstration (scénario → demande de financement → conditions indicatives). Détail et justification de chaque choix : `V6_DELIVERY_NOTES.md`.
+
+| Temps | Scène | Texte | Ce qu'on voit | Statut |
+|---|---|---|---|---|
+| 0:00–0:03 | Fragmentation | Debt is fragmented. / Financing is disconnected. | Quatre sources lisibles en 3D retenue (échéancier, contrat SFA, calcul du covenant, relevé Beispielbank) ; un signal violet les relie ; elles se rangent et se fondent dans l'encours | Documents de la démo |
+| 0:03–0:07 | Consolidation | One view. Across your entire group. | Plan serré sur €18.6m puis la page Capital overview de la bêta (cinq indicateurs, pays et sociétés, prêteurs) ; les montants des pays rejoignent le total | In this demo |
+| 0:07–0:11 | Simulation | Simulate tomorrow. Decide today. | Page du scénario Project Falcon : saisie, colonne « At 30 Sep 2027 », 2.46x → 3.07x, covenant SFA projeté Watch → Critical headroom (marche de seuil) ; le nouvel emprunt de €6.5m | Prévision d'illustration |
+| 0:11–0:15 | Préparation | Prepare your next financing. | La demande naît du bouton « Create financing request from scenario » ; sept pièces viennent des rubriques de Covenn ; la huitième reste « Needs review » (7/8) | In this demo |
+| 0:15–0:23 | Réseau (vision) | From managing capital to accessing it. | L'entreprise → Covenn → Banks, Private Debt, Capital Markets → Senior debt, Unitranche, Future market-based financing (illustration) ; les conditions indicatives convergent vers la comparaison | Future capability |
+| 0:23–0:26.5 | Comparaison | Compare terms. Choose with confidence. | Onglet « Terms comparison » : trois propositions indicatives fictives, sans classement ; Corvane retenue pour négociation (message de la bêta : un choix de travail) | In this demo |
+| 0:26.5–0:30 | Marque | The operating system for global corporate capital. / Starting with debt. | Aurore, marque, tenue jusqu'à 30,0 s | — |
+
+- Données : `src/v6/data.ts` lit les valeurs du moteur et, nouveauté de la V6, les textes des écrans rendus de la bêta (`snapshot.screens`, écrit par `scripts/extract-capos.mjs`) : indicateurs, tableaux, onglets, boutons, notes. Si un libellé attendu n'est pas affiché par la bêta, le film refuse de se construire.
+- Contrôles : `scripts/verify-v6.mjs` (empreinte, chiffres, cohérences, signalement démo / vision, mots interdits : crypto, jeton, portefeuille, offre ferme, financement accordé) et `scripts/audit-text.mjs --film v6`.
+- Musique : `scripts/score-v6.mjs` (mêmes sons que la V5, arrangement V6 : tension, montée rythmique, élan, expansion avec accent à l'ouverture des trois voies, résolution, conclusion tenue jusqu'à 30,0 s).
+- Structure : `src/v6/Film.tsx` (assemblage), `timing.ts` (conducteur et repères sonores), `data.ts`, `Window.tsx` (fenêtre de l'application et caméra), `Captions.tsx`, `Mention.tsx` ; `src/v6/scenes/` — `Fragments`, `Pages` (vue groupe, scénario, demande, comparaison), `FalconCard` (la demande, de S3 à S5), `Network`, `EndCard`.
 
 ## Film Capital OS : déroulé
 

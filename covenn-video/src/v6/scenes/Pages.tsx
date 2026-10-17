@@ -149,8 +149,8 @@ function BarLine({ y, label, amount, share, fraction, color, grow, hi = 0, o = 1
 }
 
 export function OverviewPage({ f }: { f: number }) {
-  if (f < 84 || f > NAV.swap[0] + 12) return null;
-  const m = pageMotion(f, null, [NAV.swap[0], NAV.swap[0] + 10]);
+  if (f < 84 || f > NAV.swap[0] + 8) return null;
+  const m = pageMotion(f, null, [NAV.swap[0] - 2, NAV.swap[0] + 6]);
   const D = OVERVIEW.distribution;
   const X = OVERVIEW.exposure;
   // Plan serré (90–104) : seule la tuile de l'encours ; le reste se découvre pendant le recul.
@@ -261,6 +261,8 @@ function Field({ y, label, value, prefix, suffix, select = false, hint, focus = 
   );
 }
 
+/** Colonnes du tableau « Projected SFA covenants » (covenant, actuel, projeté, seuil, statut, marge). */
+const COV_COLS = '182px 140px 80px 130px 160px 60px';
 /** Jauge du covenant projeté : ratio, seuil (marche de 3.50x à 3.25x), marge entre les deux. */
 const GAUGE = { x: 22, w: RIGHT_W - 44, min: 2.5, max: 3.75 } as const;
 const gx = (v: number) => GAUGE.x + ((v - GAUGE.min) / (GAUGE.max - GAUGE.min)) * GAUGE.w;
@@ -269,14 +271,14 @@ function rgbMix(a: readonly number[], b: readonly number[], t: number) {
 }
 
 export function ScenarioPage({ f }: { f: number }) {
-  if (f < NAV.swap[0] + 4 || f > 324) return null;
-  const m = pageMotion(f, [NAV.swap[0] + 4, NAV.swap[1]], [312, 322]);
+  if (f < NAV.swap[0] + 6 || f > 316) return null;
+  const m = pageMotion(f, [NAV.swap[0] + 6, NAV.swap[1]], [304, 314]);
   const P = SCENARIO_PAGE;
   const C = P.covenant;
   const typed = [...P.fields.typed, P.fields.borrowing];
   const slot = (S3.typing[1] - S3.typing[0]) / typed.length;
   const typeT = (i: number) => p(f, S3.typing[0] + i * slot, S3.typing[0] + (i + 1) * slot, E.linear);
-  const focus = (i: number) => life(f, S3.typing[0] + i * slot - 1, S3.typing[0] + i * slot + 1, S3.typing[0] + (i + 1) * slot, S3.typing[0] + (i + 1) * slot + 3);
+  const focus = (i: number) => life(f, S3.typing[0] + i * slot - 1, S3.typing[0] + i * slot + 1, S3.typing[0] + (i + 1) * slot - 0.5, S3.typing[0] + (i + 1) * slot + 0.5);
   // Recalcul : la colonne « At 30 Sep 2027 » se remplit ; le ratio du groupe défile ; le seuil du covenant passe à 3.25x.
   const sweep = p(f, S3.roll[0], S3.roll[1], E.inOut);
   const cellIn = (r: number) => p(f, S3.roll[0] + 2 + r * 3, S3.roll[0] + 7 + r * 3, E.out);
@@ -361,10 +363,10 @@ export function ScenarioPage({ f }: { f: number }) {
 
       {/* Covenant du contrat SFA projeté à l'horizon : la marche de seuil s'applique, la marge devient critique */}
       <CardBox r={PROJ} title={C.title}>
-        <div style={{ ...abs, left: 22, right: 22, top: 58, height: 28, display: 'grid', gridTemplateColumns: '208px 130px 96px 150px 1fr 90px', alignItems: 'center', fontSize: 12.5, fontWeight: 550, color: 'var(--ink-3)', borderBottom: '1px solid var(--line)', columnGap: 10 }}>
+        <div style={{ ...abs, left: 22, right: 22, top: 58, height: 28, display: 'grid', gridTemplateColumns: COV_COLS, alignItems: 'center', fontSize: 12.5, fontWeight: 550, color: 'var(--ink-3)', borderBottom: '1px solid var(--line)', columnGap: 8 }}>
           {C.head.map((h, i) => <span key={h} style={{ ...nowrap, textAlign: i === 0 || i === 4 ? 'left' : 'right' }}>{h}</span>)}
         </div>
-        <div style={{ ...abs, left: 22, right: 22, top: 94, display: 'grid', gridTemplateColumns: '208px 130px 96px 150px 1fr 90px', alignItems: 'start', columnGap: 10, fontVariantNumeric: 'tabular-nums' }}>
+        <div style={{ ...abs, left: 22, right: 22, top: 94, display: 'grid', gridTemplateColumns: COV_COLS, alignItems: 'start', columnGap: 8, fontVariantNumeric: 'tabular-nums' }}>
           <span>
             <b style={{ display: 'block', fontSize: 16.5 }}>{C.name}</b>
             <span className="faint" style={{ display: 'block', fontSize: 12.5, lineHeight: '16px', marginTop: 2 }}>{C.note}</span>
@@ -377,10 +379,10 @@ export function ScenarioPage({ f }: { f: number }) {
             ) : <span className="faint">—</span>}
           </span>
           <span style={{ position: 'relative', height: 30 }}>
-            <span style={{ ...abs, left: 0, top: 0, opacity: 1 - crit }}><StatusBadge status={C.statusFrom} scale={1.2} /></span>
+            <span style={{ ...abs, left: 0, top: 0, opacity: 1 - crit }}><StatusBadge status={C.statusFrom} scale={1.1} /></span>
             {crit > 0.001 && (
               <span style={{ ...abs, left: 0, top: 0, opacity: crit, transform: `scale(${mix(0.7, 1, crit)})`, transformOrigin: '0 50%' }}>
-                <Badge tone="b-crit" dot scale={1.2}>{C.status}</Badge>
+                <Badge tone="b-crit" dot scale={1.1}>{C.status}</Badge>
               </span>
             )}
           </span>
@@ -426,8 +428,8 @@ const TODO: Rect = { x: SIDE_X, y: 714, w: SIDE_W, h: 154 };
 export const docked = (f: number) => DOCKS.filter((d) => f >= d).length;
 
 export function RequestPage({ f }: { f: number }) {
-  if (f < 314 || f > 480) return null;
-  const m = pageMotion(f, [314, 330], null);
+  if (f < 316 || f > 480) return null;
+  const m = pageMotion(f, [316, 330], null);
   const R = REQUEST_PAGE;
   const n = docked(f);
   const linkedO = p(f, 330, 344, E.out);
@@ -502,9 +504,14 @@ const TABLE_H = (LINES.at(-1)?.y ?? 0) + (LINES.at(-1)?.h ?? 0) + BUTTONS_H;
 /** Cellules d'en-tête des trois propositions (les cartes venues du réseau s'y posent). */
 export const HEADER_CELLS: Rect[] = [0, 1, 2].map((i) => ({ x: TABLE.x + TABLE.label + i * COLW, y: TABLE.y, w: COLW, h: TABLE.head }));
 const HIGHLIGHTS = ['Amount', 'All-in rate under assumptions', 'Pro forma covenant check'];
+/** Badge « Selected for negotiation » de la proposition retenue (l'aurore de la carte de fin s'ouvre là). */
+export const SELECTED_AT = {
+  x: TABLE.x + TABLE.label + Math.max(0, COMPARISON.proposals.findIndex((x) => x.id === COMPARISON.selected)) * COLW + 16 + 96,
+  y: TABLE.y + TABLE_H - BUTTONS_H / 2,
+};
 
 export function ComparePage({ f }: { f: number }) {
-  if (f < 680 || f > 802) return null;
+  if (f < 672 || f > 802) return null;
   const R = REQUEST_PAGE;
   const rowIn = (i: number) => p(f, 694 + i * 1.4, 704 + i * 1.4, E.out);
   // Bandeau de comparaison : il passe d'une dimension à l'autre (montant, taux, covenant), sans classer les propositions.

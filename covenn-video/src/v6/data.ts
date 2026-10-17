@@ -205,6 +205,8 @@ export const REQUEST_PAGE = {
 // ---------------------------------------------------------------------------
 const vision = card('vision', 'From debt visibility to capital access');
 const openLayer = need(vision.layers.find((l) => l.title === 'Open capital infrastructure'), 'couche « Open capital infrastructure »');
+/** Titre de la page « Product vision » de la bêta : la phrase de positionnement de la carte de fin. */
+export const VISION_TITLE = need(S.screens.vision.title, 'titre de la page de vision');
 export const VISION = {
   layer: openLayer.title as string,
   state: need(openLayer.state, 'état de la couche'),

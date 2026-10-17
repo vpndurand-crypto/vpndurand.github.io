@@ -1,6 +1,7 @@
 // Audit des textes du film V5 : chaque texte rendu (toutes les 2 images), avec sa première et sa dernière image,
 // puis les signes d'une langue ou d'un format français (accents, « », M€, k€, virgule décimale, mots français courants).
 // Usage : node scripts/audit-text.mjs [--all]
+//         node scripts/audit-text.mjs --film v6 [--all]      → film HEXA V6 « The Capital OS » (mêmes noms propres que Capital OS).
 //         node scripts/audit-text.mjs --film capos [--all]   → film Capital OS. Les noms propres de la bêta (prêteurs, sociétés,
 //         fichiers, « crédit-bail » cité dans le titre anglais d'un document) sont retirés avant le contrôle : ce sont des noms,
 //         pas du texte français ; la liste est ALLOWED ci-dessous.
@@ -15,9 +16,13 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const cache = join(root, 'node_modules/.cache');
 mkdirSync(cache, { recursive: true });
 const out = join(cache, 'covenn-text-audit.cjs');
-const capos = process.argv.includes('--film') && process.argv[process.argv.indexOf('--film') + 1] === 'capos';
+const film = process.argv.includes('--film') ? process.argv[process.argv.indexOf('--film') + 1] : 'hexa';
+const ENTRIES = { hexa: 'scripts/text-audit.tsx', capos: 'scripts/text-audit-capos.tsx', v6: 'scripts/text-audit-v6.tsx' };
+if (!ENTRIES[film]) throw new Error(`Film inconnu : ${film}`);
+/** Les films V6 et Capital OS reprennent les noms propres de la bêta « Capital operating system ». */
+const capos = film === 'capos' || film === 'v6';
 await build({
-  entryPoints: [join(root, capos ? 'scripts/text-audit-capos.tsx' : 'scripts/text-audit.tsx')], bundle: true, platform: 'node', format: 'cjs', outfile: out, logLevel: 'error',
+  entryPoints: [join(root, ENTRIES[film])], bundle: true, platform: 'node', format: 'cjs', outfile: out, logLevel: 'error',
   jsx: 'automatic', loader: { '.module.css': 'local-css', '.css': 'empty', '.woff2': 'empty', '.png': 'empty', '.svg': 'empty' },
   external: ['react', 'react-dom', 'remotion', 'lucide-react', 'big.js'],
 });

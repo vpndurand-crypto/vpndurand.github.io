@@ -7,6 +7,8 @@ import { CapitalOS } from './capos/CapitalOS';
 import { DURATION as CAPOS_DURATION, FPS as CAPOS_FPS } from './capos/timing';
 import { Film } from './film/Film';
 import { Hexa } from './hexa/Hexa';
+import { HexaV6 } from './v6/Film';
+import { DURATION as V6_DURATION, FPS as V6_FPS } from './v6/timing';
 import { DURATION as HEXA_DURATION, FPS as HEXA_FPS } from './hexa/timing';
 
 export const FPS = 30;
@@ -15,6 +17,8 @@ export const DURATION = 900; // 30,0 s
 export function RemotionRoot() {
   return (
     <>
+      {/* HEXA V6 « The Capital OS » (anglais) : nouveau film de 30 s sur la bêta « Capital operating system ». */}
+      <Composition id="CovennHexaV6" component={HexaV6} durationInFrames={V6_DURATION} fps={V6_FPS} width={1920} height={1080} />
       {/* HEXA V5 (anglais) : la version finale. Les versions précédentes restent dans l'historique git et dans out/. */}
       <Composition id="CovennHexaV5" component={Hexa} durationInFrames={HEXA_DURATION} fps={HEXA_FPS} width={1920} height={1080} />
       {/* Le même film (montage, textes, musique de la V5), refait sur la bêta « Capital operating system ». */}
